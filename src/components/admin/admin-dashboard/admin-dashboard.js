@@ -6,9 +6,16 @@ const AdminPage = () => {
   return (
     <AuthUserContext.Consumer>
       {authUser =>
+        !authUser ?
         <div>
           <p>
             Only Administrators can view this page.
+          </p>
+        </div>
+        :
+        <div>
+          <p>
+            Welcome Administrator!
           </p>
         </div>
       }

@@ -38,7 +38,7 @@ const Steppers = (props) => {
         <Grid item xs={1} />
         <Grid item xs={10}>
           <Paper className="portal-pages__content-inner">
-            <Typography variant="headline" gutterBottom>Steppers</Typography>
+            <Typography variant="h5" gutterBottom>Steppers</Typography>
             <p>
               Steppers display progress through a sequence of logical and numbered steps. They may also be used for navigation.
               Steppers may display a transient feedback message after a step is saved.

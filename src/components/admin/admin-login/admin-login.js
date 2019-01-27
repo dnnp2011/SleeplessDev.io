@@ -93,30 +93,20 @@ class Login extends React.Component {
               <Card className={classNames(scss.card, classes["primary-card"])}>
                 <CardContent className={scss["signup-content"]}>
                   <img src={logoImage} className={scss["signup-logo"]} alt="logo"/>
-                  <Typography variant="headline" component="h2" gutterBottom>
-                    Ares Dashboard
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Admin Login
                   </Typography>
                   <Typography component="p" gutterBottom>
-                    Welcome to Ares Dashboard. Please login using the form or register for a new account using the
-                    button below.
-                  </Typography>
-                  <Typography component="p" gutterBottom>
-                    With Ares Dashboard, you can gain access to people looking to invest in your ICO, and manage your
-                    funds every step of the way.
-                  </Typography>
-                  <Typography component="p" gutterBottom>
-                    As an investor, you can quickly and easily identify ICOs that are right for you, and get in on the
-                    ground floor by investing in the next game changer! Keep track of your various coin wallets, as well
-                    as your investments, all in one elegant dashboard.
+                    This is the SleeplessDev admin login page. Accounts are not yet open to the public, however, I have plans
+                    to make additional services available in the future.
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth onClick={() => history.push("/register")} color="secondary" variant="raised">Create
-                    an account</Button>
+                  {/*<Button fullWidth onClick={() => history.push("/register")} color="secondary" variant="raised">Create
+                    an account</Button>*/}
                 </CardActions>
               </Card>
-            </Grid>
-            <Grid
+            </Grid>            <Grid
               item
               sm={6}
               xs={12}
@@ -125,7 +115,7 @@ class Login extends React.Component {
                 <CardContent>
                   <TextField
                     label="Email Address"
-                    fullWidth
+                    variant={"fullWidth"}
                     value={email}
                     onChange={event => this.handleInput(event)}
                     name='email'
@@ -133,7 +123,7 @@ class Login extends React.Component {
                   />
                   <TextField
                     label="Password"
-                    fullWidth
+                    variant={"fullWidth"}
                     margin="normal"
                     type="password"
                     value={password}
@@ -146,8 +136,8 @@ class Login extends React.Component {
                 </CardContent>
                 <CardActions className={scss["login-actions"]}>
                   <Button disabled={isInvalid} color="primary" onClick={event => this.onSubmit(event)}
-                          variant="raised">Login</Button>
-                  <Button href="/forgot-password">Forgot Password</Button>
+                          variant="contained">Login</Button>
+                  {/*<Button href="/forgot-password">Forgot Password</Button>*/}
                 </CardActions>
               </Card>
             </Grid>

@@ -33,7 +33,7 @@ const SelectionControls = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Selection Controls</Typography>
+          <Typography variant="h5" gutterBottom>Selection Controls</Typography>
           <p>Selection controls allow the user to select options.</p>
           <p>Three types of selection controls are covered in this guidance:</p>
           <ul>

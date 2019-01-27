@@ -33,7 +33,7 @@ const Menu = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Menu</Typography>
+          <Typography variant="h5" gutterBottom>Menu</Typography>
           <p>Menus display a list of choices on a transient sheet of material.</p>
           <p>
             Menus appear upon interaction with a button, action, or other control.

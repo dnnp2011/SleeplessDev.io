@@ -22,7 +22,7 @@ const TypographyPage = () => {
         <Grid item xs={1} />
         <Grid item xs={10}>
           <Paper className="portal-pages__content-inner">
-            <Typography variant="headline" gutterBottom>Typography</Typography>
+            <Typography variant="h5" gutterBottom>Typography</Typography>
 
             <p>Portal comes with a wide range of options to setup a unique typography sensation.</p>
 

@@ -40,7 +40,7 @@ const Lock = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h5" component="h2" gutterBottom>
                   Welcome back John
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -53,7 +53,7 @@ const Lock = (props) => {
                 <TextField
                   type="password"
                   label="Password"
-                  fullWidth
+                  variant={"fullWidth"}
                 />
               </CardContent>
               <CardActions className={scss['lock-actions']}>

@@ -131,7 +131,7 @@ class TabbedChartWidget extends React.Component {
               label={
                 <span>
                   <Typography variant="caption" gutterBottom>{tab.title}</Typography>
-                  <Typography variant="title">{tab.value}</Typography>
+                  <Typography variant="h6">{tab.value}</Typography>
                 </span>
               }
               key={tab.title}

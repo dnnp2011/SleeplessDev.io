@@ -94,7 +94,7 @@ class InputAdornments extends React.Component {
             </MenuItem>
           ))}
         </TextField>
-        <FormControl fullWidth className={classes.margin}>
+        <FormControl variant={"fullWidth"} className={classes.margin}>
           <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
           <Input
             id="adornment-amount"

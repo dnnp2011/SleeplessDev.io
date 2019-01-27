@@ -30,7 +30,7 @@ const TextField = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Text Fields</Typography>
+          <Typography variant="h5" gutterBottom>Text Fields</Typography>
           <p>
             Text fields allow users to input text and usually appear in forms. Users may enter text, numbers,
             or mixed-format types of input.

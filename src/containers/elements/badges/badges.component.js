@@ -14,7 +14,7 @@ const Badges = () => (
       <Grid item xs={1} />
       <Grid item xs={10} >
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Badges</Typography>
+          <Typography variant="h5" gutterBottom>Badges</Typography>
           <h1>Badges Example</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 

@@ -39,7 +39,7 @@ const MenuNestedFunky = (props) => {
         position="static"
       >
         <Toolbar>
-          <Typography variant="title" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap>
             {menu && menu.title}
           </Typography>
         </Toolbar>

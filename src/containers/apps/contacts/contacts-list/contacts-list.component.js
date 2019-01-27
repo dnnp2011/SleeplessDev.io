@@ -122,7 +122,7 @@ class ContactsList extends React.Component {
           label="Search"
           id="search"
           type="search"
-          fullWidth
+          variant={"fullWidth"}
           onChange={this.onChangeHandler.bind(this)}
           className={scss['portal-search-field']}
           InputProps={{

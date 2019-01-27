@@ -94,7 +94,7 @@ class Profile extends React.Component {
                   <div className={scss['portal-profile__header']}>
                     <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
                     <div>
-                      <Typography variant="headline" gutterBottom>
+                      <Typography variant="h5" gutterBottom>
                         Profile / Christos
                       </Typography>
                       <Typography variant="subheading" gutterBottom>

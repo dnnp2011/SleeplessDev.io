@@ -27,7 +27,7 @@ const Select = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Select</Typography>
+          <Typography variant="h5" gutterBottom>Select</Typography>
           <h2>Simple Selects</h2>
           <p>
             Menus are positioned over their emitting elements such that the currently selected menu item appears

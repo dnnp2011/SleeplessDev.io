@@ -47,7 +47,7 @@ const Login = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h5" component="h2" gutterBottom>
                   Portal Admin Panel
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -71,11 +71,11 @@ const Login = (props) => {
               <CardContent>
                 <TextField
                   label="Email Address"
-                  fullWidth
+                  variant={"fullWidth"}
                 />
                 <TextField
                   label="Password"
-                  fullWidth
+                  variant={"fullWidth"}
                   margin="normal"
                   type="password"
                 />

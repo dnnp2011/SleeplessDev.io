@@ -24,7 +24,7 @@ const Picker = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Pickers</Typography>
+          <Typography variant="h5" gutterBottom>Pickers</Typography>
           <p>Pickers provide a simple way to select a single value from a pre-determined set.</p>
           <ul>
             <li>On mobile, pickers are best suited for display in confirmation dialog.</li>

@@ -69,7 +69,7 @@ class NotificationsTab extends Component {
     return (
       <div className={scss['portal-notifications-wrapper']}>
         <Typography
-          variant="title"
+          variant="h6"
           component="h3"
           gutterBottom
         >
@@ -103,7 +103,7 @@ class NotificationsTab extends Component {
           ))
         }
         <Typography
-          variant="title"
+          variant="h6"
           component="h3"
           gutterBottom
         >

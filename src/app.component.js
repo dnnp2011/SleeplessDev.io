@@ -60,7 +60,10 @@ App.propTypes = {
   themeConfig: PropTypes.shape({
     contentTheme: PropTypes.shape({
       direction: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    typography : PropTypes.shape({
+      useNextVariants : PropTypes.boolean
+     }).isRequired
   }).isRequired,
   layoutConfig: PropTypes.shape({}).isRequired
 };

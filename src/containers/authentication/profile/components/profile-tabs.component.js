@@ -113,7 +113,7 @@ class ProfileTabs extends React.Component {
             onChange={this.handleTabChange}
             indicatorColor="primary"
             textColor="secondary"
-            fullWidth
+            variant={"fullWidth"}
           >
             <Tab className={classes.tabLabel} label="Profile" icon={<AccountCircle />}/>
             <Tab className={classes.tabLabel} label="Change Password" icon={<Security />}/>
@@ -136,7 +136,7 @@ class ProfileTabs extends React.Component {
                     error={errors.name}
                     value={name}
                     onChange={this.handleChange('name')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />
@@ -152,7 +152,7 @@ class ProfileTabs extends React.Component {
                     error={errors.lastname}
                     value={lastname}
                     onChange={this.handleChange('lastname')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />
@@ -168,7 +168,7 @@ class ProfileTabs extends React.Component {
                     error={errors.email}
                     value={email}
                     onChange={this.handleChange('email')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />
@@ -182,7 +182,7 @@ class ProfileTabs extends React.Component {
                     label="Enter your location"
                     className={classes.textField}
                     defaultValue="Sitia, Crete, Greece"
-                    fullWidth
+                    variant={"fullWidth"}
                     margin="normal"
                   />
                 </Grid>
@@ -192,7 +192,7 @@ class ProfileTabs extends React.Component {
                     label="Website"
                     className={classes.textField}
                     defaultValue="https://sleeplessdev.io"
-                    fullWidth
+                    variant={"fullWidth"}
                     margin="normal"
                   />
                 </Grid>
@@ -202,7 +202,7 @@ class ProfileTabs extends React.Component {
                     label="Describe yourself in 255 characters"
                     className={classes.textField}
                     defaultValue="We are a small creative web design agency who are passionate with our pixels."
-                    fullWidth
+                    variant={"fullWidth"}
                     multiline
                     rowsMax="4"
                     rows="4"
@@ -224,7 +224,7 @@ class ProfileTabs extends React.Component {
                     value={password}
                     type="password"
                     onChange={this.handleChange('password')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />
@@ -241,7 +241,7 @@ class ProfileTabs extends React.Component {
                     value={newpassword}
                     type="password"
                     onChange={this.handleChange('newpassword')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />
@@ -258,7 +258,7 @@ class ProfileTabs extends React.Component {
                     value={confirmpassword}
                     type="password"
                     onChange={this.handleChange('confirmpassword')}
-                    fullWidth
+                    variant={"fullWidth"}
                     required
                     margin="normal"
                   />

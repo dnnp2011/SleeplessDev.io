@@ -24,6 +24,10 @@ const AsyncTutorials = asyncComponent(() => import('./components/tutorials/tutor
 const AsyncAdminLogin = asyncComponent(() => import('./components/admin/admin-login/admin-login'));
 const AsyncAdminDashboard = asyncComponent(() => import('./components/admin/admin-dashboard/admin-dashboard'));
 
+//  SLEEPLESSDEV FINANCIAL MARKET ROUTES
+const AsyncStockMarket = asyncComponent(() => import('./components/market/stock-market/stock'));
+const AsyncCryptoMarket = asyncComponent(() => import('./components/market/crypto-market/crypto'));
+
 // DASHBOARD ROUTE
 const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
 const AsyncEcommerceDashboard = asyncComponent(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
@@ -139,13 +143,16 @@ export default ({ childProps, layout }) => {
       <AppRoute path={"/home"} exact component={AsyncHomePage} props={childProps} layout={activeLayout} />
       <AppRoute path={"/about-me"} exact component={AsyncAboutMe} props={childProps} layout={activeLayout} />
       <AppRoute path={"/projects"} exact component={AsyncProjects} props={childProps} layout={activeLayout} />
-      <AppRoute path={"/contact-me"} exact component={AsyncContact} props={childProps} layout={activeLayout} />
+      <AppRoute path={"/contact"} exact component={AsyncContact} props={childProps} layout={activeLayout} />
       <AppRoute path={"/blog"} exact component={AsyncBlog} props={childProps} layout={activeLayout} />
       <AppRoute path={"/resources/reference"} exact component={AsyncReference} props={childProps} layout={activeLayout} />
       <AppRoute path={"/resources/tutorials"} exact component={AsyncTutorials} props={childProps} layout={activeLayout} />
 
       <AppRoute path={"/admin/login"} exact component={AsyncAdminLogin} props={childProps} layout={activeLayout} />
       <AppRoute path={"/admin/dashboard"} exact component={AsyncAdminDashboard} props={childProps} layout={activeLayout} />
+
+      <AppRoute path={"/markets/stock"} exact component={AsyncStockMarket} props={childProps} layout={activeLayout} />
+      <AppRoute path={"/markets/crypto"} exact component={AsyncCryptoMarket} props={childProps} layout={activeLayout} />
 
       {/*
        <AppRoute path="/" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />

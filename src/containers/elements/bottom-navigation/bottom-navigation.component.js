@@ -14,7 +14,7 @@ const BottomNavigation = () => (
       <Grid item xs={1} />
       <Grid item xs={10} >
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Bottom Navigation</Typography>
+          <Typography variant="h5" gutterBottom>Bottom Navigation</Typography>
           <h1>Bottom Navigation Example</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 

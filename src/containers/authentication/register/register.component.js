@@ -47,7 +47,7 @@ const Register = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h5" component="h2" gutterBottom>
                   Register
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -70,32 +70,32 @@ const Register = (props) => {
                   <Grid item sm={6} xs={12}>
                     <TextField
                       label="Firstname"
-                      fullWidth
+                      variant={"fullWidth"}
                     />
                   </Grid>
                   <Grid item sm={6} xs={12}>
                     <TextField
                       label="Lastname"
-                      fullWidth
+                      variant={"fullWidth"}
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Email Address"
-                      fullWidth
+                      variant={"fullWidth"}
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Password"
-                      fullWidth
+                      variant={"fullWidth"}
                       type="password"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Repeat Password"
-                      fullWidth
+                      variant={"fullWidth"}
                       type="password"
                     />
                   </Grid>

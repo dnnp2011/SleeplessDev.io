@@ -116,7 +116,7 @@ class Calendar extends React.Component {
               <IconButton onClick={this.calendarNavigate('prev')} aria-labelledby="Previous">
                 <ChevronLeftIcon />
               </IconButton>
-              <Typography component="h1" variant="headline">
+              <Typography component="h1" variant="h5">
                 {this.state.selectedView === 'agendaWeek' && 'Week '}
                 {moment(this.state.currentDay).format(this.viewFormats[this.state.selectedView])}
               </Typography>

@@ -84,7 +84,7 @@ class ChatMessages extends React.Component {
         <Card className={scss['send-card']}>
           <CardContent className={scss['send-card-content']}>
             <TextField
-              fullWidth
+              variant={"fullWidth"}
               label="Type a message here"
               onChange={this.updateMessage}
               value={this.state.message}

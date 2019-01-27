@@ -11,10 +11,16 @@
 <a name="0.2"></a>
 # 0.1 (Jan 25, 2019)
 
+### Bugs
+
+
+* **material-ui:** Replaced deprecated material-ui properties
+
 ### Features
 
 
 * **images:** Added SleeplessDev favicon, and logos
 * **navbar:** Setup navbar links and icons
 * **toolbar:** Setup page headers, added hidden page headers, added admin login button
-* **pages:** Completed Landing Page, WIP 
+* **pages:** Completed Landing Page, Admin Login
+* **auth** Added Firebase login and logout for admin 

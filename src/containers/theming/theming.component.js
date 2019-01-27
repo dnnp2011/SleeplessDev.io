@@ -57,7 +57,7 @@ const Theming = (props) => {
         <Grid item xs={1} />
         <Grid item xs={10} >
           <Paper className={scss['portal-pages__content-inner']}>
-            <Typography variant="headline" gutterBottom>Theming</Typography>
+            <Typography variant="h5" gutterBottom>Theming</Typography>
 
             <Typography component="p" gutterBottom>
               Portal is based on the fantastic Material-UI framework.
@@ -77,7 +77,7 @@ const Theming = (props) => {
               alignItems="center"
             >
               <Grid item xs={6}>
-                <Typography variant="title" gutterBottom>Side Navigation Colors</Typography>
+                <Typography variant="h6" gutterBottom>Side Navigation Colors</Typography>
                 <Grid
                   container
                   direction="row"
@@ -133,7 +133,7 @@ const Theming = (props) => {
                 </Grid>
                 <Divider />
                 <br />
-                <Typography variant="title" gutterBottom>Primary Color</Typography>
+                <Typography variant="h6" gutterBottom>Primary Color</Typography>
                 <Grid
                   container
                   direction="row"
@@ -172,7 +172,7 @@ const Theming = (props) => {
                 <Divider />
               </Grid>
               <Grid item xs={6}>
-                <Typography variant="title" gutterBottom>Main Content Colors</Typography>
+                <Typography variant="h6" gutterBottom>Main Content Colors</Typography>
                 <Grid
                   container
                   direction="row"
@@ -228,7 +228,7 @@ const Theming = (props) => {
                 </Grid>
                 <Divider />
                 <br />
-                <Typography variant="title" gutterBottom>Secondary Color</Typography>
+                <Typography variant="h6" gutterBottom>Secondary Color</Typography>
                 <Grid
                   container
                   direction="row"

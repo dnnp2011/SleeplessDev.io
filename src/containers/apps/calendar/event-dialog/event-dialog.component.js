@@ -60,7 +60,7 @@ class EventDialog extends React.Component {
             type="text"
             value={this.state.title}
             onChange={e => this.handleFormFieldChange('title', e.target.value)}
-            fullWidth
+            variant={"fullWidth"}
           />
           <TextField
             margin="dense"
@@ -69,7 +69,7 @@ class EventDialog extends React.Component {
             type="text"
             value={this.state.location}
             onChange={e => this.handleFormFieldChange('location', e.target.value)}
-            fullWidth
+            variant={"fullWidth"}
           />
           <TextField
             margin="dense"
@@ -78,7 +78,7 @@ class EventDialog extends React.Component {
             type="text"
             value={this.state.description}
             onChange={e => this.handleFormFieldChange('description', e.target.value)}
-            fullWidth
+            variant={"fullWidth"}
           />
           <TextField
             id="start"

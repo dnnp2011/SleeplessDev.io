@@ -70,7 +70,7 @@ class ComposeDialog extends React.Component {
             type="email"
             value={this.state.to}
             onChange={e => this.handleFormFieldChange('to', e.target.value)}
-            fullWidth
+            variant={"fullWidth"}
           />
           <TextField
             margin="dense"
@@ -79,7 +79,7 @@ class ComposeDialog extends React.Component {
             type="text"
             value={this.state.subject}
             onChange={e => this.handleFormFieldChange('subject', e.target.value)}
-            fullWidth
+            variant={"fullWidth"}
           />
           <div className={scss['portal-quill']}>
             <ReactQuill
@@ -89,7 +89,7 @@ class ComposeDialog extends React.Component {
               placeholder={editorOptions.placeholder}
               value={this.state.content}
               onChange={value => this.handleFormFieldChange('content', value)}
-              fullWidth
+              variant={"fullWidth"}
             />
           </div>
         </DialogContent>

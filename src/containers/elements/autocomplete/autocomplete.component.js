@@ -22,7 +22,7 @@ const Autocomplete = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Autocomplete</Typography>
+          <Typography variant="h5" gutterBottom>Autocomplete</Typography>
           <p>
             Input text can be used with autocomplete to help users who have limited literacy or who write in a foreign language.
             For example, autocomplete can:

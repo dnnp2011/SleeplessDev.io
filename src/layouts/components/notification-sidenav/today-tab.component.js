@@ -52,7 +52,7 @@ class TodayTab extends Component {
     return (
       <div className={scss['portal-today-wrapper']}>
         <Typography
-          variant="headline"
+          variant="h5"
           className={scss['portal-today-date']}
         >
           {moment(this.state.timeNow).format('dddd, MMMM Do, YYYY')}

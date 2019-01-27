@@ -33,7 +33,7 @@ const Progress = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Progress</Typography>
+          <Typography variant="h5" gutterBottom>Progress</Typography>
           <p>Progress and activity indicators are visual indications of an app loading content.</p>
           <p>
             A single visual indicator should be used to represent each type of operation. For example, a refresh operation should display either a refresh bar or an activity circle, but not both.

@@ -24,7 +24,7 @@ const Avatars = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Avatars</Typography>
+          <Typography variant="h5" gutterBottom>Avatars</Typography>
           <p>Avatars are found throughout material design with uses in everything from tables to dialog menus.</p>
           <h2>Image avatars</h2>
           <p>Image avatars can be created by passing standard <code>img</code> props <code>src</code> or <code>srcSet</code> into the component.</p>

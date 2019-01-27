@@ -23,7 +23,7 @@ const Error404 = (props) => {
     <div className={classes.background}>
       <Card className={scss.card} raised>
         <CardContent className={scss['card-content']}>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Page Not Found
           </Typography>
           <Typography className={scss['card-text']}>

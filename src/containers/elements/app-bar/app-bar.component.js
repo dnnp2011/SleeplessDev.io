@@ -24,7 +24,7 @@ const AppBar = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>App Bar</Typography>
+          <Typography variant="h5" gutterBottom>App Bar</Typography>
           <p>
             The App bar, formerly known as the action bar in Android,
             is a special kind of toolbar that’s used for branding,

@@ -18,7 +18,7 @@ const PaperDemo = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Paper</Typography>
+          <Typography variant="h5" gutterBottom>Paper</Typography>
           <p>
             In material design, the physical properties of paper are translated to the screen.
             The background of an application resembles the flat, opaque texture of a sheet of paper,

@@ -22,10 +22,10 @@ export default function Types() {
       <Typography variant="display1" gutterBottom>
         Display 1
       </Typography>
-      <Typography variant="headline" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Headline
       </Typography>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Title
       </Typography>
       <Typography variant="subheading" gutterBottom>

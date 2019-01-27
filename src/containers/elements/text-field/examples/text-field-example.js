@@ -208,7 +208,7 @@ class TextFields extends React.Component {
           }}
           placeholder="Placeholder"
           helperText="Full width!"
-          fullWidth
+          variant={"fullWidth"}
           margin="normal"
         />
       </form>

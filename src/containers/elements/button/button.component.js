@@ -37,7 +37,7 @@ const Button = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Buttons</Typography>
+          <Typography variant="h5" gutterBottom>Buttons</Typography>
           <p>Buttons communicate the action that will occur when the user touches them.</p>
           <p>
             Material buttons trigger an ink reaction on press. They may display text, imagery, or both.

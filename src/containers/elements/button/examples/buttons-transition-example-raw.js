@@ -94,7 +94,7 @@ class FloatingActionButtonZoom extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            fullWidth
+            variant={"fullWidth"}
           >
             <Tab label="Item One" />
             <Tab label="Item Two" />

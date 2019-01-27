@@ -29,7 +29,7 @@ const ColorsPage = () => {
 
             <p>The Material Design color palette comprises primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.</p>
 
-            <Typography variant="headline" gutterBottom>Palette Colors</Typography>
+            <Typography variant="h5" gutterBottom>Palette Colors</Typography>
             <p>These color palettes comprise of primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.</p>
 
             <p>The color palette starts with primary colors and fills in the spectrum to create a complete and usable palette for Android, Web, and iOS.Google suggests using the 500 colors as the primary colors in your app and the other colors as accents colors.</p>

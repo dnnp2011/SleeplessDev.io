@@ -42,7 +42,7 @@ const List = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Lists</Typography>
+          <Typography variant="h5" gutterBottom>Lists</Typography>
           <p>Lists present multiple line items vertically as a single continuous element.</p>
           <p>
             Lists are made up of a continuous column of rows. Each row contains a tile. Primary actions fill the tile,

@@ -28,7 +28,7 @@ const Card = () => (
       <Grid item xs={1} />
       <Grid item xs={10}>
         <Paper className="portal-pages__content-inner">
-          <Typography variant="headline" gutterBottom>Cards</Typography>
+          <Typography variant="h5" gutterBottom>Cards</Typography>
           <p>A card is a sheet of material that serves as an entry point to more detailed information.</p>
           <p>Cards display content composed of different elements whose size or supported actions vary.</p>
           <p>

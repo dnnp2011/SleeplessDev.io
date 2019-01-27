@@ -46,7 +46,7 @@ class Messages extends React.Component {
     return (
       <div>
         <Typography
-          variant="title"
+          variant="h6"
           key={Date.now()}
           className={scss['portal-mail-subject']}
         >
