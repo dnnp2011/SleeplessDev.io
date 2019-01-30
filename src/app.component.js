@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+import withAuthentication from "./auth/withAuthentication";
 
 import Routes from './routes';
 
@@ -69,6 +70,7 @@ App.propTypes = {
 };
 
 export default compose(
+  withAuthentication,
   withRouter,
   connect(mapStateToProps)
 )(App);

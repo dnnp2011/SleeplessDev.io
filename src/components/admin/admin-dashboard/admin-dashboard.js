@@ -23,6 +23,6 @@ const AdminPage = () => {
   );
 };
 
-const authCondition = (authUser) => !!authUser && authUser.flag === 'ADMIN';
+const authCondition = (authUser) => !!authUser;
 
 export default withAuthorization(authCondition)(AdminPage);

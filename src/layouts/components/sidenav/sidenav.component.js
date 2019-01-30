@@ -9,7 +9,6 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';

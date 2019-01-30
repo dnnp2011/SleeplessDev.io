@@ -91,31 +91,25 @@ class ContentToolbar extends React.Component {
   };
 
   handleAdminLoginClick = (authUser) => {
-    this.props.history.push("/admin/login");
-    /*(authUser
+    const { history } = this.props;
+    (!authUser
      ? (
-       this.props.history.push('/admin/dashboard')
+       history.push('/admin/login')
      )
      : (
-       this.props.history.push('/admin/login')
-     ))*/
+       history.push('/admin/dashboard')
+     ))
   };
 
   handleAdminLogoffClick = (authUser) => {
-    // auth.doSignOut();
-    const { history } = this.props;
-    authUser ? history.push('/admin/dashboard') : history.push('/admin/login');
-{/*    <AuthUserContext.Consumer>
-      {
-        authUser =>
-          (!authUser ?
-            // Logout successful, route to non-auth login
-          history.push('/')
-                    :
-            // Lout NOT successful, do nothing, or give error message
-          alert("Logout could not be correctly processed"))
-      }
-    </AuthUserContext.Consumer>*/}
+    auth.doSignOut();
+/*      (!authUser
+       ? (
+         history.push('/')
+       )
+       : (
+         alert("Logout could not be correctly processed")
+       ))*/
   };
 
 
@@ -124,7 +118,7 @@ class ContentToolbar extends React.Component {
       width,
       layout,
       location,
-      theme
+      theme,
     } = this.props;
 
     const showBurgerMenu = isWidthDown("sm", width) || !layout.sidenavOpen;
@@ -204,13 +198,16 @@ class ContentToolbar extends React.Component {
             >
               <PersonIcon />
             </IconButton>
-            <IconButton
-              color={ "inherit" }
-              aria-label={ "admin logoff" }
-              onClick={ authUser => this.handleAdminLogoffClick(authUser) }
-            >
-              <IoMdLogOut />
-            </IconButton>
+
+            {!!authUser
+             ? <IconButton
+               color={ "inherit" }
+               aria-label={ "admin logoff" }
+               onClick={ authUser => this.handleAdminLogoffClick(authUser) }
+             >
+               <IoMdLogOut />
+             </IconButton>
+             : null}
 
             <IconButton
               color='inherit'
@@ -248,6 +245,8 @@ ContentToolbar.propTypes = {
   changeThemeDirection : PropTypes.func.isRequired,
   location : PropTypes.shape({}).isRequired
 };
+
+// const ContentToolbarWithAuth = withAuthentication(ContentToolbar);
 
 export default compose(
   withRouter,

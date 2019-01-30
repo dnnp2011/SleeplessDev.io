@@ -29,7 +29,7 @@ const AsyncStockMarket = asyncComponent(() => import('./components/market/stock-
 const AsyncCryptoMarket = asyncComponent(() => import('./components/market/crypto-market/crypto'));
 
 // DASHBOARD ROUTE
-const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
+/*const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
 const AsyncEcommerceDashboard = asyncComponent(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
 const AsyncCryptoDashboard = asyncComponent(() => import('./containers/dashboards/crypto/crypto.component'));
 const AsyncProjectDashboard = asyncComponent(() => import('./containers/dashboards/project/project.component'));
@@ -71,11 +71,12 @@ const AsyncForgot = asyncComponent(() => import('./containers/authentication/for
 const AsyncError404 = asyncComponent(() => import('./containers/errors/404.component'));
 const AsyncError500 = asyncComponent(() => import('./containers/errors/500.component'));
 
-const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-found.component'));
 
 // PAGES ROUTES
 const AsyncTypography = asyncComponent(() => import('./containers/pages/typography.component'));
-const AsyncColors = asyncComponent(() => import('./containers/pages/colors.component'));
+const AsyncColors = asyncComponent(() => import('./containers/pages/colors.component'));*/
+
+const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-found.component'));
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route

@@ -16,7 +16,6 @@ class GdaxTickerWidget extends React.Component {
     this.animationCallback = null;
 
     this.state = {
-      products: null
     };
 
     this.setMarqueeRef = (element) => {
@@ -28,7 +27,7 @@ class GdaxTickerWidget extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     const res = await fetch('https://api.gdax.com/products');
     const data = await res.json();
     if (data) {

@@ -5,11 +5,11 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-import GdaxTickerWidget from './components/gdax-ticker-widget/gdax-ticker-widget.component';
-import DailyPerformanceWidget from './components/daily-performance-widget/daily-performance-widget.component';
-import AnnualPerformanceWidget from './components/annual-performance-widget/annual-performance-widget.component';
-import MostPopularWidget from './components/most-popular-widget/most-popular-widget.component';
-import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
+import GdaxTickerWidget from '../../widgets/gdax-ticker-widget/gdax-ticker-widget.component';
+import DailyPerformanceWidget from '../../widgets/daily-performance-widget/daily-performance-widget.component';
+import AnnualPerformanceWidget from '../../widgets/annual-performance-widget/annual-performance-widget.component';
+import MostPopularWidget from '../../widgets/most-popular-widget/most-popular-widget.component';
+import MarketCapWidget from '../../widgets/market-cap-widget/market-cap-widget.component';
 
 
 import styles from './crypto.style';

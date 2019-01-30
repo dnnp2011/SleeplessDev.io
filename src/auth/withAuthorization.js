@@ -6,14 +6,11 @@ import { firebase } from "../firebase";
 
 const withAuthorization = (authCondition) => (Component) => {
   class WithAuthorization extends React.Component {
-    constructor(props) {
-      super(props);
-    }
 
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!authCondition(authUser)) {
-          this.props.history.push("/login");
+          this.props.history.push("/admin/login");
         }
       });
     }
@@ -21,7 +18,7 @@ const withAuthorization = (authCondition) => (Component) => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser => authUser ? <Component {...this.props} /> : null}
+          {authUser => !!authUser ? <Component {...this.props} /> : null}
         </AuthUserContext.Consumer>
       );
     }
