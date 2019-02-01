@@ -9,7 +9,7 @@
 
 
 <a name="0.2"></a>
-# 0.1 (Jan 25, 2019)
+# 0.2 (Jan 25, 2019)
 
 ### Bugs
 
@@ -22,5 +22,5 @@
 * **images:** Added SleeplessDev favicon, and logos
 * **navbar:** Setup navbar links and icons
 * **toolbar:** Setup page headers, added hidden page headers, added admin login button
-* **pages:** Completed Landing Page, Admin Login
-* **auth** Added Firebase login and logout for admin 
+* **pages:** Completed Landing Page, Admin Login, About Me, Contact
+* **auth:** Added Firebase login and logout for admin 

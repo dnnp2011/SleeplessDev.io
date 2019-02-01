@@ -1,58 +1,112 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 
 import { withStyles } from "@material-ui/core/styles";
-
-import themeStyles from "./contact.style";
+import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React from "react";
+import { FaFacebookF, FaGlobeAmericas, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import SelfOutdoors from "../../assets/images/portrait/selfie-outdoors-cropped-portrait.png";
 import scss from "./contact.module.scss";
 
-import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
+import themeStyles from "./contact.style";
 
-const LandingPage = (props) => {
+
+const Contact = (props) => {
+  const gender = "Male", age = "25", region = "New York City, NY", phone = "(904) 955-6408", email = "daltonpierce@sleeplessdev.io", birthday = "06/09/1993";
+
   const {
     classes,
     width
   } = props;
 
-  // Flip container to column on mobile screens.
-  const panelDirection = width === "xs" ? "column" : "row";
-
   return (
-    <Grid
-      container
-      direction="row"
-      spacing={0}
-      justify="center"
-      alignItems="center"
-      className={classes.background}>
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Paper className={classNames(scss.paper, classes["primary-paper"])}>
-            <CardContent className={scss["landing-page-content"]}>
-              <img src={logoImage} className={scss["landing-page-logo"]} alt="logo"/>
-              <Typography variant='h5' gutterBottom>Hey There!</Typography>
-              <Typography variant='body1'>My name is Dalton Pierce, the insomniac developer behind SleeplessDev! I worked hard to create an aesthetically pleasing, yet functional website
-                that would be indicative of my skill as a developer. Whether you're an employer, prospective client, or a fellow developer, feel free to take a look around.
-                You'll find other examples of my work, contact information, as well as a collection of developer reference material; A compilation of knowledge gathered through my experiences
-                with Software Development, Networking and Firewalls, PC and Server Hardware, and more! Regardless of what brought you here, I hope you leave having learned something
-                new!</Typography>
-            </CardContent>
-          </Paper>
+    <div className={ classNames(scss["contact-details"]) }>
+      <div
+        className={ classNames(
+          scss["contact-details__header"],
+          classes.ContactDetailsHeader
+        ) }
+      >
+      </div>
+      <div
+        className={ classNames(
+          scss["contact-details__content"],
+          classes.ContactDetailsContent
+        ) }
+      >
+
+        <Grid container spacing={ 0 }>
+          <Grid item xs={ 12 } sm={ 6 } md={ 3 }>
+            <div
+              className={ classNames(
+                scss["contact-details__avatar-container"]
+              ) }
+            >
+              <div
+                className={ classNames(
+                  scss["contact-details__avatar"],
+                  classes.ContactDetailsAvatar
+                ) }
+              >
+                <img
+                  className={ classNames(
+                    classes.ContactDetailsAvatarImg
+                  ) }
+                  src={ SelfOutdoors }
+                  alt={ "Dalton Pierce" }
+                />
+              </div>
+              <div
+                className={ classNames(
+                  scss["contact-details__extra"],
+                  classes.portalContactDetailsExtra
+                ) }
+              >
+                <Typography component={ "p" } variant={ "subheading" }>{ gender }, Age { age }</Typography>
+                <Typography component={ "p" } variant={ "subheading" }>{ region }</Typography>
+                {/*<Typography component={ "p" } variant={ "subheading" }>{ phone }</Typography>*/}
+                <Typography component={ "p" } variant={ "subheading" }><a href={`mailto:${email}`} className={classNames(scss["contact-details__email"])}>{ email }</a></Typography>
+                {/*<Typography component={ "p" } variant={ "subheading" }>{ birthday }</Typography>*/}
+                <br />
+                <IconButton href={ "https://www.twitter.com" } color='inherit' aria-label='twitter link'>
+                  <FaTwitter size={ 15 } name={ "twitter" } title={ "Twitter" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                </IconButton>
+                <IconButton href={ "https://www.facebook.com" } color='inherit' aria-label='facebook link'>
+                  <FaFacebookF size={ 15 } name={ "facebook" } title={ "Facebook" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                </IconButton>
+                <IconButton href={ "https://www.linkedin.com" } color='inherit' aria-label='linkedin link'>
+                  <FaLinkedinIn size={ 15 } name={ "linkedin" } title={ "LinkedIn" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                </IconButton>
+                <IconButton href={ "http://localhost:3000" } color='inherit' aria-label='website link'>
+                  <FaGlobeAmericas size={ 15 } name={ "website" } title={ "Website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                </IconButton>
+              </div>
+            </div>
+          </Grid>
+          <Grid item xs={ 12 } sm={ 6 } md={ 9 }>
+            <div
+              className={ classNames(
+                scss["contact-details__main"]
+              ) }
+            >
+              <Typography variant='headline' gutterBottom>Want to reach out?</Typography>
+              <Typography component='p' variant={"body1"}>
+                If your looking to hire me for a project, employment position, or just looking for a fellow developer to collaborate with, please
+                don't hesitate to contact me!
+              </Typography>
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 
-LandingPage.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+Contact.propTypes = {
+  classes : PropTypes.shape({}).isRequired,
+  width : PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(LandingPage);
+export default withStyles(themeStyles, { withTheme : true })(Contact);

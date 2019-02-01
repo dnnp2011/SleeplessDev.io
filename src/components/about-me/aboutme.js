@@ -33,11 +33,8 @@ class AboutMe extends React.Component {
 
   render() {
     const resumeUrl = "https://resume.creddle.io/embed/7wqefr81r5z";
-    const { classes, width } = this.props;
+    const { classes, history } = this.props;
     const { expanded } = this.state;
-
-    // Flip container to column on mobile screens.
-    const panelDirection = width === "xs" ? "column" : "row";
 
     return (
       <Grid
@@ -50,25 +47,21 @@ class AboutMe extends React.Component {
         ) }
         justify={ "center" }
         alignItems={ "center" }
-        title={ "About-Me Page" }
       >
         <Grid
           item
           sm={ 6 }
           xs={ 12 }
           className={ scss.panel }
-          title={ "About-Me Center Panel" }
         >
           <Grid
             container
             spacing={ 32 }
             direction={ "column" }
             justify={ "space-around" }
-            title={ "About-Me Panel Column" }
           >
             <Grid
               item
-              title={ "About-Me Header Section" }
               style={ { paddingTop : "200px", zIndex : -1 } }
             >
               <Grid
@@ -78,12 +71,12 @@ class AboutMe extends React.Component {
                 justify={ "flex-start" }
                 alignItems={ "flex-start" }
               >
-                <Grid item title={ "Header Avatar" }>
+                <Grid item>
                   <div className={ scss["about-me__header"] }>
                     <Avatar alt='Dalton Pierce' src={ SelfPortrait } className={ scss["about-me__header-avatar"] } />
                   </div>
                 </Grid>
-                <Grid item title={ "Header Title" }>
+                <Grid item>
                   <Typography variant='h5' gutterBottom>
                     Dalton Pierce
                   </Typography>
@@ -96,7 +89,6 @@ class AboutMe extends React.Component {
 
             {/*<Grid
               item
-              title={ "About-Me Paragraph Section" }
             >
               <div className={ scss["about-me__content-first"] }>
                 <Card className={ scss.card }>
@@ -171,12 +163,11 @@ class AboutMe extends React.Component {
 
             <Grid
               item
-              title={ "About-Me Resume Section" }
             >
               <div className={ scss["portal-profile__content-second"] }>
                 <Card className={ scss.card }>
                   <CardContent className={ scss["card-content"] }>
-                    <iframe title={ "Creddle Resume Iframe" } src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ scss["about-me__resume-iframe"] } seamless scrolling={ "no" } />
+                    <iframe src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ scss["about-me__resume-iframe"] } seamless scrolling={ "no" } />
                   </CardContent>
                 </Card>
               </div>
@@ -184,7 +175,6 @@ class AboutMe extends React.Component {
 
             <Grid
               item
-              title={ "About-Me Footer Section" }
             >
               <div className={ scss["about-me__content-third"] }>
 

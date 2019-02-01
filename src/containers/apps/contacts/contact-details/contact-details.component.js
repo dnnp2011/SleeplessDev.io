@@ -86,7 +86,7 @@ const ContactDetails = (props) => {
                 scss['portal-contact-details__main']
               )}
             >
-              <Typography variant="h5" gutterBottom>{selectedContact.name}, {selectedContact.surname}</Typography>
+              <Typography variant="h5" gutterBottom >{selectedContact.name}, {selectedContact.surname}</Typography>
               <Typography component="div" dangerouslySetInnerHTML={{ __html: selectedContact.bio }} />
             </div>
           </Grid>
