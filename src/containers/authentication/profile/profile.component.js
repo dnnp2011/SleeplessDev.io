@@ -92,13 +92,13 @@ class Profile extends React.Component {
                   xs={12}
                 >
                   <div className={scss['portal-profile__header']}>
-                    <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
+                    <img alt="avatar" src="../../../../public/assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
                     <div>
                       <Typography variant="h5" gutterBottom>
                         Profile / Christos
                       </Typography>
                       <Typography variant="subheading" gutterBottom>
-                        Edit your perfonal information, change your password and set your privacy settings here.
+                        Edit your personal information, change your password and set your privacy settings here.
                       </Typography>
                     </div>
                   </div>
@@ -136,4 +136,4 @@ Profile.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Profile);
+export default compose(withWidth, withStyles(themeStyles, { withTheme: true }))(Profile);

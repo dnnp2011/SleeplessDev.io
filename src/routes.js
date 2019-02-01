@@ -29,7 +29,7 @@ const AsyncStockMarket = asyncComponent(() => import('./components/market/stock-
 const AsyncCryptoMarket = asyncComponent(() => import('./components/market/crypto-market/crypto'));
 
 // DASHBOARD ROUTE
-/*const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
+const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
 const AsyncEcommerceDashboard = asyncComponent(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
 const AsyncCryptoDashboard = asyncComponent(() => import('./containers/dashboards/crypto/crypto.component'));
 const AsyncProjectDashboard = asyncComponent(() => import('./containers/dashboards/project/project.component'));
@@ -74,7 +74,7 @@ const AsyncError500 = asyncComponent(() => import('./containers/errors/500.compo
 
 // PAGES ROUTES
 const AsyncTypography = asyncComponent(() => import('./containers/pages/typography.component'));
-const AsyncColors = asyncComponent(() => import('./containers/pages/colors.component'));*/
+const AsyncColors = asyncComponent(() => import('./containers/pages/colors.component'));
 
 const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-found.component'));
 
@@ -155,7 +155,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path={"/markets/stock"} exact component={AsyncStockMarket} props={childProps} layout={activeLayout} />
       <AppRoute path={"/markets/crypto"} exact component={AsyncCryptoMarket} props={childProps} layout={activeLayout} />
 
-      {/*
+
        <AppRoute path="/" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
        <AppRoute path="/dashboards/ecommerce" exact component={AsyncEcommerceDashboard} props={childProps} layout={activeLayout} />
        <AppRoute path="/dashboards/crypto" exact component={AsyncCryptoDashboard} props={childProps} layout={activeLayout} />
@@ -191,7 +191,7 @@ export default ({ childProps, layout }) => {
        <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
        <AppRoute path="/pages/typography" exact component={AsyncTypography} props={childProps} layout={activeLayout} />
        <AppRoute path="/pages/colors" exact component={AsyncColors} props={childProps} layout={activeLayout} />
-      */}
+
 
       <AppRoute component={AsyncNotFound} layout={activeLayout} />
     </Switch>);

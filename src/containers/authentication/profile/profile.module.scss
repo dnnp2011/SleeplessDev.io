@@ -1,4 +1,4 @@
-.portal-profile {
+.about-me-page {
   overflow: hidden;
   &:before {
     animation: portal-profile-before  .6s ease-out forwards 1;
@@ -15,7 +15,7 @@
   transform: translateY(20px);
   opacity: 0;
 }
-.portal-profile__header {
+.about-me__header {
   transform: translateY(80px);
   opacity: 0;
   animation: portal-profile 1s forwards 1;
@@ -36,7 +36,7 @@
   justify-content: flex-start;
   align-items: center;
 }
-.portal-profile__header-avatar {
+.about-me__header-avatar {
   width: 80px;
   border: 8px solid #fff;
   margin-right: 16px;
@@ -50,7 +50,7 @@
     margin-right: 0;
   }
 }
-.portal-profile__content {
+.about-me__content-first {
   padding-bottom: 48px;
   opacity: 0;
   transform: translateY(80px);

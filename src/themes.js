@@ -4,6 +4,7 @@ import green from '@material-ui/core/colors/green';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import indigo from '@material-ui/core/colors/indigo';
 import orange from '@material-ui/core/colors/orange';
+import grey from '@material-ui/core/colors/grey';
 
 const defaultContentTheme = {
   direction: 'ltr',
@@ -13,6 +14,9 @@ const defaultContentTheme = {
     fontSize: 14,
     subheading: {
       fontSize: '14px'
+    },
+    secondary: {
+      fontColor: grey
     }
   },
   palette: {
@@ -60,6 +64,9 @@ const darkContentTheme = {
     fontSize: 14,
     subheading: {
       fontSize: '14px'
+    },
+    secondary: {
+      fontColor: grey
     }
   },
   palette: {
@@ -88,6 +95,9 @@ const nightContentTheme = {
     fontSize: 14,
     subheading: {
       fontSize: '14px'
+    },
+    secondary: {
+      fontColor: grey
     }
   },
   palette: {

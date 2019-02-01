@@ -1,37 +1,160 @@
-
-
+.about-me-page {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  &:before {
+    animation: about-me-before  .6s ease-out forwards 1;
+    animation-delay: .2s;
+  }
+  &:after {
+    animation: about-me-after  .4s ease-out  forwards 1;
+    animation-delay: .4s;
+  }
+}
 .panel {
-  animation: landing-page 1s forwards 1;
+  animation: about-me 1s forwards 1;
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
-  flex: auto;
+}
+.about-me__header {
+  transform: translateY(80px);
+  opacity: 0;
+  animation: about-me 1s forwards 1;
+  animation-delay: .5s;
+  width: 100%;
+  padding: 0px 0px 24px;
+  @media (max-width: 600px) {
+    padding-top: 24px;
+  }
+  h1, h3 {
+    color: #fff;
+  }
+  flex-direction: row;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  max-height: 100%;
   align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.about-me__header-avatar {
+  width: 80px;
+  height: 80px;
+  justify-content: center;
+  border: 8px solid #fff;
+  margin-right: 16px;
+  border-radius: 50%;
+  box-shadow: none;
+  animation: about-me__header-avatar 1s forwards 1;
+  animation-delay: 1.2s;
+  elevation: lower;
+  z-index: -1;
+
+  [dir='rtl'] & {
+    margin-left: 16px;
+    margin-right: 0;
+  }
 }
 
-.paper {
+.about-me__expansion-panel-header {
+  width: 100%;
+}
+.about-me__expansion-panel-subheader {
+  color: #7d7d7d;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.about-me__resume-iframe {
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow-scrolling: unset;
+  -webkit-overflow-scrolling: unset;
+  overflow: unset;
+  width: 827px;
+  height: 1100px;
+}
+.about-me__resume-card {
+  margin: 0;
+  padding: 0;
+  border: 50px;
+  elevation: above;
+  z-index: 1;
+}
+.about-me__content-first {
+  opacity: 0;
+  transform: translateY(80px);
+  animation: about-me 1s forwards 1;
+  animation-delay: .8s;
+}
+.about-me__content-second {
+  opacity: 0;
+  transform: translateY(80px);
+  animation: about-me 1s forwards 1;
+  animation-delay: .16s;
+}
+.about-me__content-third {
+  opacity: 0;
+  transform: translateY(80px);
+  animation: about-me 1s forwards 1;
+  animation-delay: .24s;
+}
+.card {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.card-content {
+  padding: 8px;
+}
+.card-actions {
   padding: 24px;
 }
 
-.lock-actions {
-  justify-content: center;
+@keyframes about-me-before {
+  0% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+  100% {
+    width: 75vw;
+    height: 75vw;
+    opacity: 1;
+  }
 }
 
-.landing-page-content {
-  text-align: center;
+@keyframes about-me-after {
+  0% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+  100% {
+    width: 35vw;
+    height: 35vw;
+    opacity: 1;
+  }
 }
 
-.landing-page-logo {
-  height: 15rem;
+@keyframes about-me {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-@keyframes landing-page {
+@keyframes portal-login {
   0% {
     transform: translateY(20px);
     opacity: 0;
@@ -39,5 +162,14 @@
   100% {
     transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+@keyframes about-me__header-avatar {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0px 4px 8px rgba(0,0,0,.2), 0px 0px 0 15vw rgba(0, 0, 0, .15), 0px 0px 0 30vw rgba(0, 0, 0, .1), 0px 0px 0 45vw rgba(0, 0, 0, .05);
   }
 }

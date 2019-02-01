@@ -64,7 +64,7 @@ App.propTypes = {
     }).isRequired,
     typography : PropTypes.shape({
       useNextVariants : PropTypes.boolean
-     }).isRequired
+     })
   }).isRequired,
   layoutConfig: PropTypes.shape({}).isRequired
 };
