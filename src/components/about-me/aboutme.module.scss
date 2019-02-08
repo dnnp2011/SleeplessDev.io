@@ -65,14 +65,12 @@
 }
 
 .about-me__resume-iframe {
-  margin: 0;
-  padding: 0;
   border: none;
   overflow-scrolling: unset;
   -webkit-overflow-scrolling: unset;
   overflow: unset;
   width: 827px;
-  height: 1100px;
+  height: 1080px;
 }
 .about-me__resume-card {
   margin: 0;
@@ -91,13 +89,13 @@
   opacity: 0;
   transform: translateY(80px);
   animation: about-me 1s forwards 1;
-  animation-delay: .16s;
+  animation-delay: .4s;
 }
 .about-me__content-third {
   opacity: 0;
   transform: translateY(80px);
   animation: about-me 1s forwards 1;
-  animation-delay: .24s;
+  animation-delay: .2s;
 }
 .card {
   height: 100%;

@@ -26,7 +26,8 @@ class TodayTab extends Component {
   }
 
   async componentDidMount() {
-    const query = 'select location,item.condition from weather.forecast where woeid in ' +
+    // TODO: This Yahoo APIs weather query is no longer valid
+    /*const query = 'select location,item.condition from weather.forecast where woeid in ' +
       '(select woeid from geo.places(1) where text="London" OR text="New York" OR text="Sydney")';
     const url = `https://query.yahooapis.com/v1/public/yql?q=${
       encodeURIComponent(query)
@@ -41,7 +42,7 @@ class TodayTab extends Component {
         code: place.item.condition.code
       }));
       this.setState({ weatherForecasts });
-    }
+    }*/
   }
 
   render() {

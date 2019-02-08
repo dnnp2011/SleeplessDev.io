@@ -15,6 +15,8 @@
 
 
 * **material-ui:** Replaced deprecated material-ui properties
+* **about-me:** Fixed card containing resume iframe - extra padding being placed below iframe
+* **contact:** Added target-blank and noreferrer to social media buttons
 
 ### Features
 
@@ -24,3 +26,4 @@
 * **toolbar:** Setup page headers, added hidden page headers, added admin login button
 * **pages:** Completed Landing Page, Admin Login, About Me, Contact
 * **auth:** Added Firebase login and logout for admin 
+* **contact:** Added color and working mailto: link on contact email address

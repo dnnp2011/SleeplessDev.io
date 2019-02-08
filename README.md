@@ -14,10 +14,9 @@ This repository contains the source code for the SleeplessDev website. Built usi
 
 ## Design Philosophy
 
-* Best practices in all things
-* Material design aesthetic
-* Always responsive
-* Prioritize documentation
+* Best practices
+* Responsive Material design aesthetic
+* Well Documented and Open Source
 * Don't sacrifice aesthetic for functionality and vice versa
 * RESTful web services
 * Modularity

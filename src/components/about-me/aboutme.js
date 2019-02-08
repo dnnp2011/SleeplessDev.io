@@ -87,24 +87,6 @@ class AboutMe extends React.Component {
               </Grid>
             </Grid>
 
-            {/*<Grid
-              item
-            >
-              <div className={ scss["about-me__content-first"] }>
-                <Card className={ scss.card }>
-                  <CardContent className={ scss["card-content"] }>
-                    <Typography gutterBottom variant={ "h5" } component={ "h2" }>A bit about me...</Typography>
-                    <Typography component='p'>
-                      My interest in technology began as a child; whenever something broke in the house, it came to me to take it apart. I was fascinated by how machines worked, be it fans, microwaves, microscopes;
-                      I wanted to know how the pieces came together to create a system greater than the sum of its parts. When I was introduced to the work of computer hardware, it was a natural fit for me, given my interest.
-                      The first computer that was completely my own was the one I built when I was 14. I was so proud when the screen lit up with POST codes and BIOS information, that I forgot I never installed an operating
-                      system on it!
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </div>
-            </Grid>*/}
-
             <Grid item>
               <div className={ scss["about-me__content-first"] }>
                 <ExpansionPanel expanded={ expanded === "panel1" } onChange={ this.handleChange("panel1") }>
@@ -166,105 +148,21 @@ class AboutMe extends React.Component {
             >
               <div className={ scss["portal-profile__content-second"] }>
                 <Card className={ scss.card }>
-                  <CardContent className={ scss["card-content"] }>
-                    <iframe src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ scss["about-me__resume-iframe"] } seamless scrolling={ "no" } />
-                  </CardContent>
+                    <iframe src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ classNames(scss["about-me__resume-iframe"], scss["card-content"]) } seamless scrolling={ "no" } />
                 </Card>
               </div>
             </Grid>
 
-            <Grid
+            {/*<Grid
               item
             >
               <div className={ scss["about-me__content-third"] }>
 
               </div>
-            </Grid>
+            </Grid>*/}
           </Grid>
         </Grid>
       </Grid>
-
-      /*<Grid
-       container
-       direction="row"
-       spacing={0}
-       justify="center"
-       alignItems="center"
-       className={classNames(
-       scss['portal-profile'],
-       classes.background
-       )}
-       >
-       <Grid item sm={10} xs={12} className={scss.panel}>
-       <Grid direction='column' container spacing={16}>
-       <Grid
-       item
-       xs={12}
-       >
-       <Grid
-       container
-       direction='row'
-       spacing={0}
-       justify="center"
-       alignItems="center"
-       >
-       <Grid
-       item
-       xs={12}
-       >
-       <div className={scss['portal-profile__header']}>
-       <Avatar alt="Dalton Pierce" src={SelfPortrait} className={scss['portal-profile__header-avatar']} />
-       <div>
-       <Typography variant="h5" gutterBottom>
-       Dalton Pierce
-       </Typography>
-       <Typography variant="subheading" gutterBottom>
-       Full Stack Developer
-       </Typography>
-       </div>
-       </div>
-       </Grid>
-       </Grid>
-       </Grid>
-       <Grid
-       item
-       xs={8}
-       >
-       <div className={scss['portal-profile__content']}>
-       <Card className={scss.card}>
-       <CardContent>
-       <Typography gutterBottom variant={"h5"} component={"h2"}>A bit about me...</Typography>
-       <Typography component="p">
-       My interest in technology began as a child; whenever something broke in the house, it came to me to take it apart. I was fascinated by how machines worked, be it fans, microwaves, microscopes;
-       I wanted to know how the pieces came together to create a system greater than the sum of its parts. When I was introduced to the work of computer hardware, it was a natural fit for me, given my interest.
-       The first computer that was completely my own was the one I built when I was 14. I was so proud when the screen lit up with POST codes and BIOS information, that I forgot I never installed an operating
-       system on it!
-       </Typography>
-       </CardContent>
-       </Card>
-       </div>
-       </Grid>
-
-       <Grid
-       xs={8}
-       direction='column'
-       item
-       spacing={0}
-       justify="center"
-       alignItems="center"
-       >
-       <div className={scss['portal-profile__content']}>
-       <Card className={scss.card}>
-       <CardContent>
-       <iframe src={resumeUrl} ref={(frame) => this.iframe = frame} className={scss['about-me__resume-iframe']} seamless />
-       </CardContent>
-       </Card>
-       </div>
-       </Grid>
-
-       </Grid>
-       </Grid>
-       </Grid>*/
     );
   }
 }

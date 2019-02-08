@@ -1,3 +1,4 @@
+import { Avatar } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -52,35 +53,36 @@ const Contact = (props) => {
               >
                 <img
                   className={ classNames(
-                    classes.ContactDetailsAvatarImg
+                    classes.ContactDetailsAvatarImg,
                   ) }
                   src={ SelfOutdoors }
                   alt={ "Dalton Pierce" }
+                  title={"Om Nom Nom"}
                 />
               </div>
               <div
                 className={ classNames(
                   scss["contact-details__extra"],
-                  classes.portalContactDetailsExtra
+                  classes.ContactDetailsExtra
                 ) }
               >
                 <Typography component={ "p" } variant={ "subheading" }>{ gender }, Age { age }</Typography>
                 <Typography component={ "p" } variant={ "subheading" }>{ region }</Typography>
                 {/*<Typography component={ "p" } variant={ "subheading" }>{ phone }</Typography>*/}
-                <Typography component={ "p" } variant={ "subheading" }><a href={`mailto:${email}`} className={classNames(scss["contact-details__email"])}>{ email }</a></Typography>
+                <Typography component={ "p" } variant={ "subheading" } title={"Email Me!"}><a href={`mailto:${email}`} target={"_blank"} rel={"noopener noreferrer"} className={classNames(classes.ContactDetailsContentEmail)}>{ email }</a></Typography>
                 {/*<Typography component={ "p" } variant={ "subheading" }>{ birthday }</Typography>*/}
                 <br />
-                <IconButton href={ "https://www.twitter.com" } color='inherit' aria-label='twitter link'>
-                  <FaTwitter size={ 15 } name={ "twitter" } title={ "Twitter" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://www.twitter.com" } title={ "Twitter" } color='inherit' aria-label='twitter link' target={"_blank"} rel={"noopener noreferrer"}>
+                  <FaTwitter size={ 15 } name={ "twitter" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://www.facebook.com" } color='inherit' aria-label='facebook link'>
-                  <FaFacebookF size={ 15 } name={ "facebook" } title={ "Facebook" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://www.facebook.com" } title={ "Facebook" } color='inherit' aria-label='facebook link' target={"_blank"} rel={"noopener noreferrer"}>
+                  <FaFacebookF size={ 15 } name={ "facebook" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://www.linkedin.com" } color='inherit' aria-label='linkedin link'>
-                  <FaLinkedinIn size={ 15 } name={ "linkedin" } title={ "LinkedIn" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://www.linkedin.com" } title={ "LinkedIn" } color='inherit' aria-label='linkedin link' target={"_blank"} rel={"noopener noreferrer"}>
+                  <FaLinkedinIn size={ 15 } name={ "linkedin" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "http://localhost:3000" } color='inherit' aria-label='website link'>
-                  <FaGlobeAmericas size={ 15 } name={ "website" } title={ "Website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "http://localhost:3000" } title={ "Website" } color='inherit' aria-label='website link' target={"_blank"} rel={"noopener noreferrer"}>
+                  <FaGlobeAmericas size={ 15 } name={ "website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
               </div>
             </div>
