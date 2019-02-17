@@ -21,7 +21,9 @@ import themeStyles from "./aboutme.style";
 
 class AboutMe extends React.Component {
   state = {
-    expanded : null
+    expanded : null,
+    width: 0,
+    height: 0,
   };
 
   handleChange = panel => (event, expanded) => {
@@ -30,16 +32,29 @@ class AboutMe extends React.Component {
                   });
   };
 
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  };
+
 
   render() {
     const resumeUrl = "https://resume.creddle.io/embed/7wqefr81r5z";
     const { classes, history } = this.props;
-    const { expanded } = this.state;
+    const { expanded, width, height } = this.state;
 
     return (
       <Grid
         container
-        xs={ 12 }
         spacing={ 0 }
         className={ classNames(
           scss["about-me-page"],
@@ -76,11 +91,11 @@ class AboutMe extends React.Component {
                     <Avatar alt='Dalton Pierce' src={ SelfPortrait } className={ scss["about-me__header-avatar"] } />
                   </div>
                 </Grid>
-                <Grid item>
+                <Grid item style={ { zIndex: 2 } }>
                   <Typography variant='h5' gutterBottom>
                     Dalton Pierce
                   </Typography>
-                  <Typography variant='subheading' gutterBottom>
+                  <Typography variant='subtitle1' gutterBottom>
                     Full Stack Developer
                   </Typography>
                 </Grid>
@@ -143,23 +158,19 @@ class AboutMe extends React.Component {
               </div>
             </Grid>
 
-            <Grid
-              item
-            >
-              <div className={ scss["portal-profile__content-second"] }>
-                <Card className={ scss.card }>
+            {
+              width >= 827 ?
+              <Grid
+                item
+              >
+                <div className={ scss["portal-profile__content-second"] }>
+                  <Card className={ scss.card }>
                     <iframe src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ classNames(scss["about-me__resume-iframe"], scss["card-content"]) } seamless scrolling={ "no" } />
-                </Card>
-              </div>
-            </Grid>
-
-            {/*<Grid
-              item
-            >
-              <div className={ scss["about-me__content-third"] }>
-
-              </div>
-            </Grid>*/}
+                  </Card>
+                </div>
+              </Grid>
+              : null
+            }
           </Grid>
         </Grid>
       </Grid>
@@ -170,7 +181,6 @@ class AboutMe extends React.Component {
 
 AboutMe.propTypes = {
   classes : PropTypes.shape({}).isRequired,
-  width : PropTypes.string.isRequired
 };
 
 export default withStyles(themeStyles, { withTheme : true })(AboutMe);
