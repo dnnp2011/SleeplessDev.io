@@ -51,6 +51,7 @@ const styles = theme => ({
     borderColor: theme.palette.background.default,
   },
   ContactDetailsSocialIcons: {
+    // color: theme.palette.secondary.main,
     color: theme.palette.secondary.main,
   },
   ContactDetailsContentEmail: {

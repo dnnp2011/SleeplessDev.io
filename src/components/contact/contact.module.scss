@@ -1,5 +1,3 @@
-
-
 .contact-details {
   height: 100%;
   width: 100%;
@@ -20,7 +18,10 @@
     transform-origin: 0 0;
     top: 100%;
     transform: translate3d(-50%, -50%, 0);
-    left: 96px;
+    left: 50%;
+    @media (min-width: 600px) {
+      left: 96px;
+    }
     border-radius: 50%;
     opacity: 0;
   }

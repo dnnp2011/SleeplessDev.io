@@ -165,7 +165,7 @@ class AboutMe extends React.Component {
               >
                 <div className={ scss["portal-profile__content-second"] }>
                   <Card className={ scss.card }>
-                    <iframe src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ classNames(scss["about-me__resume-iframe"], scss["card-content"]) } seamless scrolling={ "no" } />
+                    <iframe title={"Resume Iframe"} src={ resumeUrl } ref={ (frame) => this.iframe = frame } className={ classNames(scss["about-me__resume-iframe"], scss["card-content"]) } seamless scrolling={ "no" } />
                   </Card>
                 </div>
               </Grid>

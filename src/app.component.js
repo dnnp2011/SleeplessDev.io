@@ -6,6 +6,7 @@ import { JssProvider } from 'react-jss';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
+import {IconContext} from 'react-icons';
 
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 import withAuthentication from "./auth/withAuthentication";
@@ -41,11 +42,13 @@ class App extends React.Component {
     const materialTheme = createMuiTheme(themeConfig.contentTheme);
 
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={materialTheme}>
-          <Routes childProps={childProps} layout={layoutConfig} />
-        </MuiThemeProvider>
-      </JssProvider>
+      <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+        <JssProvider jss={ jss } generateClassName={ generateClassName }>
+          <MuiThemeProvider theme={ materialTheme }>
+            <Routes childProps={ childProps } layout={ layoutConfig } />
+          </MuiThemeProvider>
+        </JssProvider>
+      </IconContext.Provider>
     );
   }
 }
