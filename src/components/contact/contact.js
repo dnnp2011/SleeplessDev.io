@@ -1,4 +1,3 @@
-import { Avatar } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { IconButton } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -8,8 +7,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { TiSocialFacebook, TiSocialTwitter, TiSocialLinkedin } from "react-icons/ti";
-import FontAwesome from "react-fontawesome";
-import { FaBeer } from "react-icons/fa/index";
 import SelfOutdoors from "../../assets/images/portrait/selfie-outdoors-cropped-portrait.png";
 import scss from "./contact.module.scss";
 

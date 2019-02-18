@@ -14,11 +14,15 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 import { withStyles } from "@material-ui/core/styles";
+import { Query } from "react-apollo";
 import Card from "../../containers/apps/todo/todo.component";
 import styles from "../../containers/apps/todo/todo.module.scss";
 
 import themeStyles from "./blog.style";
 import scss from "./blog.module.scss";
+
+import { FaSpinner } from "react-icons/fa";
+import gql from 'graphql-tag';
 
 import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
 
@@ -28,23 +32,25 @@ class Blog extends React.Component{
   };
 
   callApi = async() => {
-    const response = await fetch('/test-blog');
+    const response = await fetch('/graphql', );
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
     return (body);
   };
 
-  componentWillMount() {
-    this.callApi()
-      .then(body => this.setState({jsonBody: body}));
-  }
-
-
   render() {
     const {
       classes,
     } = this.props;
+
+    const GET_BLOGS = gql`
+    query($month: String, $year: String, $limit: Int) {
+      blogsByMonth(blogParams: {month: $month, year: $year, limit: $limit}) {
+        _id, title, author, body, tags, dateCreated
+      }
+    }
+  `;
 
     return (
       <Grid
@@ -70,11 +76,16 @@ class Blog extends React.Component{
                 alignItems={"center"}
               >
                 <Grid item>
-                  <ul>
+                  <Query query={GET_BLOGS} variables={{ $month: "2", $year: "2019", $limit: 10 }}>
                     {
-                      this.state.jsonBody ? Object.keys(this.state.jsonBody).map((key, index) =>  <li>{key}</li> ) : <li>"Fetch response failed"</li>
+                      ({ loading, error, data }) => {
+                        if (error) console.warn(error);
+                        if (loading || !data) return <FaSpinner size={ 36 } />;
+
+                        return <p>{JSON.stringify(data)}</p>
+                      }
                     }
-                  </ul>
+                  </Query>
                 </Grid>
               </Grid>
             </Grid>
