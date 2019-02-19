@@ -73,16 +73,16 @@ const Contact = (props) => {
                 <Typography component={ "p" } variant={ "subtitle1" } title={ "Email Me!" }><a href={ `mailto:${ email }` } target={ "_blank" } rel={ "noopener noreferrer" } className={ classNames(classes.ContactDetailsContentEmail) }>{ email }</a></Typography>
                 {/*<Typography component={ "p" } variant={ "subtitle1" }>{ birthday }</Typography>*/ }
                 <br />
-                <IconButton href={ "https://twitter.com" } color='inherit' aria-label='twitter link' target={ "_blank" } rel={ "noopener noreferrer" }>
+                <IconButton href={ "https://twitter.com" } color='inherit' aria-label='twitter link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
                   <TiSocialTwitter size={ 15 } name={ "twitter" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://facebook.com" } color='inherit' aria-label='facebook link' target={ "_blank" } rel={ "noopener noreferrer" }>
+                <IconButton href={ "https://facebook.com" } color='inherit' aria-label='facebook link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
                   <TiSocialFacebook size={ 15 } name={ "facebook" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://linkedin.com" } color='inherit' aria-label='linkedin link' target={ "_blank" } rel={ "noopener noreferrer" }>
+                <IconButton href={ "https://linkedin.com" } color='inherit' aria-label='linkedin link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
                   <TiSocialLinkedin size={ 15 } name={ "linkedin" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "http://localhost:3000" } color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer" }>
+                <IconButton href={ "http://localhost:3000" } color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
                   <FaGlobeAmericas size={ 15 } name={ "website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
               </div>

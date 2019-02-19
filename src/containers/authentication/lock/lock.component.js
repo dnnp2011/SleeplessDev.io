@@ -41,10 +41,10 @@ const Lock = (props) => {
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
                 <Typography variant="h5" component="h2" gutterBottom>
-                  Welcome back John
+                  Welcome back Administrator
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  You have been logged out due to idleness. Enter your password to log back in.
+                  You have been logged out due to being idle. Enter your password to log back in.
                 </Typography>
               </CardContent>
             </Card>
@@ -53,11 +53,11 @@ const Lock = (props) => {
                 <TextField
                   type="password"
                   label="Password"
-                  variant={"fullWidth"}
+                  fullWidth
                 />
               </CardContent>
               <CardActions className={scss['lock-actions']}>
-                <Button href="/lock" color="primary" variant="raised">Login</Button>
+                <Button href="/lock" color="primary" variant="contained">Login</Button>
                 <Button href="/">Logout</Button>
               </CardActions>
             </Card>

@@ -7,6 +7,13 @@ import Demo from '../../components/demo.component';
 import TypographyExample from './examples/typography-example';
 import TypographyExampleRaw from './examples/typography-example-raw';
 
+
+const style = {
+  link: {
+    textDecoration: 'none',
+  }
+};
+
 const TypographyPage = () => {
 
   return (
@@ -26,11 +33,12 @@ const TypographyPage = () => {
 
             <p>Portal comes with a wide range of options to setup a unique typography sensation.</p>
 
-            <p>A <a href="https://material.google.com/style/typography.html#typography-styles">typographic scale</a> has a limited set of type sizes that work well together along with the layout grid.</p>
+            <p>A <a href="https://material.google.com/style/typography.html#typography-styles" rel={"nofollow noreferrer noopener"} target={"_blank"} style={style.link}>typographic scale</a> has a limited set of type sizes that work well together along with the layout grid.</p>
 
             <p>These sizes and styles were developed to balance content density and reading comfort under typical usage conditions.</p>
 
             <p>Too many type sizes and styles at once can spoil any layout.</p>
+            <p><strong>Some Material-UI styles are deprecated, and will be removed in the next major update. The new assignments are as follows:</strong></p>
             <Demo index={1} js={TypographyExample} raw={TypographyExampleRaw} />
           </Paper>
         </Grid>

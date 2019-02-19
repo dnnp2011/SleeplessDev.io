@@ -39,14 +39,14 @@ const Autocomplete = () => (
           </p>
           <h2>Downshift</h2>
           <p>
-            In the following example, we demonstrate how to use <a href="https://github.com/paypal/downshift">downshift</a>.
+            In the following example, we demonstrate how to use <a href="https://github.com/paypal/downshift" rel={"nofollow noreferrer noopener"} target={"_blank"}>downshift</a>.
           </p>
           <Demo index={1} js={SimpleExample} raw={SimpleExampleRaw} />
           <h2>react-autosuggest</h2>
           <p>
             In the following example, we demonstrate how to use
-            <a href="https://github.com/moroshko/react-autosuggest">react-autosuggest</a>.
-            It's also using <a href="https://www.npmjs.com/package/autosuggest-highlight">autosuggest-highlight</a>
+            <a href="https://github.com/moroshko/react-autosuggest" rel={"nofollow noreferrer noopener"} target={"_blank"}>react-autosuggest</a>.
+            It's also using <a href="https://www.npmjs.com/package/autosuggest-highlight" rel={"nofollow noreferrer noopener"} target={"_blank"}>autosuggest-highlight</a>
             for the highlighting logic.
           </p>
           <Demo index={2} js={AutosuggestExample} raw={AutosuggestExampleRaw} />

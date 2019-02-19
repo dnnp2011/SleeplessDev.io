@@ -41,10 +41,10 @@ const Forgot = (props) => {
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
                 <Typography variant="h5" component="h2" gutterBottom>
-                  Password Revovery
+                  Password Recovery
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  Please enter your username or email address. You will receive a link to create a new password via email.
+                  Please enter your username or email address. You will receive a link via email to begin the password reset process.
                 </Typography>
               </CardContent>
             </Card>
@@ -52,11 +52,11 @@ const Forgot = (props) => {
               <CardContent>
                 <TextField
                   label="Email Address"
-                  variant={"fullWidth"}
+                  fullWidth
                 />
               </CardContent>
               <CardActions className={scss['lock-actions']}>
-                <Button href="/forgot-password" color="primary" variant="raised">Reset Password</Button>
+                <Button href="/forgot-password" color="primary" variant="contained">Reset Password</Button>
                 <Button href="/login">Back to login</Button>
               </CardActions>
             </Card>

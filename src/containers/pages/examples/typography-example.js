@@ -3,41 +3,44 @@ import Typography from '@material-ui/core/Typography';
 
 const style = {
   width: '100%',
-  maxWidth: 500
+  maxWidth: 580
 };
 
 export default function Types() {
   return (
     <div style={style}>
-      <Typography variant="h1" gutterBottom>
-        h1
+      <Typography variant="h1" gutterBottom noWrap={true}>
+        display4 => h1
       </Typography>
       <Typography variant="h2" gutterBottom>
-        h2
+        display3 => h2
       </Typography>
       <Typography variant="h3" gutterBottom>
-        h3
+        display2 => h3
       </Typography>
       <Typography variant="h4" gutterBottom>
-        h4
+        display1 => h4
       </Typography>
       <Typography variant="h5" gutterBottom>
-        h5 => Headline
+        headline => h5
       </Typography>
       <Typography variant="h6" gutterBottom>
-        h6 => Title
+        title => h6
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
-        subtitle1 => Subheading
+        subheading => subtitle1
+      </Typography>
+      <Typography variant="subtitle2" gutterBottom>
+        subtitle2
       </Typography>
       <Typography variant="body1" gutterBottom>
-        Body 1
+        body1
       </Typography>
-      <Typography variant="body1" gutterBottom align="right">
-        Body 1
+      <Typography variant="body2" gutterBottom>
+        body2
       </Typography>
       <Typography variant="caption" gutterBottom align="center">
-        Caption
+        caption
       </Typography>
       <Typography gutterBottom noWrap>
         {`
