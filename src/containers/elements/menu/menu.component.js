@@ -16,6 +16,9 @@ import MenuMaxHeightExampleRaw from './examples/menu-max-height-example-raw';
 import MenuListExample from './examples/menu-list-example';
 import MenuListExampleRaw from './examples/menu-list-example-raw';
 
+import MenuListPopperExample from './examples/menu-list-popper';
+import MenuListPopperExampleRaw from './examples/menu-list-popper-raw';
+
 import ListItemExample from './examples/list-item-example';
 import ListItemExampleRaw from './examples/list-item-example-raw';
 
@@ -65,13 +68,16 @@ const Menu = () => (
             The currently selected menu item is set using the <code>selected</code> prop.
           </p>
           <Demo index={2} js={MenuSelectedExample} raw={MenuSelectedExampleRaw} />
+
           <p>
             If text in a simple menu wraps to a second line, use a simple dialog instead.
             Simple dialogs can have rows with varying heights.
           </p>
+
           <h2>Max height menus</h2>
           <p>If the height of a menu prevents all menu items from being displayed, the menu can scroll internally.</p>
           <Demo index={3} js={MenuMaxHeightExample} raw={MenuMaxHeightExampleRaw} />
+
           <h2>MenuList composition</h2>
           <p>
             The <code>Menu</code> component uses the <code>Popover</code> component internally.
@@ -80,15 +86,25 @@ const Menu = () => (
             The primary responsibility of the <code>MenuList</code> component is to handle the focus.
           </p>
           <Demo index={4} js={MenuListExample} raw={MenuListExampleRaw} />
+
+          <h2>MenuListPopper composition</h2>
+          <p>
+            The <code>Menu</code> component uses the <code>Popover</code> component internally.
+            However, you might want to use a different positioning strategy, or not blocking the scroll.
+            For answering those needs, we expose a <code>MenuList</code> component that you can compose.
+            The primary responsibility of the <code>MenuList</code> component is to handle the focus.
+          </p>
+          <Demo index={ 5 } js={ MenuListPopperExample } raw={ MenuListPopperExampleRaw } />
+
           <h2>Listitem composition</h2>
           <p>
             The <code>MenuItem</code> is a wrapper around <code>ListItem</code> with some additional styles.
             You can use the same list composition features with the <code>MenuItem</code> component:
           </p>
-          <Demo index={5} js={ListItemExample} raw={ListItemExampleRaw} />
+          <Demo index={6} js={ListItemExample} raw={ListItemExampleRaw} />
           <h2>Change Transition</h2>
           <p>Use a different transition altogether.</p>
-          <Demo index={6} js={MenuTransitionExample} raw={MenuTransitionExampleRaw} />
+          <Demo index={7} js={MenuTransitionExample} raw={MenuTransitionExampleRaw} />
         </Paper>
       </Grid>
       <Grid item xs={1} />

@@ -44,8 +44,8 @@ class MenuListComposition extends React.Component {
     const { open } = this.state;
 
     return (
-      <div className={ classes.root }>
-        <Paper className={ classes.paper }>
+      <div className='{' classes.root }>
+        <Paper className='{' classes.paper }>
           <MenuList>
             <MenuItem>Profile</MenuItem>
             <MenuItem>My account</MenuItem>
@@ -53,36 +53,36 @@ class MenuListComposition extends React.Component {
           </MenuList>
         </Paper>
         <div>
-          <Button
-            buttonRef={ node => {
-              this.anchorEl = node;
-            } }
-            aria-owns={ open ? 'menu-list-grow' : undefined }
-            aria-haspopup="true"
-            onClick={ this.handleToggle }
-          >
-            Toggle Menu Grow
-          </Button>
-          <Popper open={ open } anchorEl={ this.anchorEl } transition disablePortal>
-            { ({ TransitionProps, placement }) => (
-              <Grow
-                { ...TransitionProps }
-                id="menu-list-grow"
-                style={ { transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' } }
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={ this.handleClose }>
-                    <MenuList>
-                      <MenuItem onClick={ this.handleClose }>Profile</MenuItem>
-                      <MenuItem onClick={ this.handleClose }>My account</MenuItem>
-                      <MenuItem onClick={ this.handleClose }>Logout</MenuItem>
-                    </MenuList>
+          <Manager>
+            <Button
+              aria-owns='{' open ? "menu-list" : null }
+              aria-haspopup='true'
+              onClick={ this.handleClick }
+            >Open Menu</Button>
+            {/* Fixed the runtime bug by placing the popper children in its children prop and manually passing props through to each child */}
+            <Popper
+              eventsEnabled='{' open }
+              placement='{' "bottom-start" }
+              className={ classNames({ [classes.popperClose]: !open }) }
+              children={ props => {
+                return (
+                  <ClickAwayListener props='{' props } onClickAway='{' this.handleClose }>
+                    <Grow props='{' props } in='{' open } id='menu-list' style={ { transformOrigin: "0 0 0" } }>
+                      <Paper props={ props }>
+                        <MenuList props='{' props } role='menu'>
+                          <MenuItem props='{' props } onClick={ this.handleClose }>Profile</MenuItem>
+                          <MenuItem props='{' props } onClick={ this.handleClose }>My account</MenuItem>
+                          <MenuItem props='{' props } onClick={ this.handleClose }>Logout</MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Grow>
                   </ClickAwayListener>
-                </Paper>
-              </Grow>
-            ) }
-          </Popper>
-        </div>
+                );
+              } }
+            >
+            </Popper>
+          </Manager>
+        </div>             
       </div>
     );
   }
