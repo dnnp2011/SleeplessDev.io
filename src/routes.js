@@ -56,7 +56,7 @@ const AsyncPickerExample = lazy(() => import('./containers/elements/picker/picke
 const AsyncSelectExample = lazy(() => import('./containers/elements/select/select.component'));
 const AsyncTextFieldExample = lazy(() => import('./containers/elements/text-field/text-field.component'));
 const AsyncAppBarExample = lazy(() => import('./containers/elements/app-bar/app-bar.component'));
-const AsyncMenuExample = lazy(() => import('./containers/elements/menu/menu.component'));
+const AsyncMenuExample = asyncComponent(() => import('./containers/elements/menu/menu.component'));
 const AsyncListExample = lazy(() => import('./containers/elements/list/list.component'));
 const AsyncCardExample = lazy(() => import('./containers/elements/card/card.component'));
 const AsyncPaperExample = lazy(() => import('./containers/elements/paper/paper.component'));

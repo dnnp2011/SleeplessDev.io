@@ -1,87 +1,97 @@
 /*eslint no-useless-escape: 0*/
 export default `import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import { Manager, Target, Popper } from 'react-popper';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-const styles = {
+
+const styles = theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
-  popperClose: {
-    pointerEvents: 'none'
-  }
-};
+  paper: {
+    marginRight: theme.spacing.unit * 2,
+  },
+});
+
 
 class MenuListComposition extends React.Component {
   state = {
-    open: false
+    open: false,
   };
 
-  handleClick = () => {
-    this.setState({ open: true });
+  handleToggle = () => {
+    this.setState(state => ({ open: !state.open }));
   };
 
-  handleClose = () => {
+  handleClose = event => {
+    if (this.anchorEl.contains(event.target)) {
+      return;
+    }
+
     this.setState({ open: false });
   };
+
 
   render() {
     const { classes } = this.props;
     const { open } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Paper>
+      <div className={ classes.root }>
+        <Paper className={ classes.paper }>
           <MenuList>
             <MenuItem>Profile</MenuItem>
             <MenuItem>My account</MenuItem>
             <MenuItem>Logout</MenuItem>
           </MenuList>
         </Paper>
-        <Manager>
-          <Target>
-            <Button
-              aria-owns={open ? 'menu-list' : null}
-              aria-haspopup="true"
-              onClick={this.handleClick}
-            >
-              Open Menu
-            </Button>
-          </Target>
-          <Popper
-            placement="bottom-start"
-            eventsEnabled={open}
-            className={classNames({ [classes.popperClose]: !open })}
+        <div>
+          <Button
+            buttonRef={ node => {
+              this.anchorEl = node;
+            } }
+            aria-owns={ open ? 'menu-list-grow' : undefined }
+            aria-haspopup="true"
+            onClick={ this.handleToggle }
           >
-            <ClickAwayListener onClickAway={this.handleClose}>
-              <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
+            Toggle Menu Grow
+          </Button>
+          <Popper open={ open } anchorEl={ this.anchorEl } transition disablePortal>
+            { ({ TransitionProps, placement }) => (
+              <Grow
+                { ...TransitionProps }
+                id="menu-list-grow"
+                style={ { transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' } }
+              >
                 <Paper>
-                  <MenuList role="menu">
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-                  </MenuList>
+                  <ClickAwayListener onClickAway={ this.handleClose }>
+                    <MenuList>
+                      <MenuItem onClick={ this.handleClose }>Profile</MenuItem>
+                      <MenuItem onClick={ this.handleClose }>My account</MenuItem>
+                      <MenuItem onClick={ this.handleClose }>Logout</MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
                 </Paper>
               </Grow>
-            </ClickAwayListener>
+            ) }
           </Popper>
-        </Manager>
+        </div>
       </div>
     );
   }
 }
 
+
 MenuListComposition.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(MenuListComposition);
-`;
+  `;

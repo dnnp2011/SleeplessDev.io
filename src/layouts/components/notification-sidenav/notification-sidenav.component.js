@@ -75,7 +75,7 @@ class NotificationSidenav extends React.Component {
             onChange={this.handleChangeTab}
             indicatorColor="primary"
             textColor="primary"
-            fullWidth
+            variant={"fullWidth"}
           >
             <Tab label="Today" />
             <Tab label="Notifications" />

@@ -27,18 +27,18 @@ function ButtonSizes(props) {
         </Button>
       </div>
       <div>
-        <Button variant='raised' size='small' color='primary' className={ classes.button }>
+        <Button variant="contained" size='small' color='primary' className={ classes.button }>
           Small
         </Button>
-        <Button variant='raised' size='medium' color='primary' className={ classes.button }>
+        <Button variant="contained" size='medium' color='primary' className={ classes.button }>
           Medium
         </Button>
-        <Button variant='raised' size='large' color='primary' className={ classes.button }>
+        <Button variant="contained" size='large' color='primary' className={ classes.button }>
           Large
         </Button>
       </div>
       <div>
-        <Fab mini color='secondary' aria-label='add' className={ classes.button }>
+        <Fab mini={"true"} color='secondary' aria-label='add' className={ classes.button }>
           <AddIcon />
         </Fab>
         <Fab color='secondary' aria-label='add' className={ classes.button }>
