@@ -1,27 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React from "react";
+import scss from "./no-contacts.module.scss";
 
-import classNames from 'classnames';
+import themeStyles from "./no-contacts.theme.style";
 
-import themeStyles from './no-contacts.theme.style';
-import scss from './no-contacts.module.scss';
 
 const NoContacts = (props) => {
   const { classes } = props;
 
   return (
-    <div className={classNames(scss['portal-contacts-no-contacts'], classes['portal-contacts-no-contacts'])}>
-      <div className={classNames(
-        scss['portal-contacts-no-contacts__icon'],
-        classes['portal-contacts-no-contacts__icon']
-      )}
+    <div className={ classNames(scss["portal-contacts-no-contacts"], classes["portal-contacts-no-contacts"]) }>
+      <div className={ classNames(
+        scss["portal-contacts-no-contacts__icon"],
+        classes["portal-contacts-no-contacts__icon"]
+      ) }
       >
-        <div className={scss['portal-contacts-no-contacts__paper']} />
+        <div className={ scss["portal-contacts-no-contacts__paper"] } />
       </div>
-      <Typography component="h2">Please select a contact</Typography>
+      <Typography component='h2'>Please select a contact</Typography>
     </div>
   );
 };

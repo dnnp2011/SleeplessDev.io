@@ -117,10 +117,10 @@ class MarketCapWidget extends React.Component {
                 <TableCell className={classes['table-cell']}>Index</TableCell>
                 <TableCell className={classes['table-cell']}>Name</TableCell>
                 <TableCell className={classes['table-cell']}>Symbol</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Market Cap</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Price</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Supply</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Change</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Market Cap</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Price</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Supply</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Change</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -130,9 +130,9 @@ class MarketCapWidget extends React.Component {
                   <TableCell className={classes['table-cell']}>{item.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.symbol}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.marketCap}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.price}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.supply}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.change}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.price}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.supply}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.change}</TableCell>
                 </TableRow>))
               }
             </TableBody>

@@ -4,6 +4,8 @@ import CardContent from "@material-ui/core/CardContent";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import Hidden from "@material-ui/core/Hidden";
+import withWidth from "@material-ui/core/withWidth/withWidth";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 
@@ -12,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
+import compose from "recompose/compose";
 
 import SelfPortrait from "../../assets/images/portrait/Dalton-Suit-Portrait-02.jpeg";
 import scss from "./aboutme.module.scss";
@@ -22,8 +25,8 @@ import themeStyles from "./aboutme.style";
 class AboutMe extends React.Component {
   state = {
     expanded : null,
-    width: 0,
-    height: 0,
+    viewWidth: 0,
+    viewHeight: 0,
   };
 
   handleChange = panel => (event, expanded) => {
@@ -43,14 +46,14 @@ class AboutMe extends React.Component {
   }
 
   updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
+    this.setState({ viewWidth: window.innerWidth, viewHeight: window.innerHeight })
   };
 
 
   render() {
     const resumeUrl = "https://resume.creddle.io/embed/7wqefr81r5z";
-    const { classes, history } = this.props;
-    const { expanded, width, height } = this.state;
+    const { classes, history, width } = this.props;
+    const { expanded, viewWidth, viewHeight } = this.state;
 
     return (
       <Grid
@@ -65,7 +68,8 @@ class AboutMe extends React.Component {
       >
         <Grid
           item
-          sm={ 6 }
+          md={ 6 }
+          sm={ 10 }
           xs={ 12 }
           className={ scss.panel }
         >
@@ -109,14 +113,15 @@ class AboutMe extends React.Component {
                     <Grid
                       container
                       direction={ "row" }
-                      spacing={ 40 }
                       justify={ "space-between" }
                     >
                       <Grid item>
                         <Typography className={scss["about-me__expansion-panel-header"]} variant={ "h6" }>A bit about me</Typography>
                       </Grid>
                       <Grid item>
-                        <Typography className={scss["about-me__expansion-panel-subheader"]} variant={ "h6" }>I don't byte</Typography>
+                        <Hidden xsDown>
+                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>I don't byte</Typography>
+                        </Hidden>
                       </Grid>
                     </Grid>
                   </ExpansionPanelSummary>
@@ -134,14 +139,15 @@ class AboutMe extends React.Component {
                     <Grid
                       container
                       direction={ "row" }
-                      spacing={ 40 }
                       justify={ "space-between" }
                     >
                       <Grid item>
                         <Typography className={scss["about-me__expansion-panel-header"]} variant={ "h6" }>Beyond the basics</Typography>
                       </Grid>
                       <Grid item>
-                        <Typography className={scss["about-me__expansion-panel-subheader"]} variant={ "h6" }>A bitwise operator</Typography>
+                        <Hidden xsDown>
+                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>A bitwise operator</Typography>
+                        </Hidden>
                       </Grid>
                     </Grid>
                   </ExpansionPanelSummary>
@@ -159,7 +165,7 @@ class AboutMe extends React.Component {
             </Grid>
 
             {
-              width >= 827 ?
+              viewWidth >= 827 ?
               <Grid
                 item
               >
@@ -177,10 +183,12 @@ class AboutMe extends React.Component {
     );
   }
 }
-
+//TODO: Update this Iframe width observer to use either Material-UI breakpoints, rem, su, or another measurement not dependent on pixel density
 
 AboutMe.propTypes = {
-  classes : PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme : true })(AboutMe);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(AboutMe);
+

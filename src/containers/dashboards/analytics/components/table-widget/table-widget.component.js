@@ -65,18 +65,18 @@ class TableWidget extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>Page</TableCell>
-              <TableCell numeric>Page Views</TableCell>
-              <TableCell numeric>Duration</TableCell>
-              <TableCell numeric>Conversion Rate</TableCell>
+              <TableCell align={"right"}>Page Views</TableCell>
+              <TableCell align={"right"}>Duration</TableCell>
+              <TableCell align={"right"}>Conversion Rate</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.slice(page * rowsPerPage, (page * rowsPerPage) + rowsPerPage).map(n => (
               <TableRow key={n.url}>
                 <TableCell>{n.url}</TableCell>
-                <TableCell numeric>{n.views}</TableCell>
-                <TableCell numeric>{n.duration}</TableCell>
-                <TableCell numeric>{n.conversion}</TableCell>
+                <TableCell align={"right"}>{n.views}</TableCell>
+                <TableCell align={"right"}>{n.duration}</TableCell>
+                <TableCell align={"right"}>{n.conversion}</TableCell>
               </TableRow>))
             }
           </TableBody>

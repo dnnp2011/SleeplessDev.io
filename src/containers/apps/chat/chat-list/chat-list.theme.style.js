@@ -1,5 +1,5 @@
 const styles = theme => ({
-  'comment-icon--selected': {
+  "comment-icon--selected": {
     color: theme.palette.primary.main
   }
 });

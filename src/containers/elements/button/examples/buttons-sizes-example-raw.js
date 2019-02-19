@@ -2,7 +2,7 @@
 export default `import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Button, Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 const styles = theme => ({
@@ -38,12 +38,12 @@ function ButtonSizes(props) {
         </Button>
       </div>
       <div>
-        <Button variant="fab" mini color="secondary" aria-label="add" className={classes.button}>
+        <Fab mini color="secondary" aria-label="add" className={classes.button}>
           <AddIcon />
-        </Button>
-        <Button variant="fab" color="secondary" aria-label="add" className={classes.button}>
+        </Fab>
+        <Fab color="secondary" aria-label="add" className={classes.button}>
           <AddIcon />
-        </Button>
+        </Fab>
       </div>
     </div>
   );

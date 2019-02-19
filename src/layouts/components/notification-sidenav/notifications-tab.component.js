@@ -92,7 +92,7 @@ class NotificationsTab extends Component {
               />
               <CardContent>
                 <Typography
-                  variant="body2"
+                  variant="body1"
                   component="h3"
                 >
                   {notification.contentTitle}
@@ -126,7 +126,7 @@ class NotificationsTab extends Component {
               />
               <CardContent>
                 <Typography
-                  variant="body2"
+                  variant="body1"
                   component="h3"
                 >
                   {notification.contentTitle}

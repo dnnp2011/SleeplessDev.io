@@ -126,7 +126,7 @@ class LineChartWidget extends React.Component {
           <Typography variant="caption">
             {title}
           </Typography>
-          <Typography variant="display1" component="span" className={classes['portal-trend']}>
+          <Typography variant="h4" component="span" className={classes['portal-trend']}>
             <TrandingUpIcon className={classes['portal-trend__icon']} />
             <CountUp
               start={this.state.lineChartData.datasets[0].data[8]}

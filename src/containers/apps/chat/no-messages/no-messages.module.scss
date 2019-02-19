@@ -16,7 +16,7 @@
   width: 72px;
   height: 72px;
   position: relative;
-  animation: portal-chat-no-messages-icon 2s cubic-bezier(.36,.07,.19,.97) both;
+  animation: portal-chat-no-messages-icon 2s cubic-bezier(.36, .07, .19, .97) both;
 }
 
 .icon {
@@ -30,6 +30,7 @@
   text-align: center;
   padding: 0px;
   flex-shrink: 0;
+
   &:nth-child(2) {
     font-size: 42px;
     left: -6px;
@@ -42,6 +43,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+
   span {
     display: block;
     position: absolute;
@@ -53,10 +55,12 @@
     margin-left: -2px;
     margin-top: -2px;
     animation: portal-chat-no-messages-dots 1.3s linear 4;
+
     &:nth-child(2) {
       left: 30px;
       animation-delay: 0.1s;
     }
+
     &:nth-child(3) {
       left: 40px;
       animation-delay: 0.2s;

@@ -23,7 +23,7 @@ const Project = (props) => {
         <Grid container justify="center" spacing={16}>
 
           <Grid key={1} item xs={12} sm={12} md={9} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Project States
             </Typography>
             <Paper className={classes.portalWidgetContent}>
@@ -32,7 +32,7 @@ const Project = (props) => {
           </Grid>
 
           <Grid key={2} item xs={12} sm={12} md={3} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Weekly Issues
             </Typography>
             <Paper className={classes.portalWidgetContent}>
@@ -45,7 +45,7 @@ const Project = (props) => {
           <Grid item xs={12} sm={12} md={8}>
             <Grid container justify="center" spacing={16}>
               <Grid key={4} item xs={12} className={classes.portalWidget}>
-              <Typography variant="subheading" className={classes.portalWidgetHeading}>
+              <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
                 Issues Status
               </Typography>
                 <Paper className={classes.portalWidgetContent}>
@@ -54,7 +54,7 @@ const Project = (props) => {
               </Grid>
 
               <Grid key={5} item xs={12} className={classes.portalWidget}>
-                <Typography variant="subheading" className={classes.portalWidgetHeading}>
+                <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
                   Backlog
                 </Typography>
                 <Paper className={classes.portalWidgetContent}>
@@ -65,7 +65,7 @@ const Project = (props) => {
           </Grid>
 
           <Grid key={6} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Tasks by User
             </Typography>
             <Paper className={classes.portalWidgetContent}>

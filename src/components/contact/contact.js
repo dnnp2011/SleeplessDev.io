@@ -2,11 +2,13 @@ import Grid from "@material-ui/core/Grid";
 import { IconButton } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import withWidth from "@material-ui/core/withWidth/withWidth";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { TiSocialFacebook, TiSocialTwitter, TiSocialLinkedin } from "react-icons/ti";
+import compose from "recompose/compose";
 import SelfOutdoors from "../../assets/images/portrait/selfie-outdoors-cropped-portrait.png";
 import scss from "./contact.module.scss";
 
@@ -17,7 +19,8 @@ const Contact = (props) => {
   const gender = "Male", age = "25", region = "New York City, NY", email = "daltonpierce@sleeplessdev.io";
 
   const {
-    classes
+    classes,
+    width
   } = props;
 
   return (
@@ -105,7 +108,8 @@ const Contact = (props) => {
 };
 
 Contact.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(Contact);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Contact);

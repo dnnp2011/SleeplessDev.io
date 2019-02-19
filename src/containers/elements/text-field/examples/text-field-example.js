@@ -92,7 +92,7 @@ class TextFields extends React.Component {
           id="password"
           label="Password"
           className={classes.textField}
-          variant="password"
+          type="password"
           autoComplete="current-password"
           margin="normal"
         />
@@ -143,7 +143,7 @@ class TextFields extends React.Component {
           label="Number"
           value={this.state.age}
           onChange={this.handleChange('age')}
-          variant="number"
+          type="number"
           className={classes.textField}
           InputLabelProps={{
             shrink: true
@@ -153,7 +153,7 @@ class TextFields extends React.Component {
         <TextField
           id="search"
           label="Search field"
-          variant="search"
+          type="search"
           className={classes.textField}
           margin="normal"
         />
@@ -208,7 +208,7 @@ class TextFields extends React.Component {
           }}
           placeholder="Placeholder"
           helperText="Full width!"
-          variant={"fullWidth"}
+          fullWidth
           margin="normal"
         />
       </form>

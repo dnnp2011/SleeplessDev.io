@@ -17,6 +17,7 @@
 
 .portal-calendar-page__background {
   position: relative;
+
   &:before {
     content: "";
     position: absolute;
@@ -30,12 +31,12 @@
   }
 }
 
-$i : 0;
+$i: 0;
 @while $i <= 11 {
   .portal-calendar-page__background-month-#{$i}:before {
     background-image: url(../../../../assets/images/calendar/#{$i+1}.jpg);
   }
-  $i : $i + 1;
+  $i: $i + 1;
 }
 
 @keyframes portal-calendar-page__background {

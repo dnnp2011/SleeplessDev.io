@@ -1,8 +1,8 @@
 const styles = theme => ({
-  'primary-icon': {
+  "primary-icon": {
     color: theme.palette.primary.main
   },
-  'secondary-icon': {
+  "secondary-icon": {
     color: theme.palette.secondary.main
   },
   dot: {

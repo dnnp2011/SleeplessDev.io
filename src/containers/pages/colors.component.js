@@ -13,7 +13,7 @@ const ColorsPage = () => {
     <div>
       <section className="portal-pages__header">
         <div className="portal-pages__header-demo">
-          <Typography variant="display4" gutterBottom>
+          <Typography variant="h1" gutterBottom>
             Colors
           </Typography>
         </div>

@@ -76,7 +76,7 @@ class TodayTab extends Component {
                   secondary={forecast.text}
                 />
                 <ListItemSecondaryAction className={scss['portal-weather-temp']}>
-                  <Typography variant="display1" component="span">{forecast.temp}&deg;</Typography>
+                  <Typography variant="h4" component="span">{forecast.temp}&deg;</Typography>
                 </ListItemSecondaryAction>
               </ListItem>
             ))}

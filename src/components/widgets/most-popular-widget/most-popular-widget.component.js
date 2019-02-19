@@ -95,8 +95,8 @@ class MostPopularWidget extends React.Component {
               <TableRow>
                 <TableCell className={classes['table-cell']}>Name</TableCell>
                 <TableCell className={classes['table-cell']}>Symbol</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Price</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Supply</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Price</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Supply</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -104,8 +104,8 @@ class MostPopularWidget extends React.Component {
                 <TableRow key={item.name}>
                   <TableCell className={classes['table-cell']}>{item.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.symbol}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.price}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.supply}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.price}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.supply}</TableCell>
                 </TableRow>))
               }
             </TableBody>

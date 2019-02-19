@@ -133,7 +133,7 @@ class DoughnutChartWidget extends React.Component {
               />
             </span>
             <Typography variant="caption">{this.state.doughnutChartData.labels[0]}</Typography>
-            <Typography variant="display1">
+            <Typography variant="h4">
               <CountUp start={0} end={this.state.doughnutChartData.datasets[0].data[0]} />
             </Typography>
           </Grid>
@@ -148,7 +148,7 @@ class DoughnutChartWidget extends React.Component {
               />
             </span>
             <Typography variant="caption">{this.state.doughnutChartData.labels[1]}</Typography>
-            <Typography variant="display1">
+            <Typography variant="h4">
               <CountUp start={0} end={this.state.doughnutChartData.datasets[0].data[1]} />
             </Typography>
           </Grid>
@@ -163,7 +163,7 @@ class DoughnutChartWidget extends React.Component {
               />
             </span>
             <Typography variant="caption">{this.state.doughnutChartData.labels[2]}</Typography>
-            <Typography variant="display1">
+            <Typography variant="h4">
               <CountUp start={0} end={this.state.doughnutChartData.datasets[0].data[2]} />
             </Typography>
           </Grid>

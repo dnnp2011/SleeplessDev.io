@@ -1,22 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
-import classNames from 'classnames';
-import moment from 'moment';
+import Avatar from "@material-ui/core/Avatar";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
 
-import 'font-awesome/css/font-awesome.css';
-import FontAwesome from 'react-fontawesome';
+import { withStyles } from "@material-ui/core/styles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import classNames from "classnames";
 
-import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
-import Avatar from '@material-ui/core/Avatar';
+import "font-awesome/css/font-awesome.css";
+import moment from "moment";
+import PropTypes from "prop-types";
+import React from "react";
+import FontAwesome from "react-fontawesome";
+import compose from "recompose/compose";
+import scss from "./chat-list.module.scss";
 
-import themeStyles from './chat-list.theme.style';
-import scss from './chat-list.module.scss';
+import themeStyles from "./chat-list.theme.style";
+
 
 const ChatList = (props) => {
   const {
@@ -28,29 +29,29 @@ const ChatList = (props) => {
   } = props;
 
   const createDesktopListItem = (chat) => {
-    let activeItemClass = classes['comment-icon--regular'];
-    let icon = 'comment-o';
+    let activeItemClass = classes["comment-icon--regular"];
+    let icon = "comment-o";
 
     if (chat && selected && chat.id === selected.id) {
-      activeItemClass = classes['comment-icon--selected'];
-      icon = 'comment';
+      activeItemClass = classes["comment-icon--selected"];
+      icon = "comment";
     }
 
     return (
       <ListItem
-        title={chat.from.name}
-        key={chat.id}
-        onClick={onSelect(chat)}
+        title={ chat.from.name }
+        key={ chat.id }
+        onClick={ onSelect(chat) }
         divider
         button
       >
-        <Avatar alt={chat.from.name} src={`${process.env.PUBLIC_URL}/${chat.from.image}`} />
+        <Avatar alt={ chat.from.name } src={ `${ process.env.PUBLIC_URL }/${ chat.from.image }` } />
         <ListItemText
-          primary={chat.from.name}
-          secondary={moment(chat.messages[0].date).fromNow()}
+          primary={ chat.from.name }
+          secondary={ moment(chat.messages[0].date).fromNow() }
         />
-        <ListItemSecondaryAction className={classNames(scss['comment-icon'], activeItemClass)}>
-          <FontAwesome name={icon} />
+        <ListItemSecondaryAction className={ classNames(scss["comment-icon"], activeItemClass) }>
+          <FontAwesome name={ icon } />
         </ListItemSecondaryAction>
       </ListItem>
     );
@@ -58,26 +59,26 @@ const ChatList = (props) => {
 
   const createMobileListItem = chat => (
     <ListItem
-      key={chat.id}
-      onClick={onSelect(chat)}
+      key={ chat.id }
+      onClick={ onSelect(chat) }
       divider
       button
     >
-      <Avatar alt={chat.from.name} src={`${process.env.PUBLIC_URL}/${chat.from.image}`} />
+      <Avatar alt={ chat.from.name } src={ `${ process.env.PUBLIC_URL }/${ chat.from.image }` } />
     </ListItem>
   );
 
 
   return (
     <List
-      component="nav"
-      className={scss.list}
+      component='nav'
+      className={ scss.list }
     >
-      {list.map(chat => (
-        isWidthUp('sm', width) ?
-          createDesktopListItem(chat) :
-          createMobileListItem(chat)
-      ))}
+      { list.map(chat => (
+        isWidthUp("sm", width) ?
+        createDesktopListItem(chat) :
+        createMobileListItem(chat)
+      )) }
     </List>
   );
 };

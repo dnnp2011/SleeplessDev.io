@@ -1,3 +1,4 @@
+import withWidth from "@material-ui/core/withWidth/withWidth";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -8,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 import { withStyles } from "@material-ui/core/styles";
+import compose from "recompose/compose";
 
 import themeStyles from "./index.style";
 import scss from "./index.module.scss";
@@ -55,4 +57,6 @@ LandingPage.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(LandingPage);
+// export default withStyles(themeStyles, { withTheme: true })(LandingPage);
+//TODO: Add the withWidth() HOC where needed for responsive styling on multi-card components
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LandingPage);

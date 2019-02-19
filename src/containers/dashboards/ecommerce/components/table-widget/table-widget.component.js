@@ -64,10 +64,10 @@ class TableWidget extends React.Component {
               <TableRow>
                 <TableCell className={classes['table-cell']} />
                 <TableCell className={classes['table-cell']}>Product</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Sales Increase</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Sale Volume</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Discount</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Stock</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Sales Increase</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Sale Volume</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Discount</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Stock</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -77,10 +77,10 @@ class TableWidget extends React.Component {
                     {<Avatar alt={item.product} src={`${process.env.PUBLIC_URL}/${item.photo}`} />}
                   </TableCell>
                   <TableCell className={classes['table-cell']}>{item.product}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.salesIncrease}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.sales}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.discount}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.stock}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.salesIncrease}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.sales}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.discount}</TableCell>
+                  <TableCell className={classes['table-cell']} align={"right"}>{item.stock}</TableCell>
                 </TableRow>))
               }
             </TableBody>

@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
-import { withStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
-
+import { withStyles } from "@material-ui/core/styles";
+import withWidth from "@material-ui/core/withWidth";
+import PropTypes from "prop-types";
+import React from "react";
+import compose from "recompose/compose";
 // Array of contacts to show on the left side.
-import contactsList from '../../../assets/data/apps/contacts/contacts.json';
+import contactsList from "../../../assets/data/apps/contacts/contacts.json";
+import ContactDetails from "./contact-details/contact-details.component";
 
-import ContactsList from './contacts-list/contacts-list.component';
-import ContactDetails from './contact-details/contact-details.component';
-import NoContacts from './no-contacts/no-contacts.component';
+import ContactsList from "./contacts-list/contacts-list.component";
+import scss from "./contacts.module.scss";
 
-import themeStyles from './contacts.theme.style';
-import scss from './contacts.module.scss';
+import themeStyles from "./contacts.theme.style";
+import NoContacts from "./no-contacts/no-contacts.component";
+
 
 class Contacts extends React.Component {
   state = {
@@ -21,23 +21,25 @@ class Contacts extends React.Component {
 
   selectContact = contact => () => {
     this.setState({ selectedContact: contact });
-  }
+  };
+
 
   render() {
     return (
-      <div className={scss['contacts-wrapper']}>
+      <div className={ scss["contacts-wrapper"] }>
         <ContactsList
-          selectedContact={this.state.selectedContact}
-          list={contactsList}
-          onSelect={this.selectContact}
+          selectedContact={ this.state.selectedContact }
+          list={ contactsList }
+          onSelect={ this.selectContact }
         />
-        {this.state.selectedContact ?
+        { this.state.selectedContact ?
           <ContactDetails
-            selectedContact={this.state.selectedContact} /> : <NoContacts />}
+            selectedContact={ this.state.selectedContact } /> : <NoContacts /> }
       </div>
     );
   }
 }
+
 
 Contacts.propTypes = {
   classes: PropTypes.shape({}).isRequired,

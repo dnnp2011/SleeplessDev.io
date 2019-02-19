@@ -51,7 +51,7 @@ function renderInput(inputProps) {
 
   return (
     <TextField
-      variant={"fullWidth"}
+      fullWidth
       inputRef={ref}
       InputProps={{
         classes: {

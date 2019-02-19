@@ -72,9 +72,9 @@ class BacklogWidget extends React.Component {
                   />
                 </TableCell>
                 <TableCell className={classes['table-cell']}>Issue Name</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Estimated time</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Status</TableCell>
-                <TableCell className={classes['table-cell']} numeric>Priority</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Estimated time</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Status</TableCell>
+                <TableCell className={classes['table-cell']} align={"right"}>Priority</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -93,9 +93,9 @@ class BacklogWidget extends React.Component {
                       <Checkbox checked={isSelected} />
                     </TableCell>
                     <TableCell className={classes['table-cell']}>{item.name}</TableCell>
-                    <TableCell className={classes['table-cell']} numeric>{item.time}</TableCell>
-                    <TableCell className={classes['table-cell']} numeric>{item.status}</TableCell>
-                    <TableCell className={classes['table-cell']} numeric>{item.priority}</TableCell>
+                    <TableCell className={classes['table-cell']} align={"right"}>{item.time}</TableCell>
+                    <TableCell className={classes['table-cell']} align={"right"}>{item.status}</TableCell>
+                    <TableCell className={classes['table-cell']} align={"right"}>{item.priority}</TableCell>
                   </TableRow>);
                 })}
             </TableBody>

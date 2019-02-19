@@ -2,7 +2,7 @@
 export default `import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -16,12 +16,12 @@ function FloatingActionButtons(props) {
   const { classes } = props;
   return (
     <div>
-      <Button variant="fab" color="primary" aria-label="add" className={classes.button}>
+      <Fab color="primary" aria-label="add" className={classes.button}>
         <AddIcon />
-      </Button>
-      <Button variant="fab" disabled aria-label="delete" className={classes.button}>
+      </Fab>
+      <Fab disabled aria-label="delete" className={classes.button}>
         <DeleteIcon />
-      </Button>
+      </Fab>
     </div>
   );
 }

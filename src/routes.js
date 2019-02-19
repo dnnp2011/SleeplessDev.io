@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import asyncComponent from './components/async.component';
@@ -29,36 +29,41 @@ const AsyncStockMarket = asyncComponent(() => import('./components/market/stock-
 const AsyncCryptoMarket = asyncComponent(() => import('./components/market/crypto-market/crypto'));
 
 // DASHBOARD ROUTE
-const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
-const AsyncEcommerceDashboard = asyncComponent(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
-const AsyncCryptoDashboard = asyncComponent(() => import('./containers/dashboards/crypto/crypto.component'));
-const AsyncProjectDashboard = asyncComponent(() => import('./containers/dashboards/project/project.component'));
-const AsyncTheming = asyncComponent(() => import('./containers/theming/theming.component'));
+
+// const AsyncAnalyticsDashboard = asyncComponent(() => import('./containers/dashboards/analytics/analytics.component'));
+const AsyncAnalyticsDashboard = lazy(() => import('./containers/dashboards/analytics/analytics.component'));
+// const AsyncEcommerceDashboard = asyncComponent(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
+const AsyncEcommerceDashboard = lazy(() => import('./containers/dashboards/ecommerce/ecommerce.component'));
+// const AsyncCryptoDashboard = asyncComponent(() => import('./containers/dashboards/crypto/crypto.component'));
+const AsyncCryptoDashboard = lazy(() => import('./containers/dashboards/crypto/crypto.component'));
+// const AsyncProjectDashboard = asyncComponent(() => import('./containers/dashboards/project/project.component'));
+const AsyncProjectDashboard = lazy(() => import('./containers/dashboards/project/project.component'));
+const AsyncTheming = lazy(() => import('./containers/theming/theming.component'));
 
 // APP ROUTES
-const AsyncEmailApp = asyncComponent(() => import('./containers/apps/email/email.component'));
-const AsyncTodoApp = asyncComponent(() => import('./containers/apps/todo/todo.component'));
-const AsyncMapsApp = asyncComponent(() => import('./containers/apps/maps/maps.component'));
-const AsyncNotesApp = asyncComponent(() => import('./containers/apps/notes/notes.component'));
-const AsyncContactsApp = asyncComponent(() => import('./containers/apps/contacts/contacts.component'));
-const AsyncChatApp = asyncComponent(() => import('./containers/apps/chat/chat.component'));
-const AsyncCalendarApp = asyncComponent(() => import('./containers/apps/calendar/calendar.component'));
+const AsyncEmailApp = lazy(() => import('./containers/apps/email/email.component'));
+const AsyncTodoApp = lazy(() => import('./containers/apps/todo/todo.component'));
+const AsyncMapsApp = lazy(() => import('./containers/apps/maps/maps.component'));
+const AsyncNotesApp = lazy(() => import('./containers/apps/notes/notes.component'));
+const AsyncContactsApp = lazy(() => import('./containers/apps/contacts/contacts.component'));
+const AsyncChatApp = lazy(() => import('./containers/apps/chat/chat.component'));
+const AsyncCalendarApp = lazy(() => import('./containers/apps/calendar/calendar.component'));
 
 // EXAMPLE ROUTES
-const AsyncAutocompleteExample = asyncComponent(() => import('./containers/elements/autocomplete/autocomplete.component'));
-const AsyncSelectionControlsExample = asyncComponent(() => import('./containers/elements/selection-controls/selection-controls.component'));
-const AsyncPickerExample = asyncComponent(() => import('./containers/elements/picker/picker.component'));
-const AsyncSelectExample = asyncComponent(() => import('./containers/elements/select/select.component'));
-const AsyncTextFieldExample = asyncComponent(() => import('./containers/elements/text-field/text-field.component'));
-const AsyncAppBarExample = asyncComponent(() => import('./containers/elements/app-bar/app-bar.component'));
-const AsyncMenuExample = asyncComponent(() => import('./containers/elements/menu/menu.component'));
-const AsyncListExample = asyncComponent(() => import('./containers/elements/list/list.component'));
-const AsyncCardExample = asyncComponent(() => import('./containers/elements/card/card.component'));
-const AsyncPaperExample = asyncComponent(() => import('./containers/elements/paper/paper.component'));
-const AsyncAvatarExample = asyncComponent(() => import('./containers/elements/avatars/avatars.component'));
-const AsyncSteppersExample = asyncComponent(() => import('./containers/elements/steppers/steppers.component'));
-const AsyncButtonExample = asyncComponent(() => import('./containers/elements/button/button.component'));
-const AsyncProgressExample = asyncComponent(() => import('./containers/elements/progress/progress.component'));
+const AsyncAutocompleteExample = lazy(() => import('./containers/elements/autocomplete/autocomplete.component'));
+const AsyncSelectionControlsExample = lazy(() => import('./containers/elements/selection-controls/selection-controls.component'));
+const AsyncPickerExample = lazy(() => import('./containers/elements/picker/picker.component'));
+const AsyncSelectExample = lazy(() => import('./containers/elements/select/select.component'));
+const AsyncTextFieldExample = lazy(() => import('./containers/elements/text-field/text-field.component'));
+const AsyncAppBarExample = lazy(() => import('./containers/elements/app-bar/app-bar.component'));
+const AsyncMenuExample = lazy(() => import('./containers/elements/menu/menu.component'));
+const AsyncListExample = lazy(() => import('./containers/elements/list/list.component'));
+const AsyncCardExample = lazy(() => import('./containers/elements/card/card.component'));
+const AsyncPaperExample = lazy(() => import('./containers/elements/paper/paper.component'));
+const AsyncAvatarExample = lazy(() => import('./containers/elements/avatars/avatars.component'));
+const AsyncSteppersExample = lazy(() => import('./containers/elements/steppers/steppers.component'));
+const AsyncButtonExample = lazy(() => import('./containers/elements/button/button.component'));
+const AsyncProgressExample = lazy(() => import('./containers/elements/progress/progress.component'));
 
 // AUTHENTICATION ROUTES
 const AsyncLogin = asyncComponent(() => import('./containers/authentication/login/login.component'));
@@ -73,8 +78,8 @@ const AsyncError500 = asyncComponent(() => import('./containers/errors/500.compo
 
 
 // PAGES ROUTES
-const AsyncTypography = asyncComponent(() => import('./containers/pages/typography.component'));
-const AsyncColors = asyncComponent(() => import('./containers/pages/colors.component'));
+const AsyncTypography = lazy(() => import('./containers/pages/typography.component'));
+const AsyncColors = lazy(() => import('./containers/pages/colors.component'));
 
 const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-found.component'));
 
@@ -83,7 +88,9 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
     {...rest}
     render={props => (
       <Layout>
-        <Component {...props} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Component { ...props } />
+        </Suspense>
       </Layout>
     )}
   />
@@ -156,7 +163,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path={"/markets/crypto"} exact component={AsyncCryptoMarket} props={childProps} layout={activeLayout} />
 
 
-       <AppRoute path="/" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
+       <AppRoute path="/dashboards/analytics" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
        <AppRoute path="/dashboards/ecommerce" exact component={AsyncEcommerceDashboard} props={childProps} layout={activeLayout} />
        <AppRoute path="/dashboards/crypto" exact component={AsyncCryptoDashboard} props={childProps} layout={activeLayout} />
        <AppRoute path="/dashboards/project" exact component={AsyncProjectDashboard} props={childProps} layout={activeLayout} />

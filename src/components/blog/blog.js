@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
+import withWidth from "@material-ui/core/withWidth/withWidth";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -15,33 +16,38 @@ import Typography from "@material-ui/core/Typography";
 
 import { withStyles } from "@material-ui/core/styles";
 import { Query } from "react-apollo";
+import compose from "recompose/compose";
 import Card from "../../containers/apps/todo/todo.component";
 import styles from "../../containers/apps/todo/todo.module.scss";
 
 import themeStyles from "./blog.style";
 import scss from "./blog.module.scss";
 
-import { FaSpinner } from "react-icons/fa";
+import SpinnerWidget from '../../components/widgets/spinner-widget/spinner-widget.component';
 import gql from 'graphql-tag';
 
 import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
 
 class Blog extends React.Component{
   state = {
-    jsonBody: null,
+    blogViewId: null,
+    blogOverviewMonth: null,
+    blogOverviewYear: null,
+    blogOverviewTag: null,
+    archiveDrawerOpen: false,
+
   };
 
-  callApi = async() => {
-    const response = await fetch('/graphql', );
-    const body = await response.json();
+  componentWillMount() {
+    //Check url params for specified ID || Month & Year || Tag
+    //If present, setState(blogViewId, blogOverviewMonth, blogOverviewYear, blogOverviewTag) => Re-Render correct component
+  }
 
-    if (response.status !== 200) throw Error(body.message);
-    return (body);
-  };
 
   render() {
     const {
       classes,
+      width,
     } = this.props;
 
     const GET_BLOGS = gql`
@@ -65,7 +71,6 @@ class Blog extends React.Component{
             container
             direction={"column"}
             spacing={16}
-            alignItems={"flex-start"}
           >
             <Grid item>
               <Grid
@@ -80,9 +85,8 @@ class Blog extends React.Component{
                     {
                       ({ loading, error, data }) => {
                         if (error) console.warn(error);
-                        if (loading || !data) return <FaSpinner size={ 36 } />;
-
-                        return <p>{JSON.stringify(data)}</p>
+                        if (loading || !data) return <SpinnerWidget loadingText={"Fetching Blogs"}/>;
+                        else return "Data Loaded"
                       }
                     }
                   </Query>
@@ -96,78 +100,80 @@ class Blog extends React.Component{
   }
 }
 
+
 Blog.propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
 };
 
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Blog);
+
 const BlogWidget = (props) => {
-  return(
+  return (
     <div>
       <Grid
-        spacing={0}
+        spacing={ 0 }
         container
         direction="row"
         alignItems="center"
         justify="center"
       >
         <div>
-          <Card className={styles['portal-todo']}>
-            <CardContent className={classNames(styles['portal-todo__header'], this.props.classes.headerTheme)}>
+          <Card className={ styles['portal-todo'] }>
+            <CardContent className={ classNames(styles['portal-todo__header'], this.props.classes.headerTheme) }>
               <h2>My daily list</h2>
-              <div className={styles['portal-todo__header-demo-mountain']} />
-              <div className={styles['portal-todo__header-demo-mountain']} />
-              <div className={styles['portal-todo__header-demo-cloud']} />
-              <div className={styles['portal-todo__header-demo-sun']} />
+              <div className={ styles['portal-todo__header-demo-mountain'] } />
+              <div className={ styles['portal-todo__header-demo-mountain'] } />
+              <div className={ styles['portal-todo__header-demo-cloud'] } />
+              <div className={ styles['portal-todo__header-demo-sun'] } />
             </CardContent>
             <CardContent>
               <List>
-                {this.state.todos.map(todo => (
+                { this.state.todos.map(todo => (
                   <ListItem
-                    key={todo.id}
-                    onClick={() => this.onTodoChecked(todo)}
+                    key={ todo.id }
+                    onClick={ () => this.onTodoChecked(todo) }
                     button
                   >
                     <Checkbox
-                      tabIndex={-1}
+                      tabIndex={ -1 }
                       disableRipple
-                      checked={todo.checked}
-                      onChange={() => this.onTodoChecked(todo)}
+                      checked={ todo.checked }
+                      onChange={ () => this.onTodoChecked(todo) }
                     />
                     <ListItemText
-                      style={{ textDecoration: todo.completed ? 'line-through' : '' }}
-                      primary={todo.text}
+                      style={ { textDecoration: todo.completed ? 'line-through' : '' } }
+                      primary={ todo.text }
                     />
                   </ListItem>
-                ))}
+                )) }
               </List>
             </CardContent>
           </Card>
-          <form onSubmit={this.onSubmit} noValidate autoComplete="off" className={styles['portal-text-centered']}>
-            <Button type="button" onClick={() => this.onCheckAll(true)}>Select all</Button>
-            <Button type="button" onClick={() => this.onCheckAll(false)}>Deselect all</Button>
+          <form onSubmit={ this.onSubmit } noValidate autoComplete="off" className={ styles['portal-text-centered'] }>
+            <Button type="button" onClick={ () => this.onCheckAll(true) }>Select all</Button>
+            <Button type="button" onClick={ () => this.onCheckAll(false) }>Deselect all</Button>
             <TextField
               id="name"
               label="Name"
-              value={this.state.newTodo}
+              value={ this.state.newTodo }
               margin="normal"
-              onChange={this.onInputChange}
+              onChange={ this.onInputChange }
             />
             <Button
               type="submit"
-              disabled={this.state.newTodo === ''}
+              disabled={ this.state.newTodo === '' }
             >
               Add item
             </Button>
           </form>
-          <div style={{ display: this.showButtons() ? 'block' : 'none' }} className={styles['portal-text-centered']}>
-            <Button type="button" onClick={() => this.onCompleteAll(true)}>Complete Selected</Button>
-            <Button type="button" onClick={() => this.onCompleteAll(false)}>Uncomplete Selected</Button>
-            <Button type="button" onClick={() => this.onDeleteAll()}>Delete Selected</Button>
+          <div style={ { display: this.showButtons() ? 'block' : 'none' } } className={ styles['portal-text-centered'] }>
+            <Button type="button" onClick={ () => this.onCompleteAll(true) }>Complete Selected</Button>
+            <Button type="button" onClick={ () => this.onCompleteAll(false) }>Uncomplete Selected</Button>
+            <Button type="button" onClick={ () => this.onDeleteAll() }>Delete Selected</Button>
           </div>
         </div>
       </Grid>
     </div>
   );
 };
-
-export default withStyles(themeStyles, { withTheme: true })(Blog);

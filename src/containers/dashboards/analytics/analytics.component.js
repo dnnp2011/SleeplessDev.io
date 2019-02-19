@@ -22,7 +22,7 @@ const Analytics = (props) => {
         <Grid container justify="center" spacing={16}>
 
           <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Portal Analytics
             </Typography>
             <Paper className={classes.portalWidgetContent}>
@@ -31,7 +31,7 @@ const Analytics = (props) => {
           </Grid>
 
           <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Active Users
             </Typography>
             <Paper className={classes.portalWidgetContent}>
@@ -40,7 +40,7 @@ const Analytics = (props) => {
           </Grid>
 
           <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Sessions by device
             </Typography>
             <Paper className={classes.portalWidgetContent}>
@@ -49,7 +49,7 @@ const Analytics = (props) => {
           </Grid>
 
           <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
+            <Typography variant="subtitle1" className={classes.portalWidgetHeading}>
               Client Acquisition
             </Typography>
             <Paper className={classes.portalWidgetContent}>
