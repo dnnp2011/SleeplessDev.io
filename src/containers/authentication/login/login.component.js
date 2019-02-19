@@ -51,14 +51,11 @@ const Login = (props) => {
                   Portal Admin Panel
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  Welcome to our admin panel. Please login using the form or register for a new account using the button below.
-                </Typography>
-                <Typography component="p" gutterBottom>
-                  Portal is an amazing and easy to use Admin template. If you have any questions feel free to contact us in our support forum.
+                  Welcome to the SleeplessDev admin panel. Please login using the form or register for a new account using the button below.
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="secondary" variant="raised">Create an account</Button>
+                <Button fullWidth href="/register" color="secondary" variant="contained">Create an account</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -71,17 +68,17 @@ const Login = (props) => {
               <CardContent>
                 <TextField
                   label="Email Address"
-                  variant={"fullWidth"}
+                  fullWidth
                 />
                 <TextField
                   label="Password"
-                  variant={"fullWidth"}
+                  fullWidth
                   margin="normal"
                   type="password"
                 />
               </CardContent>
               <CardActions className={scss['login-actions']}>
-                <Button href="/login" color="primary" variant="raised">Login</Button>
+                <Button href="/login" color="primary" variant="contained">Login</Button>
                 <Button href="/forgot-password">Forgot Password</Button>
               </CardActions>
             </Card>

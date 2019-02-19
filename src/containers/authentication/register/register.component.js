@@ -55,7 +55,7 @@ const Register = (props) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/login" color="secondary" variant="raised">I'm already registered</Button>
+                <Button fullWidth href="/login" color="secondary" variant="contained">I'm already registered</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -70,39 +70,39 @@ const Register = (props) => {
                   <Grid item sm={6} xs={12}>
                     <TextField
                       label="Firstname"
-                      variant={"fullWidth"}
+                      fullWidth
                     />
                   </Grid>
                   <Grid item sm={6} xs={12}>
                     <TextField
                       label="Lastname"
-                      variant={"fullWidth"}
+                      fullWidth
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Email Address"
-                      variant={"fullWidth"}
+                      fullWidth
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Password"
-                      variant={"fullWidth"}
+                      fullWidth
                       type="password"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       label="Repeat Password"
-                      variant={"fullWidth"}
+                      fullWidth
                       type="password"
                     />
                   </Grid>
                 </Grid>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="primary" variant="raised">Register</Button>
+                <Button fullWidth href="/register" color="primary" variant="contained">Register</Button>
               </CardActions>
             </Card>
           </Grid>

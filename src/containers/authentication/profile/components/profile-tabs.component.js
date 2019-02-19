@@ -136,7 +136,7 @@ class ProfileTabs extends React.Component {
                     error={errors.name}
                     value={name}
                     onChange={this.handleChange('name')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -152,7 +152,7 @@ class ProfileTabs extends React.Component {
                     error={errors.lastname}
                     value={lastname}
                     onChange={this.handleChange('lastname')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -168,7 +168,7 @@ class ProfileTabs extends React.Component {
                     error={errors.email}
                     value={email}
                     onChange={this.handleChange('email')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -182,7 +182,7 @@ class ProfileTabs extends React.Component {
                     label="Enter your location"
                     className={classes.textField}
                     defaultValue="Sitia, Crete, Greece"
-                    variant={"fullWidth"}
+                    fullWidth
                     margin="normal"
                   />
                 </Grid>
@@ -192,7 +192,7 @@ class ProfileTabs extends React.Component {
                     label="Website"
                     className={classes.textField}
                     defaultValue="https://sleeplessdev.io"
-                    variant={"fullWidth"}
+                    fullWidth
                     margin="normal"
                   />
                 </Grid>
@@ -202,7 +202,7 @@ class ProfileTabs extends React.Component {
                     label="Describe yourself in 255 characters"
                     className={classes.textField}
                     defaultValue="We are a small creative web design agency who are passionate with our pixels."
-                    variant={"fullWidth"}
+                    fullWidth
                     multiline
                     rowsMax="4"
                     rows="4"
@@ -224,7 +224,7 @@ class ProfileTabs extends React.Component {
                     value={password}
                     type="password"
                     onChange={this.handleChange('password')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -241,7 +241,7 @@ class ProfileTabs extends React.Component {
                     value={newpassword}
                     type="password"
                     onChange={this.handleChange('newpassword')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -258,7 +258,7 @@ class ProfileTabs extends React.Component {
                     value={confirmpassword}
                     type="password"
                     onChange={this.handleChange('confirmpassword')}
-                    variant={"fullWidth"}
+                    fullWidth
                     required
                     margin="normal"
                   />
@@ -284,21 +284,21 @@ class ProfileTabs extends React.Component {
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
                   <PersonPin color="secondary"/>
-                  <Switch checked="true" />
+                  <Switch checked={true} />
                   <Typography component="p">Show my avatar</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
                   <Group color="secondary"/>
-                  <Switch checked="true" />
+                  <Switch checked={ true } />
                   <Typography component="p">Show my connections</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
                   <Share color="secondary"/>
-                  <Switch checked="true" />
+                  <Switch checked={ true } />
                   <Typography component="p">Show social links</Typography>
                 </div>
               </Grid>

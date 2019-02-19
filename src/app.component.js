@@ -38,20 +38,20 @@ class App extends React.Component {
     sessionStorage.setItem(
       "portalData",
       JSON.stringify({
-                       theme: {
-                         ...themeConfig
-                       },
-                       layout: {
-                         ...layoutConfig
-                       }
-                     })
+        theme: {
+          ...themeConfig
+        },
+        layout: {
+          ...layoutConfig
+        }
+      })
     );
 
     const materialTheme = createMuiTheme(themeConfig.contentTheme);
 
     const client = new ApolloClient({
-                                      uri: "/graphql"
-                                    });
+      uri: "/graphql"
+    });
 
     return (
       <ApolloProvider client={ client }>
@@ -77,10 +77,10 @@ function mapStateToProps(state) {
 
 App.propTypes = {
   themeConfig: PropTypes.shape({
-                                 contentTheme: PropTypes.shape({
-                                                                 direction: PropTypes.string.isRequired
-                                                               }).isRequired
-                               }).isRequired,
+    contentTheme: PropTypes.shape({
+      direction: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   layoutConfig: PropTypes.shape({}).isRequired
 };
 
