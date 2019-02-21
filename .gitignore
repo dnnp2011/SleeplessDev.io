@@ -35,6 +35,9 @@ yarn-error.log*
 */.vscode*
 *.editorconfig*
 *.env*
+*/graphql*
+graphql*.json
+**/graphql*.json
 
 # atom package files
 *.eslint*

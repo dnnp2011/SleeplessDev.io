@@ -8,6 +8,7 @@ import withWidth from "@material-ui/core/withWidth/withWidth";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import dayjs from "dayjs";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -23,76 +24,96 @@ import styles from "../../containers/apps/todo/todo.module.scss";
 import themeStyles from "./blog.style";
 import scss from "./blog.module.scss";
 
-import SpinnerWidget from '../../components/widgets/spinner-widget/spinner-widget.component';
-import gql from 'graphql-tag';
+import SpinnerWidget from "../../components/widgets/spinner-widget/spinner-widget.component";
+import gql from "graphql-tag";
 
 import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
+import BlogOverview from "./components/blog-overview/blog-overview.component";
+import BlogView from "./components/blog-view/blog-view.component";
 
-class Blog extends React.Component{
+
+class Blog extends React.Component {
+  constructor(props) {
+    super(props);
+    dayjs().format();
+  }
+
+
   state = {
     blogViewId: null,
     blogOverviewMonth: null,
     blogOverviewYear: null,
     blogOverviewTag: null,
-    archiveDrawerOpen: false,
+    archiveDrawerOpen: false
 
   };
+
 
   componentWillMount() {
     //Check url params for specified ID || Month & Year || Tag
     //If present, setState(blogViewId, blogOverviewMonth, blogOverviewYear, blogOverviewTag) => Re-Render correct component
+    const { blogId, month, year, tag } = this.props.match.params;
+    let newState = {};
+    if (blogId) newState.blogViewId = blogId;
+    if (month) newState.blogOverviewMonth = month;
+    else newState.blogOverviewMonth = dayjs().month();
+    if (year) newState.blogOverviewYear = year;
+    else newState.blogOverviewYear = dayjs().year();
+    if (tag) newState.blogOverviewTag = tag;
+    if (newState) this.setState({ ...newState });
   }
 
 
   render() {
     const {
       classes,
-      width,
+      width
     } = this.props;
 
+    const { blogViewId, blogOverviewMonth, blogOverviewTag, blogOverviewYear } = this.state;
+
     const GET_BLOGS = gql`
-    query($month: String, $year: String, $limit: Int) {
-      blogsByMonth(blogParams: {month: $month, year: $year, limit: $limit}) {
-        _id, title, author, body, tags, dateCreated
-      }
-    }
-  `;
+        query($month: String, $year: String, $limit: Int) {
+            blogsByMonth(blogParams: {month: $month, year: $year, limit: $limit}) {
+                _id, title, author, body, tags, dateCreated
+            }
+        }
+    `;
+
+    /*
+
+     <Query query={GET_BLOGS} variables={{ $month: "2", $year: "2019", $limit: 10 }}>
+     {
+     ({ loading, error, data }) => {
+     if (error) console.warn(error);
+     if (loading || !data) return <SpinnerWidget loadingText={"Fetching Blogs"}/>;
+     else return "Data Loaded"
+     }
+     }
+     </Query>
+
+     */
+
 
     return (
       <Grid
         container
-        direction="row"
-        spacing={0}
-        justify="center"
-        alignItems="center"
-        className={classes.background}>
-        <Grid item xs={12} className={scss.panel}>
+        direction='row'
+        spacing={ 0 }
+        justify='center'
+        alignItems='center'
+        >
+        <Grid item xs={ 12 } className={ classNames(classes.scrollingBody, scss.panel, classes.background, "portal-hide-scrollbars") }>
           <Grid
             container
-            direction={"column"}
-            spacing={16}
+            direction={ "column" }
+            spacing={ 0 }
           >
-            <Grid item>
-              <Grid
-                container
-                direction={"row"}
-                spacing={16}
-                justify={"center"}
-                alignItems={"center"}
-              >
-                <Grid item>
-                  <Query query={GET_BLOGS} variables={{ $month: "2", $year: "2019", $limit: 10 }}>
-                    {
-                      ({ loading, error, data }) => {
-                        if (error) console.warn(error);
-                        if (loading || !data) return <SpinnerWidget loadingText={"Fetching Blogs"}/>;
-                        else return "Data Loaded"
-                      }
-                    }
-                  </Query>
-                </Grid>
-              </Grid>
-            </Grid>
+            {
+              !!blogViewId
+              ? <BlogView id={ blogViewId } />
+              : <BlogOverview month={ blogOverviewMonth } year={ blogOverviewYear } tag={ blogOverviewTag } />
+            }
           </Grid>
         </Grid>
       </Grid>
@@ -114,18 +135,18 @@ const BlogWidget = (props) => {
       <Grid
         spacing={ 0 }
         container
-        direction="row"
-        alignItems="center"
-        justify="center"
+        direction='row'
+        alignItems='center'
+        justify='center'
       >
         <div>
-          <Card className={ styles['portal-todo'] }>
-            <CardContent className={ classNames(styles['portal-todo__header'], this.props.classes.headerTheme) }>
+          <Card className={ styles["portal-todo"] }>
+            <CardContent className={ classNames(styles["portal-todo__header"], this.props.classes.headerTheme) }>
               <h2>My daily list</h2>
-              <div className={ styles['portal-todo__header-demo-mountain'] } />
-              <div className={ styles['portal-todo__header-demo-mountain'] } />
-              <div className={ styles['portal-todo__header-demo-cloud'] } />
-              <div className={ styles['portal-todo__header-demo-sun'] } />
+              <div className={ styles["portal-todo__header-demo-mountain"] } />
+              <div className={ styles["portal-todo__header-demo-mountain"] } />
+              <div className={ styles["portal-todo__header-demo-cloud"] } />
+              <div className={ styles["portal-todo__header-demo-sun"] } />
             </CardContent>
             <CardContent>
               <List>
@@ -142,7 +163,7 @@ const BlogWidget = (props) => {
                       onChange={ () => this.onTodoChecked(todo) }
                     />
                     <ListItemText
-                      style={ { textDecoration: todo.completed ? 'line-through' : '' } }
+                      style={ { textDecoration: todo.completed ? "line-through" : "" } }
                       primary={ todo.text }
                     />
                   </ListItem>
@@ -150,27 +171,27 @@ const BlogWidget = (props) => {
               </List>
             </CardContent>
           </Card>
-          <form onSubmit={ this.onSubmit } noValidate autoComplete="off" className={ styles['portal-text-centered'] }>
-            <Button type="button" onClick={ () => this.onCheckAll(true) }>Select all</Button>
-            <Button type="button" onClick={ () => this.onCheckAll(false) }>Deselect all</Button>
+          <form onSubmit={ this.onSubmit } noValidate autoComplete='off' className={ styles["portal-text-centered"] }>
+            <Button type='button' onClick={ () => this.onCheckAll(true) }>Select all</Button>
+            <Button type='button' onClick={ () => this.onCheckAll(false) }>Deselect all</Button>
             <TextField
-              id="name"
-              label="Name"
+              id='name'
+              label='Name'
               value={ this.state.newTodo }
-              margin="normal"
+              margin='normal'
               onChange={ this.onInputChange }
             />
             <Button
-              type="submit"
-              disabled={ this.state.newTodo === '' }
+              type='submit'
+              disabled={ this.state.newTodo === "" }
             >
               Add item
             </Button>
           </form>
-          <div style={ { display: this.showButtons() ? 'block' : 'none' } } className={ styles['portal-text-centered'] }>
-            <Button type="button" onClick={ () => this.onCompleteAll(true) }>Complete Selected</Button>
-            <Button type="button" onClick={ () => this.onCompleteAll(false) }>Uncomplete Selected</Button>
-            <Button type="button" onClick={ () => this.onDeleteAll() }>Delete Selected</Button>
+          <div style={ { display: this.showButtons() ? "block" : "none" } } className={ styles["portal-text-centered"] }>
+            <Button type='button' onClick={ () => this.onCompleteAll(true) }>Complete Selected</Button>
+            <Button type='button' onClick={ () => this.onCompleteAll(false) }>Uncomplete Selected</Button>
+            <Button type='button' onClick={ () => this.onDeleteAll() }>Delete Selected</Button>
           </div>
         </div>
       </Grid>
