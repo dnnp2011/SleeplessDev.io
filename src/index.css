@@ -15,6 +15,11 @@ body {
   font-family: 'Barlow', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
 .portal-hide-scrollbars {
   -ms-overflow-style: none;
 }

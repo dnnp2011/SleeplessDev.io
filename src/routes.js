@@ -154,6 +154,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path={ "/projects" } exact component={ AsyncProjects } props={ childProps } layout={ activeLayout } />
       <AppRoute path={ "/contact" } exact component={ AsyncContact } props={ childProps } layout={ activeLayout } />
       <AppRoute path={ "/blog" } exact component={ AsyncBlog } props={ childProps } layout={ activeLayout } />
+      <AppRoute path={ "/blog/:id" } exact component={ AsyncBlog } props={ childProps } layout={ activeLayout } />
       <AppRoute path={ "/resources/reference" } exact component={ AsyncReference } props={ childProps } layout={ activeLayout } />
       <AppRoute path={ "/resources/tutorials" } exact component={ AsyncTutorials } props={ childProps } layout={ activeLayout } />
 

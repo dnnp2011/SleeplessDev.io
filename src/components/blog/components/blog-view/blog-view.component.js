@@ -2,21 +2,18 @@ import { Grid, withStyles, withWidth } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import compose from "recompose/compose";
+import BlogPaper from "../blog-paper/blog-paper.component";
 import themeStyles from "./blog-view.theme.style";
 
 
-class BlogView extends Component {
-  state = {};
+function BlogView(props) {
+  const { classes } = props;
 
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <Grid spacing={ 0 } container direction='row' alignItems='center' justify='center'>
-		      </Grid>
-    );
-  }
+  return (
+    <Grid spacing={ 0 } container direction='column' alignItems='center' justify='center'>
+      <BlogPaper/>
+    </Grid>
+  );
 }
 
 

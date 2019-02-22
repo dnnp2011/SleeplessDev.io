@@ -12,7 +12,7 @@ const styles = theme => ({
     color: theme.palette.text.primary
   },
   scrollingBody: {
-    overflowY: 'auto',
+    overflowY: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 100%'

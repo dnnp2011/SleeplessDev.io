@@ -9,6 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import dayjs from "dayjs";
+import { Route } from 'react-router-dom';
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -52,9 +53,10 @@ class Blog extends React.Component {
   componentWillMount() {
     //Check url params for specified ID || Month & Year || Tag
     //If present, setState(blogViewId, blogOverviewMonth, blogOverviewYear, blogOverviewTag) => Re-Render correct component
-    const { blogId, month, year, tag } = this.props.match.params;
+    const { id, month, year, tag } = this.props.match.params;
+    console.log(JSON.stringify(this.props.match.params));
     let newState = {};
-    if (blogId) newState.blogViewId = blogId;
+    if (id) newState.blogViewId = id;
     if (month) newState.blogOverviewMonth = month;
     else newState.blogOverviewMonth = dayjs().month();
     if (year) newState.blogOverviewYear = year;
@@ -67,8 +69,9 @@ class Blog extends React.Component {
   render() {
     const {
       classes,
-      width
+      width,
     } = this.props;
+
 
     const { blogViewId, blogOverviewMonth, blogOverviewTag, blogOverviewYear } = this.state;
 
@@ -103,12 +106,13 @@ class Blog extends React.Component {
         justify='center'
         alignItems='center'
         >
-        <Grid item xs={ 12 } className={ classNames(classes.scrollingBody, scss.panel, classes.background, "portal-hide-scrollbars") }>
+        <Grid item xs={ 12 } className={ classNames(classes.scrollingBody, scss.panel, classes.background) }>
           <Grid
             container
             direction={ "column" }
             spacing={ 0 }
           >
+
             {
               !!blogViewId
               ? <BlogView id={ blogViewId } />

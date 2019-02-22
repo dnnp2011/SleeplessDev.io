@@ -20,6 +20,12 @@ const styles = theme => ({
     margin: '3px',
     padding: '5px 8px 5px 8px',
   },
+  tagGrid: {
+    display: 'flex',
+    wrap: 'auto',
+    flex: '1 0 auto',
+    flexFlow: 'row wrap',
+  },
 
 });
 

@@ -36,8 +36,12 @@ yarn-error.log*
 *.editorconfig*
 *.env*
 */graphql*
+./graphql*
+.graphql*
+/.graphql*
 graphql*.json
 **/graphql*.json
+./graphql.config.json
 
 # atom package files
 *.eslint*
