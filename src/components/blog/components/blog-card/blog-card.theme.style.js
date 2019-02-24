@@ -1,12 +1,9 @@
 const styles = theme => ({
 
-  card: {
-    display: 'flex',
-  },
   details: {
     display: 'flex',
+    flex: '1 0 auto',
     flexDirection: 'column',
-    width: '100%',
     padding: theme.spacing.unit * 2,
   },
   content: {
@@ -14,7 +11,7 @@ const styles = theme => ({
     marginBottom: '15px',
   },
   image: {
-    width: '300px',
+    width: '11rem',
   },
   continueBtn: {
     margin: '3px',

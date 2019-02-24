@@ -11,12 +11,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary
   },
-  scrollingBody: {
+/*  scrollingBody: {
     overflowY: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 100%'
-  },
+  },*/
 
 });
 

@@ -7,14 +7,17 @@ import themeStyles from "./tag-chip-widget.theme.style";
 const TagChip = (props) => {
   const { classes, avatarSrc, title, onTagClick } = props;
 
+  let isAvatar = avatarSrc.length > 2;
+
   return (
     <div>
       <Chip
-        avatar={ <Avatar alt={ title } className={ classes.tagLogo } src={ avatarSrc }></Avatar> }
+        avatar={ isAvatar ? <Avatar alt={ title } className={ classes.tagLogo } src={ avatarSrc } /> : <Avatar color={"secondary"} alt={ title } className={classes.tagLogo}>{avatarSrc}</Avatar> }
         label={ title }
         onClick={ onTagClick }
         className={ classes.tagChip }
         variant={ "outlined" }
+        color={ "default" }
         clickable
       />
     </div>

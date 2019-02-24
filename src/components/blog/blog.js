@@ -9,7 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { Route } from 'react-router-dom';
+import { Route } from "react-router-dom";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -17,7 +17,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 import { withStyles } from "@material-ui/core/styles";
-import { Query } from "react-apollo";
 import compose from "recompose/compose";
 import Card from "../../containers/apps/todo/todo.component";
 import styles from "../../containers/apps/todo/todo.module.scss";
@@ -25,10 +24,6 @@ import styles from "../../containers/apps/todo/todo.module.scss";
 import themeStyles from "./blog.style";
 import scss from "./blog.module.scss";
 
-import SpinnerWidget from "../../components/widgets/spinner-widget/spinner-widget.component";
-import gql from "graphql-tag";
-
-import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
 import BlogOverview from "./components/blog-overview/blog-overview.component";
 import BlogView from "./components/blog-view/blog-view.component";
 
@@ -36,67 +31,35 @@ import BlogView from "./components/blog-view/blog-view.component";
 class Blog extends React.Component {
   constructor(props) {
     super(props);
-    dayjs().format();
+
+    this.state = {
+      blogViewId: this.props.match.params.id ? this.props.match.params.id : null,
+      archiveDrawerOpen: false
+    };
   }
 
 
-  state = {
-    blogViewId: null,
-    blogOverviewMonth: null,
-    blogOverviewYear: null,
-    blogOverviewTag: null,
-    archiveDrawerOpen: false
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (this.state.blogViewId && !nextProps.match.params.id) {
+      this.setState({ blogViewId: null });
+    }
+    else if (!this.state.blogViewId && nextProps.match.params.id) {
+      this.setState({ blogViewId: nextProps.match.params.id });
+    }
+  }
 
+  setBlogId = (id) => {
+    this.setState({ blogViewId: id });
   };
-
-
-  componentWillMount() {
-    //Check url params for specified ID || Month & Year || Tag
-    //If present, setState(blogViewId, blogOverviewMonth, blogOverviewYear, blogOverviewTag) => Re-Render correct component
-    const { id, month, year, tag } = this.props.match.params;
-    console.log(JSON.stringify(this.props.match.params));
-    let newState = {};
-    if (id) newState.blogViewId = id;
-    if (month) newState.blogOverviewMonth = month;
-    else newState.blogOverviewMonth = dayjs().month();
-    if (year) newState.blogOverviewYear = year;
-    else newState.blogOverviewYear = dayjs().year();
-    if (tag) newState.blogOverviewTag = tag;
-    if (newState) this.setState({ ...newState });
-  }
-
 
   render() {
     const {
       classes,
-      width,
+      width
     } = this.props;
 
 
-    const { blogViewId, blogOverviewMonth, blogOverviewTag, blogOverviewYear } = this.state;
-
-    const GET_BLOGS = gql`
-        query($month: String, $year: String, $limit: Int) {
-            blogsByMonth(blogParams: {month: $month, year: $year, limit: $limit}) {
-                _id, title, author, body, tags, dateCreated
-            }
-        }
-    `;
-
-    /*
-
-     <Query query={GET_BLOGS} variables={{ $month: "2", $year: "2019", $limit: 10 }}>
-     {
-     ({ loading, error, data }) => {
-     if (error) console.warn(error);
-     if (loading || !data) return <SpinnerWidget loadingText={"Fetching Blogs"}/>;
-     else return "Data Loaded"
-     }
-     }
-     </Query>
-
-     */
-
+    const { blogViewId } = this.state;
 
     return (
       <Grid
@@ -105,20 +68,13 @@ class Blog extends React.Component {
         spacing={ 0 }
         justify='center'
         alignItems='center'
-        >
-        <Grid item xs={ 12 } className={ classNames(classes.scrollingBody, scss.panel, classes.background) }>
-          <Grid
-            container
-            direction={ "column" }
-            spacing={ 0 }
-          >
-
-            {
-              !!blogViewId
-              ? <BlogView id={ blogViewId } />
-              : <BlogOverview month={ blogOverviewMonth } year={ blogOverviewYear } tag={ blogOverviewTag } />
-            }
-          </Grid>
+      >
+        <Grid item className={ classNames(scss.panel, classes.background) }>
+          {
+            !!blogViewId
+            ? <BlogView id={ blogViewId } />
+            : <BlogOverview setBlogId={ this.setBlogId } />
+          }
         </Grid>
       </Grid>
     );

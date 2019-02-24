@@ -13,7 +13,7 @@ const SpinnerWidget = (props) => {
   } = props;
 
   return (
-    <Grid container direction={"column"} spacing={16} justify={"center"} alignItems={"center"}>
+    <Grid container direction={"column"} spacing={16} justify={"center"} alignItems={"center"} style={{ marginTop: '30vh' }}>
       <Grid item>
         <CircularProgress className={ classes.progress } size={ 58 } aria-labelledby={loadingText} color={ "primary" } thickness={ 5 } />
       </Grid>

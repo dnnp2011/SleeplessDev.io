@@ -1,8 +1,7 @@
 const styles = theme => ({
 
   tagList: {
-    flexWrap: 'nowrap',
-    overflow: 'none',
+    flexWrap: 'auto',
     transform: 'translateZ(0)',
     maxWidth: '500px'
   },
