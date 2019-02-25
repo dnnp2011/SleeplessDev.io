@@ -2,18 +2,17 @@ import { Chip, Avatar, withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import themeStyles from "./tag-chip-widget.theme.style";
+import { getAcronym } from '../../../helpers/Util';
 
 
 const TagChip = (props) => {
-  const { classes, avatarSrc, title, onTagClick } = props;
-
-  let isAvatar = avatarSrc.length > 2;
+  const { classes, tag, title, onTagClick } = props;
 
   return (
     <div>
       <Chip
-        avatar={ isAvatar ? <Avatar alt={ title } className={ classes.tagLogo } src={ avatarSrc } /> : <Avatar color={"secondary"} alt={ title } className={classes.tagLogo}>{avatarSrc}</Avatar> }
-        label={ title }
+        avatar={ <Avatar color={"secondary"} alt={ title } className={classes.tagLogo}>{getAcronym(tag)}</Avatar> }
+        label={ tag }
         onClick={ onTagClick }
         className={ classes.tagChip }
         variant={ "outlined" }
@@ -23,6 +22,14 @@ const TagChip = (props) => {
     </div>
   );
 };
+
+function styleTagTitle(tag) {
+
+}
+
+function styleTagLabel(tag) {
+  return tag.charAt(0).toUpperCase();
+}
 
 TagChip.propTypes = {
   classes: PropTypes.shape({}).isRequired

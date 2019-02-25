@@ -19,51 +19,8 @@ import logoImage from "../../../../assets/images/logo-terminal/logo_transparent_
 
 
 function BlogCard(props) {
-  const { classes, width, _id, title, author, body, description, dateCreated, dateEdited, setBlogId } = props;
+  const { classes, width, _id, title, description, tags, dateCreated, dateEdited, setBlogId } = props;
 
-  let placeholderAvatar = "assets/images/avatars/avatar-2.png";
-  const tagItems = [
-    {
-      title: "NodeJS",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Express",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Ruby",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Javascript",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Javascript",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Javascript",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Javascript",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    },
-    {
-      title: "Javascript",
-      avatarSrc: placeholderAvatar,
-      onTagClick: () => {}
-    }
-  ];
 
   const getMaxTags = () => {
     let maxTags;
@@ -106,7 +63,7 @@ function BlogCard(props) {
             />
             <div className={ classes.details }>
               <CardContent xs={ 12 } className={ classes.content }>
-                <Typography component='h5' variant='h5'>
+                <Typography component='h4' variant='h4'>
                   { title }
                 </Typography>
                 <Typography variant='caption' color='textSecondary' gutterBottom>
@@ -118,7 +75,7 @@ function BlogCard(props) {
               </CardContent>
               <Grid container direction={ "row" } spacing={ 0 } alignContent={ "space-between" } justify={ "space-between" }>
                 <Grid item className={ classes.tagGrid }>
-                  <TagArray tagItems={ tagItems.slice(0, getMaxTags()) } />
+                  <TagArray tags={ tags.slice(0, getMaxTags()) } />
                 </Grid>
                 <Grid item>
                   <Button onClick={ () => handleClickBlog(_id) } aria-label={ "continue reading" } color={ "primary" } type={ "button" } variant={ "outlined" } className={ classes.continueBtn }>

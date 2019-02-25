@@ -6,17 +6,17 @@ import themeStyles from "./tag-array-widget.theme.style";
 
 
 const TagArray = (props) => {
-  const { classes, tagItems } = props;
+  const { classes, tags } = props;
   let { maxWidth } = props;
   maxWidth = !!maxWidth ? maxWidth : "";
 
   return (
     <Grid container spacing={ 8 } className={ classes.tagList } direction={ "row" } style={ { width: maxWidth } }>
       {
-        tagItems.map((tagItem, index) => {
+        tags.map((tag, index) => {
           return (
             <Grid item key={ index }>
-              <TagChip { ...tagItem } />
+              <TagChip tag={tag} />
             </Grid>
           );
         })

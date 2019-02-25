@@ -87,6 +87,10 @@ export const hiddenMenuItems = [
     title: "Admin Dashboard",
     href: "/admin/dashboard"
   },
+  {
+    title: "Blog Entry",
+    href: "/blog/:id",
+  },
 ];
 /*export const menuItems = [{
  title: 'Dashboards',

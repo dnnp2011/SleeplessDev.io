@@ -37,13 +37,7 @@ function BlogPaper(props) {
             <div className={ classes.footer }>
               {
                 tags
-                ? <TagArray tagItems={ tags.map(tag => {
-                  return {
-                    title: tag,
-                    avatarSrc: tag.slice(0, 1).toUpperCase(),
-                    onTagClick: () => { console.log(`Clicked ${ tag }`); }
-                  };
-                }) } />
+                ? <TagArray tags={tags} />
                 : null
               }
             </div>

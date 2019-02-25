@@ -32,9 +32,10 @@ import { menuItems, hiddenMenuItems } from "../../../config";
 import themes from "../../../themes";
 
 
-function setTitle(items, currentPath) {
+function setTitle(items, currentPath, match) {
   for (let i = 0; i < items.length; i += 1) {
-    if (items[i].href && items[i].href === currentPath) {
+    // Added the 'match' parameter to allow checking parameterized urls against their config.js href declarations
+    if (items[i].href && (items[i].href === currentPath || items[i].href === match.path)) {
       return items[i].title;
     }
 
@@ -118,6 +119,7 @@ class ContentToolbar extends React.Component {
       width,
       layout,
       location,
+      match,
       theme,
     } = this.props;
 
@@ -136,7 +138,7 @@ class ContentToolbar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color='inherit' noWrap>
-              { setTitle(menuItems.concat(hiddenMenuItems), location.pathname) || "Route Not Found" }
+              { setTitle(menuItems.concat(hiddenMenuItems), location.pathname, match) || "Route Not Found" }
             </Typography>
             <span className='portal-flex' />
             <IconButton
