@@ -26,7 +26,8 @@ class BlogOverview extends Component {
       month: ((params.has("month") && params.get("month")) || (dayjs().month() + 1).toString()),
       year: ((params.has("year") && params.get("year")) || dayjs().year().toString()),
       tag: ((params.has("tag") && params.get("tag")) || null),
-      limit: ((params.has("limit") && params.get("limit")) || null)
+      limit: ((params.has("limit") && params.get("limit")) || null),
+      blogCache: null,
     };
   }
 
@@ -38,19 +39,13 @@ class BlogOverview extends Component {
 
   render() {
     const { classes, setBlogId } = this.props;
-    const { month, year, tag } = this.state;
+    const { month, year, tag, blogCache } = this.state;
+    let blogData = null, readyToRefresh = true;
 
     const GET_BLOGS = gql`
         query getBlogsByMonth($month: String, $year: String, $limit: Int) {
             blogsByMonth(blogParams: {month: $month, year: $year, limit: $limit}) {
                 _id, title, author, body, description, tags, dateCreated, dateEdited
-            }
-        }
-    `;
-    const GET_TAGS = gql`
-        query getTagsForMonth($names: [String!]!) {
-            tagsByNames(names: $names) {
-                fancyName, otherNames, logoSrc, fallbackTxt
             }
         }
     `;
@@ -87,14 +82,18 @@ class BlogOverview extends Component {
               ({ loading, error, data }) => {
                 if (error) new Error(error);
                 if (loading || !data) return <SpinnerWidget loadingText={ "Fetching Blogs" } />;
-                else {
-                  let blogData = data.blogsByMonth;
+                else if (!blogData || readyToRefresh) {
+                  blogData = data.blogsByMonth;
                   if (!!blogData.length) {
                     return blogData.map(blog => {
                       blog.dateCreated = dayjs.unix(blog.dateCreated / 1000).format("MMM D, YYYY");
                       blog.dateEdited = blog.dateEdited ? dayjs.unix(blog.dateEdited / 1000).format("MMM D, YYYY") : null;
 
+                      // console.table([["created", "edited"], [blog.dateCreated, blog.dateEdited]]);
+
                       let { author, body, ...rest } = blog;
+
+                      setTimeout(() => readyToRefresh = true, 59000);
                       return (
                         <ListItem className={ classes.listItem } disableGutters key={ blog._id }>
                           <BlogCard { ...rest } setBlogId={ setBlogId } />

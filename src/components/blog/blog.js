@@ -4,7 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
-import withWidth from "@material-ui/core/withWidth/withWidth";
+import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -20,6 +20,7 @@ import { withStyles } from "@material-ui/core/styles";
 import compose from "recompose/compose";
 import Card from "../../containers/apps/todo/todo.component";
 import styles from "../../containers/apps/todo/todo.module.scss";
+import LinkListWidget from "../widgets/link-list-widget/link-list-widget.component";
 
 import themeStyles from "./blog.style";
 import scss from "./blog.module.scss";
@@ -34,7 +35,8 @@ class Blog extends React.Component {
 
     this.state = {
       blogViewId: this.props.match.params.id ? this.props.match.params.id : null,
-      archiveDrawerOpen: false
+      archiveDrawerOpen: false,
+      linkListOpen: true,
     };
   }
 
@@ -61,6 +63,12 @@ class Blog extends React.Component {
 
     const { blogViewId } = this.state;
 
+    const placeholderLinks = [
+      { label: "Link 1", props: { onClick: ()=>{console.log("clicked link 1")} } },
+      { label: "Link 2", props: { onClick: ()=>{console.log("Clicked link 2")} } },
+      { label: "Link 3", props: { onClick: ()=>{console.log("Clicked link 3")} } }
+    ];
+
     return (
       <Grid
         container
@@ -70,11 +78,18 @@ class Blog extends React.Component {
         alignItems='center'
       >
         <Grid item className={ classNames(scss.panel, classes.background) }>
-          {
-            !!blogViewId
-            ? <BlogView id={ blogViewId } />
-            : <BlogOverview setBlogId={ this.setBlogId } />
-          }
+          <Grid container spacing={0} direction={isWidthDown("sm", width, true) ? "column" : "row"}>
+            <Grid item md={10} sm={12}>
+              {
+                !!blogViewId
+                ? <BlogView id={ blogViewId } />
+                : <BlogOverview setBlogId={ this.setBlogId } />
+              }
+            </Grid>
+            <Grid item md={2} sm={12}>
+              <LinkListWidget fullWidth links={ placeholderLinks } />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     );

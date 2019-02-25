@@ -9,9 +9,12 @@ const styles = theme => ({
   content: {
     flex: '1 0 auto',
     marginBottom: '15px',
+    wrap: 'auto',
   },
   image: {
     width: '11rem',
+    display: 'inline-block',
+    float: "start",
   },
   continueBtn: {
     margin: '3px',

@@ -29,16 +29,19 @@ function BlogCard(props) {
         maxTags = 1;
         break;
       case "sm":
-        maxTags = 2;
+        maxTags = 1;
         break;
       case "md":
-        maxTags = 3;
+        maxTags = 1;
         break;
       case "lg":
-        maxTags = 4;
+        maxTags = 3;
+        break;
+      case "xl":
+        maxTags = 5;
         break;
       default:
-        maxTags = 5;
+        maxTags = 1;
         break;
     }
     return maxTags;
@@ -49,25 +52,24 @@ function BlogCard(props) {
     setBlogId(id);
   };
 
-  // assets/images/avatars/avatar-1.png
-
+  // BUG: When resizing the screen, the date value will become "Invalid" at the boundary of certain breakpoints
   return (
     <Grid container direction={ "row" } alignContent={ "center" } justify={ "center" }>
-      <Grid item xs={ 12 } sm={10} md={8}>
+      <Grid item xs={ 12 } sm={ 10 } md={ 8 }>
         <Card className={ classes.card } elevation={ 3 } raised={ true }>
           <Grid container direction={ "row" } spacing={ 0 } alignContent={ "flex-start" } justify={ "flex-start" }>
-            <CardMedia
-              className={ classes.image }
-              image={ logoImage }
-              title='Placeholder Image'
-            />
-            <div className={ classes.details }>
+              <CardMedia
+                className={ classes.image }
+                image={ logoImage }
+                title='Placeholder Image'
+              />
+            <Grid item xs={10} className={ classes.details }>
               <CardContent xs={ 12 } className={ classes.content }>
                 <Typography component='h4' variant='h4'>
                   { title }
                 </Typography>
                 <Typography variant='caption' color='textSecondary' gutterBottom>
-                  { !!dateEdited ? `Edited ${dateEdited}` : `Posted ${dateCreated}` }
+                  { !!dateEdited ? `Edited ${ dateEdited }` : `Posted ${ dateCreated }` }
                 </Typography>
                 <Typography variant={ "body1" }>
                   { description ? description : "No description provided" }
@@ -80,15 +82,11 @@ function BlogCard(props) {
                 <Grid item>
                   <Button onClick={ () => handleClickBlog(_id) } aria-label={ "continue reading" } color={ "primary" } type={ "button" } variant={ "outlined" } className={ classes.continueBtn }>
                     <Grid container spacing={ 16 } direction={ "row" } alignContent={ "center" } justify={ "center" }>
-                      {
-                        isWidthDown("sm", width, true)
-                        ? null
-                        : <Grid item>
-                          <Typography>
-                            Continue reading
-                          </Typography>
-                        </Grid>
-                      }
+                      <Grid item>
+                        <Typography>
+                          Continue reading
+                        </Typography>
+                      </Grid>
                       <Grid item>
                         <FaReadme color={ "secondary" } size={ 20 } />
                       </Grid>
@@ -96,7 +94,7 @@ function BlogCard(props) {
                   </Button>
                 </Grid>
               </Grid>
-            </div>
+            </Grid>
           </Grid>
         </Card>
       </Grid>
