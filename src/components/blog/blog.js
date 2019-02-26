@@ -296,7 +296,7 @@ function ArchiveDrawer(props) {
                           </Typography>
                         </Grid>
                         <Grid item>
-                          { open ? <ExpandLess /> : <ExpandMore /> }
+                          { !open ? <ExpandMore className={scss["expand-more-icon"]} /> : <ExpandMore className={classNames(scss["expand-more-icon"], scss.rotate)} /> }
                         </Grid>
                       </Grid>
                     </Grid>

@@ -11,6 +11,7 @@ import { Query } from "react-apollo";
 import { getStringFromMonth } from "../../../../helpers/Util";
 import { ApolloConsumer } from "react-apollo";
 import WarningSign from "../../../widgets/warning-sign-widget/warning-sign-widget.component";
+import { convertTimestampToDate } from "../../../../helpers/Util";
 
 import BlogCard from "../blog-card/blog-card.component";
 import themeStyles from "./blog-overview.theme.style";
@@ -96,11 +97,6 @@ function BlogOverview(props) {
   function renderBlogs(blogData) {
     if (!!blogData.length) {
       return blogData.map(blog => {
-        blog.dateCreated = dayjs.unix(blog.dateCreated / 1000).format("MMM D, YYYY");
-        blog.dateEdited = blog.dateEdited ? dayjs.unix(blog.dateEdited / 1000).format("MMM D, YYYY") : null;
-
-        // console.table([["created", "edited"], [blog.dateCreated, blog.dateEdited]]);
-
         let { author, body, ...rest } = blog;
 
         setTimeout(() => readyToRefresh = true, 59000);

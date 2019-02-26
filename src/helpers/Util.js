@@ -24,3 +24,10 @@ export function capitalizeName(name) {
 export function getAcronym(name) {
 	return name.split(' ').map(part => part.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase())).join('');
 }
+
+export function convertTimestampToDate(timestamp, format="MMM D, YYYY", inMs=true) {
+	if (typeof timestamp === "string") timestamp = parseInt(timestamp);
+	else return new Error("Invalid type given to convertTimestampToDate()");
+
+	return dayjs.unix(inMs ? (timestamp / 1000) : timestamp).format(format);
+}

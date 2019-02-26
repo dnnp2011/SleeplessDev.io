@@ -11,6 +11,7 @@ import { FaReadme } from "react-icons/fa";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import compose from "recompose/compose";
+import { convertTimestampToDate } from "../../../../helpers/Util";
 import TagArray from "../../../widgets/tag-array-widget/tag-array-widget.component";
 import themeStyles from "./blog-card.theme.style";
 
@@ -58,18 +59,18 @@ function BlogCard(props) {
       <Grid item xs={ 12 } sm={ 10 } md={ 8 }>
         <Card className={ classes.card } elevation={ 3 } raised={ true }>
           <Grid container direction={ "row" } spacing={ 0 } alignContent={ "flex-start" } justify={ "flex-start" }>
-              <CardMedia
-                className={ classes.image }
-                image={ logoImage }
-                title='Placeholder Image'
-              />
-            <Grid item xs={10} className={ classes.details }>
+            <CardMedia
+              className={ classes.image }
+              image={ logoImage }
+              title='Placeholder Image'
+            />
+            <Grid item xs={ 10 } className={ classes.details }>
               <CardContent xs={ 12 } className={ classes.content }>
                 <Typography component='h4' variant='h4'>
                   { title }
                 </Typography>
                 <Typography variant='caption' color='textSecondary' gutterBottom>
-                  { !!dateEdited ? `Edited ${ dateEdited }` : `Posted ${ dateCreated }` }
+                  { !!dateEdited ? `Edited ${ convertTimestampToDate(dateEdited) }` : `Posted ${ convertTimestampToDate(dateCreated) }` }
                 </Typography>
                 <Typography variant={ "body1" }>
                   { description ? description : "No description provided" }

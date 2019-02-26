@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import compose from "recompose/compose";
 import TagArray from "../../../widgets/tag-array-widget/tag-array-widget.component";
 import themeStyles from "./blog-paper.theme.style";
+import { convertTimestampToDate } from "../../../../helpers/Util";
 
 
 dayjs().format();
@@ -27,9 +28,24 @@ function BlogPaper(props) {
               <Typography variant={ "subtitle1" }>
                 By { author || "Anonymous" }
               </Typography>
-              <Typography variant={ "caption" }>
-                { dateEdited ? `Last edited ${dateEdited}` : `Posted ${dateCreated}` }
-              </Typography>
+              {
+                dateEdited
+                ? (
+                  <div>
+                    <Typography variant={ "caption" }>
+                      { `Posted ${ convertTimestampToDate(dateCreated) }` }
+                    </Typography>
+                    <Typography variant={ "caption" }>
+                      { `Last edited ${ convertTimestampToDate(dateEdited) }` }
+                    </Typography>
+                  </div>
+                )
+                : (
+                  <Typography variant={ "caption" }>
+                    { dateEdited ? `Last edited ${ convertTimestampToDate(dateEdited) }` : `Posted ${ convertTimestampToDate(dateCreated) }` }
+                  </Typography>
+                )
+              }
             </div>
             <div className={ classes.content }>
               <Typography variant={ "body1" } component={ "p" } dangerouslySetInnerHTML={ { __html: body } } />
@@ -37,7 +53,7 @@ function BlogPaper(props) {
             <div className={ classes.footer }>
               {
                 tags
-                ? <TagArray tags={tags} />
+                ? <TagArray tags={ tags } />
                 : null
               }
             </div>
