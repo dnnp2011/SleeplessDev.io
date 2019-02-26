@@ -2,7 +2,8 @@ const styles = theme => ({
 
   paper: {
     padding: '20px',
-    margin: '50px 0 50px 0'
+    marginTop: theme.spacing.unit * 7,
+    marginBottom: theme.spacing.unit * 7,
   },
   header: {
     paddingBottom: '30px'

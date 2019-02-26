@@ -9,8 +9,8 @@ export function getMonthFromString(month, zeroIndex=false) {
 	}
 }
 
-export function getStringFromMonth(str) {
-	return dayjs(`${parseInt(str)} 3, 2019`).format("MMM");
+export function getStringFromMonth(str, format="MMM") {
+	return dayjs(`${parseInt(str)} 3, 2019`).format(format);
 }
 
 export function capitalizeWord(word) {

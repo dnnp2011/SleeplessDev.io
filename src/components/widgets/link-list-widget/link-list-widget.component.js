@@ -1,6 +1,7 @@
 import { Grid, ListItem, Typography, withStyles, withWidth } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
+import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import compose from "recompose/compose";
@@ -13,19 +14,22 @@ const LinkListWidget = (props) => {
   return (
     <Grid container spacing={ 0 } direction={ "row" } alignItems={ "center" } justify={ "flex-end" }>
       <Grid item xs={ 12 }>
-        <List component={ "nav" }>
-          <Grid container direction={ "column" } alignItems={ "center" } justify={ "space-around" } className={ classes.listPanel }>
-            {
-              props.links
-              ? props.links.map((link, index) => {
-                return (
-                  <ListItemLink key={ link.label || index } label={ link.label } { ...link.props } />
-                );
-              })
-              : <Typography variant={ "h6" } gutterBottom>No Links Received</Typography>
-            }
-          </Grid>
-        </List>
+        <Paper elevation={2} className={ classes.listPanel }>
+          <List component={ "nav" }>
+                    <Grid container direction={ "column" } alignItems={ "center" } justify={ "space-around" }>
+                      {
+                        props.links
+                        ? props.links.map((link, index) => {
+                          let { label, ...rest } = link;
+                          return (
+                            <ListItemLink key={ label || index } label={ label } { ...rest } />
+                          );
+                        })
+                        : <Typography variant={ "h6" } gutterBottom>No Links Received</Typography>
+                      }
+                    </Grid>
+                  </List>
+        </Paper>
       </Grid>
     </Grid>
   );

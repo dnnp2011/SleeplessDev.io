@@ -1,6 +1,8 @@
 const styles = theme => ({
 
-
+  drawer: {
+    width: '200px',
+  },
 
 });
 
