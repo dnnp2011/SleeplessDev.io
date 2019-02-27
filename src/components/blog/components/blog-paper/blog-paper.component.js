@@ -18,7 +18,7 @@ function BlogPaper(props) {
 
   return (
     <Grid container direction={ "row" } spacing={ 0 } alignContent={ "center" } justify={ "center" }>
-      <Grid item md={ 6 } sm={ 10 } xs={ 12 }>
+      <Grid item md={ 8 } sm={ 10 } xs={ 12 }>
         <Paper elevation={ 5 } raised={ "true" } className={ classes.paper }>
           <Grid container spacing={ 8 } direction={ "column" } alignItems={ "flex-start" } justify={ "flex-start" }>
             <div className={ classes.header }>

@@ -1,22 +1,20 @@
-import { Button, Grid, GridList, withStyles } from "@material-ui/core";
-import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Button, Grid, withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import dayjs from "dayjs";
-import { FaReadme } from "react-icons/fa";
+import withWidth from "@material-ui/core/withWidth";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React from "react";
+import { FaReadme } from "react-icons/fa";
+import { withRouter } from "react-router-dom";
 import compose from "recompose/compose";
-import { convertTimestampToDate } from "../../../../helpers/Util";
-import TagArray from "../../../widgets/tag-array-widget/tag-array-widget.component";
-import themeStyles from "./blog-card.theme.style";
 
 
 import logoImage from "../../../../assets/images/logo-terminal/logo_transparent_terminal.png";
+import { convertTimestampToDate } from "../../../../helpers/Util";
+import TagArray from "../../../widgets/tag-array-widget/tag-array-widget.component";
+import themeStyles from "./blog-card.theme.style";
 
 
 function BlogCard(props) {
@@ -53,7 +51,6 @@ function BlogCard(props) {
     setBlogId(id);
   };
 
-  // BUG: When resizing the screen, the date value will become "Invalid" at the boundary of certain breakpoints
   return (
     <Grid container direction={ "row" } alignContent={ "center" } justify={ "center" }>
       <Grid item xs={ 12 } sm={ 10 } md={ 8 }>
