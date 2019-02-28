@@ -35,12 +35,6 @@ const styles = theme => ({
     padding: '5px',
     margin: '2px',
   }
-/*  scrollingBody: {
-    overflowY: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-    flex: '1 1 100%'
-  },*/
 
 });
 

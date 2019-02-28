@@ -20,11 +20,7 @@ import logoImage from "../../assets/images/logo-terminal/logo_transparent_termin
 const LandingPage = (props) => {
   const {
     classes,
-    width
   } = props;
-
-  // Flip container to column on mobile screens.
-  const panelDirection = width === "xs" ? "column" : "row";
 
   return (
     <Grid
@@ -55,6 +51,5 @@ LandingPage.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-// export default withStyles(themeStyles, { withTheme: true })(LandingPage);
 //TODO: Add the withWidth() HOC where needed for responsive styling on multi-card components
 export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LandingPage);

@@ -1,9 +1,4 @@
-
-
 .panel {
-  animation: landing-page 1s forwards 1;
-  animation-delay: 0.6s;
-  transform: translateY(20px);
   opacity: 0;
   flex: auto;
   display: flex;
@@ -19,19 +14,39 @@
   padding: 24px;
 }
 
-.lock-actions {
+.appBar {
+  margin-top: 50px;
   justify-content: center;
+  display: flex;
+  -ms-flex: auto;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.landing-page-content {
-  text-align: center;
+.toolbar {
+  padding: 0;
+  margin: 0;
+  margin-left: 10%;
 }
 
-.landing-page-logo {
-  height: 15rem;
+.navButtonBar {
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  margin-bottom: 1px;
 }
 
-@keyframes landing-page {
+.transition {
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  animation: background-transition 1s forwards 600ms 1;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+@keyframes background-transition {
   0% {
     transform: translateY(20px);
     opacity: 0;

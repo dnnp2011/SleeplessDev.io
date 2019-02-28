@@ -30,7 +30,6 @@
     "marked": "^0.6.0",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
-    "pagedown": "^1.1.0",
     "prettier": "^1.16.4",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",

@@ -1,7 +1,6 @@
 .card {
   padding: 0;
-  position: relative;
-  z-index: 1;
+  margin: 0;
   animation: portal-error-404 1s forwards 1;
   animation-delay: 0.6s;
   transform: translateY(20px);

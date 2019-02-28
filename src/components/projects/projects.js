@@ -1,20 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-
+import { compose } from "recompose";
+import { withRouter, Link as RouterLink } from "react-router-dom";
+import {
+  Paper, Grid, List, ListItem, Card, CardContent, CardHeader, CardMedia, Typography, Backdrop, Button, Divider, Link, Stepper, Toolbar, withWidth,
+  Fade, Slide, AppBar
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-
 import themeStyles from "./projects.style";
 import scss from "./projects.module.scss";
 
 import logoImage from "../../assets/images/logo-terminal/logo_transparent_terminal.png";
 
-const LandingPage = (props) => {
+
+const Projects = (props) => {
   const {
     classes,
     width
@@ -24,35 +24,70 @@ const LandingPage = (props) => {
   const panelDirection = width === "xs" ? "column" : "row";
 
   return (
-    <Grid
-      container
-      direction="row"
-      spacing={0}
-      justify="center"
-      alignItems="center"
-      className={classes.background}>
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Paper className={classNames(scss.paper, classes["primary-paper"])}>
-            <CardContent className={scss["landing-page-content"]}>
-              <img src={logoImage} className={scss["landing-page-logo"]} alt="logo"/>
-              <Typography variant='h5' gutterBottom>Hey There!</Typography>
-              <Typography variant='body1'>My name is Dalton Pierce, the insomniac developer behind SleeplessDev! I worked hard to create an aesthetically pleasing, yet functional website
-                that would be indicative of my skill as a developer. Whether you're an employer, prospective client, or a fellow developer, feel free to take a look around.
-                You'll find other examples of my work, contact information, as well as a collection of developer reference material; A compilation of knowledge gathered through my experiences
-                with Software Development, Networking and Firewalls, PC and Server Hardware, and more! Regardless of what brought you here, I hope you leave having learned something
-                new!</Typography>
-            </CardContent>
-          </Paper>
+    <div className={ classes.root }>
+      <Grid item xs={ 8 } className={ classNames(classes.background, scss.transition) }>
+        <Grid container direction={ "column" }>
+          <NavBar {...props} />
+          <Grid item className={ classes.content }>
+
+          </Grid>
+          <Grid item className={ classes.footer }>
+
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
-LandingPage.propTypes = {
+function NavBar(props) {
+  const { width, classes } = props;
+  const panelDirection = width === "xs" ? "column" : "row";
+
+  return (
+    <AppBar color={ "secondary" } position={ "sticky" } elevation={ 0 } className={ scss.appBar }>
+      <Toolbar variant={ "regular" } className={scss.toolbar}>
+        <Grid item xs={ 8 }>
+          <Grid container direction={ "row" } spacing={ 16 } alignContent={ "flex-start" } alignItems={ "flex-start" } justify={ "flex-start" }>
+            <Grid item>
+              <Grid container direction={ "column" } alignItems={ "center" } alignContent={ "center" } justify={ "space-around" }>
+                <div className={ scss.navButtonBar } />
+                <Link component={ RouterLink } noWrap type={ "button" } className={ classes.navButton } aria-label={ "Home Link" } to={ "/" } variant={ "body2" } onClick={ () => {console.log("Clicked home");} }>Home</Link>
+              </Grid>
+            </Grid>
+
+            <Grid item>
+              <Grid container direction={ "column" } alignItems={ "center" } alignContent={ "center" } justify={ "space-around" }>
+                <div className={ scss.navButtonBar } />
+                <Link component={ RouterLink } noWrap type={ "button" } className={ classes.navButton } aria-label={ "Contact Link" } to={ "/contact" } variant={ "body2" } onClick={ () => {console.log("Clicked Contact");} }>Contact</Link>
+              </Grid>
+            </Grid>
+
+            <Grid item>
+              <Grid container direction={ "column" } alignItems={ "center" } alignContent={ "center" } justify={ "space-around" }>
+                <div className={ scss.navButtonBar } />
+                <Link component={ RouterLink } noWrap type={ "button" } className={ classes.navButton } aria-label={ "About Me Link" } to={ "/about-me" } variant={ "body2" } onClick={ () => {console.log("Clicked About Me");} }>About</Link>
+              </Grid>
+            </Grid>
+
+            <Grid item>
+              <Grid container direction={ "column" } alignItems={ "center" } alignContent={ "center" } justify={ "space-around" }>
+                <div className={ scss.navButtonBar } />
+                <Link component={ RouterLink } noWrap type={ "button" } className={ classes.navButton } aria-label={ "Blog Link" } to={ "/blog" } variant={ "body2" } onClick={ () => {console.log("Clicked Blog");} }>Blog</Link>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+  );
+}
+
+Projects.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(LandingPage);
+compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(NavBar);
+
+export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(Projects);
