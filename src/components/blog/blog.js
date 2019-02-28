@@ -137,7 +137,8 @@ class Blog extends React.Component {
   render() {
     const {
       classes,
-      width
+      width,
+      theme
     } = this.props;
 
 
@@ -170,7 +171,9 @@ class Blog extends React.Component {
 
     return (
       <div>
-        <Button autoFocus title={ "Show Archive" } color={ "primary" } aria-label='Show Archive' onClick={ this.toggleArchiveDrawer } variant={"text"} className={ classNames(classes.drawerFab, scss.drawerButton) }>
+        <Button autoFocus title={ "Show Archive" } color={ "primary" } aria-label='Show Archive' onClick={ this.toggleArchiveDrawer } variant={ "text" } className={ classNames(theme.direction === "rtl"
+                                                                                                                                                                                ? classes.drawerFabLeft
+                                                                                                                                                                                : classes.drawerFabRight) }>
           <FaAngleLeft size={ 30 } />
         </Button>
         <Grid
@@ -228,13 +231,14 @@ class Blog extends React.Component {
                 (({ error, loading, data }) => {
                   if (error) {
                     console.error(error);
-                    return <TempDrawerWidget drawerOpen={ archiveDrawerOpen } toggleDrawer={ this.toggleArchiveDrawer } render={ <Typography variant={ "subtitle1" } gutterBottom style={ { marginTop: "50px" } }>Unable to load
-                      archive</Typography> } />;
+                    return <TempDrawerWidget drawerOpen={ archiveDrawerOpen } toggleDrawer={ this.toggleArchiveDrawer } render={
+                      <Typography variant={ "subtitle1" } gutterBottom className={classes.noDataText} >Unable to load
+                        archive</Typography> } />;
                   }
                   else if (loading || !data) return null;
                   else {
                     return <TempDrawerWidget drawerOpen={ archiveDrawerOpen } toggleDrawer={ this.toggleArchiveDrawer } render={
-                      <ArchiveDrawer classes={ classes } archiveNodes={ data.blogStats } toggleDrawer={ this.toggleArchiveDrawer } setMonthAndYear={ this.setMonthAndYear } /> } />;
+                      <ArchiveDrawer classes={ classes } theme={ theme } archiveNodes={ data.blogStats } toggleDrawer={ this.toggleArchiveDrawer } setMonthAndYear={ this.setMonthAndYear } /> } />;
                   }
                 })
               }
@@ -248,7 +252,7 @@ class Blog extends React.Component {
 
 
 function ArchiveDrawer(props) {
-  const { archiveNodes, classes, setMonthAndYear, toggleDrawer } = props;
+  const { archiveNodes, classes, setMonthAndYear, toggleDrawer, theme } = props;
 
   let allStates = [];
 
@@ -262,8 +266,8 @@ function ArchiveDrawer(props) {
         component={ "nav" }
         subheader={
           <Grid container direction={ "row" } alignItems={ "center" } justify={ "space-between" } spacing={ 16 }>
-            <Grid item> <Typography gutterBottom component={ "div" } variant={ "subtitle1" } style={ { paddingLeft: "0.7rem" } }>Archive</Typography></Grid>
-            <Grid item><Typography variant={ "subtitle2" } gutterBottom component={ "div" } style={ { paddingRight: "2.9rem" } }>
+            <Grid item> <Typography gutterBottom component={ "div" } variant={ "subtitle1" } className={ theme.direction === "rtl" ? classes.archiveTextRtl : classes.archiveText }>Archive</Typography></Grid>
+            <Grid item><Typography variant={ "subtitle2" } gutterBottom component={ "div" } className={ theme.direction === "rtl" ? classes.countTextRtl : classes.countText }>
               <small>Count</small>
             </Typography></Grid>
           </Grid>
@@ -296,7 +300,7 @@ function ArchiveDrawer(props) {
                           </Typography>
                         </Grid>
                         <Grid item>
-                          { !open ? <ExpandMore className={scss["expand-more-icon"]} /> : <ExpandMore className={classNames(scss["expand-more-icon"], scss.rotate)} /> }
+                          { !open ? <ExpandMore className={ scss["expand-more-icon"] } /> : <ExpandMore className={ classNames(scss["expand-more-icon"], scss.rotate) } /> }
                         </Grid>
                       </Grid>
                     </Grid>
@@ -325,7 +329,7 @@ function ArchiveDrawer(props) {
           })
         }
       </List>
-      <Button autoFocus variant={"text"} title={ "Hide Archive" } color={ "primary" } aria-label='Hide Archive' onClick={ toggleDrawer } style={ { position: "fixed", bottom: "10px", left: "10px" } }>
+      <Button autoFocus variant={ "text" } title={ "Hide Archive" } color={ "primary" } aria-label='Hide Archive' onClick={ toggleDrawer } className={ theme.direction === 'rtl' ? classes.closeDrawerButtonRtl : classes.closeDrawerButton }  >
         <FaAngleRight size={ 30 } />
       </Button>
     </div>
@@ -342,7 +346,8 @@ ArchiveDrawer.propTypes = {
 
 Blog.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 // withStyles(themeStyles, { withTheme: true })(ArchiveDrawer);

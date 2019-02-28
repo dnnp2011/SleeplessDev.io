@@ -8,9 +8,6 @@ const styles = theme => ({
   'primary-card': {
     background: theme.palette.primary.light,
   },
-  appBar: {
-    backgroundColor: 'transparent'
-  },
   navButton: {
     textDecoration: 'none',
     color: theme.palette.text.primary,

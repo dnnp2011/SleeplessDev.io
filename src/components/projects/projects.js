@@ -44,7 +44,18 @@ function NavBar(props) {
   const { width, classes } = props;
   const panelDirection = width === "xs" ? "column" : "row";
 
+
   return (
+    <nav>
+      <Grid container direction={"row"} spacing={16} alignContent={"flex-start"} justify={"center"} className={scss.appBar}>
+        <Grid item>
+
+        </Grid>
+      </Grid>
+    </nav>
+  );
+
+ /* return (
     <AppBar color={ "secondary" } position={ "sticky" } elevation={ 0 } className={ scss.appBar }>
       <Toolbar variant={ "regular" } className={scss.toolbar}>
         <Grid item xs={ 8 }>
@@ -80,7 +91,7 @@ function NavBar(props) {
         </Grid>
       </Toolbar>
     </AppBar>
-  );
+  );*/
 }
 
 Projects.propTypes = {

@@ -67,22 +67,24 @@ function BlogOverview(props) {
         </ListItem>
         {
           !tag
-          ? <Query query={ GET_BLOGS } variables={ { month, year } } >
+          ? <Query query={ GET_BLOGS } variables={ { month, year } } pollInterval={ 600000 }>
             {
               ({ loading, error, data }) => {
                 if (error) new Error(error);
-                if (loading || !data) return null;
+                if (loading) return null;
+                else if (!data) return <WarningSign label={ "No data received from server" } />;
                 else if (!blogData || readyToRefresh) {
                   return renderBlogs(data.blogsByMonth);
                 }
               }
             }
           </Query>
-          : <Query query={ GET_BLOGS_BY_TAG } variables={ {tag} } >
+          : <Query query={ GET_BLOGS_BY_TAG } variables={ { tag } } pollInterval={ 600000 }>
             {
               ({ loading, error, data }) => {
                 if (error) new Error(error);
-                if (loading || !data) return null;
+                if (loading) return null;
+                else if (!data) return <WarningSign label={ "No data received from server" } />;
                 else if (!blogData || readyToRefresh) {
                   return renderBlogs(data.blogsByTag);
                 }
@@ -99,7 +101,7 @@ function BlogOverview(props) {
       return blogData.map(blog => {
         let { author, body, ...rest } = blog;
 
-        setTimeout(() => readyToRefresh = true, 59000);
+        setTimeout(() => readyToRefresh = true, 590000);
         return (
           <ListItem className={ classes.listItem } disableGutters key={ blog._id }>
             <BlogCard { ...rest } setBlogId={ setBlogId } />
@@ -107,7 +109,7 @@ function BlogOverview(props) {
         );
       });
     }
-    else return <WarningSign label={"No blogs available within the given parameters"} />;
+    else return <WarningSign label={ "No blogs available within the given parameters" } />;
   }
 }
 
