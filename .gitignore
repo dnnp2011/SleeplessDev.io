@@ -33,6 +33,7 @@ yarn-error.log*
 /.vscode
 .vscode*
 */.vscode*
+**/.vscode
 *.editorconfig*
 *.env*
 */graphql*
@@ -43,11 +44,20 @@ graphql*.json
 **/graphql*.json
 ./graphql.config.json
 
-# atom package files
+# linter config
 *.eslint*
 .eslint
 *.tag*
 .tag
+**/.eslint
 
 # Project Specific Firebase Config
 /src/firebase/config.js
+
+# exclude config data and env variables
+./keys
+./keys/*
+/keys
+keys.js
+nodemon.json
+*nodemon.json
