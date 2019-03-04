@@ -1,21 +1,15 @@
-import { Divider, Grid, List, ListItem, Typography, withStyles, withWidth } from "@material-ui/core";
-import PropTypes from "prop-types";
-import React, { Component, PureComponent } from "react";
-import { withRouter } from "react-router-dom";
-import compose from "recompose/compose";
-import { FaExclamationTriangle } from "react-icons/fa";
-import dayjs from "dayjs";
-import SpinnerWidget from "../../../widgets/spinner-widget/spinner-widget.component";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import { getStringFromMonth } from "../../../../helpers/Util";
-import { ApolloConsumer } from "react-apollo";
-import WarningSign from "../../../widgets/warning-sign-widget/warning-sign-widget.component";
-import { convertTimestampToDate } from "../../../../helpers/Util";
+import { Divider, Grid, List, ListItem, Typography, withStyles, withWidth } from '@material-ui/core';
+import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Query } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
+import { getStringFromMonth } from '../../../../helpers/Util';
+import WarningSign from '../../../widgets/warning-sign-widget/warning-sign-widget.component';
 
-import BlogCard from "../blog-card/blog-card.component";
-import themeStyles from "./blog-overview.theme.style";
-import scss from "../../blog.module.scss";
+import BlogCard from '../blog-card/blog-card.component';
+import themeStyles from './blog-overview.theme.style';
 
 
 function BlogOverview(props) {
@@ -39,27 +33,27 @@ function BlogOverview(props) {
   `;
 
   return (
-    <Grid container direction={ "column" } spacing={ 16 } alignContent={ "center" } justify={ "center" } className={ classes.blogCardList }>
-      <List className={ classes.listItem }>
-        <ListItem className={ classes.listItem } disableGutters key={ 0 }>
-          <Grid container direction={ "row" } alignContent={ "center" } justify={ "center" }>
+    <Grid container direction={'column'} spacing={16} alignContent={'center'} justify={'center'} className={classes.blogCardList}>
+      <List className={classes.listItem}>
+        <ListItem className={classes.listItem} disableGutters key={0}>
+          <Grid container direction={'row'} alignContent={'center'} justify={'center'}>
             <Grid item>
-              <Grid container spacing={ 8 } direction={ "column" } alignContent={ "center" } justify={ "center" }>
+              <Grid container spacing={8} direction={'column'} alignContent={'center'} justify={'center'}>
                 <Grid item>
-                  <Typography variant={ "h6" } component={ "h3" } gutterBottom>
+                  <Typography variant={'h6'} component={'h3'} gutterBottom>
                     Blog Overview
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Grid container spacing={ 16 } direction={ "row" } alignContent={ "center" } justify={ "space-evenly" }>
-                    { month || year || tag ? <Typography variant={ "caption" } component={ "h6" }>Filters:</Typography> : null }
-                    { month ? <Typography variant={ "caption" } component={ "h6" }>{ getStringFromMonth(month) }</Typography> : null }
-                    { year ? <Typography variant={ "caption" } component={ "h6" }>{ year }</Typography> : null }
-                    { tag ? <Typography variant={ "caption" } component={ "h6" }>{ tag }</Typography> : null }
+                  <Grid container spacing={16} direction={'row'} alignContent={'center'} justify={'space-evenly'}>
+                    {month || year || tag ? <Typography variant={'caption'} component={'h6'}>Filters:</Typography> : null}
+                    {month ? <Typography variant={'caption'} component={'h6'}>{getStringFromMonth(month)}</Typography> : null}
+                    {year ? <Typography variant={'caption'} component={'h6'}>{year}</Typography> : null}
+                    {tag ? <Typography variant={'caption'} component={'h6'}>{tag}</Typography> : null}
                   </Grid>
                 </Grid>
                 <Grid item>
-                  <Divider variant={ "fullWidth" } color={ "primary" } />
+                  <Divider variant={'fullWidth'} color={'primary'} />
                 </Grid>
               </Grid>
             </Grid>
@@ -67,30 +61,33 @@ function BlogOverview(props) {
         </ListItem>
         {
           !tag
-          ? <Query query={ GET_BLOGS } variables={ { month, year } } pollInterval={ 600000 }>
-            {
-              ({ loading, error, data }) => {
-                if (error) new Error(error);
-                if (loading) return null;
-                else if (!data) return <WarningSign label={ "No data received from server" } />;
-                else if (!blogData || readyToRefresh) {
-                  return renderBlogs(data.blogsByMonth);
+            ? <Query query={GET_BLOGS} variables={{
+              month,
+              year
+            }} pollInterval={600000}>
+              {
+                ({ loading, error, data }) => {
+                  if (error) new Error(error);
+                  if (loading) return null;
+                  else if (!data) return <WarningSign label={'No data received from server'} />;
+                  else if (!blogData || readyToRefresh) {
+                    return renderBlogs(data.blogsByMonth);
+                  }
                 }
               }
-            }
-          </Query>
-          : <Query query={ GET_BLOGS_BY_TAG } variables={ { tag } } pollInterval={ 600000 }>
-            {
-              ({ loading, error, data }) => {
-                if (error) new Error(error);
-                if (loading) return null;
-                else if (!data) return <WarningSign label={ "No data received from server" } />;
-                else if (!blogData || readyToRefresh) {
-                  return renderBlogs(data.blogsByTag);
+            </Query>
+            : <Query query={GET_BLOGS_BY_TAG} variables={{ tag }} pollInterval={600000}>
+              {
+                ({ loading, error, data }) => {
+                  if (error) new Error(error);
+                  if (loading) return null;
+                  else if (!data) return <WarningSign label={'No data received from server'} />;
+                  else if (!blogData || readyToRefresh) {
+                    return renderBlogs(data.blogsByTag);
+                  }
                 }
               }
-            }
-          </Query>
+            </Query>
         }
       </List>
     </Grid>
@@ -99,23 +96,29 @@ function BlogOverview(props) {
   function renderBlogs(blogData) {
     if (!!blogData.length) {
       return blogData.map(blog => {
-        let { author, body, ...rest } = blog;
+        const { author, body, ...rest } = blog;
 
-        setTimeout(() => readyToRefresh = true, 590000);
+        setTimeout(() => {
+          readyToRefresh = true;
+        }, 590000);
         return (
-          <ListItem className={ classes.listItem } disableGutters key={ blog._id }>
-            <BlogCard { ...rest } setBlogId={ setBlogId } />
+          <ListItem className={classes.listItem} disableGutters key={blog._id}>
+            <BlogCard {...rest} setBlogId={setBlogId} />
           </ListItem>
         );
       });
     }
-    else return <WarningSign label={ "No blogs available within the given parameters" } />;
+    else return <WarningSign label={'No blogs available within the given parameters'} />;
   }
 }
 
 
 BlogOverview.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  setBlogId: PropTypes.func.isRequired,
+  month: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  tag: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(BlogOverview);

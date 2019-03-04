@@ -1,62 +1,218 @@
-.panel {
-  opacity: 0;
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-}
+// Theme colors
+// Background blue/green gradient
+// Primary color deep green
+// Accent color bright orange
+// Secondary color light green / blue
+// Font, white
+$backgroundBaseColor: #03a9f4;
+$primaryColor: #4caf50;
+$secondaryColor: #8bc34a;
+$primaryAccent: #ff5722;
+$secondaryAccent: #ff9800;
+$primaryFont: #777;
+$secondaryFont: #fff;
 
-.paper {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 24px;
-}
+$lightGreen: #7ed56f;
+$mediumGreen: #55c57a;
+$darkGreen: #28b485;
+$greenOpacityGradient: linear-gradient(to bottom right, rgba(115, 176, 115, 0.5), rgba(115, 176, 115, 1));
+$themeOpacityGradient: linear-gradient(to bottom right, rgba(127, 212, 112, 0.75), rgba(40, 180, 133, 0.86));
+$lightGreenGradient: linear-gradient(to bottom right, $lightGreen, $mediumGreen, $darkGreen);
 
-.appBar {
-  margin-top: 50px;
-  justify-content: center;
-  display: flex;
-  -ms-flex: auto;
-  flex: 0 1 auto;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-.navBar {
-  height: 2rem;
-}
-
-.toolbar {
-  padding: 0;
+* {
+  // Clear any browser-specific formatting
   margin: 0;
-  margin-left: 10%;
-}
-
-.navButtonBar {
-  width: 2rem;
-  height: 2px;
-  background-color: black;
-  margin-bottom: 1px;
-}
-
-.transition {
   padding: 0;
-  position: relative;
-  z-index: 1;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  //  Set page-wide font
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16pt;
+  line-height: 1.7;
+  color: $primaryFont;
+  padding: 1.3rem;
+}
+
+.root {
+  height: calc(100vh);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  background-color: #ffffff;
+}
+
+.mainPanel {
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  flex-grow: inherit;
   animation: background-transition 1s forwards 600ms 1;
+  -webkit-animation: background-transition 1s forwards 600ms 1;
+  -o-animation: background-transition 1s forwards 600ms 1;
   transform: translateY(20px);
   opacity: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
+
+.header {
+
+  height: 95vh;
+  background-image: $themeOpacityGradient,
+  url("../../assets/images/stock/apple-desk-2k.jpg");
+  background-attachment: local;
+  //background-size: 100vw 95vh;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  .logo {
+    margin: 2rem;
+  }
+
+  .titleContainer {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+
+    .headerTitle {
+      font-size: 50pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      color: $secondaryFont;
+      letter-spacing: 15pt;
+      text-shadow: 3px 3px 8px rgba(93, 121, 95, 0.85);
+      -webkit-animation: title-transition 1s ease-out 800ms forwards 1;
+      -o-animation: title-transition 1s ease-out 800ms forwards 1;
+      animation: title-transition 1s ease-out 800ms forwards 1;
+      -webkit-transform: translateX(60px);
+      -moz-transform: translateX(60px);
+      -ms-transform: translateX(60px);
+      -o-transform: translateX(60px);
+      transform: translateX(60px);
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .headerSubtitle {
+      font-size: 38pt;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      color: $secondaryFont;
+      letter-spacing: 3pt;
+      text-shadow: 2px 2px 4px rgba(93, 121, 95, 0.85);
+      -webkit-animation: subtitle-transition 1s ease-out 800ms forwards 1;
+      -o-animation: subtitle-transition 1s ease-out 800ms forwards 1;
+      animation: subtitle-transition 1s ease-out 800ms forwards 1;
+      -webkit-transform: translateX(-60px);
+      -moz-transform: translateX(-60px);
+      -ms-transform: translateX(-60px);
+      -o-transform: translateX(-60px);
+      transform: translateX(-60px);
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+.content {
+  margin: 50px;
+  padding: 10px;
+}
+
+//* {
+//  border: 1px solid #f00 !important;
+//}
 
 @keyframes background-transition {
   0% {
+    -webkit-transform: translateY(20px);
+    -moz-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    -o-transform: translateY(20px);
     transform: translateY(20px);
     opacity: 0;
   }
   100% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes title-transition {
+  0% {
+    -webkit-transform: translateX(60px);
+    -moz-transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    -o-transform: translateX(60px);
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: translateX(-5px);
+    -moz-transform: translateX(-5px);
+    -ms-transform: translateX(-5px);
+    -o-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle-transition {
+  0% {
+    -webkit-transform: translateX(-60px);
+    -moz-transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    -o-transform: translateX(-60px);
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
