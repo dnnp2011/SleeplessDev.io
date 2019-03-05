@@ -45,11 +45,8 @@ graphql*.json
 ./graphql.config.json
 
 # linter config
-*.eslint*
-.eslint
 *.tag*
 .tag
-**/.eslint
 
 # Project Specific Firebase Config
 /src/firebase/config.js
