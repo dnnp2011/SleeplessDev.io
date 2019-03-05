@@ -75,9 +75,7 @@ class Demo extends React.Component {
   };
 
   render() {
-    const {
-      classes, index, js: DemoComponent, raw
-    } = this.props;
+    const {classes, index, js: DemoComponent, raw} = this.props;
     const { codeOpen } = this.state;
 
     return (
@@ -87,7 +85,7 @@ class Demo extends React.Component {
           <Tooltip
             id={`demo-source-${index}`}
             title={codeOpen ? 'Hide the source' : 'Show the source'}
-            placement="top"
+            placement='top'
           >
             <IconButton onClick={this.handleClickCodeOpen} aria-labelledby={`demo-source-${index}`}>
               <CodeIcon />
@@ -95,7 +93,7 @@ class Demo extends React.Component {
           </Tooltip>
         </div>
         <Collapse in={codeOpen} unmountOnExit>
-          <MarkdownElement dir="ltr" className={classes.code} text={`\`\`\`jsx\n${raw}\n\`\`\``} />
+          <MarkdownElement dir='ltr' className={classes.code} text={`\`\`\`jsx\n${raw}\n\`\`\``} />
         </Collapse>
         <div className={classes.demo}>
           <DemoComponent />

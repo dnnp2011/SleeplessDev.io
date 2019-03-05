@@ -1,95 +1,94 @@
-import ForumIcon from "@material-ui/icons/Forum";
-import HomeIcon from "@material-ui/icons/Home";
-import PhoneIcon from "@material-ui/icons/PermPhoneMsg";
-import PersonIcon from "@material-ui/icons/Person";
-import SchoolIcon from "@material-ui/icons/School";
-import WorkIcon from "@material-ui/icons/Work";
-import React from "react";
-import { FaBitcoin, FaChartLine } from "react-icons/fa";
+import ForumIcon from '@material-ui/icons/Forum';
+import HomeIcon from '@material-ui/icons/Home';
+import PhoneIcon from '@material-ui/icons/PermPhoneMsg';
+import PersonIcon from '@material-ui/icons/Person';
+import SchoolIcon from '@material-ui/icons/School';
+import WorkIcon from '@material-ui/icons/Work';
+import React from 'react';
+import { FaBitcoin, FaChartLine } from 'react-icons/fa';
 
-import themes from "./themes";
-
+import themes from './themes';
 
 export const configuredTheme = themes[0].theme;
 
 export const configuredLayout = {
-  currentLayout : "classic",
-  notificationsOpen : false
+  currentLayout: 'classic',
+  notificationsOpen: false,
 };
 
 const iconStyle = {
-  fontSize : 16
+  fontSize: 16,
 };
 
 export const menuItems = [
   {
-    title : "Home",
-    href : "/",
-    icon : <HomeIcon style={ iconStyle } />
+    title: 'Home',
+    href: '/',
+    icon: <HomeIcon style={iconStyle} />,
   },
   {
-    title : "About Me",
-    href : "/about-me",
-    icon : <PersonIcon style={ iconStyle } />
+    title: 'About Me',
+    href: '/about-me',
+    icon: <PersonIcon style={iconStyle} />,
   },
   {
-    title : "My Projects",
-    href : "/projects",
-    icon : <WorkIcon style={ iconStyle } />
+    title: 'My Projects',
+    href: '/projects',
+    icon: <WorkIcon style={iconStyle} />,
   },
   {
-    title : "Contact",
-    href : "/contact",
-    icon : <PhoneIcon style={ iconStyle } />
+    title: 'Contact',
+    href: '/contact',
+    icon: <PhoneIcon style={iconStyle} />,
   },
   {
-    title : "Blog",
-    href : "/blog",
-    icon : <ForumIcon style={ iconStyle } />
+    title: 'Blog',
+    href: '/blog',
+    icon: <ForumIcon style={iconStyle} />,
   },
   {
-    title : "Developer Resources",
-    type : "header"
+    title: 'Developer Resources',
+    type: 'header',
   },
   {
-    title : "Reference",
-    href : "/resources/reference",
-    icon : <WorkIcon style={ iconStyle } />
+    title: 'Reference',
+    href: '/resources/reference',
+    icon: <WorkIcon style={iconStyle} />,
   },
   {
-    title : "Tutorials",
-    href : "/resources/tutorials",
-    icon : <SchoolIcon style={ iconStyle } />
+    title: 'Tutorials',
+    href: '/resources/tutorials',
+    icon: <SchoolIcon style={iconStyle} />,
   },
   {
-    title : "Financial Markets",
-    type : "header"
+    title: 'Financial Markets',
+    type: 'header',
   },
   {
-    title : "Stock Market",
-    href : "/markets/stock",
-    icon : <FaChartLine style={ iconStyle } />
+    title: 'Stock Market',
+    href: '/markets/stock',
+    icon: <FaChartLine style={iconStyle} />,
   },
   {
-    title : "Crypto Market",
-    href : "/markets/crypto",
-    icon : <FaBitcoin style={ iconStyle } />
-  }
+    title: 'Crypto Market',
+    href: '/markets/crypto',
+    icon: <FaBitcoin style={iconStyle} />,
+  },
 ];
 
 /* Pages that require Toolbar Labels but should not be linked on the navbar */
 export const hiddenMenuItems = [
   {
-    title : "Admin Login",
-    href : "/admin/login"
+    title: 'Admin Login',
+    href: '/admin/login',
   },
   {
-    title: "Admin Dashboard",
-    href: "/admin/dashboard"
+    title: 'Admin Dashboard',
+    href: '/admin/dashboard',
   },
   {
-    title: "Blog Entry",
-    href: "/blog/:id",
+    title: 'Blog Entry',
+    href: '/blog/:id',
   },
 ];
 /*export const menuItems = [{
