@@ -1,0 +1,5 @@
+@import '../abstracts/variables';
+
+@function degrees_to_rads($degrees) {
+	@return $degree / (2 * $PI);
+}

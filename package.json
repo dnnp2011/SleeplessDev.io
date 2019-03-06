@@ -15,6 +15,7 @@
     "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.6",
+    "devicon": "^2.0.0",
     "downshift": "^3.2.2",
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.10.0",

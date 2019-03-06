@@ -1,0 +1,15 @@
+@import '../abstracts/mixins';
+@import '../base/animations';
+@import '../abstracts/variables';
+
+.panel {
+  @include transform(translateY(4rem));
+  @include animate(animation__slide-up 1s forwards 600ms 1);
+  @include border-radius(0px);
+  background: $off-white;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  opacity: 0;
+}

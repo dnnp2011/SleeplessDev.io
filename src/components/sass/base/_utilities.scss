@@ -1,0 +1,9 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+@mixin center {
+	display: flex;
+	align-content: center;
+	align-self: center;
+	justify-content: center;
+}

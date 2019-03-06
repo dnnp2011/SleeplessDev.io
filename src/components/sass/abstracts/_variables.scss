@@ -1,0 +1,33 @@
+// Images
+$apple-desk-2k: url('../../assets/images/stock/apple-desk-1920x1280.jpg');
+
+// Fonts
+$defaultFont: 1.6rem;
+
+// Colors
+$backgroundBaseColor: #03a9f4;
+$primaryColor: #4caf50;
+$secondaryColor: #8bc34a;
+$primaryAccent: #ff5722;
+$secondaryAccent: #ff9800;
+$primaryFont: #777;
+$secondaryFont: #fff;
+$shadow--dark: rgba(#000, 0.3);
+$shadow: rgba(#000, 0.2);
+$shadow--light: rgba(#000, 0.1);
+$off-white: #f7f7f7;
+
+$lightGreen: #7ed56f;
+$mediumGreen: #55c57a;
+$darkGreen: #28b485;
+$greenOpacityGradient: linear-gradient(to bottom right, rgba(115, 176, 115, 0.5), rgba(115, 176, 115, 1));
+$themeOpacityGradient: linear-gradient(to bottom right, rgba(127, 212, 112, 0.75), rgba(40, 180, 133, 0.86));
+$lightGreenGradient: linear-gradient(to bottom right, $lightGreen, $mediumGreen, $darkGreen);
+
+// Breakpoints
+$break-small: 320px;
+$break-large: 1024px;
+
+// Constants
+$PI: 3.14159265;
+$BASE_FONT_SIZE: 10;
