@@ -1,23 +1,80 @@
-import { Grid, Paper, withWidth, Button, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography, withWidth } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { isWidthDown } from '@material-ui/core/withWidth';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { FaNode, FaSass, FaHtml5, FaCss3, FaCss3Alt, FaPython, FaGit } from 'react-icons/fa';
-import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoMdGitBranch } from 'react-icons/io';
-import classNames from 'classnames';
-import scss from './projects.module.scss';
-import themeStyles from './projects.style';
 import whiteLogo from '../../assets/images/logo-terminal/white_logo_transparent_no_text_minified.png';
-import devStock1 from '../../assets/images/stock/web-dev-stock-800x533.jpg';
 import devStock2 from '../../assets/images/stock/web-dev-stock-3-800x533.jpg';
 import devStock3 from '../../assets/images/stock/web-dev-stock-4-800x533.jpg';
-import 'devicon';
+import devStock1 from '../../assets/images/stock/web-dev-stock-800x533.jpg';
+import * as devicons from '../widgets/svg-icon/Devicons';
+import SvgIcon from '../widgets/svg-icon/SvgIcon';
+import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
+import scss from './projects.module.scss';
+import themeStyles from './projects.style';
+
 
 const Projects = props => {
+
   const { classes, width } = props;
 
+  const iconCategories = {
+    languages: [
+      devicons.Javascript.plain,
+      devicons.Java.plain,
+      devicons.Ruby.plain,
+      devicons.CSharp.plain,
+      devicons.Html5.plain,
+      devicons.Python.plain,
+      devicons.Css3.plain,
+      devicons.Php.plain,
+      devicons.Typescript.plain,
+      devicons.MySql.plain
+    ],
+    frontend: [
+      devicons.Bootstrap.plain,
+      devicons.Jquery.plain,
+      devicons.Sass.plain,
+      devicons.React.plain
+    ],
+    backend: [
+      devicons.Apache.plain,
+      devicons.Debian.plain,
+      devicons.Linux.plain,
+      devicons.Django.plain,
+      devicons.Docker.plain,
+      devicons.NodeJs.plain,
+      devicons.Express.plain,
+      devicons.MongoDb.plain,
+      devicons.Nginx.plain,
+      devicons.Redhat.plain,
+      devicons.Ubuntu.plain
+    ],
+    mobile: [devicons.Android.plain],
+    tools: [
+      devicons.AmazonWebServices.plain,
+      devicons.ChromeDevTools.plain,
+      devicons.Git.plain,
+      devicons.Ssh.plain
+    ],
+    other: [
+      devicons.Atom.plain,
+      devicons.Bitbucket.plain,
+      devicons.Github.plain,
+      devicons.Trello.plain,
+      devicons.Gimp.plain,
+      devicons.IntelliJ.plain,
+      devicons.Webstorm.plain,
+      devicons.PhpStorm.plain,
+      devicons.PyCharm.plain,
+      devicons.Vim.plain,
+      devicons.VisualStudio.plain,
+      devicons.Windows.plain
+    ]
+  };
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
@@ -34,6 +91,7 @@ const Projects = props => {
               alignItems={'center'}
               alignContent={'center'}
               justify={'center'}>
+              <ParticleSystemCanvas />
               <Grid container direction={'row'} alignContent={'flex-start'} justify={'flex-start'}>
                 <img
                   color={'inherit'}
@@ -41,7 +99,7 @@ const Projects = props => {
                   aria-label={'SleeplessDev Logo'}
                   alt={'SleeplessDev Logo'}
                   src={whiteLogo}
-                  className={scss.header__logo}
+                  className={scss['header__logo']}
                 />
               </Grid>
               <Grid
@@ -54,8 +112,8 @@ const Projects = props => {
                 <Grid item>
                   <Grid container direction={'column'} spacing={16} className={scss['header__text-container']}>
                     <h1 className={scss['heading-primary']}>
-                      <span className={scss['heading-primary__title']}>SleeplessDev</span>
-                      <span className={scss['heading-primary__subtitle']}>Wake up to the possibilities</span>
+                      <span className={scss['heading-primary__title']}>Dalton Pierce</span>
+                      <span className={scss['heading-primary__subtitle']}>Full Stack Developer</span>
                     </h1>
                     <a
                       className={classNames(scss.btn, scss['heading-primary__btn'], scss['btn--grow-in'])}
@@ -82,21 +140,23 @@ const Projects = props => {
                   spacing={16}
                   alignItems={'center'}>
                   <Grid item>
-                    <Typography
-                      font={'inherit'}
-                      color={'inherit'}
-                      variant={'h2'}
-                      component={'h2'}
-                      className={scss['heading-secondary']}
-                      gutterBottom>
-                      A bit about me
-                    </Typography>
+                    <div className={scss['heading-secondary']}>
+                      <Typography
+                        font={'inherit'}
+                        color={'inherit'}
+                        variant={'h2'}
+                        component={'h2'}
+                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--gradient'])}
+                        gutterBottom>
+                        A bit about me
+                      </Typography>
+                    </div>
                   </Grid>
 
                   <Grid item>
                     <Grid
                       container
-                      direction={width === 'xs' ? 'column' : 'row'}
+                      direction={panelDirection}
                       spacing={width === 'xs' ? 32 : 0}
                       justify={'space-between'}>
                       <Grid item sm>
@@ -118,9 +178,10 @@ const Projects = props => {
                                 className={scss.paragraph}
                                 gutterBottom
                                 variant={'body1'}>
-                                I'm a self-taught full stack developer with a diverse range of skills revolving around
-                                computer software and hardware.I'm passionate about learning at every opportunity, as
-                                such, I've gained experience using many programming and scripting languages, frameworks,
+                                I\'m a self-taught full stack developer with a diverse range of skills revolving around
+                                computer software and hardware. I'm passionate about learning at every opportunity, as
+                                such, I\'ve gained experience using many programming and scripting languages,
+                                frameworks,
                                 tools, and platforms.
                               </Typography>
                             </Grid>
@@ -160,7 +221,7 @@ const Projects = props => {
                       <Grid item sm>
                         <Grid
                           container
-                          direction={width === 'xs' ? 'row' : 'column'}
+                          direction={panelDirection}
                           alignContent={'center'}
                           justify={'center'}
                           style={{ marginBottom: width === 'xs' ? '10rem' : '2rem' }}
@@ -194,25 +255,30 @@ const Projects = props => {
               </section>
 
               <section className={scss['section-skills']}>
-                <Grid container direction={'column'} spacing={0} alignContent={'center'} justify={'center'}>
+                <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'flex-start'} justify={'center'} style={{ marginBottom: '10rem' }}>
                   <Grid item>
-                    <Grid container direction={'row'} spacing={32} alignContent={'center'} justify={'space-evenly'}>
-                      <Grid item xs>
-                        <div className={scss['feature-box']}>
-                          <Typography
-                            className={classNames(scss['heading-tertiary'], scss.center)}
-                            variant={'h3'}
-                            component={'h3'}
-                            font={'inherit'}
-                            color={'inherit'}
-                            gutterBottom>
-                            Languages
-                          </Typography>
-                          <div className={'feature-box__icon-box'}>
-
-                          </div>
-                        </div>
-                      </Grid>
+                    <div className={scss['heading-secondary']} style={{ marginTop: '2rem' }}>
+                      <Typography
+                        font={'inherit'}
+                        color={'inherit'}
+                        variant={'h2'}
+                        component={'h2'}
+                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--white'])}
+                        gutterBottom>
+                        Skills
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <Grid container direction={isWidthDown('sm', width, true) ? 'column' : 'row'} spacing={32} alignContent={'center'} alignItems={'stretch'} justify={'space-evenly'}>,
+                      {
+                        Object.keys(iconCategories)
+                          .map(category =>
+                            <Grid item key={category} xs>
+                              <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                            </Grid>
+                          )
+                      }
                     </Grid>
                   </Grid>
                 </Grid>
@@ -225,34 +291,48 @@ const Projects = props => {
   );
 };
 
-function NavBar(props) {
-  const { width, classes } = props;
-  const panelDirection = width === 'xs' ? 'column' : 'row';
+function SkillBox(props) {
+  const { scss, icons, category } = props;
 
   return (
-    <nav>
-      <Grid
-        container
-        direction={'row'}
-        spacing={16}
-        alignContent={'flex-start'}
-        justify={'center'}
-        className={scss.appBar}>
-        <Grid item />
-      </Grid>
-    </nav>
+    <div className={classNames(scss['feature-box'], scss['unskew'])}>
+      <Typography
+        className={classNames(scss['heading-tertiary'], scss['heading-tertiary--feature'], scss.center)}
+        variant={'h3'}
+        component={'h3'}
+        font={'inherit'}
+        color={'inherit'}
+        gutterBottom>
+        {category}
+      </Typography>
+      <ul className={scss['icon-list']}>
+        {
+          icons.map(icon => (<li key={icon.name}>
+            <div className={scss['hover-icon']}>
+              <SvgIcon aria-labelledby={scss['hover-icon__label']} title={icon.name} svgClass={scss['hover-icon']} size={'6rem'} gradientDirection={'horizontal'} backgroundStroke={icon.background} />
+              <Typography variant={'body1'} component={'p'} className={scss['hover-icon__label']} font={'inherit'} color={'inherit'} align={'center'}>{icon.name}</Typography>
+            </div>
+          </li>))
+        }
+      </ul>
+    </div>
   );
 }
 
 Projects.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired
 };
-NavBar.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired,
+SkillBox.propTypes = {
+  scss: PropTypes.shape({}).isRequired,
+  icons: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+  })).isRequired,
+  category: PropTypes.string.isRequired
 };
 
-compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(NavBar);
+compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(SkillBox);
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(Projects);

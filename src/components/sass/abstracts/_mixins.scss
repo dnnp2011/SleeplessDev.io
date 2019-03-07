@@ -71,15 +71,18 @@
   @include transform(skewY(0.01turn) skewX(-0.02turn) scale(1.1));
 }
 
+@mixin grow-on-hover {
+  @include transform(scale(1.1) translateY(-2px));
+}
+
 @mixin section {
   margin: 1rem;
 }
 
-@mixin relative-icon($top, $left) {
+@mixin relative-icon($left, $top) {
+  display: inline-block;
   content: '';
   position: absolute;
   top: $top;
   left: $left;
-  margin: 3px;
-  background-color: $lightGreenGradient;
 }

@@ -229,6 +229,8 @@
     "import/no-named-as-default": "off",
     "react/boolean-prop-naming": "warn",
     "react/prop-types": "warn",
+    "react/no-unescaped-entities": "off",
+    "react/display-name": "off",
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/anchor-is-valid": "off"
   },

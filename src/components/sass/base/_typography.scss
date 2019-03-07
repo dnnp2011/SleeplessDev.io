@@ -1,4 +1,6 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import "../base/animations";
 
 body {
   //  Set page font
@@ -7,3 +9,108 @@ body {
   line-height: 1.7;
   color: $primaryFont;
 }
+
+.heading-primary {
+  text-transform: uppercase;
+  font-family: inherit;
+
+  &__title {
+    @include style-header-text($secondaryFont);
+    @include animate(animation__slide-in-left--bounce 1s ease-out 800ms forwards 1);
+    @include transform(translateX(6rem));
+    font-size: 8rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 3rem;
+    text-shadow: 0.3rem 0.5rem 0.8rem $shadow;
+  }
+
+  &__subtitle {
+    @include style-header-text($secondaryFont);
+    @include animate(animation__slide-in-right--bounce 1s ease-out 800ms forwards 1);
+    @include transform(translateX(-6rem));
+    font-size: 5rem;
+    font-weight: 300;
+    margin: 0 0 2.5rem 0;
+    letter-spacing: 0.4rem;
+    text-shadow: 0.3rem 0.5rem 0.7rem $shadow;
+  }
+
+  &__btn {
+    background-color: $secondaryFont;
+    color: $primaryFont;
+    align-self: center;
+    font-size: 1.7rem;
+
+    &::after {
+      background-color: $secondaryFont;
+    }
+  }
+}
+
+.heading-secondary {
+  display: inline-block;
+  margin-bottom: 3.5rem;
+
+  &__label {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    @include transition(all 150ms);
+    text-shadow: 0.2rem 0.5rem 0.5rem;
+
+    &--gradient {
+        background-image: $themeOpacityGradient;
+        color: transparent;
+        @include background-clip(text);
+        font-family: inherit;
+
+        &:hover {
+          @include skew-on-hover;
+          text-shadow: 0.5rem 1rem 1rem $shadow--light;
+        }
+      }
+
+      &--white {
+        text-shadow: 0.3rem 0.5rem 0.8rem $shadow--light;
+        font-family: inherit;
+        color: $secondaryFont;
+
+        &:hover {
+          @include grow-on-hover;
+          text-shadow: 0.5rem 1rem 1rem $shadow--light;
+        }
+      }
+  }
+
+
+}
+
+.heading-tertiary {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: inherit;
+
+  &--feature {
+    padding: 1rem 0 2rem 0;
+    display: block;
+  }
+}
+
+.paragraph__container {
+  margin: 0 2rem 0 2rem;
+  padding-right: 1rem;
+  font-family: inherit;
+}
+
+.paragraph {
+  font-size: $defaultFont;
+  font-weight: 400;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+

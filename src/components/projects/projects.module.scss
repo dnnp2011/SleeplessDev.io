@@ -2,18 +2,17 @@
 @import '../sass/base/base';
 @import '../sass/base/animations';
 @import '../sass/base/typography';
-
 // Abstracts
 @import '../sass/abstracts/variables';
 @import '../sass/abstracts/mixins';
-
+@import '../sass/abstracts/functions';
 // Components
 @import '../sass/components/button';
 @import '../sass/components/panel';
-
+@import '../sass/components/feature-box';
+@import '../sass/components/icon-list';
 // Utilities
 @import '../sass/base/utilities';
-
 // Layout
 @import '../sass/layout/root';
 @import '../sass/layout/composition';
@@ -21,7 +20,7 @@
 .header {
   @include hide-backface;
   height: 95vh;
-  background-image: $themeOpacityGradient, $apple-desk-2k;
+  background-image: $themeOpacityGradient, $apple-desk-1280;
   background-attachment: local;
   background-size: cover;
   background-position: center;
@@ -40,44 +39,6 @@
     position: absolute;
     top: 45%;
     left: 50%;
-
-    .heading-primary {
-      text-transform: uppercase;
-      font-family: inherit;
-
-      &__title {
-        @include style-header-text($secondaryFont);
-        @include animate(animation__slide-in-left--bounce 1s ease-out 800ms forwards 1);
-        @include transform(translateX(6rem));
-        font-size: 8rem;
-        font-weight: 600;
-        margin: 0;
-        letter-spacing: 3rem;
-        text-shadow: 0.3rem 0.5rem 0.8rem $shadow;
-      }
-
-      &__subtitle {
-        @include style-header-text($secondaryFont);
-        @include animate(animation__slide-in-right--bounce 1s ease-out 800ms forwards 1);
-        @include transform(translateX(-6rem));
-        font-size: 5rem;
-        font-weight: 300;
-        margin: 0 0 2.5rem 0;
-        letter-spacing: 0.4rem;
-        text-shadow: 0.3rem 0.5rem 0.7rem $shadow;
-      }
-
-      &__btn {
-        background-color: $secondaryFont;
-        color: $primaryFont;
-        align-self: center;
-        font-size: 1.7rem;
-
-        &::after {
-          background-color: $secondaryFont;
-        }
-      }
-    }
   }
 }
 
@@ -87,78 +48,25 @@
 }
 
 .section-skills {
-  @include section;
-}
-
-.feature-box {
-  border: $primaryColor solid 2px;
+  background-image: $themeOpacityGradient, $keyboards-608;
+  background-attachment: local;
+  background-size: cover;
+  background-position: center;
   padding: 2rem;
-}
+  @include transform(skewY(-7deg));
 
-.feature-box__icon-box {
-  content: '';
-
-  .relative-icon--i2 {
-    height: 15%;
-    color: green;
+  & > * {
+    @include transform(skewY(7deg));
   }
-}
-
-.relative-icon--i1 {
-  width: 100px;
 }
 
 .section-projects {
   @include section;
 }
 
-.heading-secondary {
-  font-size: 4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  background-image: $themeOpacityGradient;
-  display: inline-block;
-  @include background-clip(text);
-  color: transparent;
-  letter-spacing: 0.3rem;
-  @include transition(all 150ms);
-  font-family: inherit;
-  margin-bottom: 3.5rem;
-
-  &:hover {
-    @include skew-on-hover;
-    text-shadow: 0.5rem 1rem 1rem $shadow--light;
-  }
-}
-
-.heading-tertiary {
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: inherit;
-}
-
-.paragraph__container {
-  margin: 0 2rem 0 2rem;
-  padding-right: 1rem;
-  font-family: inherit;
-}
-
-.paragraph {
-  font-size: $defaultFont;
-  font-weight: 450;
-
-  &:not(:last-child) {
-    margin-bottom: 3rem;
-  }
-}
 
 .btn--grow-in {
   will-change: transform;
   @include animate(animation__grow-in 600ms ease-out 900ms backwards 1);
 }
 
-.content {
-  margin: 0.5rem;
-  padding: 1rem;
-}

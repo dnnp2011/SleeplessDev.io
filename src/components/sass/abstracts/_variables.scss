@@ -1,5 +1,6 @@
 // Images
-$apple-desk-2k: url('../../assets/images/stock/apple-desk-1920x1280.jpg');
+$apple-desk-1280: url('../../assets/images/stock/apple-desk-1920x1280.jpg');
+$keyboards-608: url('../../assets/images/stock/keyboards-1080x608.jpg');
 
 // Fonts
 $defaultFont: 1.6rem;
@@ -16,13 +17,24 @@ $shadow--dark: rgba(#000, 0.3);
 $shadow: rgba(#000, 0.2);
 $shadow--light: rgba(#000, 0.1);
 $off-white: #f7f7f7;
+$hoverDark: #fbc02d;
+$hoverMedium: #fff59d;
+$hoverLight: #fffde7;
 
 $lightGreen: #7ed56f;
 $mediumGreen: #55c57a;
 $darkGreen: #28b485;
+
+$blueGreen: #009688;
+$lightBlueGreen: #00bcd4;
+$lightBlue: #03a9f4;
+
+
 $greenOpacityGradient: linear-gradient(to bottom right, rgba(115, 176, 115, 0.5), rgba(115, 176, 115, 1));
 $themeOpacityGradient: linear-gradient(to bottom right, rgba(127, 212, 112, 0.75), rgba(40, 180, 133, 0.86));
+$lightThemeOpacityGradient: linear-gradient(to right, rgba($lightGreen, 0.4), rgba($mediumGreen, 0.35), rgba($darkGreen, 0.3)), linear-gradient(to left, rgba($blueGreen, 0.4), rgba($lightBlueGreen, 0.3), rgba($lightBlue, 0.2));
 $lightGreenGradient: linear-gradient(to bottom right, $lightGreen, $mediumGreen, $darkGreen);
+$hoverGradient: radial-gradient($hoverDark 90%, $hoverMedium 94%, $hoverLight 97%);
 
 // Breakpoints
 $break-small: 320px;
