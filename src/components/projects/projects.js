@@ -53,7 +53,7 @@ const Projects = props => {
       devicons.Redhat.plain,
       devicons.Ubuntu.plain
     ],
-    mobile: [devicons.Android.plain],
+    mobile: [ devicons.Android.plain ],
     tools: [
       devicons.AmazonWebServices.plain,
       devicons.ChromeDevTools.plain,
@@ -273,12 +273,72 @@ const Projects = props => {
                     <Grid container direction={isWidthDown('sm', width, true) ? 'column' : 'row'} spacing={32} alignContent={'center'} alignItems={'stretch'} justify={'space-evenly'}>,
                       {
                         Object.keys(iconCategories)
-                          .map(category =>
-                            <Grid item key={category} xs>
-                              <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                            </Grid>
-                          )
+                              .map(category =>
+                                <Grid item key={category} xs>
+                                  <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                                </Grid>
+                              )
                       }
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </section>
+
+              <section className={scss['section-projects']}>
+                <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'center'}>
+                  <Grid item>
+                    <div className={scss['heading-secondary']} style={{ marginTop: '2rem' }}>
+                      <Typography
+                        font={'inherit'}
+                        color={'inherit'}
+                        variant={'h2'}
+                        component={'h2'}
+                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--gradient'])}
+                        gutterBottom>
+                        Projects
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <Grid container direction={panelDirection} spacing={40} alignContent={'center'} alignItems={'center'} justify={'space-around'}>
+                      <Grid item>
+                        <div className={scss['card']}>
+                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-1'])}>
+                            <h5>Back</h5>
+                          </div>
+                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
+                            <h5>Front</h5>
+                          </div>
+                        </div>
+                      </Grid>
+                      <Grid item>
+                        <div className={scss['card']}>
+                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-2'])}>
+                            <div className={classNames(scss['card__background'], scss['card__background--1'])}>&bsp;</div>
+                            <div className={scss['card__heading']}>
+
+                            </div>
+                            <div className={scss['card__details']}>
+
+                            </div>
+                          </div>
+                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
+                            <h5>Front</h5>
+                          </div>
+                        </div>
+                      </Grid>
+
+                      <Grid item>
+                        <div className={scss['card']}>
+                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-3'])}>
+                            <h5>Back</h5>
+                          </div>
+                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
+                            <h5>Front</h5>
+                          </div>
+                        </div>
+                      </Grid>
+
                     </Grid>
                   </Grid>
                 </Grid>
@@ -327,8 +387,8 @@ SkillBox.propTypes = {
   scss: PropTypes.shape({}).isRequired,
   icons: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+    background: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ]).isRequired,
+    text: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ])
   })).isRequired,
   category: PropTypes.string.isRequired
 };

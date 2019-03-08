@@ -29,6 +29,17 @@ $blueGreen: #009688;
 $lightBlueGreen: #00bcd4;
 $lightBlue: #03a9f4;
 
+$lightBlue: #6EC6FF;
+$mediumBlue: #2196F3;
+$darkBlue: #0069C0;
+
+$blueGradient: linear-gradient(to bottom right, $lightBlue, $mediumBlue, $darkBlue);
+
+$lightOrange: #ffb900;
+$mediumOrange: #ff7730;
+$darkOrange: #ff5722;
+$orangeGradient: linear-gradient(to bottom right, $lightOrange, $mediumOrange, $darkOrange);
+
 
 $greenOpacityGradient: linear-gradient(to bottom right, rgba(115, 176, 115, 0.5), rgba(115, 176, 115, 1));
 $themeOpacityGradient: linear-gradient(to bottom right, rgba(127, 212, 112, 0.75), rgba(40, 180, 133, 0.86));

@@ -31,6 +31,12 @@
   transform: $transformation;
 }
 
+@mixin perspective($perspective) {
+  perspective: $perspective;
+  -moz-perspective: $perspective;
+  -webkit-perspective: $perspective;
+}
+
 @mixin hide-backface {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -68,11 +74,11 @@
 }
 
 @mixin skew-on-hover {
-  @include transform(skewY(0.01turn) skewX(-0.02turn) scale(1.1));
+  @include transform(skewY(0.01turn) skewX(-0.02turn) scale(1.2) translateY(-2px));
 }
 
 @mixin grow-on-hover {
-  @include transform(scale(1.1) translateY(-2px));
+  @include transform(scale(1.2) translateY(-2px));
 }
 
 @mixin section {

@@ -11,6 +11,7 @@
 @import '../sass/components/panel';
 @import '../sass/components/feature-box';
 @import '../sass/components/icon-list';
+@import '../sass/components/card';
 // Utilities
 @import '../sass/base/utilities';
 // Layout
@@ -44,7 +45,7 @@
 
 .section-about {
   @include section;
-  padding: 15rem 0 15rem 0;
+  padding: 15rem 0 25rem 0;
 }
 
 .section-skills {
@@ -62,6 +63,7 @@
 
 .section-projects {
   @include section;
+  padding: 25rem 0;
 }
 
 

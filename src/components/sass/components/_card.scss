@@ -1,0 +1,51 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+.card {
+  @include perspective(150rem);
+  position: relative;
+  height: 50rem;
+  width: 30rem;
+  margin: 0 2rem;
+
+  &__side {
+    @include transition(all ease 800ms);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include hide-backface;
+    @include box-shadow(0.6rem 1.5rem 4rem $shadow--light);
+    @include border-radius(3px);
+
+    &--front {
+      background: white;
+    }
+
+    &--back {
+      @include transform(rotateY(-180deg));
+      color: $secondaryFont;
+    }
+
+    &--back-1 {
+      background-image: $orangeGradient;
+    }
+
+    &--back-2 {
+      background-image: $lightGreenGradient;
+    }
+
+    &--back-3 {
+      background-image: $blueGradient;
+    }
+  }
+
+  &:hover &__side--front {
+    @include transform(rotateY(180deg));
+  }
+
+  &:hover &__side--back {
+    @include transform(rotateY(0));
+  }
+}
