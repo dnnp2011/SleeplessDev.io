@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import scss from '../../projects.module.scss';
 
 
@@ -11,36 +12,36 @@ class ParticleSystemCanvas extends React.Component {
     this.canvasRef = React.createRef();
   }
 
+
   componentDidMount() {
-    const canvas = this.canvasRef.current;
-    const c = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const multiplierRange = {
-      min: 700,
-      max: 1000
-    };
-    const xOffset = 300;
-    const yOffset = -200;
-    const xSpawnOffset = -450;
-    const ySpawnOffset = -200;
-    const particleCount = 800;
+    const { diameterRange = {
+      min: 100,
+      max: 150
+    },
+    xAxisOffset = 0,
+    yAxisOffset = 0,
+    xSpawnOffset = 0,
+    ySpawnOffset = 0,
+    particleCount = 50,
+    sizeRange = {
+      min: 5,
+      max: 10
+    },
+    angularVelocity = 0.001,
+    followMouse = false,
+    mouseFollowSpeed = 0.05,
+    fadeOverTime = false,
+    fadeRate = 0.15,
+    globalAlpha = null } = this.props;
+
     const position = {
       x: (window.innerWidth / 2) + xSpawnOffset,
       y: (window.innerHeight / 2) + ySpawnOffset
     };
-    const sizeRange = {
-      min: 5,
-      max: 15
-    };
-    // A percentage of mouse movement per frame
-    const dragSpeed = 0.05;
-    // A Percentage of the circle to move per frame
-    const angularVelocity = 0.001;
-    // The percentage to fade per frame. Effects the trail length.
-    // If this value is too low, there is an ugly streaking effect on the background
-    const fadeRate = 0.15;
-    const followMouse = false;
+    const canvas = this.canvasRef.current;
+    const c = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     // Sets the center point of the particle system upon render
     const mouse = {
@@ -50,16 +51,26 @@ class ParticleSystemCanvas extends React.Component {
     let delayDone = false;
     resetDelay();
 
-
-    const colors = [ '#7ed56f', '#55c57a', '#28b485', '#009688', '#00bcd4', '#03a9f4', '#f7f7f7',  '#ff9800', '#fff59d', '#fffde7'];
+    const colors = [
+      '#7ed56f',
+      '#55c57a',
+      '#28b485',
+      '#009688',
+      '#00bcd4',
+      '#03a9f4',
+      '#f7f7f7',
+      '#ff9800',
+      '#fff59d',
+      '#fffde7'
+    ];
 
     // Event Listeners
-    window.addEventListener('mousemove', event => {
+    this.mouseListener = window.addEventListener('mousemove', event => {
       mouse.x = event.clientX;
       mouse.y = event.clientY;
     });
 
-    window.addEventListener('resize', () => {
+    this.resizeListener = window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       resetDelay();
@@ -69,7 +80,9 @@ class ParticleSystemCanvas extends React.Component {
 
     function resetDelay() {
       delayDone = false;
-      setTimeout(() => { delayDone = true; }, 100);
+      setTimeout(() => {
+        delayDone = true;
+      }, 100);
     }
 
     // Objects
@@ -82,20 +95,23 @@ class ParticleSystemCanvas extends React.Component {
       this.velocity = angularVelocity;
 
       // Use this value to make more circular orbit
-      // this.orbit = randomIntFromRange(multiplierRange.min, multiplierRange.max);
+      // this.orbit = randomIntFromRange(diameterRange.min, diameterRange.max);
 
       // Use this value to make an elliptical orbit with defined offsets
       this.orbit = {
-        x: randomIntFromRange(multiplierRange.min, multiplierRange.max) + xOffset,
-        y: randomIntFromRange(multiplierRange.min, multiplierRange.max) + yOffset
+        x:
+          randomIntFromRange(diameterRange.min, diameterRange.max)
+          + xAxisOffset,
+        y:
+          randomIntFromRange(diameterRange.min, diameterRange.max) + yAxisOffset
       };
 
       this.lastMouse = {
-        x: x,
-        y: y
+        x,
+        y
       };
 
-      this.draw = (lastPoint) => {
+      this.draw = lastPoint => {
         c.beginPath();
         c.strokeStyle = this.color;
         c.lineCap = 'round';
@@ -115,8 +131,8 @@ class ParticleSystemCanvas extends React.Component {
         // Oscillate the position over time
         this.radians += this.velocity;
         // Apply a movement drag effect
-        this.lastMouse.x += (mouse.x - this.lastMouse.x) * dragSpeed;
-        this.lastMouse.y += (mouse.y - this.lastMouse.y) * dragSpeed;
+        this.lastMouse.x += (mouse.x - this.lastMouse.x) * mouseFollowSpeed;
+        this.lastMouse.y += (mouse.y - this.lastMouse.y) * mouseFollowSpeed;
 
         this.x = (followMouse ? this.lastMouse.x : x) + (Math.cos(this.radians) * this.orbit.x);
         this.y = (followMouse ? this.lastMouse.y : y) + (Math.sin(this.radians) * this.orbit.y);
@@ -127,7 +143,6 @@ class ParticleSystemCanvas extends React.Component {
           this.draw(lastPoint);
         }
       };
-
     }
 
     // Implementation
@@ -137,22 +152,31 @@ class ParticleSystemCanvas extends React.Component {
       particles = [];
 
       for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(position.x, position.y, randomIntFromRange(sizeRange.min, sizeRange.max), randomColor(colors)));
+        particles.push(
+          new Particle(
+            position.x,
+            position.y,
+            randomIntFromRange(sizeRange.min, sizeRange.max),
+            randomColor(colors)
+          )
+        );
       }
     }
 
     // Animation Loop
     function animate() {
       requestAnimationFrame(animate);
-      c.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Settings for implementing the fade/drag effect
-      // Can't be used on a non-uniform background as it requires applying a fill action on the canvas every frame
-      // c.fillStyle = `rgba(115, 176, 115, ${fadeRate})`;
-      // c.save();
-      // c.globalAlpha = 0.5;
-      // c.restore();
-      // c.fillRect(0, 0, canvas.width, canvas.height);
+      if (globalAlpha) c.globalAlpha(globalAlpha);
+      if (fadeOverTime) {
+        // Settings for implementing the fade/drag effect
+        // Can't be used on a non-uniform background as it requires applying a fill action on the canvas every frame
+        c.fillStyle = `rgba(115, 176, 115, ${fadeRate})`;
+        c.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      else {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+      }
 
       particles.forEach(particle => {
         particle.update();
@@ -179,14 +203,48 @@ class ParticleSystemCanvas extends React.Component {
     animate();
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.mouseListener);
+    window.removeEventListener('resize', this.resizeListener);
+  }
+
 
   render() {
     return (
       <div className={scss['canvas-container']}>
-        <canvas ref={this.canvasRef} className={scss['canvas']} color={'inherit'} width={'100%'} height={'100%'} />
+        <canvas
+          ref={this.canvasRef}
+          className={scss['canvas']}
+          color={'inherit'}
+          width={'100%'}
+          height={'100%'}
+        />
       </div>
     );
   }
 }
+
+
+ParticleSystemCanvas.propTypes = {
+  diameterRange: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired
+  }),
+  xAxisOffset: PropTypes.number,
+  yAxisOffset: PropTypes.number,
+  xSpawnOffset: PropTypes.number,
+  ySpawnOffset: PropTypes.number,
+  particleCount: PropTypes.number,
+  sizeRange: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired
+  }),
+  angularVelocity: PropTypes.number,
+  followMouse: PropTypes.bool,
+  mouseFollowSpeed: PropTypes.number,
+  fadeOverTime: PropTypes.bool,
+  fadeRate: PropTypes.number,
+  globalAlpha: PropTypes.number
+};
 
 export default ParticleSystemCanvas;

@@ -1,7 +1,7 @@
 const styles = theme => ({
   background: {
     background: theme.palette.sidenavTheme,
-    height: '100%'
+    height: '100%',
   },
   headerTheme: {
     backgroundColor: theme.palette.primary.main,
@@ -11,17 +11,17 @@ const styles = theme => ({
     margin: `${theme.spacing.unit}px`,
     position: 'absolute',
     zIndex: '5',
-    right: '-2px',
+    right: '-0.2rem',
     top: '0',
-    marginRight: '-10px'
+    marginRight: '-1rem'
   },
   drawerFabLeft: {
     margin: `${theme.spacing.unit}px`,
     position: 'absolute',
     zIndex: '5',
-    right: '0',
+    right: '-4rem',
+    marginRight: '4rem',
     top: '0',
-    marginRight: '-10px',
     transform: 'rotate(180deg)'
   },
   archiveText: {
@@ -40,26 +40,26 @@ const styles = theme => ({
   },
   closeDrawerButton: {
     position: 'fixed',
-    bottom: '10px',
-    left: '10px'
+    bottom: '1rem',
+    left: '1rem'
   },
   closeDrawerButtonRtl: {
     transform: 'rotate(180deg)',
     position: 'fixed',
-    bottom: '10px',
-    left: '10px'
+    bottom: '1rem',
+    left: '1rem'
   },
   noDataText: {
-    marginTop: '50px',
-    marginLeft: '4px',
-    marginRight: '4px',
+    marginTop: '5rem',
+    marginLeft: '.4rem',
+    marginRight: '.4rem',
     fontWeight: '400',
-    fontSize: '20pt'
+    fontSize: '1.6rem'
   },
   list: {
-    width: '250px',
-    marginTop: '30px',
-    marginBottom: '30px',
+    width: '22rem',
+    marginTop: '2.5rem',
+    marginBottom: '2.5rem',
     overflowY: 'auto',
     msOverflowY: 'auto',
     backgroundColor: theme.palette.background.paper
@@ -72,8 +72,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 4
   },
   link: {
-    padding: '5px',
-    margin: '2px'
+    padding: '0.4rem',
+    margin: '0.2rem'
   }
 });
 

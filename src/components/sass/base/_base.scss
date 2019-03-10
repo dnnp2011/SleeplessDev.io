@@ -1,26 +1,21 @@
 @import '../abstracts/variables';
 @import '../base/utilities';
 
-*,
-*::after,
-*::before {
-  // Clear any browser-specific formatting
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  box-sizing: inherit;
+body {
+  @include box-sizing(border-box);
+   overflow-x: hidden;
+   -ms-overflow-x: hidden;
 }
 
 html {
-  // Use root font size to set page scale
-  font-size: 62.5%;
+  @include box-sizing(inherit);
 }
 
-body {
-  padding: 3rem;
-  box-sizing: border-box;
-  // overflow-x: hidden;
-  // -ms-overflow-x: hidden;
+.root *, *::after, *::before {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  @include box-sizing(inherit);
 }
 
 .center {

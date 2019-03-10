@@ -1,3 +1,5 @@
+@import 'variables';
+
 // Mixins
 @mixin style-header-text($color) {
   padding: 0;
@@ -7,6 +9,18 @@
   justify-content: center;
   text-align: center;
   color: $color;
+}
+
+@mixin orange-opacity-gradient($opacity) {
+  background-image: linear-gradient(to bottom right, rgba($lightOrange, $opacity), rgba($mediumOrange, $opacity), rgba($darkOrange, $opacity));
+}
+
+@mixin green-opacity-gradient($opacity) {
+  background-image: linear-gradient(to bottom right, rgba($lightGreen, $opacity), rgba($mediumGreen, $opacity), rgba($darkGreen, $opacity));
+}
+
+@mixin blue-opacity-gradient($opacity) {
+  background-image: linear-gradient(to bottom right, rgba($lightBlue, $opacity), rgba($mediumBlue, $opacity), rgba($darkBlue, $opacity));
 }
 
 @mixin animate($animation) {
@@ -32,9 +46,9 @@
 }
 
 @mixin perspective($perspective) {
-  perspective: $perspective;
-  -moz-perspective: $perspective;
   -webkit-perspective: $perspective;
+  -moz-perspective: $perspective;
+  perspective: $perspective;
 }
 
 @mixin hide-backface {
@@ -44,10 +58,31 @@
   backface-visibility: hidden;
 }
 
+@mixin flex-basis($basis) {
+  -webkit-flex-basis: $basis;
+  -moz-flex-basis: $basis;
+  -o-flex-basis: $basis;
+  -ms-flex-basis: $basis;
+  flex-basis: $basis;
+}
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin box-sizing($sizing) {
+  -webkit-box-sizing: $sizing;
+  -moz-box-sizing: $sizing;
+  box-sizing: $sizing;
+}
+
+@mixin box-decoration-break($breakType) {
+  -webkit-box-decoration-break: $breakType;
+  -o-box-decoration-break: $breakType;
+  -ms-box-decoration-break: $breakType;
+  box-decoration-break: $breakType;
 }
 
 @mixin box-shadow($box-shadow) {
@@ -57,8 +92,21 @@
 }
 
 @mixin background-clip($clipType) {
-  background-clip: $clipType;
   -webkit-background-clip: $clipType;
+  background-clip: $clipType;
+}
+
+@mixin clip-path($shape) {
+  -webkit-clip-path: $shape;
+  -moz-clip-path: $shape;
+  -o-clip-path: $shape;
+  -ms-clip-path: $shape;
+  clip-path: $shape;
+}
+
+@mixin background-size($size) {
+  -webkit-background-size: $size;
+  background-size: $size;
 }
 
 @mixin respond-to($media) {

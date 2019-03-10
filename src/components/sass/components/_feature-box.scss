@@ -5,11 +5,12 @@
   border: $primaryColor solid 2px;
   display: flex;
   flex-direction: column;
+  @include flex-basis(50%);
   flex-wrap: wrap;
-  flex-basis: 50%;
-  padding: 2rem;
+  padding: 1.2rem;
   background-color: rgba($off-white, 0.8);
-  @include border-radius(3px);
-  @include box-shadow(0.5rem 1.3rem 1.5rem $shadow);
+  @include border-radius($BORDER_RADIUS);
+  @include box-shadow(0.3rem .8rem .9rem $shadow);
   text-align: center;
+  @include box-sizing(border-box);
 }

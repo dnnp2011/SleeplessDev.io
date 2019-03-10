@@ -23,14 +23,14 @@
   height: 95vh;
   background-image: $themeOpacityGradient, $apple-desk-1280;
   background-attachment: local;
-  background-size: cover;
+  @include background-size(cover);
   background-position: center;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  @include clip-path(polygon(0 0, 100% 0, 100% 75vh, 0 100%));
   position: relative;
 
   &__logo {
-    margin: 5rem;
-    height: 10rem;
+    margin: 3rem;
+    height: 6rem;
   }
 
   &__text-container {
@@ -45,7 +45,7 @@
 
 .section-about {
   @include section;
-  padding: 15rem 0 25rem 0;
+  padding: 9rem 0 15rem 0;
 }
 
 .section-skills {
@@ -53,17 +53,23 @@
   background-attachment: local;
   background-size: cover;
   background-position: center;
-  padding: 2rem;
+  padding: 1.2rem;
+  @include box-sizing(initial);
   @include transform(skewY(-7deg));
 
   & > * {
     @include transform(skewY(7deg));
   }
+
+  .skillbox-wrapper {
+    @include box-sizing(inherit);
+    margin-top: 3rem;
+  }
 }
 
 .section-projects {
   @include section;
-  padding: 25rem 0;
+  padding: 15rem 0;
 }
 
 

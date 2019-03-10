@@ -1,5 +1,8 @@
+@import '../sass/abstracts/variables';
+@import '../sass/abstracts/mixins';
+
 .panel {
-  animation: landing-page 1s forwards 1;
+  @include animate( landing-page 1s forwards 1);
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
@@ -31,72 +34,65 @@
 
 @keyframes landing-page {
   0% {
-    transform: translateY(20px);
+    @include transform(translateY(20px));
     opacity: 0;
   }
   100% {
-    transform: translateY(0px);
+    @include transform(translateY(0));
     opacity: 1;
   }
 }
 
 .expand-more-icon {
-  -moz-transition: all 500ms ease;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
+  @include transition(all 500ms ease);
 }
 
 .rotate {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+  @include transform(rotate(180deg));
 }
 
 @keyframes expand-more {
   0% {
-    transform: rotate(0deg);
+    @include transform(rotate(0));
   }
   100% {
-    transform: rotate(180deg);
+    @include transform(rotate(180deg));
   }
 }
 
 @-moz-keyframes expand-more {
   0% {
-    transform: rotate(0deg);
+    @include transform(rotate(0));
   }
   100% {
-    transform: rotate(180deg);
+    @include transform(rotate(180deg));
   }
 }
 
 @-ms-keyframes expand-more {
   0% {
-    transform: rotate(0deg);
+    @include transform(rotate(0));
   }
   100% {
-    transform: rotate(180deg);
+    @include transform(rotate(180deg));
   }
 }
 
 @-o-keyframes expand-more {
   0% {
-    transform: rotate(0deg);
+    @include transform(rotate(0));
   }
   100% {
-    transform: rotate(180deg);
+    @include transform(rotate(180deg));
   }
 }
 
 @-webkit-keyframes expand-more {
   0% {
-    transform: rotate(0deg);
+    @include transform(rotate(0));
   }
   100% {
-    transform: rotate(180deg);
+    @include transform(rotate(180deg));
   }
 }
 
@@ -122,10 +118,10 @@
     margin-bottom: 0;
     position: relative;
     z-index: 10;
-    animation: portal-todo__header-demo .3s forwards 1;
+    @include animate(portal-todo__header-demo .3s forwards 1);
     animation-delay: .9s;
     opacity: 0;
-    transform: translateY(20px);
+    @include transform(translateY(20px));
   }
 }
 

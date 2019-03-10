@@ -4,29 +4,30 @@
 .btn:link,
 .btn:visited {
   @include transition(all 150ms);
-  @include border-radius(10rem);
-  @include box-shadow(0.3rem 0.6rem 1rem $shadow);
+  @include border-radius(6rem);
+  @include box-shadow(0.2rem 0.4rem .6rem $shadow);
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
   display: -moz-inline-block;
   text-align: center;
-  padding: 1.5rem 7rem;
+  padding: .9rem 4.2rem;
   position: relative;
   font-family: inherit;
+  letter-spacing: 2px;
 
   &:hover {
-    @include transform(translateY(-0.3rem));
-    @include box-shadow(0.5rem 1rem 1.5rem $shadow);
+    @include transform(translateY(-0.2rem));
+    @include box-shadow(0.3rem .6rem .9rem $shadow);
   }
 
   &:active {
     @include transform(-0.1rem);
-    @include box-shadow(0.2rem 0.4rem 0.4rem $shadow);
+    @include box-shadow(0.2rem 0.3rem 0.3rem $shadow);
   }
 
   &::after {
-    @include border-radius(10rem);
+    @include border-radius(6rem);
     @include transition(all 400ms);
     content: '';
     display: inline-block;
@@ -50,25 +51,25 @@
     display: inline-block;
     text-decoration: none;
     border-bottom: 1px solid $primaryColor;
-    padding: 5px;
-    font-size: 1.8rem;
-    letter-spacing: 1.2;
+    padding: .3rem;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
     font-weight: 500;
     font-family: inherit;
     @include transition(all 500ms);
-    border-radius: 2px;
+    @include border-radius($BORDER_RADIUS);
   }
 
   &:hover {
-    @include transform(translateY(-0.3rem));
-    @include box-shadow(0.5rem 1rem 1.3rem $shadow);
+    @include transform(translateY(-0.2rem));
+    @include box-shadow(0.3rem .6rem .8rem $shadow);
     color: $secondaryFont;
     background-color: $primaryColor;
   }
 
   &:active {
     @include transform(-0.1rem);
-    @include box-shadow(0.2rem 0.4rem 0.4rem $shadow);
+    @include box-shadow(0.2rem 0.3rem 0.3rem $shadow);
     color: $secondaryFont;
     background-color: $primaryColor;
   }

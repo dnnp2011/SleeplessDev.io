@@ -204,6 +204,8 @@ class Blog extends React.Component {
         }
     `;
 
+    // FIXME: The open drawer FAB is too far to the right
+    //FIXME: The archive drawer is showing an X scrollbar
     return (
       <div>
         <Button autoFocus title={'Show Archive'} color={'primary'} aria-label='Show Archive' onClick={this.toggleArchiveDrawer} variant={'text'} className={classNames(theme.direction === 'rtl'

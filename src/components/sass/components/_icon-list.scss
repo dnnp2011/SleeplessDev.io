@@ -5,9 +5,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-basis: 100%;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: transparent;
 
   &:hover li>.hover-icon:not(:hover) {
@@ -18,19 +17,20 @@
   li {
     background-color: transparent;
     list-style-type: none;
+    padding: 0.4rem;
 
     .hover-icon {
       @include transition(all 200ms);
       background-color: transparent;
-      position: relative;
 
       &__label {
         font-family: inherit;
         text-transform: capitalize;
         color: $primaryFont;
-        font-size: 1.2rem;
+        font-size: .7rem;
         font-weight: 400;
         @include transition(all 300ms);
+        padding-top: 2px;
       }
 
       &:hover {
@@ -38,12 +38,10 @@
         background-color: transparent;
 
         .hover-icon__label {
-          //font-size: 1.8rem;
+          //font-size: 1rem;
           color: $darkGreen;
           font-weight: 700;
-          //width: 120%;
-          //margin: auto;
-          //text-align: center;
+          margin: auto;
           @include transform(scale(1.3));
         }
 

@@ -1,44 +1,50 @@
+import mountainRange from '../../assets/images/stock/mountain-range-600x400.jpg';
+import macbookcCoding from '../../assets/images/stock/macbook-coding-600x400.jpg';
+import macbookcCoffee from '../../assets/images/stock/macbook-and-coffee-coding-600x400.jpg';
+
+
 const styles = theme => {
+  const lightGreen = '#7ed56f',
+    mediumGreen = '#55c57a',
+    darkGreen = '#28b485',
+    lightBlue = '#6EC6FF',
+    mediumBlue = '#2196F3',
+    darkBlue = '#0069C0',
+    lightOrange = '#ffb900',
+    mediumOrange = '#ff7730',
+    darkOrange = '#ff5722';
 
   return {
-    'background': {
+    background: {
       background: theme.palette.primary.main,
       backgroundImage: 'linear-gradient(to bottom right, rgba(115, 176, 115, 0.5), rgba(115, 176, 115, 1))',
-      height: '100%',
       display: 'flex',
       flexDirection: 'row',
-      margin: '2rem',
-      zIndex: '2',
+      margin: '1.2rem',
+      zIndex: '2'
     },
     'primary-card': { background: theme.palette.primary.light },
-    'navButton': {
-      'textDecoration': 'none',
-      'color': theme.palette.text.primary,
-      'fontWeight': '600',
-      'fontSize': '19',
-      '&hover': { color: theme.palette.text.primary.light }
+    orange: {},
+    green: {},
+    blue: {},
+    'skills--orange': {
+      borderBottom: `1px solid ${lightOrange}`
     },
-    'content': {},
-    'footer': {},
-    'root': {
-      width: '100%',
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      justify: 'center',
-      backgroundColor: '#ffffff',
+    'skills--green': {
+      borderBottom: `1px solid ${lightGreen}`
     },
-    'column': {
-      display: 'inline-block',
-      height: '100vh',
-      width: '100%',
+    'skills--blue': {
+      borderBottom: `1px solid ${lightBlue}`
     },
-    'grow': { flexGrow: 1 },
-    'menuButton': {
-      marginLeft: -12,
-      marginRight: 20,
+    breakoutBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${lightOrange}, ${mediumOrange}, ${darkOrange}), url(${mountainRange})`
     },
+    poshcalcBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${lightGreen}, ${mediumGreen}, ${darkGreen}), url(${macbookcCoffee})`
+    },
+    zombiesBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${lightBlue}, ${mediumBlue}, ${darkBlue}), url(${macbookcCoding})`
+    }
   };
 
 };

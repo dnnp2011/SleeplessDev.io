@@ -1,6 +1,6 @@
 import { Grid, Paper, Typography, withWidth } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { isWidthDown } from '@material-ui/core/withWidth';
+import { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -79,7 +79,7 @@ const Projects = props => {
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
   return (
-    <div className={scss.root}>
+    <div className={classNames(scss.root, classes.root)}>
       <Paper elevation={5} className={scss.panel}>
         <Grid wrap={'nowrap'} container direction={'column'}>
           {/* Header */}
@@ -91,7 +91,14 @@ const Projects = props => {
               alignItems={'center'}
               alignContent={'center'}
               justify={'center'}>
-              <ParticleSystemCanvas />
+              <ParticleSystemCanvas diameterRange={{
+                min: 700,
+                max: 1000
+              }} xAxisOffset={350} yAxisOffset={-200} xSpawnOffset={-450} ySpawnOffset={-200}
+                                    particleCount={800} sizeRange={{
+                min: 5,
+                max: 15
+              }} angularVelocity={0.001} />
               <Grid container direction={'row'} alignContent={'flex-start'} justify={'flex-start'}>
                 <img
                   color={'inherit'}
@@ -224,7 +231,7 @@ const Projects = props => {
                           direction={panelDirection}
                           alignContent={'center'}
                           justify={'center'}
-                          style={{ marginBottom: width === 'xs' ? '10rem' : '2rem' }}
+                          style={{ marginBottom: width === 'xs' ? '6rem' : '1.2rem' }}
                           className={scss['composition']}>
                           <img
                             className={classNames(scss['composition__photo'], scss['composition__photo--p1'])}
@@ -254,40 +261,95 @@ const Projects = props => {
                 </Grid>
               </section>
 
+              {/*              <section className={scss['section-skills']}>
+               <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'flex-start'} justify={'center'} style={{
+               marginBottom: '4rem'
+               }}>
+               <Grid item>
+               <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+               <Typography
+               font={'inherit'}
+               color={'inherit'}
+               variant={'h2'}
+               component={'h2'}
+               className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--white'])}
+               gutterBottom>
+               Skills
+               </Typography>
+               </div>
+               </Grid>
+               <Grid item>
+               <Grid container direction={isWidthDown('sm', width, true)
+               ? 'column'
+               : 'row'} spacing={32} alignItems={'stretch'} alignContent={'center'} justify={'space-evenly'} style={{
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               margin: 'auto'
+               }}>
+               {
+               Object.keys(iconCategories)
+               .map(category =>
+               <Grid item key={category} xs>
+               <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+               </Grid>
+               )
+               }
+               </Grid>
+               </Grid>
+               </Grid>
+               </section>*/}
+
               <section className={scss['section-skills']}>
-                <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'flex-start'} justify={'center'} style={{ marginBottom: '10rem' }}>
-                  <Grid item>
-                    <div className={scss['heading-secondary']} style={{ marginTop: '2rem' }}>
-                      <Typography
-                        font={'inherit'}
-                        color={'inherit'}
-                        variant={'h2'}
-                        component={'h2'}
-                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--white'])}
-                        gutterBottom>
-                        Skills
-                      </Typography>
-                    </div>
-                  </Grid>
-                  <Grid item>
-                    <Grid container direction={isWidthDown('sm', width, true) ? 'column' : 'row'} spacing={32} alignContent={'center'} alignItems={'stretch'} justify={'space-evenly'}>,
-                      {
-                        Object.keys(iconCategories)
-                              .map(category =>
-                                <Grid item key={category} xs>
-                                  <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                                </Grid>
-                              )
-                      }
-                    </Grid>
-                  </Grid>
-                </Grid>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-around',
+                  alignItems: 'stretch',
+                  alignContent: 'center',
+                  margin: '0 0 4rem 0',
+                  padding: '2rem'
+                }}>
+                  <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+                    <Typography
+                      font={'inherit'}
+                      color={'inherit'}
+                      variant={'h2'}
+                      component={'h2'}
+                      className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--white'])}
+                      gutterBottom>
+                      Skills
+                    </Typography>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: (isWidthDown('sm', width, true) ? 'column' : 'row'),
+                    justifyContent: 'space-evenly',
+                    alignContent: 'center',
+                    alignItems: 'stretch',
+                    margin: 0,
+                    padding: 0,
+                    width: '100%'
+                  }}
+                       className={scss['skillbox-wrapper']}>
+                    {
+                      Object.keys(iconCategories)
+                            .map((category, index) =>
+                              <div style={{ marginTop: (isWidthDown('sm', width, true) && index !== 0 ? '2rem' : 0),
+                                marginLeft: (!isWidthDown('sm', width, true) && index !== 0 ? '2rem' : 0),
+                              }} key={category}>
+                                <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                              </div>
+                            )
+                    }
+                  </div>
+                </div>
               </section>
 
               <section className={scss['section-projects']}>
                 <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'center'}>
                   <Grid item>
-                    <div className={scss['heading-secondary']} style={{ marginTop: '2rem' }}>
+                    <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                       <Typography
                         font={'inherit'}
                         color={'inherit'}
@@ -301,44 +363,25 @@ const Projects = props => {
                   </Grid>
                   <Grid item>
                     <Grid container direction={panelDirection} spacing={40} alignContent={'center'} alignItems={'center'} justify={'space-around'}>
-                      <Grid item>
-                        <div className={scss['card']}>
-                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-1'])}>
-                            <h5>Back</h5>
-                          </div>
-                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
-                            <h5>Front</h5>
-                          </div>
-                        </div>
-                      </Grid>
-                      <Grid item>
-                        <div className={scss['card']}>
-                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-2'])}>
-                            <div className={classNames(scss['card__background'], scss['card__background--1'])}>&bsp;</div>
-                            <div className={scss['card__heading']}>
-
-                            </div>
-                            <div className={scss['card__details']}>
-
-                            </div>
-                          </div>
-                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
-                            <h5>Front</h5>
-                          </div>
-                        </div>
-                      </Grid>
-
-                      <Grid item>
-                        <div className={scss['card']}>
-                          <div className={classNames(scss['card__side'], scss['card__side--back'], scss['card__side--back-3'])}>
-                            <h5>Back</h5>
-                          </div>
-                          <div className={classNames(scss['card__side'], scss['card__side--front'])}>
-                            <h5>Front</h5>
-                          </div>
-                        </div>
-                      </Grid>
-
+                      <ProjectCard title={'Breakout'} description={'A C# remake of the classic arcade game: "Breakout"'} skills={[
+                        'C#',
+                        'XNA',
+                        'Game Loops',
+                        'Sprite Sheet Animation'
+                      ]} color={'orange'} backgroundClass={classes.breakoutBg} classes={classes} />
+                      <ProjectCard title={'Poshcalc'} description={'A native Android application to help online reseller price their goods with the optimal return on investment'} skills={[
+                        'Java',
+                        'Native Android',
+                        'MVC Architecture'
+                      ]} color={'green'} backgroundClass={classes.poshcalcBg} classes={classes} />
+                      <ProjectCard title={'Zombies With Friends'} description={'A wave-based zombie shooter you can play with friends!'} skills={[
+                        'C#',
+                        '3D Modeling',
+                        'Unity3D',
+                        'Network Synchronization',
+                        'Animation',
+                        'Singleton Pattern'
+                      ]} color={'blue'} backgroundClass={classes.zombiesBg} classes={classes} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -367,15 +410,57 @@ function SkillBox(props) {
       </Typography>
       <ul className={scss['icon-list']}>
         {
-          icons.map(icon => (<li key={icon.name}>
+          icons.map((icon, index) => (<li key={icon.name}>
             <div className={scss['hover-icon']}>
-              <SvgIcon aria-labelledby={scss['hover-icon__label']} title={icon.name} svgClass={scss['hover-icon']} size={'6rem'} gradientDirection={'horizontal'} backgroundStroke={icon.background} />
+              <SvgIcon aria-labelledby={scss['hover-icon__label']} title={icon.name} svgClass={scss['hover-icon']} size={'3rem'} gradientDirection={'horizontal'} backgroundStroke={icon.background} />
               <Typography variant={'body1'} component={'p'} className={scss['hover-icon__label']} font={'inherit'} color={'inherit'} align={'center'}>{icon.name}</Typography>
             </div>
           </li>))
         }
       </ul>
     </div>
+  );
+}
+
+function ProjectCard(props) {
+  const { title, description, skills, color, backgroundClass, classes } = props;
+
+  const renderSkills = skills => {
+    const slice = skills.length > 5 ? skills.slice(0, 5) : skills;
+    return slice.map((skill, index) => (<li className={index !== slice.length - 1 ? classes[`skills--${color}`] : null} key={skill}>{skill}</li>));
+  };
+
+  return (
+    <Grid item>
+      <div className={scss['card']}>
+        <div className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
+          <h5>Back</h5>
+        </div>
+        <div className={classNames(scss['card__side'], scss['card__side--front'])}>
+          <div className={classNames(scss['card__background'], backgroundClass)}>
+            <h4 className={scss['card__heading']}>
+              <span className={classNames(scss['card__heading-span'], scss[`card__heading-span--${color}`])}>
+                {title}
+              </span>
+            </h4>
+          </div>
+          <div className={scss['card__details']}>
+            <Grid container direction={'column'} spacing={16} justify={'space-around'} alignItems={'center'} alignContent={'center'}>
+              <Grid item style={{ width: '100%' }}>
+                <p className={scss['card__details--description']}>
+                  {description}
+                </p>
+              </Grid>
+              <Grid item style={{ width: '100%' }}>
+                <ul className={classNames(scss['card__details--skills'])}>
+                  {renderSkills(skills)}
+                </ul>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
+      </div>
+    </Grid>
   );
 }
 
@@ -391,6 +476,14 @@ SkillBox.propTypes = {
     text: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ])
   })).isRequired,
   category: PropTypes.string.isRequired
+};
+ProjectCard.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+  color: PropTypes.oneOf([ 'orange', 'blue', 'green' ]).isRequired,
+  backgroundClass: PropTypes.string.isRequired
 };
 
 compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(SkillBox);

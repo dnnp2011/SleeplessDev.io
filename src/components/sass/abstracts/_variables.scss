@@ -1,9 +1,12 @@
 // Images
 $apple-desk-1280: url('../../assets/images/stock/apple-desk-1920x1280.jpg');
 $keyboards-608: url('../../assets/images/stock/keyboards-1080x608.jpg');
+$mountain-range-600x400: url('../../assets/images/stock/mountain-range-600x400.jpg');
+$macbook-and-coffee-600x400: url('../../assets/images/stock/macbook-and-coffee-coding-600x400.jpg');
+$macbook-coding-600x400: url('../../assets/images/stock/macbook-coding-600x400.jpg');
 
 // Fonts
-$defaultFont: 1.6rem;
+$defaultFont: 1rem;
 
 // Colors
 $backgroundBaseColor: #03a9f4;
@@ -53,4 +56,5 @@ $break-large: 1024px;
 
 // Constants
 $PI: 3.14159265;
-$BASE_FONT_SIZE: 10;
+$BASE_FONT_SIZE: 16;
+$BORDER_RADIUS: 3px;
