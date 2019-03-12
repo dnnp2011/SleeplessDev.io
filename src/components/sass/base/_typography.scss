@@ -62,27 +62,27 @@ body {
     text-align: center;
 
     &--gradient {
-        background-image: $themeOpacityGradient;
-        color: transparent;
-        @include background-clip(text);
-        font-family: inherit;
+      background-image: $themeOpacityGradient;
+      color: transparent;
+      @include background-clip(text);
+      font-family: inherit;
 
-        &:hover {
-          @include skew-on-hover;
-          text-shadow: 0.3rem .6rem .6rem $shadow--light;
-        }
+      &:hover {
+        @include skew-on-hover;
+        text-shadow: 0.3rem .6rem .6rem $shadow--light;
       }
+    }
 
-      &--white {
-        text-shadow: 0.2rem 0.3rem 0.5rem $shadow--light;
-        font-family: inherit;
-        color: $secondaryFont;
+    &--white {
+      text-shadow: 0.2rem 0.3rem 0.5rem $shadow--light;
+      font-family: inherit;
+      color: $secondaryFont;
 
-        &:hover {
-          @include grow-on-hover;
-          text-shadow: 0.3rem .6rem .6rem $shadow--light;
-        }
+      &:hover {
+        @include grow-on-hover;
+        text-shadow: 0.3rem .6rem .6rem $shadow--light;
       }
+    }
   }
 
 
@@ -109,6 +109,7 @@ body {
 .paragraph {
   font-size: $defaultFont;
   font-weight: 400;
+  text-align: left;
 
   &:not(:last-child) {
     margin-bottom: 1rem;

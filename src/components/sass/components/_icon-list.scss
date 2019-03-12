@@ -7,11 +7,13 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   background-color: transparent;
 
   &:hover li>.hover-icon:not(:hover) {
     @include transform(scale(0.85));
-    display: block;
   }
 
   li {
@@ -38,7 +40,6 @@
         background-color: transparent;
 
         .hover-icon__label {
-          //font-size: 1rem;
           color: $darkGreen;
           font-weight: 700;
           margin: auto;

@@ -91,9 +91,21 @@
   box-shadow: $box-shadow;
 }
 
+@mixin focus-outline($secondaryShadow: 0 0 0 #eee) {
+  @include box-shadow((0 0 1rem $darkBlue, $secondaryShadow));
+}
+
 @mixin background-clip($clipType) {
   -webkit-background-clip: $clipType;
   background-clip: $clipType;
+}
+
+@mixin shape-outside($shape) {
+  -webkit-shape-outside: $shape;
+  -moz-shape-outside: $shape;
+  -o-shape-outside: $shape;
+  -ms-shape-outside: $shape;
+  shape-outside: $shape;
 }
 
 @mixin clip-path($shape) {

@@ -53,7 +53,7 @@ const Projects = props => {
       devicons.Redhat.plain,
       devicons.Ubuntu.plain
     ],
-    mobile: [ devicons.Android.plain ],
+    mobile: [devicons.Android.plain],
     tools: [
       devicons.AmazonWebServices.plain,
       devicons.ChromeDevTools.plain,
@@ -79,23 +79,25 @@ const Projects = props => {
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
   return (
-    <div className={classNames(scss.root, classes.root)}>
+    <Grid className={classNames(scss.root, classes.root)}>
       <Paper elevation={5} className={scss.panel}>
         <Grid wrap={'nowrap'} container direction={'column'}>
           {/* Header */}
-          <Grid item className={scss.header}>
+          <Grid item className={scss.header} id={'header'}>
             <Grid
               container
               direction={'column'}
               spacing={40}
+              style={{ width: '100%' }}
               alignItems={'center'}
               alignContent={'center'}
               justify={'center'}>
+              {/* TODO: Particle system is not very responsive, resizing the viewport can greatly effect centering */}
               <ParticleSystemCanvas diameterRange={{
                 min: 700,
                 max: 1000
               }} xAxisOffset={350} yAxisOffset={-200} xSpawnOffset={-450} ySpawnOffset={-200}
-                                    particleCount={800} sizeRange={{
+              particleCount={800} sizeRange={{
                 min: 5,
                 max: 15
               }} angularVelocity={0.001} />
@@ -115,17 +117,24 @@ const Projects = props => {
                 alignContent={'center'}
                 justify={'center'}
                 spacing={8}
+                style={{ width: '100%' }}
                 alignItems={'center'}>
                 <Grid item>
-                  <Grid container direction={'column'} spacing={16} className={scss['header__text-container']}>
+                  <Grid container direction={'column'} spacing={16} className={scss['header__text-container']} style={{ width: '100%' }}>
                     <h1 className={scss['heading-primary']}>
                       <span className={scss['heading-primary__title']}>Dalton Pierce</span>
                       <span className={scss['heading-primary__subtitle']}>Full Stack Developer</span>
                     </h1>
                     <a
                       className={classNames(scss.btn, scss['heading-primary__btn'], scss['btn--grow-in'])}
-                      href={'#'}
                       color={'inherit'}
+                      href={'#'}
+                      onClick={e => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        document.querySelector('#section-projects')
+                          .scrollIntoView({ behavior: 'smooth' });
+                      }}
                       aria-label={'scroll to projects'}>
                       Projects
                     </a>
@@ -135,10 +144,10 @@ const Projects = props => {
             </Grid>
           </Grid>
 
-          {/* About Brief */}
+          {/* Content */}
           <Grid item className={scss.content}>
             <main>
-              <section className={scss['section-about']}>
+              <section id={'section-about'} className={scss['section-about']}>
                 <Grid
                   container
                   direction={'column'}
@@ -147,7 +156,7 @@ const Projects = props => {
                   spacing={16}
                   alignItems={'center'}>
                   <Grid item>
-                    <div className={scss['heading-secondary']}>
+                    <Grid className={scss['heading-secondary']}>
                       <Typography
                         font={'inherit'}
                         color={'inherit'}
@@ -157,7 +166,7 @@ const Projects = props => {
                         gutterBottom>
                         A bit about me
                       </Typography>
-                    </div>
+                    </Grid>
                   </Grid>
 
                   <Grid item>
@@ -165,10 +174,11 @@ const Projects = props => {
                       container
                       direction={panelDirection}
                       spacing={width === 'xs' ? 32 : 0}
+                      style={{ width: '100%' }}
                       justify={'space-between'}>
                       <Grid item sm>
-                        <div className={scss['paragraph__container']}>
-                          <Grid container direction={'column'} spacing={16}>
+                        <Grid className={scss['paragraph__container']}>
+                          <Grid container direction={'column'} spacing={16} style={{ width: '100%' }}>
                             <Grid item>
                               <Typography
                                 font={'inherit'}
@@ -185,9 +195,9 @@ const Projects = props => {
                                 className={scss.paragraph}
                                 gutterBottom
                                 variant={'body1'}>
-                                I\'m a self-taught full stack developer with a diverse range of skills revolving around
+                                I'm a self-taught full stack developer with a Griderse range of skills revolving around
                                 computer software and hardware. I'm passionate about learning at every opportunity, as
-                                such, I\'ve gained experience using many programming and scripting languages,
+                                such, I've gained experience using many programming and scripting languages,
                                 frameworks,
                                 tools, and platforms.
                               </Typography>
@@ -223,7 +233,7 @@ const Projects = props => {
                               </a>
                             </Grid>
                           </Grid>
-                        </div>
+                        </Grid>
                       </Grid>
                       <Grid item sm>
                         <Grid
@@ -261,12 +271,13 @@ const Projects = props => {
                 </Grid>
               </section>
 
-              {/*              <section className={scss['section-skills']}>
+              {/*              <section id={'section-skills'} className={scss['section-skills']}>
                <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'flex-start'} justify={'center'} style={{
-               marginBottom: '4rem'
+               marginBottom: '4rem',
+               width: '100%'
                }}>
                <Grid item>
-               <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+               <Grid className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                <Typography
                font={'inherit'}
                color={'inherit'}
@@ -276,16 +287,13 @@ const Projects = props => {
                gutterBottom>
                Skills
                </Typography>
-               </div>
+               </Grid>
                </Grid>
                <Grid item>
                <Grid container direction={isWidthDown('sm', width, true)
                ? 'column'
                : 'row'} spacing={32} alignItems={'stretch'} alignContent={'center'} justify={'space-evenly'} style={{
-               display: 'flex',
-               alignItems: 'center',
-               justifyContent: 'center',
-               margin: 'auto'
+               width: '100%'
                }}>
                {
                Object.keys(iconCategories)
@@ -300,17 +308,9 @@ const Projects = props => {
                </Grid>
                </section>*/}
 
-              <section className={scss['section-skills']}>
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-around',
-                  alignItems: 'stretch',
-                  alignContent: 'center',
-                  margin: '0 0 4rem 0',
-                  padding: '2rem'
-                }}>
-                  <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+              <section tabIndex={0} id={'section-skills'} className={scss['section-skills']}>
+                <Grid container direction={'column'} spacing={16} alignContent={'center'} justify={'space-around'} alignItems={'stretch'}>
+                  <Grid item className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                     <Typography
                       font={'inherit'}
                       color={'inherit'}
@@ -320,36 +320,27 @@ const Projects = props => {
                       gutterBottom>
                       Skills
                     </Typography>
-                  </div>
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: (isWidthDown('sm', width, true) ? 'column' : 'row'),
-                    justifyContent: 'space-evenly',
-                    alignContent: 'center',
-                    alignItems: 'stretch',
-                    margin: 0,
-                    padding: 0,
-                    width: '100%'
-                  }}
-                       className={scss['skillbox-wrapper']}>
-                    {
-                      Object.keys(iconCategories)
-                            .map((category, index) =>
-                              <div style={{ marginTop: (isWidthDown('sm', width, true) && index !== 0 ? '2rem' : 0),
-                                marginLeft: (!isWidthDown('sm', width, true) && index !== 0 ? '2rem' : 0),
-                              }} key={category}>
-                                <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                              </div>
-                            )
-                    }
-                  </div>
-                </div>
+                  </Grid>
+                  <Grid item>
+                    <Grid container direction={ (isWidthDown('sm', width, true) ? 'column' : 'row')} alignContent={'center'} alignItems={'stretch'} justify={'space-evenly'}
+                      className={ scss[ 'skillbox-wrapper' ] }>
+                      {
+                        Object.keys(iconCategories)
+                          .map((category, index) =>
+                            <Grid item xs key={ category }>
+                              <SkillBox scss={ scss } icons={ iconCategories[ category ] } category={ category } />
+                            </Grid>
+                          )
+                      }
+                    </Grid>
+                  </Grid>
+                </Grid>
               </section>
 
-              <section className={scss['section-projects']}>
+              <section id={'section-projects'} className={scss['section-projects']}>
                 <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'center'}>
                   <Grid item>
-                    <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+                    <Grid className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                       <Typography
                         font={'inherit'}
                         color={'inherit'}
@@ -359,7 +350,7 @@ const Projects = props => {
                         gutterBottom>
                         Projects
                       </Typography>
-                    </div>
+                    </Grid>
                   </Grid>
                   <Grid item>
                     <Grid container direction={panelDirection} spacing={40} alignContent={'center'} alignItems={'center'} justify={'space-around'}>
@@ -369,11 +360,14 @@ const Projects = props => {
                         'Game Loops',
                         'Sprite Sheet Animation'
                       ]} color={'orange'} backgroundClass={classes.breakoutBg} classes={classes} />
-                      <ProjectCard title={'Poshcalc'} description={'A native Android application to help online reseller price their goods with the optimal return on investment'} skills={[
-                        'Java',
-                        'Native Android',
-                        'MVC Architecture'
-                      ]} color={'green'} backgroundClass={classes.poshcalcBg} classes={classes} />
+                      <ProjectCard title={'Poshcalc'}
+                        skills={[
+                          'Java',
+                          'Native Android',
+                          'MVC Architecture'
+                        ]} color={'green'} backgroundClass={classes.poshcalcBg} classes={classes}>
+                        A native Android application to help online reseller price their goods with the optimal <abbr title='Return On Investment'>ROI</abbr>
+                      </ProjectCard>
                       <ProjectCard title={'Zombies With Friends'} description={'A wave-based zombie shooter you can play with friends!'} skills={[
                         'C#',
                         '3D Modeling',
@@ -386,11 +380,20 @@ const Projects = props => {
                   </Grid>
                 </Grid>
               </section>
+
+              <section className={scss['section-stories']}>
+                <Grid container direction={'column'} spacing={16} alignContent={'center'} alignItems={'center'} justify={'center'}>
+                  <Grid item xs>
+                    <Story name={'Victoria Saucier'} position={'CEO Gainfy Enterprises'} highlight={'Passionate and Value Driven'}
+                      testimonial={'(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'} {...props} />
+                  </Grid>
+                </Grid>
+              </section>
             </main>
           </Grid>
         </Grid>
       </Paper>
-    </div>
+    </Grid>
   );
 };
 
@@ -398,7 +401,7 @@ function SkillBox(props) {
   const { scss, icons, category } = props;
 
   return (
-    <div className={classNames(scss['feature-box'], scss['unskew'])}>
+    <Grid className={classNames(scss['feature-box'], scss['unskew'])}>
       <Typography
         className={classNames(scss['heading-tertiary'], scss['heading-tertiary--feature'], scss.center)}
         variant={'h3'}
@@ -411,14 +414,14 @@ function SkillBox(props) {
       <ul className={scss['icon-list']}>
         {
           icons.map((icon, index) => (<li key={icon.name}>
-            <div className={scss['hover-icon']}>
+            <Grid className={scss['hover-icon']}>
               <SvgIcon aria-labelledby={scss['hover-icon__label']} title={icon.name} svgClass={scss['hover-icon']} size={'3rem'} gradientDirection={'horizontal'} backgroundStroke={icon.background} />
               <Typography variant={'body1'} component={'p'} className={scss['hover-icon__label']} font={'inherit'} color={'inherit'} align={'center'}>{icon.name}</Typography>
-            </div>
+            </Grid>
           </li>))
         }
       </ul>
-    </div>
+    </Grid>
   );
 }
 
@@ -432,23 +435,37 @@ function ProjectCard(props) {
 
   return (
     <Grid item>
-      <div className={scss['card']}>
-        <div className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
-          <h5>Back</h5>
-        </div>
-        <div className={classNames(scss['card__side'], scss['card__side--front'])}>
-          <div className={classNames(scss['card__background'], backgroundClass)}>
+      <Grid className={scss['card']}>
+        <Grid className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
+          <Grid container direction={'column'} spacing={16} justify={'center'} alignItems={'center'} alignContent={'center'}>
+            <Grid item>
+              <p className={scss['card__cta']}>Take a look!</p>
+            </Grid>
+            <Grid item>
+              <Grid container direction={'column'} spacing={32} justify={'space-around'} alignItems={'center'} alignContent={'center'} className={scss['card__cta-buttons']}>
+                <Grid item>
+                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>Demo</a>
+                </Grid>
+                <Grid item>
+                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>Code</a>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid className={classNames(scss['card__side'], scss['card__side--front'])}>
+          <Grid className={classNames(scss['card__background'], backgroundClass)}>
             <h4 className={scss['card__heading']}>
               <span className={classNames(scss['card__heading-span'], scss[`card__heading-span--${color}`])}>
                 {title}
               </span>
             </h4>
-          </div>
-          <div className={scss['card__details']}>
+          </Grid>
+          <Grid className={scss['card__details']}>
             <Grid container direction={'column'} spacing={16} justify={'space-around'} alignItems={'center'} alignContent={'center'}>
-              <Grid item style={{ width: '100%' }}>
+              <Grid item>
                 <p className={scss['card__details--description']}>
-                  {description}
+                  {description || props.children}
                 </p>
               </Grid>
               <Grid item style={{ width: '100%' }}>
@@ -457,9 +474,46 @@ function ProjectCard(props) {
                 </ul>
               </Grid>
             </Grid>
-          </div>
-        </div>
-      </div>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
+
+function Story(props) {
+  const { name, testimonial, highlight, position, classes, panelDirection, width } = props;
+  const firstName = (name.split(' ')[0]).toString()
+    .toLowerCase();
+
+  const isXs = width === 'xs';
+
+  return (
+    <Grid item xs>
+      <Grid container direction={panelDirection} className={scss.story} alignItems={'center'} justify={'center'} alignContent={'center'}>
+        <Grid item>
+          <figure className={classNames(classes[`${firstName}Bg`], scss['story__portrait'], width === 'xs' ? classes.mxAuto : classes.floatLeft)}>
+            <h5 className={scss['story__portrait-label']}>
+              <span className={scss['story__portrait-label--name']}>{name}</span><br />
+              <span className={scss['story__portrait-label--position']}>{position}</span>
+            </h5>
+          </figure>
+        </Grid>
+        <Grid item xs>
+          <Grid container direction={'column'} spacing={8} alignContent={isXs ? 'center' : 'flex-start'} justify={isXs ? 'center' : 'flex-start'} alignItems={'stretch'} className={scss['story__text']}>
+            <Grid item>
+              <h3 className={classNames(scss['heading-tertiary'], isXs ? classes.textCenter : classes.textLeft)}>
+                <strong>{highlight}</strong>
+              </h3>
+            </Grid>
+            <Grid item xs={12}>
+              <p className={scss['block-quote']}>
+                {testimonial}
+              </p>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
@@ -472,17 +526,17 @@ SkillBox.propTypes = {
   scss: PropTypes.shape({}).isRequired,
   icons: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    background: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ]).isRequired,
-    text: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ])
+    background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
   })).isRequired,
   category: PropTypes.string.isRequired
 };
 ProjectCard.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
-  color: PropTypes.oneOf([ 'orange', 'blue', 'green' ]).isRequired,
+  color: PropTypes.oneOf(['orange', 'blue', 'green']).isRequired,
   backgroundClass: PropTypes.string.isRequired
 };
 

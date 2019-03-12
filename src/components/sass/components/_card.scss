@@ -7,6 +7,10 @@
   height: 30rem;
   width: 18rem;
   margin: 0 1.2rem;
+  tab-index: 0;
+  @include hide-backface;
+
+
 
   &__side {
     @include transition(all ease 800ms);
@@ -53,7 +57,6 @@
     padding-bottom: 2.4rem;
     padding-right: 1.2rem;
     @include box-sizing(border-box);
-
     @include clip-path(polygon(0 0, 100% 0, 100% 85%, 0 100%));
 
     &--orange {
@@ -66,6 +69,32 @@
 
     &--blue {
       background-image: $blueGradient, $macbook-coding-600x400;
+    }
+  }
+
+  &__cta {
+    margin-top: 40%;
+    font-size: 2.1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+
+    &-btn {
+      margin: 0;
+      padding: 0;
+      box-sizing: initial;
+      background-color: $secondaryFont;
+      color: $primaryFont;
+      align-self: center;
+      font-size: 1.3rem;
+      width: 35%;
+
+      &::after {
+        background-color: $secondaryFont;
+      }
+    }
+
+    &-buttons {
+      display: block;
     }
   }
 
@@ -118,8 +147,10 @@
       list-style: none;
       width: 80%;
       margin: 0 auto;
+      padding: 0;
 
       li {
+        margin: 0;
         text-align: center;
         font-size: 0.9rem;
         padding: 0.2rem;
@@ -131,7 +162,17 @@
     @include transform(rotateY(180deg));
   }
 
+  &:focus &__side--front, &:focus-within &__side--front {
+    outline: 0;
+    @include transform(rotateY(180deg));
+  }
+
   &:hover &__side--back {
+    @include transform(rotateY(0));
+  }
+
+  &:focus &__side--back, &:focus-within &__side--back {
+    outline: 0;
     @include transform(rotateY(0));
   }
 }

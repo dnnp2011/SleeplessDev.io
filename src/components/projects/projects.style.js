@@ -1,6 +1,8 @@
 import mountainRange from '../../assets/images/stock/mountain-range-600x400.jpg';
 import macbookcCoding from '../../assets/images/stock/macbook-coding-600x400.jpg';
 import macbookcCoffee from '../../assets/images/stock/macbook-and-coffee-coding-600x400.jpg';
+import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300.jpg';
+import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300.jpg';
 
 
 const styles = theme => {
@@ -44,6 +46,28 @@ const styles = theme => {
     },
     zombiesBg: {
       backgroundImage: `linear-gradient(to bottom right, ${lightBlue}, ${mediumBlue}, ${darkBlue}), url(${macbookcCoding})`
+    },
+    victoriaBg: {
+      backgroundImage: `url(${victoriaSaucier})`,
+      backgroundSize: 'cover',
+      backgroundAttachment: 'local'
+    },
+    michaelBg: {
+      backgroundImage: `url(${michaelSzczech})`,
+      backgroundSize: 'cover',
+      backgroundAttachment: 'local'
+    },
+    floatLeft: {
+      'float': 'left',
+    },
+    mxAuto: {
+      margin: '2rem auto',
+    },
+    textCenter: {
+      textAlign: 'center',
+    },
+    textLeft: {
+      textAlign: 'left',
     }
   };
 

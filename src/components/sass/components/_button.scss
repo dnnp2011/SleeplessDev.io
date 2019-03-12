@@ -15,10 +15,17 @@
   position: relative;
   font-family: inherit;
   letter-spacing: 2px;
+  outline: 0;
 
   &:hover {
     @include transform(translateY(-0.2rem));
     @include box-shadow(0.3rem .6rem .9rem $shadow);
+  }
+
+  &:focus {
+    outline: 0;
+    @include transform(translateY(-0.2rem));
+    @include focus-outline($secondaryShadow: .3rem .6rem .9rem $shadow);
   }
 
   &:active {
@@ -41,6 +48,7 @@
   &:hover::after {
     @include transform(scale(1.2) scaleY(1.3));
     opacity: 0;
+
   }
 }
 
@@ -53,14 +61,14 @@
     border-bottom: 1px solid $primaryColor;
     padding: .3rem;
     font-size: 1.2rem;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     font-weight: 500;
     font-family: inherit;
     @include transition(all 500ms);
     @include border-radius($BORDER_RADIUS);
   }
 
-  &:hover {
+  &:hover, &:focus {
     @include transform(translateY(-0.2rem));
     @include box-shadow(0.3rem .6rem .8rem $shadow);
     color: $secondaryFont;

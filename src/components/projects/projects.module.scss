@@ -12,6 +12,7 @@
 @import '../sass/components/feature-box';
 @import '../sass/components/icon-list';
 @import '../sass/components/card';
+@import '../sass/components/story';
 // Utilities
 @import '../sass/base/utilities';
 // Layout
@@ -56,6 +57,7 @@
   padding: 1.2rem;
   @include box-sizing(initial);
   @include transform(skewY(-7deg));
+  outline: 0;
 
   & > * {
     @include transform(skewY(7deg));
@@ -63,7 +65,8 @@
 
   .skillbox-wrapper {
     @include box-sizing(inherit);
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 6rem;
   }
 }
 
@@ -72,9 +75,14 @@
   padding: 15rem 0;
 }
 
+.section-stories {
+  @include section;
+  padding: 15rem 0;
+
+}
+
 
 .btn--grow-in {
   will-change: transform;
   @include animate(animation__grow-in 600ms ease-out 900ms backwards 1);
 }
-

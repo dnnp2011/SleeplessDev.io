@@ -7,3 +7,31 @@
 	align-self: center;
 	justify-content: center;
 }
+
+.flexrow-center {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex: 0 1 auto;
+}
+
+.flexcol-center {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	flex: 0 0 border-box;
+}
+
+.flex-spacing-16 {
+	& > *:not(:last-child) *:not(:first-child) {
+		margin-top: 1rem;
+	}
+}
