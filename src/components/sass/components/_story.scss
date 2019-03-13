@@ -2,112 +2,196 @@
 @import '../abstracts/mixins';
 
 .story {
-  //padding: 1rem;
-  width: 100%;
-  @include box-shadow(.5 3rem 6rem $shadow--light);
+  width: 60%;
+  margin: 2rem auto;
+  @include box-shadow(.3rem 1.5rem 2rem $shadow--light);
   background-color: $secondaryFont;
   @include border-radius($BORDER_RADIUS);
+  padding: 3rem;
   font-size: $defaultFont;
-  overflow: hidden;
+  @include transform(skewX(-12deg));
 
-  &:hover &__portrait {
-    &::after {
-      opacity: 0.6;
-    }
+  &__content {
+    @include transform(skewX(12deg));
+  }
 
-    &-label {
-      opacity: 1;
-    }
+  &__shape {
+    width: 10rem;
+    height: 10rem;
+    float: left;
+    background-color: transparent;
+    @include shape-outside(circle(35% at 50% 50%));
+    @include clip-path(circle(50% at 50% 50%));
+    @include transform(translateX(-2rem));
+    position: relative;
+  }
+
+  &__caption {
+    color: $secondaryFont;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, 0));
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 100%;
+    opacity: 0;
+    @include transition(all 500ms);
+    @include hide-backface;
   }
 
   &__portrait {
-    z-index: 10;
+    border-radius: 100%;
+    height: 100%;
+    @include transform(scale(1.2));
+    @include transition(all 500ms);
+    @include hide-backface;
+  }
+
+  &__text {
+    &--highlight {
+      font-weight: 600;
+      font-size: 1.7rem;
+      font-style: italic;
+    }
+
+    &--testimonial {
+      line-height: 1.7rem;
+
+      &::before {
+        font-family: "Courier 10 Pitch", sans-serif;
+        content: open-quote;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1rem;
+      }
+
+      &::after {
+        font-family: "Courier 10 Pitch", sans-serif;
+        content: close-quote;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1rem;
+      }
+    }
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    @include transform(translate(-50%, -50%));
+  }
+
+  &:hover &__portrait {
+    filter: blur(3px) brightness(60%);
+    @include transform(scale(1));
+  }
+}
+
+/* .story {
+  padding: 2.5rem;
+  @include box-shadow(.5 3rem 6rem $shadow);
+  background-color: $secondaryFont;
+  @include border-radius($BORDER_RADIUS);
+  overflow: hidden;
+
+  &:hover &__caption {
+      @include transform(translate(-50%, -50%));
+      opacity: 1;
+  }
+
+  &:hover &__portrait {
+    background-size: 100%;
+    filter: blur(1px) brightness(80%);
+  }
+
+  &__shape {
+    content: '';
+    display: flex;
+    padding: 0;
+    margin: 0;
     width: 10rem;
     height: 10rem;
-    background-color: #000000;
-    @include border-radius(100%);
-    background-attachment: local;
-    background-size: cover;
-    border: solid medium $primaryFont;
+  }
+
+  &__portrait {
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    width: 100%;
+    border-radius: 100%;
     @include clip-path(circle(50% at 50% 50%));
     @include shape-outside(circle(50% at 50% 50%));
     text-align: center;
     position: relative;
-    outline-offset: .6rem;
-    outline: 1rem solid $primaryFont;
-    margin: 2rem auto;
+    @include hide-backface;
+    background-size: 110%;
+    background-position: center;
+    @include transition(all 500ms);
+  }
 
+  &__caption {
+    @include transition(all 500ms);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translateX(-50%));
+    z-index: 20;
+    width: 100%;
+    color: #000;
+    opacity: 0;
+    @include hide-backface;
+    text-align: center;
 
-    &::after {
-      content: '';
-      width: 102%;
-      height: 102%;
-      background-color: #000000;
-      @include border-radius(100%);
-      z-index: 15;
-      opacity: 0;
-      @include transition(all 300ms);
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      @include transform(translateY(-50%) translateX(-50%));
+    &--name {
+      @include hide-backface;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      width: 40%;
+      font-weight: 500;
+      font-size: 1.1rem;
     }
 
-    &-label {
-      @include transition(all 300ms);
-      position: absolute;
-      top: 0;
-      left: 50%;
-      @include transform(translateX(-50%) translateY(100%));
-      opacity: 0;
-      z-index: 20;
-      width: 100%;
-      color: #ffffff;
-
-      &--name {
-        width: 40%;
-      }
-
-      &--position {
-        width: 70%;
-      }
+    &--position {
+      @include hide-backface;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      width: 70%;
+      font-weight: 400;
+      font-size: 1.1rem;
     }
+  }
+
+  &__heading {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 2rem;
   }
 
   &__text {
-    .heading-tertiary {
-      text-align: center;
+    margin-top: -1rem;
+    margin-left: 1rem;
+  }
 
-      &::before {
-        font-family: "Courier 10 Pitch", sans-serif;
-        content: open-quote;
-        font-size: 2rem;
-      }
+  &__quote {
+    line-height: 1.5rem;
+    font-size: $defaultFont;
 
-      &::after {
-        font-family: "Courier 10 Pitch", sans-serif;
-        content: close-quote;
-        font-size: 2rem;
-      }
+    &::before {
+      font-family: "Courier 10 Pitch", sans-serif;
+      content: open-quote;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2rem;
     }
 
-    .block-quote {
-      padding: 0;
-      margin: 1.5rem;
-      text-align: left;
-
-      &::before {
-        font-family: "Courier 10 Pitch", sans-serif;
-        content: open-quote;
-        font-size: 2rem;
-      }
-
-      &::after {
-        font-family: "Courier 10 Pitch", sans-serif;
-        content: close-quote;
-        font-size: 2rem;
-      }
+    &::after {
+      font-family: "Courier 10 Pitch", sans-serif;
+      content: close-quote;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2rem;
     }
   }
-}
+} */

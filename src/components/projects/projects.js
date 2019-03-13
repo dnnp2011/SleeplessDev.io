@@ -15,10 +15,12 @@ import SvgIcon from '../widgets/svg-icon/SvgIcon';
 import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
 import scss from './projects.module.scss';
 import themeStyles from './projects.style';
+import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
+import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
 
+// const victoriaSaucier = '../../assets/images/portrait/Victoria_Saucier_300x300.jpg';
 
 const Projects = props => {
-
   const { classes, width } = props;
 
   const iconCategories = {
@@ -32,14 +34,9 @@ const Projects = props => {
       devicons.Css3.plain,
       devicons.Php.plain,
       devicons.Typescript.plain,
-      devicons.MySql.plain
+      devicons.MySql.plain,
     ],
-    frontend: [
-      devicons.Bootstrap.plain,
-      devicons.Jquery.plain,
-      devicons.Sass.plain,
-      devicons.React.plain
-    ],
+    frontend: [devicons.Bootstrap.plain, devicons.Jquery.plain, devicons.Sass.plain, devicons.React.plain],
     backend: [
       devicons.Apache.plain,
       devicons.Debian.plain,
@@ -51,15 +48,10 @@ const Projects = props => {
       devicons.MongoDb.plain,
       devicons.Nginx.plain,
       devicons.Redhat.plain,
-      devicons.Ubuntu.plain
+      devicons.Ubuntu.plain,
     ],
     mobile: [devicons.Android.plain],
-    tools: [
-      devicons.AmazonWebServices.plain,
-      devicons.ChromeDevTools.plain,
-      devicons.Git.plain,
-      devicons.Ssh.plain
-    ],
+    tools: [devicons.AmazonWebServices.plain, devicons.ChromeDevTools.plain, devicons.Git.plain, devicons.Ssh.plain],
     other: [
       devicons.Atom.plain,
       devicons.Bitbucket.plain,
@@ -72,8 +64,8 @@ const Projects = props => {
       devicons.PyCharm.plain,
       devicons.Vim.plain,
       devicons.VisualStudio.plain,
-      devicons.Windows.plain
-    ]
+      devicons.Windows.plain,
+    ],
   };
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
@@ -93,14 +85,22 @@ const Projects = props => {
               alignContent={'center'}
               justify={'center'}>
               {/* TODO: Particle system is not very responsive, resizing the viewport can greatly effect centering */}
-              <ParticleSystemCanvas diameterRange={{
-                min: 700,
-                max: 1000
-              }} xAxisOffset={350} yAxisOffset={-200} xSpawnOffset={-450} ySpawnOffset={-200}
-              particleCount={800} sizeRange={{
-                min: 5,
-                max: 15
-              }} angularVelocity={0.001} />
+              <ParticleSystemCanvas
+                diameterRange={{
+                  min: 700,
+                  max: 1000,
+                }}
+                xAxisOffset={350}
+                yAxisOffset={-200}
+                xSpawnOffset={-450}
+                ySpawnOffset={-200}
+                particleCount={800}
+                sizeRange={{
+                  min: 5,
+                  max: 15,
+                }}
+                angularVelocity={0.001}
+              />
               <Grid container direction={'row'} alignContent={'flex-start'} justify={'flex-start'}>
                 <img
                   color={'inherit'}
@@ -120,7 +120,12 @@ const Projects = props => {
                 style={{ width: '100%' }}
                 alignItems={'center'}>
                 <Grid item>
-                  <Grid container direction={'column'} spacing={16} className={scss['header__text-container']} style={{ width: '100%' }}>
+                  <Grid
+                    container
+                    direction={'column'}
+                    spacing={16}
+                    className={scss['header__text-container']}
+                    style={{ width: '100%' }}>
                     <h1 className={scss['heading-primary']}>
                       <span className={scss['heading-primary__title']}>Dalton Pierce</span>
                       <span className={scss['heading-primary__subtitle']}>Full Stack Developer</span>
@@ -132,8 +137,7 @@ const Projects = props => {
                       onClick={e => {
                         e.preventDefault();
                         e.stopPropagation();
-                        document.querySelector('#section-projects')
-                          .scrollIntoView({ behavior: 'smooth' });
+                        document.querySelector('#section-projects').scrollIntoView({ behavior: 'smooth' });
                       }}
                       aria-label={'scroll to projects'}>
                       Projects
@@ -162,7 +166,10 @@ const Projects = props => {
                         color={'inherit'}
                         variant={'h2'}
                         component={'h2'}
-                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--gradient'])}
+                        className={classNames(
+                          scss['heading-secondary__label'],
+                          scss['heading-secondary__label--gradient']
+                        )}
                         gutterBottom>
                         A bit about me
                       </Typography>
@@ -197,8 +204,7 @@ const Projects = props => {
                                 variant={'body1'}>
                                 I'm a self-taught full stack developer with a Griderse range of skills revolving around
                                 computer software and hardware. I'm passionate about learning at every opportunity, as
-                                such, I've gained experience using many programming and scripting languages,
-                                frameworks,
+                                such, I've gained experience using many programming and scripting languages, frameworks,
                                 tools, and platforms.
                               </Typography>
                             </Grid>
@@ -271,45 +277,14 @@ const Projects = props => {
                 </Grid>
               </section>
 
-              {/*              <section id={'section-skills'} className={scss['section-skills']}>
-               <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'flex-start'} justify={'center'} style={{
-               marginBottom: '4rem',
-               width: '100%'
-               }}>
-               <Grid item>
-               <Grid className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
-               <Typography
-               font={'inherit'}
-               color={'inherit'}
-               variant={'h2'}
-               component={'h2'}
-               className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--white'])}
-               gutterBottom>
-               Skills
-               </Typography>
-               </Grid>
-               </Grid>
-               <Grid item>
-               <Grid container direction={isWidthDown('sm', width, true)
-               ? 'column'
-               : 'row'} spacing={32} alignItems={'stretch'} alignContent={'center'} justify={'space-evenly'} style={{
-               width: '100%'
-               }}>
-               {
-               Object.keys(iconCategories)
-               .map(category =>
-               <Grid item key={category} xs>
-               <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-               </Grid>
-               )
-               }
-               </Grid>
-               </Grid>
-               </Grid>
-               </section>*/}
-
               <section tabIndex={0} id={'section-skills'} className={scss['section-skills']}>
-                <Grid container direction={'column'} spacing={16} alignContent={'center'} justify={'space-around'} alignItems={'stretch'}>
+                <Grid
+                  container
+                  direction={'column'}
+                  spacing={16}
+                  alignContent={'center'}
+                  justify={'space-around'}
+                  alignItems={'stretch'}>
                   <Grid item className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                     <Typography
                       font={'inherit'}
@@ -322,16 +297,18 @@ const Projects = props => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Grid container direction={ (isWidthDown('sm', width, true) ? 'column' : 'row')} alignContent={'center'} alignItems={'stretch'} justify={'space-evenly'}
-                      className={ scss[ 'skillbox-wrapper' ] }>
-                      {
-                        Object.keys(iconCategories)
-                          .map((category, index) =>
-                            <Grid item xs key={ category }>
-                              <SkillBox scss={ scss } icons={ iconCategories[ category ] } category={ category } />
-                            </Grid>
-                          )
-                      }
+                    <Grid
+                      container
+                      direction={isWidthDown('sm', width, true) ? 'column' : 'row'}
+                      alignContent={'center'}
+                      alignItems={'stretch'}
+                      justify={'space-evenly'}
+                      className={scss['skillbox-wrapper']}>
+                      {Object.keys(iconCategories).map((category, index) => (
+                        <Grid item xs key={category}>
+                          <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                        </Grid>
+                      ))}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -346,46 +323,114 @@ const Projects = props => {
                         color={'inherit'}
                         variant={'h2'}
                         component={'h2'}
-                        className={classNames(scss['heading-secondary__label'], scss['heading-secondary__label--gradient'])}
+                        className={classNames(
+                          scss['heading-secondary__label'],
+                          scss['heading-secondary__label--gradient']
+                        )}
                         gutterBottom>
                         Projects
                       </Typography>
                     </Grid>
                   </Grid>
                   <Grid item>
-                    <Grid container direction={panelDirection} spacing={40} alignContent={'center'} alignItems={'center'} justify={'space-around'}>
-                      <ProjectCard title={'Breakout'} description={'A C# remake of the classic arcade game: "Breakout"'} skills={[
-                        'C#',
-                        'XNA',
-                        'Game Loops',
-                        'Sprite Sheet Animation'
-                      ]} color={'orange'} backgroundClass={classes.breakoutBg} classes={classes} />
-                      <ProjectCard title={'Poshcalc'}
-                        skills={[
-                          'Java',
-                          'Native Android',
-                          'MVC Architecture'
-                        ]} color={'green'} backgroundClass={classes.poshcalcBg} classes={classes}>
-                        A native Android application to help online reseller price their goods with the optimal <abbr title='Return On Investment'>ROI</abbr>
+                    <Grid
+                      container
+                      direction={panelDirection}
+                      spacing={40}
+                      alignContent={'center'}
+                      alignItems={'center'}
+                      justify={'space-around'}>
+                      <ProjectCard
+                        title={'Breakout'}
+                        description={'A C# remake of the classic arcade game: "Breakout"'}
+                        skills={['C#', 'XNA', 'Game Loops', 'Sprite Sheet Animation']}
+                        color={'orange'}
+                        backgroundClass={classes.breakoutBg}
+                        classes={classes}
+                      />
+                      <ProjectCard
+                        title={'Poshcalc'}
+                        skills={['Java', 'Native Android', 'MVC Architecture']}
+                        color={'green'}
+                        backgroundClass={classes.poshcalcBg}
+                        classes={classes}>
+                        A native Android application to help online reseller price their goods with the optimal{' '}
+                        <abbr title='Return On Investment'>ROI</abbr>
                       </ProjectCard>
-                      <ProjectCard title={'Zombies With Friends'} description={'A wave-based zombie shooter you can play with friends!'} skills={[
-                        'C#',
-                        '3D Modeling',
-                        'Unity3D',
-                        'Network Synchronization',
-                        'Animation',
-                        'Singleton Pattern'
-                      ]} color={'blue'} backgroundClass={classes.zombiesBg} classes={classes} />
+                      <ProjectCard
+                        title={'Zombies With Friends'}
+                        description={'A wave-based zombie shooter you can play with friends!'}
+                        skills={[
+                          'C#',
+                          '3D Modeling',
+                          'Unity3D',
+                          'Network Synchronization',
+                          'Animation',
+                          'Singleton Pattern',
+                        ]}
+                        color={'blue'}
+                        backgroundClass={classes.zombiesBg}
+                        classes={classes}
+                      />
                     </Grid>
                   </Grid>
                 </Grid>
               </section>
 
               <section className={scss['section-stories']}>
-                <Grid container direction={'column'} spacing={16} alignContent={'center'} alignItems={'center'} justify={'center'}>
-                  <Grid item xs>
-                    <Story name={'Victoria Saucier'} position={'CEO Gainfy Enterprises'} highlight={'Passionate and Value Driven'}
-                      testimonial={'(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'} {...props} />
+                <div className={scss['bg-video']}>
+                        <video className={scss['bg-video__content']}>
+                          <source src={''} type={'video/mp4'} />
+                          <source src={''} type={'video/webm'} />
+                        </video>
+                </div>
+                <Grid
+                  container
+                  direction={'column'}
+                  spacing={40}
+                  alignContent={'center'}
+                  alignItems={'center'}
+                  justify={'center'}>
+                  <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
+                    <Typography
+                      font={'inherit'}
+                      color={'inherit'}
+                      variant={'h2'}
+                      component={'h2'}
+                      className={classNames(
+                        scss['heading-secondary__label'],
+                        scss['heading-secondary__label--gradient']
+                      )}
+                      gutterBottom>
+                      In other words
+                    </Typography>
+                  </div>
+                  <Story
+                    name={'Victoria Saucier'}
+                    position={'CEO - Gainfy'}
+                    highlight={'Passionate and Value Driven'}
+                    testimonial={
+                      '(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'
+                    }
+                    panelDirection={panelDirection}
+                    portraitSrc={victoriaSaucier}
+                    {...props}
+                  />
+                  <Story
+                    name={'Michael Szczech'}
+                    position={'Software Engineer - Gainfy'}
+                    highlight={'A hell of a programmer'}
+                    testimonial={
+                      "(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project's constraints. He's a hell of a programmer!"
+                    }
+                    panelDirection={panelDirection}
+                    portraitSrc={michaelSzczech}
+                    {...props}
+                  />
+                  <Grid item>
+                    <a href={'#'} className={scss['btn-text']}>
+                      Go to resume &rarr;
+                    </a>
                   </Grid>
                 </Grid>
               </section>
@@ -401,7 +446,7 @@ function SkillBox(props) {
   const { scss, icons, category } = props;
 
   return (
-    <Grid className={classNames(scss['feature-box'], scss['unskew'])}>
+    <Grid className={scss['feature-box']}>
       <Typography
         className={classNames(scss['heading-tertiary'], scss['heading-tertiary--feature'], scss.center)}
         variant={'h3'}
@@ -412,14 +457,29 @@ function SkillBox(props) {
         {category}
       </Typography>
       <ul className={scss['icon-list']}>
-        {
-          icons.map((icon, index) => (<li key={icon.name}>
+        {icons.map((icon, index) => (
+          <li key={icon.name}>
             <Grid className={scss['hover-icon']}>
-              <SvgIcon aria-labelledby={scss['hover-icon__label']} title={icon.name} svgClass={scss['hover-icon']} size={'3rem'} gradientDirection={'horizontal'} backgroundStroke={icon.background} />
-              <Typography variant={'body1'} component={'p'} className={scss['hover-icon__label']} font={'inherit'} color={'inherit'} align={'center'}>{icon.name}</Typography>
+              <SvgIcon
+                aria-labelledby={scss['hover-icon__label']}
+                title={icon.name}
+                svgClass={scss['hover-icon']}
+                size={'3rem'}
+                gradientDirection={'horizontal'}
+                backgroundStroke={icon.background}
+              />
+              <Typography
+                variant={'body1'}
+                component={'p'}
+                className={scss['hover-icon__label']}
+                font={'inherit'}
+                color={'inherit'}
+                align={'center'}>
+                {icon.name}
+              </Typography>
             </Grid>
-          </li>))
-        }
+          </li>
+        ))}
       </ul>
     </Grid>
   );
@@ -430,24 +490,45 @@ function ProjectCard(props) {
 
   const renderSkills = skills => {
     const slice = skills.length > 5 ? skills.slice(0, 5) : skills;
-    return slice.map((skill, index) => (<li className={index !== slice.length - 1 ? classes[`skills--${color}`] : null} key={skill}>{skill}</li>));
+    return slice.map((skill, index) => (
+      <li className={index !== slice.length - 1 ? classes[`skills--${color}`] : null} key={skill}>
+        {skill}
+      </li>
+    ));
   };
 
   return (
     <Grid item>
       <Grid className={scss['card']}>
         <Grid className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
-          <Grid container direction={'column'} spacing={16} justify={'center'} alignItems={'center'} alignContent={'center'}>
+          <Grid
+            container
+            direction={'column'}
+            spacing={16}
+            justify={'center'}
+            alignItems={'center'}
+            alignContent={'center'}>
             <Grid item>
               <p className={scss['card__cta']}>Take a look!</p>
             </Grid>
             <Grid item>
-              <Grid container direction={'column'} spacing={32} justify={'space-around'} alignItems={'center'} alignContent={'center'} className={scss['card__cta-buttons']}>
+              <Grid
+                container
+                direction={'column'}
+                spacing={32}
+                justify={'space-around'}
+                alignItems={'center'}
+                alignContent={'center'}
+                className={scss['card__cta-buttons']}>
                 <Grid item>
-                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>Demo</a>
+                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>
+                    Demo
+                  </a>
                 </Grid>
                 <Grid item>
-                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>Code</a>
+                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>
+                    Code
+                  </a>
                 </Grid>
               </Grid>
             </Grid>
@@ -462,16 +543,18 @@ function ProjectCard(props) {
             </h4>
           </Grid>
           <Grid className={scss['card__details']}>
-            <Grid container direction={'column'} spacing={16} justify={'space-around'} alignItems={'center'} alignContent={'center'}>
+            <Grid
+              container
+              direction={'column'}
+              spacing={16}
+              justify={'space-around'}
+              alignItems={'center'}
+              alignContent={'center'}>
               <Grid item>
-                <p className={scss['card__details--description']}>
-                  {description || props.children}
-                </p>
+                <p className={scss['card__details--description']}>{description || props.children}</p>
               </Grid>
               <Grid item style={{ width: '100%' }}>
-                <ul className={classNames(scss['card__details--skills'])}>
-                  {renderSkills(skills)}
-                </ul>
+                <ul className={classNames(scss['card__details--skills'])}>{renderSkills(skills)}</ul>
               </Grid>
             </Grid>
           </Grid>
@@ -482,37 +565,31 @@ function ProjectCard(props) {
 }
 
 function Story(props) {
-  const { name, testimonial, highlight, position, classes, panelDirection, width } = props;
-  const firstName = (name.split(' ')[0]).toString()
-    .toLowerCase();
+  const { name, testimonial, highlight, position, classes, panelDirection, width, portraitSrc } = props;
+  const firstName = name.split(' ')[0].toString().toLowerCase();
 
   const isXs = width === 'xs';
+  const isSmDown = isWidthDown('sm', width, true);
 
   return (
-    <Grid item xs>
-      <Grid container direction={panelDirection} className={scss.story} alignItems={'center'} justify={'center'} alignContent={'center'}>
-        <Grid item>
-          <figure className={classNames(classes[`${firstName}Bg`], scss['story__portrait'], width === 'xs' ? classes.mxAuto : classes.floatLeft)}>
-            <h5 className={scss['story__portrait-label']}>
-              <span className={scss['story__portrait-label--name']}>{name}</span><br />
-              <span className={scss['story__portrait-label--position']}>{position}</span>
-            </h5>
-          </figure>
-        </Grid>
-        <Grid item xs>
-          <Grid container direction={'column'} spacing={8} alignContent={isXs ? 'center' : 'flex-start'} justify={isXs ? 'center' : 'flex-start'} alignItems={'stretch'} className={scss['story__text']}>
-            <Grid item>
-              <h3 className={classNames(scss['heading-tertiary'], isXs ? classes.textCenter : classes.textLeft)}>
-                <strong>{highlight}</strong>
-              </h3>
-            </Grid>
-            <Grid item xs={12}>
-              <p className={scss['block-quote']}>
-                {testimonial}
-              </p>
-            </Grid>
-          </Grid>
-        </Grid>
+    <Grid item xs={12}>
+      <Grid container direction={'row'} alignItems={'center'} font={'inherit'} color={'inherit'}>
+        <div className={scss['story']}>
+          <div className={scss['story__content']}>
+            <figure className={scss['story__shape']}>
+              <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
+              <figcaption className={scss['story__caption']}>
+                <span>{name}</span>
+                <br />
+                <span>{position}</span>
+              </figcaption>
+            </figure>
+            <div className={scss['story__text']}>
+              <h3 className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
+              <p className={scss['story__text--testimonial']}>{testimonial}</p>
+            </div>
+          </div>
+        </div>
       </Grid>
     </Grid>
   );
@@ -520,16 +597,18 @@ function Story(props) {
 
 Projects.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 SkillBox.propTypes = {
   scss: PropTypes.shape({}).isRequired,
-  icons: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
-  })).isRequired,
-  category: PropTypes.string.isRequired
+  icons: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
+      text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+    })
+  ).isRequired,
+  category: PropTypes.string.isRequired,
 };
 ProjectCard.propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -537,7 +616,17 @@ ProjectCard.propTypes = {
   description: PropTypes.string,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
   color: PropTypes.oneOf(['orange', 'blue', 'green']).isRequired,
-  backgroundClass: PropTypes.string.isRequired
+  backgroundClass: PropTypes.string.isRequired,
+};
+Story.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  testimonial: PropTypes.string.isRequired,
+  highlight: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  panelDirection: PropTypes.oneOf(['row', 'column']).isRequired,
+  portraitSrc: PropTypes.string.isRequired,
 };
 
 compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(SkillBox);
