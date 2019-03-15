@@ -1,0 +1,84 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.form {
+  font-family: inherit;
+
+  .heading-secondary {
+    text-align: center;
+	}
+
+	&__group {
+		width: 100%;
+	}
+
+  &__input {
+    font-family: inherit;
+    color: inherit;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    @include border-radius($BORDER_RADIUS);
+    background-color: rgba($secondaryFont, .9);
+    border: none;
+    display: block;
+    @include transition(border 300ms);
+		border-bottom: 3px solid transparent;
+		width: 85%;
+
+    &:focus {
+      outline: none;
+      @include box-shadow(.2rem .8rem 1.2rem $shadow);
+      border-bottom: 3px solid $primaryColor;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $primaryAccent;
+    }
+
+    &:focus:valid {
+      border-bottom: 3px solid $primaryColor;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $primaryPlaceholder;
+    }
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 1.5rem;
+    display: block;
+    @include transform(translateY(-5rem));
+    @include transition(all 300ms);
+
+    &--multiline {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 1.35rem;
+      display: block;
+      @include transform(translateY(-8.8rem));
+      @include transition(all 300ms);
+    }
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(-3rem));
+
+    &--multiline {
+      opacity: 0;
+      visibility: hidden;
+      @include transform(translateY(-3rem));
+    }
+  }
+
+  &__submit {
+    font-size: 1rem;
+
+    &::after {
+      background-color: $primaryColor;
+    }
+  }
+}

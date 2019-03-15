@@ -45,27 +45,7 @@
           margin: auto;
           @include transform(scale(1.3));
         }
-
-        //&::after {
-        //  @include transform(scale(1.1));
-        //}
       }
-
-      //&::after {
-      //  @include transition(all 300ms);
-      //  content: '';
-      //  height: 95%;
-      //  width: 95%;
-      //  position: absolute;
-      //  top: 3px;
-      //  left: 2px;
-      //  z-index: 10;
-      //  border-width: 5px;
-      //  border-style: solid;
-      //  border-radius: 20px;
-      //  border-color: $hoverDark;
-      //  opacity: 0;
-      //}
     }
   }
 }

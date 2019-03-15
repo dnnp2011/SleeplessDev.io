@@ -1,3 +1,16 @@
+export const SleeplessDev = {
+  plain: {
+    name: 'SleeplessDev',
+    background: [],
+    text: null
+  },
+  wordmarked: {
+    name: 'SleeplessDev',
+    background: [],
+    text: null
+  }
+}
+
 export const AmazonWebServices = {
   plain: {
     name: 'AWS',

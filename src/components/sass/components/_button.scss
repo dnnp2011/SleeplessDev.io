@@ -1,54 +1,58 @@
 @import '../abstracts/variables';
 @import '../abstracts/mixins';
 
-.btn:link,
-.btn:visited {
-  @include transition(all 150ms);
-  @include border-radius(6rem);
-  @include box-shadow(0.2rem 0.4rem .6rem $shadow);
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-  display: -moz-inline-block;
-  text-align: center;
-  padding: .9rem 4.2rem;
-  position: relative;
-  font-family: inherit;
-  letter-spacing: 2px;
-  outline: 0;
-
-  &:hover {
-    @include transform(translateY(-0.2rem));
-    @include box-shadow(0.3rem .6rem .9rem $shadow);
-  }
-
-  &:focus {
-    outline: 0;
-    @include transform(translateY(-0.2rem));
-    @include focus-outline($secondaryShadow: .3rem .6rem .9rem $shadow);
-  }
-
-  &:active {
-    @include transform(-0.1rem);
-    @include box-shadow(0.2rem 0.3rem 0.3rem $shadow);
-  }
-
-  &::after {
+.btn {
+  &,
+  &:link,
+  &:visited {
+    @include transition(all 150ms);
     @include border-radius(6rem);
-    @include transition(all 400ms);
-    content: '';
+    @include box-shadow(0.2rem 0.4rem .6rem $shadow);
+    text-transform: uppercase;
+    text-decoration: none;
     display: inline-block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  &:hover::after {
-    @include transform(scale(1.2) scaleY(1.3));
-    opacity: 0;
+    display: -moz-inline-block;
+    text-align: center;
+    padding: .9rem 4.2rem;
+    position: relative;
+    font-family: inherit;
+    letter-spacing: 2px;
+    outline: 0;
 
+    // For the ContactForm submit button
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      @include transform(translateY(-0.2rem));
+      @include box-shadow(0.3rem .6rem .9rem $shadow);
+    }
+
+    &:active {
+      @include transform(translateY(0.1rem));
+      @include box-shadow(0.2rem 0.3rem 0.3rem $shadow);
+    }
+
+    &::after {
+      @include border-radius(6rem);
+      @include transition(all 400ms);
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      @include absolute-origin;
+      z-index: -1;
+    }
+    &:hover::after {
+      @include transform(scale(1.2) scaleY(1.3));
+      opacity: 0;
+    }
+  }
+
+  &--green {
+    background-color: $primaryColor;
+    color: $secondaryFont;
   }
 }
 
@@ -68,7 +72,8 @@
     @include border-radius($BORDER_RADIUS);
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     @include transform(translateY(-0.2rem));
     @include box-shadow(0.3rem .6rem .8rem $shadow);
     color: $secondaryFont;
