@@ -29,9 +29,10 @@ import scss from './projects.module.scss';
 import themeStyles from './projects.style';
 import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
 import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
-import storyBgStillframe from '../../assets/images/stock/Snow-motion_1080x608.jpg';
+import storyBgStillframe from '../../assets/images/stock/snow-motion-1080x608.jpg';
 import storyBgVideo from '../../assets/video/falling_sparks_water.mp4';
-import storyBgVideoAlt from '../../assets/video/Snow-motion.webm';
+import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
+import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
 import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 
 class Projects extends React.Component {
@@ -39,15 +40,15 @@ class Projects extends React.Component {
     bgVideo: null,
   };
 
-  setBgVideo = (src, altSrc, videoClass) => {
-    this.setState({
-      bgVideo: <BgVideo videoSrc={src} videoSrcAlt={altSrc} videoClass={videoClass} />,
-    });
-  };
-
   componentDidMount() {
     if (!this.state.bgVideo) {
-      this.setBgVideo(storyBgVideo, storyBgVideoAlt, scss['bg-video__content']);
+      this.setState({
+        bgVideo: <BgVideo
+          videoSrc={ storyBgVideo }
+          videoSrcAlt={ [ storyBgVideoAlt, storyBgVideoAlt2 ] }
+          videoClass={ scss[ 'bg-video__content' ] }
+        />,
+      });
     }
   }
 
@@ -445,11 +446,11 @@ class Projects extends React.Component {
                 </section>
 
                 <section className={scss['section-stories']}>
-                  <div className={scss['bg-video']} style={{ height: isWidthDown('sm', width, true) ? '100%' : '' }}>
-                    {!!bgVideo && isWidthUp('sm', width) ? (
+                  <div className={ scss[ 'bg-video' ] } style={ { height: isWidthDown('md', width, true) ? '100%' : '' } }>
+                    {!!bgVideo && isWidthUp('md', width, true) ? (
                       bgVideo
                     ) : (
-                      <img src={storyBgStillframe} alt={'Mt Baker'} className={scss['bg-video__placeholder']} />
+                      <div className={scss['bg-video__placeholder']} />
                     )}
                   </div>
                   <Grid
@@ -458,43 +459,50 @@ class Projects extends React.Component {
                     spacing={40}
                     alignContent={'center'}
                     alignItems={'center'}
-                    justify={'center'}>
-                    <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
-                      <Typography
-                        font={'inherit'}
-                        color={'inherit'}
-                        variant={'h2'}
-                        component={'h2'}
-                        className={classNames(
-                          scss['heading-secondary__label'],
-                          scss['heading-secondary__label--gradient']
-                        )}
-                        gutterBottom>
-                        In other words
+                    justify={'center'}
+                  >
+                    <Grid item>
+                      <div className={ scss[ 'heading-secondary' ] } style={ { marginTop: '1.2rem' } }>
+                        <Typography
+                          font={ 'inherit' }
+                          color={ 'inherit' }
+                          variant={ 'h2' }
+                          component={ 'h2' }
+                          className={ classNames(
+                            scss[ 'heading-secondary__label' ],
+                            scss[ 'heading-secondary__label--gradient' ]
+                          ) }
+                          gutterBottom>
+                          In other words
                       </Typography>
-                    </div>
-                    <Story
-                      name={'Victoria Saucier'}
-                      position={'CEO - Gainfy'}
-                      highlight={'Passionate and Value Driven'}
-                      testimonial={
-                        '(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'
-                      }
-                      panelDirection={panelDirection}
-                      portraitSrc={victoriaSaucier}
-                      {...this.props}
-                    />
-                    <Story
-                      name={'Michael Szczech'}
-                      position={'Software Engineer - Gainfy'}
-                      highlight={'A hell of a programmer'}
-                      testimonial={
-                        "(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project's constraints. He's a hell of a programmer!"
-                      }
-                      panelDirection={panelDirection}
-                      portraitSrc={michaelSzczech}
-                      {...this.props}
-                    />
+                      </div>
+                    </Grid>
+                    <Grid item>
+                      <Story
+                        name={ 'Victoria Saucier' }
+                        position={ 'CEO - Gainfy' }
+                        highlight={ 'Passionate and Value Driven' }
+                        testimonial={
+                          '(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'
+                        }
+                        panelDirection={ panelDirection }
+                        portraitSrc={ victoriaSaucier }
+                        { ...this.props }
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Story
+                        name={ 'Michael Szczech' }
+                        position={ 'Software Engineer - Gainfy' }
+                        highlight={ 'A hell of a programmer' }
+                        testimonial={
+                          "(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project's constraints. He's a hell of a programmer!"
+                        }
+                        panelDirection={ panelDirection }
+                        portraitSrc={ michaelSzczech }
+                        { ...this.props }
+                      />
+                    </Grid>
                     <Grid item>
                       <a href={'#'} className={scss['btn-text']}>
                         Go to resume &rarr;
@@ -632,9 +640,107 @@ class Projects extends React.Component {
             </Grid>
           </Grid>
         </Paper>
+
+        <ProjectPopup images={[devStock1, devStock2, devStock3]} heading={'PoshCalc'} subheading={'A native Android utility for resellers'} body={'PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a \"coded\" legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers. '} codeUrl={'https://github.com/dnnp2011/PoshCalc'} />
+
       </Grid>
     );
   }
+}
+
+function ProjectPopup(props) {
+  const { images, heading, subheading, body, codeUrl, demoUrl } = props;
+
+  return (
+    <div style={{display: 'block'}}>
+      <div className={scss.popup}>
+        <Grid container direction={'column'} alignContent={'center'} justify={'center'} style={{height: '100%'}}>
+          <Grid item style={{width: '100%'}}>
+            <Grid container alignContent={ 'center' } justify={ 'center' } alignItems={ 'center' } style={ { height: '100%' } }>
+              <Grid item xs={ 12 } sm={ 10 } md={ 8 } >
+                <div className={ scss[ 'popup__content' ] }>
+                  <Grid container alignContent={ 'center' } justify={ 'center' }>
+                    <Grid item md={4}>
+                      <div className={scss['popup__images']}>
+                        <Grid container spacing={0} direction={'column'} justify={'space-between'}>
+                          {
+                            images
+                              ? images.map((image, index) => {
+                                return (
+                                  <Grid item key={ `${heading}-${index}` }>
+                                    <img
+                                      alt={ `${heading} image ${index + 1}` }
+                                      src={ image }
+                                      className={ scss[ 'popup__img' ] }
+                                    />
+                                  </Grid>
+                                );
+                              })
+                              : null
+                          }
+                        </Grid>
+                      </div>
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                      <Grid container direction={'column'}>
+                        <Grid item className={ scss[ 'self-end' ] }>
+                          <a onClick={() => {}} href={'#'} className={ scss[ 'popup__close-button' ] }>&times;</a>
+                        </Grid>
+                        <Grid item>
+<Grid container direction={'column'} zeroMinWidth>
+                          <div className={ scss[ 'popup__text' ] } style={ { height: '100%' } }>
+                            <Grid item className={ scss[ 'self-start' ] }>
+                              <div className={ classNames(scss[ 'heading-secondary' ], scss[ 'popup__heading' ]) }>
+                              <Typography
+                                font={'inherit'}
+                                color={'inherit'}
+                                variant={'h2'}
+                                component={'h2'}
+                                className={classNames(
+                                scss['heading-secondary__label'],
+                                scss['heading-secondary__label--gradient']
+                              )}>
+                                { heading || "Heading" }
+                               </Typography>
+                              </div>
+                            </Grid>
+                            <Grid item className={ scss[ 'self-start' ] }>
+                              <h4 className={ classNames(scss[ 'heading-tertiary' ], scss[ 'popup__subheading' ]) }>
+                                { subheading || "Temporary subheading" }
+                              </h4>
+                            </Grid>
+                            <Grid item className={ scss[ 'self-start' ] }>
+                              <div className={ scss[ 'popup__body' ] }>
+                                <p>
+                                  {
+                                    body
+                                    ? body
+                                    : `
+                                    Qui irure tempor incididunt fugiat magna anim. Amet incididunt sit occaecat mollit veniam consequat minim ipsum aute mollit aliqua consectetur amet. Eu laborum irure aliqua nisi dolore elit aliquip laborum ullamco sint nostrud anim. Ex proident labore proident ea excepteur proident magna qui commodo. Ea ex consectetur duis et ea. Duis do est aliqua est voluptate consectetur sunt amet irure magna.
+
+  Ea laboris dolor dolore tempor excepteur cupidatat tempor reprehenderit irure deserunt laboris labore. Nulla irure in id officia eu. Exercitation aliquip duis mollit ex non mollit. Quis aute dolor sunt proident.
+                                    `
+                                  }
+                                </p>
+                              </div>
+                            </Grid>
+                            <Grid item className={ scss[ 'self-start' ] }>
+                              <a className={ classNames(scss[ 'btn' ], scss[ 'btn--green' ]) } href={ '#' }>View Code</a>
+                            </Grid>
+                          </div>
+                        </Grid>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </div>
+    </div>
+  );
 }
 
 function SkillBox(props) {
@@ -792,15 +898,23 @@ function Story(props) {
 
 function BgVideo(props) {
   const { videoSrc, videoSrcAlt, videoClass } = props;
-  const [extension, ...rest] = videoSrc.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/),
-    [altExtension, ...altRest] = videoSrcAlt.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
+  const [extension, ...rest] = videoSrc.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
 
   return (
     <div>
       <video className={videoClass} autoPlay muted loop>
         <source src={videoSrc} type={`video/${extension}`} />
-        <source src={videoSrcAlt} type={`video/${altExtension}`} />
-        <img src={storyBgStillframe} alt={'Section background'} className={scss['bg-video__placeholder']} />
+        {
+          videoSrcAlt.map((alt, index) => {
+            const [ altExtension, ...altRest ] = alt.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
+
+            return (
+              <source key={`${index}${altExtension}`} src={ alt } type={ `video/${altExtension}` } />
+            );
+          })
+        }
+
+        <div className={ scss[ 'bg-video__placeholder' ] } />
       </video>
     </div>
   );
@@ -992,6 +1106,7 @@ function ContactForm(props) {
   );
 }
 
+
 Projects.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired,
@@ -1024,6 +1139,11 @@ Story.propTypes = {
   position: PropTypes.string.isRequired,
   panelDirection: PropTypes.oneOf(['row', 'column']).isRequired,
   portraitSrc: PropTypes.string.isRequired,
+};
+BgVideo.propTypes = {
+  videoSrc: PropTypes.string.isRequired,
+  videoSrcAlt: PropTypes.arrayOf(PropTypes.string),
+  videoClass: PropTypes.string,
 };
 ContactForm.propTypes = {
   classes: PropTypes.shape({}).isRequired,

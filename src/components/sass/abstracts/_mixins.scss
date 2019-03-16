@@ -91,6 +91,10 @@
   box-shadow: $box-shadow;
 }
 
+@mixin smooth-corners {
+  @include border-radius($BORDER_RADIUS);
+}
+
 @mixin absolute-center {
     position: absolute;
 		top: 50%;

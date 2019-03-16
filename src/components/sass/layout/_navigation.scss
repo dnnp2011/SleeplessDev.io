@@ -2,10 +2,11 @@
 @import '../abstracts/variables';
 
 .navigation {
+	counter-reset: link-counter;
 
   &__checkbox {
-		display: none;
-		visibility: hidden;
+    display: none;
+    visibility: hidden;
   }
 
   &__button {
@@ -16,18 +17,21 @@
     top: 4.7rem;
     right: 4.7rem;
     @include border-radius(50%);
-		z-index: 2000;
+    z-index: 2000;
   }
 
   &__bg {
-		height: 5rem;
-    width: 5rem;
     @include border-radius(50%);
+    @include transition(all 600ms);
+    height: 5rem;
+    width: 5rem;
     position: fixed;
     top: 5rem;
     right: 5rem;
     background-image: radial-gradient($lightGreen, $mediumGreen, $darkGreen);
     z-index: 1000;
+
+    // transform: scale(50);
   }
 
   &__nav {
@@ -35,17 +39,48 @@
     width: 100%;
     position: fixed;
     top: 0;
-		right: 0;
-		z-index: 1500;
+    left: 0;
+    z-index: 1500;
   }
 
   &__list {
-		@include absolute-center;
+    @include absolute-center;
+    list-style: none;
+    text-align: center;
   }
 
   &__item {
+    margin: 1rem;
   }
 
   &__link {
+    &:link,
+    &:visited {
+			@include hide-backface;
+			display: inline-block;
+      padding: .8rem 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: $secondaryFont;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 49.9%, $secondaryFont 50%);
+			background-size: 235%;
+			@include transition(all 400ms);
+		}
+
+		&::before {
+			counter-increment: link-counter;
+			content: '0' counter(link-counter);
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			@include transform(translateX(.7rem));
+			background-position: 100%;
+			color: $primaryFont;
+		}
   }
 }

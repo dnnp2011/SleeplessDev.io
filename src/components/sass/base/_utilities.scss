@@ -32,6 +32,26 @@
 
 .flex-spacing-16 {
 	& > *:not(:last-child) *:not(:first-child) {
-		margin-top: 1rem;
+		margin-top: 1rem !important;
 	}
+}
+
+.self-center {
+	align-self: center !important;
+}
+
+.self-start {
+	align-self: start !important;
+}
+
+.self-end {
+	align-self: flex-end !important;
+}
+
+.self-baseline {
+	align-self: baseline !important;
+}
+
+.self-stretch {
+	align-self: stretch !important;
 }
