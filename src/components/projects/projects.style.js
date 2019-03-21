@@ -22,7 +22,6 @@ const styles = theme => {
       display: 'flex',
       flexDirection: 'row',
       margin: '1.2rem',
-      zIndex: '2',
     },
     'primary-card': { background: theme.palette.primary.light },
     orange: {},

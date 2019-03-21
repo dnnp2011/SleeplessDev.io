@@ -8,13 +8,15 @@ import {
   Input,
   InputLabel,
   InputAdornment,
-  FilledInput,
+  FilledInput, Grow
 } from '@material-ui/core';
+import Fade from '@material-ui/core/Fade';
 import { withStyles } from '@material-ui/core/styles';
 import { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { compose } from 'recompose';
@@ -35,26 +37,37 @@ import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
 import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
 import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 
+
 class Projects extends React.Component {
   state = {
     bgVideo: null,
+    navVisible: false
   };
+
 
   componentDidMount() {
     if (!this.state.bgVideo) {
       this.setState({
         bgVideo: <BgVideo
-          videoSrc={ storyBgVideo }
-          videoSrcAlt={ [ storyBgVideoAlt, storyBgVideoAlt2 ] }
-          videoClass={ scss[ 'bg-video__content' ] }
-        />,
+          videoSrc={storyBgVideo}
+          videoSrcAlt={[ storyBgVideoAlt, storyBgVideoAlt2 ]}
+          videoClass={scss['bg-video__content']}
+        />
       });
     }
   }
 
+
+  toggleNav = () => {
+    this.setState((state, props) => ({
+      navVisible: !state.navVisible
+    }));
+  };
+
+
   render() {
     const { classes, width } = this.props;
-    const { bgVideo } = this.state;
+    const { bgVideo, navVisible } = this.state;
 
     const iconCategories = {
       languages: [
@@ -67,9 +80,11 @@ class Projects extends React.Component {
         devicons.Css3.plain,
         devicons.Php.plain,
         devicons.Typescript.plain,
-        devicons.MySql.plain,
+        devicons.MySql.plain
       ],
-      frontend: [devicons.Bootstrap.plain, devicons.Jquery.plain, devicons.Sass.plain, devicons.React.plain],
+      frontend: [
+        devicons.Bootstrap.plain, devicons.Jquery.plain, devicons.Sass.plain, devicons.React.plain
+      ],
       backend: [
         devicons.Apache.plain,
         devicons.Debian.plain,
@@ -81,10 +96,12 @@ class Projects extends React.Component {
         devicons.MongoDb.plain,
         devicons.Nginx.plain,
         devicons.Redhat.plain,
-        devicons.Ubuntu.plain,
+        devicons.Ubuntu.plain
       ],
-      mobile: [devicons.Android.plain],
-      tools: [devicons.AmazonWebServices.plain, devicons.ChromeDevTools.plain, devicons.Git.plain, devicons.Ssh.plain],
+      mobile: [ devicons.Android.plain ],
+      tools: [
+        devicons.AmazonWebServices.plain, devicons.ChromeDevTools.plain, devicons.Git.plain, devicons.Ssh.plain
+      ],
       other: [
         devicons.Atom.plain,
         devicons.Bitbucket.plain,
@@ -97,41 +114,43 @@ class Projects extends React.Component {
         devicons.PyCharm.plain,
         devicons.Vim.plain,
         devicons.VisualStudio.plain,
-        devicons.Windows.plain,
-      ],
+        devicons.Windows.plain
+      ]
     };
     // Flip container to column on mobile screens.
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-      <Grid className={classNames(scss.root, classes.root)}>
-
+      <div id={'root'} className={scss.root}>
         <div className={scss.navigation}>
-          <input type={ 'checkbox' } className={ scss[ 'navigation__checkbox' ] } id={ 'nav-toggle' } />
-          <label htmlFor={'#nav-tiggle'} className={scss['navigation__button']}>
-            Menu
+          <input checked={navVisible} onChange={(e) => this.setState({ navVisible: e.target.value })} type={'checkbox'} className={scss['navigation__checkbox']} id={'nav-toggle'} />
+          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav} className={scss['navigation__button']}>
+            <div className={scss['navigation__icon']}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </label>
           <div className={scss['navigation__bg']}>&nbsp;</div>
-
           <nav className={scss['navigation__nav']}>
             <ul className={scss['navigation__list']}>
               <li className={scss['navigation__item']}>
                 <a href={'#'} className={scss['navigation__link']}>Home</a>
               </li>
-              <li className={ scss[ 'navigation__item' ] }>
-                <a href={ '#' } className={ scss[ 'navigation__link' ] }>Contact Me</a>
+              <li className={scss['navigation__item']}>
+                <a href={'#'} className={scss['navigation__link']}>Contact Me</a>
               </li>
-              <li className={ scss[ 'navigation__item' ] }>
-                <a href={ '#' } className={ scss[ 'navigation__link' ] }>Blog</a>
+              <li className={scss['navigation__item']}>
+                <a href={'#'} className={scss['navigation__link']}>Blog</a>
               </li>
               <li className={scss['navigation__item']}>
                 <a href={'#'} className={scss['navigation__link']}>Resume</a>
               </li>
-              <li className={ scss[ 'navigation__item' ] }>
-                <a href={ '#' } className={ scss[ 'navigation__link' ] }>LinkedIn</a>
+              <li className={scss['navigation__item']}>
+                <a href={'#'} className={scss['navigation__link']}>LinkedIn</a>
               </li>
-              <li className={ scss[ 'navigation__item' ] }>
-                <a href={ '#' } className={ scss[ 'navigation__link' ] }>Github</a>
+              <li className={scss['navigation__item']}>
+                <a href={'#'} className={scss['navigation__link']}>Github</a>
               </li>
             </ul>
           </nav>
@@ -153,7 +172,7 @@ class Projects extends React.Component {
                 <ParticleSystemCanvas
                   diameterRange={{
                     min: 700,
-                    max: 1000,
+                    max: 1000
                   }}
                   xAxisOffset={350}
                   yAxisOffset={-200}
@@ -162,7 +181,7 @@ class Projects extends React.Component {
                   particleCount={800}
                   sizeRange={{
                     min: 5,
-                    max: 15,
+                    max: 15
                   }}
                   angularVelocity={0.001}
                 />
@@ -202,7 +221,8 @@ class Projects extends React.Component {
                         onClick={e => {
                           e.preventDefault();
                           e.stopPropagation();
-                          document.querySelector('#section-projects').scrollIntoView({ behavior: 'smooth' });
+                          document.querySelector('#section-projects')
+                                  .scrollIntoView({ behavior: 'smooth' });
                         }}
                         aria-label={'scroll to projects'}>
                         Projects
@@ -368,15 +388,13 @@ class Projects extends React.Component {
                       <Grid
                         container
                         direction={isWidthDown('sm', width, true) ? 'column' : 'row'}
-                        alignContent={'center'}
-                        alignItems={'stretch'}
-                        justify={'space-evenly'}
                         className={scss['skillbox-wrapper']}>
-                        {Object.keys(iconCategories).map((category, index) => (
-                          <Grid item xs key={category}>
-                            <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                          </Grid>
-                        ))}
+                        {Object.keys(iconCategories)
+                               .map((category, index) => (
+                                 <Grid item xs key={category}>
+                                   <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                                 </Grid>
+                               ))}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -403,55 +421,63 @@ class Projects extends React.Component {
                     <Grid item>
                       <Grid
                         container
-                        direction={panelDirection}
                         spacing={40}
                         alignContent={'center'}
                         alignItems={'center'}
-                        justify={'space-around'}>
-                        <ProjectCard
-                          title={'Breakout'}
-                          description={'A C# remake of the classic arcade game: "Breakout"'}
-                          skills={['C#', 'XNA', 'Game Loops', 'Sprite Sheet Animation']}
-                          color={'orange'}
-                          backgroundClass={classes.breakoutBg}
-                          classes={classes}
-                        />
-                        <ProjectCard
-                          title={'Poshcalc'}
-                          skills={['Java', 'Native Android', 'MVC Architecture']}
-                          color={'green'}
-                          backgroundClass={classes.poshcalcBg}
-                          classes={classes}>
-                          A native Android application to help online reseller price their goods with the optimal{' '}
-                          <abbr title='Return On Investment'>ROI</abbr>
-                        </ProjectCard>
-                        <ProjectCard
-                          title={'Zombies With Friends'}
-                          description={'A wave-based zombie shooter you can play with friends!'}
-                          skills={[
-                            'C#',
-                            '3D Modeling',
-                            'Unity3D',
-                            'Network Synchronization',
-                            'Animation',
-                            'Singleton Pattern',
-                          ]}
-                          color={'blue'}
-                          backgroundClass={classes.zombiesBg}
-                          classes={classes}
-                        />
+                        justify={'space-evenly'}
+                      >
+                        <Grid item>
+                          <ProjectCard
+                            title={'Breakout'}
+                            description={'A C# remake of the classic arcade game: "Breakout"'}
+                            skills={[
+                              'C#', 'XNA', 'Game Loops', 'Sprite Sheet Animation'
+                            ]}
+                            color={'orange'}
+                            backgroundClass={classes.breakoutBg}
+                            classes={classes}
+                          />
+                        </Grid>
+                        <Grid item>
+                          <ProjectCard
+                            title={'Poshcalc'}
+                            skills={[ 'Java', 'Native Android', 'MVC Architecture' ]}
+                            color={'green'}
+                            backgroundClass={classes.poshcalcBg}
+                            classes={classes}>
+                            A native Android application to help online reseller price their goods with the optimal{' '}
+                            <abbr title='Return On Investment'>ROI</abbr>
+                          </ProjectCard>
+                        </Grid>
+                        <Grid item>
+                          <ProjectCard
+                            title={'Zombies With Friends'}
+                            description={'A wave-based zombie shooter you can play with friends!'}
+                            skills={[
+                              'C#',
+                              '3D Modeling',
+                              'Unity3D',
+                              'Network Synchronization',
+                              'Animation',
+                              'Singleton Pattern'
+                            ]}
+                            color={'blue'}
+                            backgroundClass={classes.zombiesBg}
+                            classes={classes}
+                          />
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
                 </section>
 
                 <section className={scss['section-stories']}>
-                  <div className={ scss[ 'bg-video' ] } style={ { height: isWidthDown('md', width, true) ? '100%' : '' } }>
+                  <div className={scss['bg-video']} style={{ height: isWidthDown('md', width, true) ? '100%' : '' }}>
                     {!!bgVideo && isWidthUp('md', width, true) ? (
                       bgVideo
                     ) : (
-                      <div className={scss['bg-video__placeholder']} />
-                    )}
+                       <div className={scss['bg-video__placeholder']} />
+                     )}
                   </div>
                   <Grid
                     container
@@ -462,45 +488,45 @@ class Projects extends React.Component {
                     justify={'center'}
                   >
                     <Grid item>
-                      <div className={ scss[ 'heading-secondary' ] } style={ { marginTop: '1.2rem' } }>
+                      <div className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                         <Typography
-                          font={ 'inherit' }
-                          color={ 'inherit' }
-                          variant={ 'h2' }
-                          component={ 'h2' }
-                          className={ classNames(
-                            scss[ 'heading-secondary__label' ],
-                            scss[ 'heading-secondary__label--gradient' ]
-                          ) }
+                          font={'inherit'}
+                          color={'inherit'}
+                          variant={'h2'}
+                          component={'h2'}
+                          className={classNames(
+                            scss['heading-secondary__label'],
+                            scss['heading-secondary__label--gradient']
+                          )}
                           gutterBottom>
                           In other words
-                      </Typography>
+                        </Typography>
                       </div>
                     </Grid>
                     <Grid item>
                       <Story
-                        name={ 'Victoria Saucier' }
-                        position={ 'CEO - Gainfy' }
-                        highlight={ 'Passionate and Value Driven' }
+                        name={'Victoria Saucier'}
+                        position={'CEO - Gainfy'}
+                        highlight={'Passionate and Value Driven'}
                         testimonial={
                           '(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'
                         }
-                        panelDirection={ panelDirection }
-                        portraitSrc={ victoriaSaucier }
-                        { ...this.props }
+                        panelDirection={panelDirection}
+                        portraitSrc={victoriaSaucier}
+                        {...this.props}
                       />
                     </Grid>
                     <Grid item>
                       <Story
-                        name={ 'Michael Szczech' }
-                        position={ 'Software Engineer - Gainfy' }
-                        highlight={ 'A hell of a programmer' }
+                        name={'Michael Szczech'}
+                        position={'Software Engineer - Gainfy'}
+                        highlight={'A hell of a programmer'}
                         testimonial={
-                          "(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project's constraints. He's a hell of a programmer!"
+                          '(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project\'s constraints. He\'s a hell of a programmer!'
                         }
-                        panelDirection={ panelDirection }
-                        portraitSrc={ michaelSzczech }
-                        { ...this.props }
+                        panelDirection={panelDirection}
+                        portraitSrc={michaelSzczech}
+                        {...this.props}
                       />
                     </Grid>
                     <Grid item>
@@ -512,8 +538,8 @@ class Projects extends React.Component {
                 </section>
 
                 {/* <section className={scss['section-contact']}>
-                  <ContactForm {...this.props} />
-                </section> */}
+                 <ContactForm {...this.props} />
+                 </section> */}
               </main>
 
               <footer className={scss.footer}>
@@ -541,7 +567,11 @@ class Projects extends React.Component {
                           alignContent={'center'}
                           justify={'center'}
                           className={scss['footer__nav']}
-                          style={{ border: 'none', padding: '0', margin: '0' }}>
+                          style={{
+                            border: 'none',
+                            padding: '0',
+                            margin: '0'
+                          }}>
                           <Grid item className={scss['footer__nav-item']}>
                             <a
                               href={'https://linkedin.com/in/dalton-glenn-pierce/'}
@@ -563,7 +593,11 @@ class Projects extends React.Component {
                         </Grid>
                       </Grid>
                       <Grid item xs>
-                        <ul style={{ width: '60%', marginLeft: 'auto', marginRight: 'auto' }}>
+                        <ul style={{
+                          width: '60%',
+                          marginLeft: 'auto',
+                          marginRight: 'auto'
+                        }}>
                           <Grid
                             container
                             direction={'row'}
@@ -640,114 +674,194 @@ class Projects extends React.Component {
             </Grid>
           </Grid>
         </Paper>
-
-        <ProjectPopup images={[devStock1, devStock2, devStock3]} heading={'PoshCalc'} subheading={'A native Android utility for resellers'} body={'PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a \"coded\" legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers. '} codeUrl={'https://github.com/dnnp2011/PoshCalc'} />
-
-      </Grid>
+      </div>
     );
   }
 }
 
+
 function ProjectPopup(props) {
-  const { images, heading, subheading, body, codeUrl, demoUrl } = props;
+  const { images, heading, subheading, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible } = props;
+
+  const isSm = isWidthDown('sm', width, true);
 
   return (
-    <div style={{display: 'block'}}>
+    <Fade in={detailsVisible} timeout={300}>
       <div className={scss.popup}>
-        <Grid container direction={'column'} alignContent={'center'} justify={'center'} style={{height: '100%'}}>
-          <Grid item style={{width: '100%'}}>
-            <Grid container alignContent={ 'center' } justify={ 'center' } alignItems={ 'center' } style={ { height: '100%' } }>
-              <Grid item xs={ 12 } sm={ 10 } md={ 8 } >
-                <div className={ scss[ 'popup__content' ] }>
-                  <Grid container alignContent={ 'center' } justify={ 'center' }>
-                    <Grid item md={4}>
-                      <div className={scss['popup__images']}>
-                        <Grid container spacing={0} direction={'column'} justify={'space-between'}>
-                          {
-                            images
-                              ? images.map((image, index) => {
-                                return (
-                                  <Grid item key={ `${heading}-${index}` }>
-                                    <img
-                                      alt={ `${heading} image ${index + 1}` }
-                                      src={ image }
-                                      className={ scss[ 'popup__img' ] }
-                                    />
-                                  </Grid>
-                                );
-                              })
-                              : null
-                          }
-                        </Grid>
-                      </div>
-                    </Grid>
-                    <Grid item xs={12} md={8}>
-                      <Grid container direction={'column'}>
-                        <Grid item className={ scss[ 'self-end' ] }>
-                          <a onClick={() => {}} href={'#'} className={ scss[ 'popup__close-button' ] }>&times;</a>
-                        </Grid>
-                        <Grid item>
-<Grid container direction={'column'} zeroMinWidth>
-                          <div className={ scss[ 'popup__text' ] } style={ { height: '100%' } }>
-                            <Grid item className={ scss[ 'self-start' ] }>
-                              <div className={ classNames(scss[ 'heading-secondary' ], scss[ 'popup__heading' ]) }>
-                              <Typography
-                                font={'inherit'}
-                                color={'inherit'}
-                                variant={'h2'}
-                                component={'h2'}
-                                className={classNames(
-                                scss['heading-secondary__label'],
-                                scss['heading-secondary__label--gradient']
-                              )}>
-                                { heading || "Heading" }
-                               </Typography>
-                              </div>
-                            </Grid>
-                            <Grid item className={ scss[ 'self-start' ] }>
-                              <h4 className={ classNames(scss[ 'heading-tertiary' ], scss[ 'popup__subheading' ]) }>
-                                { subheading || "Temporary subheading" }
-                              </h4>
-                            </Grid>
-                            <Grid item className={ scss[ 'self-start' ] }>
-                              <div className={ scss[ 'popup__body' ] }>
-                                <p>
-                                  {
-                                    body
-                                    ? body
-                                    : `
-                                    Qui irure tempor incididunt fugiat magna anim. Amet incididunt sit occaecat mollit veniam consequat minim ipsum aute mollit aliqua consectetur amet. Eu laborum irure aliqua nisi dolore elit aliquip laborum ullamco sint nostrud anim. Ex proident labore proident ea excepteur proident magna qui commodo. Ea ex consectetur duis et ea. Duis do est aliqua est voluptate consectetur sunt amet irure magna.
-
-  Ea laboris dolor dolore tempor excepteur cupidatat tempor reprehenderit irure deserunt laboris labore. Nulla irure in id officia eu. Exercitation aliquip duis mollit ex non mollit. Quis aute dolor sunt proident.
-                                    `
-                                  }
-                                </p>
-                              </div>
-                            </Grid>
-                            <Grid item className={ scss[ 'self-start' ] }>
-                              <a className={ classNames(scss[ 'btn' ], scss[ 'btn--green' ]) } href={ '#' }>View Code</a>
-                            </Grid>
-                          </div>
-                        </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
+        <div className={scss['popup__content']}>
+          <div className={scss['popup__left']}>
+            {
+              (images && width !== 'xs')
+              ? images.map((image, index) => (
+                <div key={`${heading}-${index}`}>
+                  <img
+                    alt={`${heading} image ${index + 1}`}
+                    src={image}
+                    className={scss['popup__img']}
+                  />
                 </div>
+              ))
+              : null
+            }
+          </div>
+          <div className={scss['popup__right']}>
+            <a id={'close-popup'} onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleVisible(false);
+            }} href={'#'} className={scss['popup__close-button']}>&times;</a>
+            <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
+              <Typography
+                font={'inherit'}
+                color={'inherit'}
+                variant={'h2'}
+                component={'h2'}
+                className={classNames(
+                  scss['heading-secondary__label'],
+                  scss['heading-secondary__label--gradient']
+                )}
+              >
+                {heading || 'Heading'}
+              </Typography>
+            </div>
+            <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
+              {subheading || 'Temporary subheading'}
+            </h4>
+            <p className={scss['popup__body']}>
+              {
+                body
+                ? body
+                : `
+                         Qui irure tempor incididunt fugiat magna anim. Amet incididunt sit occaecat mollit veniam consequat minim ipsum aute mollit aliqua consectetur amet. Eu laborum irure aliqua nisi dolore elit aliquip laborum ullamco sint nostrud anim. Ex proident labore proident ea excepteur proident magna qui commodo. Ea ex consectetur duis et ea. Duis do est aliqua est voluptate consectetur sunt amet irure magna.
+
+          Ea laboris dolor dolore tempor excepteur cupidatat tempor reprehenderit irure deserunt laboris labore. Nulla irure in id officia eu. Exercitation aliquip duis mollit ex non mollit. Quis aute dolor sunt proident.
+                         `
+              }
+            </p>
+            <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
+              <Grid item>
+                <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={demoUrl}>View Demo</a>
+              </Grid>
+              <Grid item>
+                <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={codeUrl}>View Code</a>
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 }
+
+
+/*function ProjectPopup(props) {
+ const { images, heading, subheading, body, codeUrl, demoUrl, width } = props;
+
+ const isSm = isWidthDown('sm', width, true);
+
+ return (
+ <div style={{ display: 'block' }}>
+ <div className={scss.popup}>
+ <Grid container direction={'column'} alignContent={'center'} justify={'center'} style={{ height: '100%' }}>
+ <Grid item style={{ width: '100%' }}>
+ <Grid container alignContent={'center'} justify={'center'} alignItems={'center'} style={{ height: '100%' }}>
+ <Grid item xs={12} sm={10} md={8}>
+ <div className={scss['popup__content']}>
+ <Grid container alignContent={'center'} justify={'center'}>
+ <Grid container direction={'row'} alignContent={'flex-end'} justify={'flex-end'}>
+ <Grid item className={scss['self-end']}>
+ <a onClick={() => {}} href={'#'} className={scss['popup__close-button']}>&times;</a>
+ </Grid>
+ </Grid>
+ <Grid item md={4} style={{ marginBottom: (isSm ? '2rem' : '0') }}>
+ <div className={scss['popup__images']}>
+ <Grid container spacing={0} direction={isSm ? 'row' : 'column'} alignContent={'center'} alignItems={'center'} justify={'center'}>
+ {
+ images
+ ? images.map((image, index) => (
+ <Grid item key={`${heading}-${index}`}>
+ <img
+ alt={`${heading} image ${index + 1}`}
+ src={image}
+ className={scss['popup__img']}
+ />
+ </Grid>
+ ))
+ : null
+ }
+ </Grid>
+ </div>
+ </Grid>
+ <Grid item xs={12} md={8}>
+ <Grid container direction={'column'}>
+ <Grid item>
+ <Grid container direction={'column'} zeroMinWidth className={scss['popup__text']} style={{ height: '100%' }}>
+ <Grid item className={(isSm ? scss['self-center'] : scss['self-start'])}>
+ <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
+ <Typography
+ font={'inherit'}
+ color={'inherit'}
+ variant={'h2'}
+ component={'h2'}
+ className={classNames(
+ scss['heading-secondary__label'],
+ scss['heading-secondary__label--gradient']
+ )}
+ >
+ {heading || 'Heading'}
+ </Typography>
+ </div>
+ </Grid>
+ <Grid item className={scss['self-start']}>
+ <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
+ {subheading || 'Temporary subheading'}
+ </h4>
+ </Grid>
+ <Grid item className={scss['self-start']}>
+ <div className={scss['popup__body']}>
+ <p>
+ {
+ body
+ ? body
+ : `
+ Qui irure tempor incididunt fugiat magna anim. Amet incididunt sit occaecat mollit veniam consequat minim ipsum aute mollit aliqua consectetur amet. Eu laborum irure aliqua nisi dolore elit aliquip laborum ullamco sint nostrud anim. Ex proident labore proident ea excepteur proident magna qui commodo. Ea ex consectetur duis et ea. Duis do est aliqua est voluptate consectetur sunt amet irure magna.
+
+ Ea laboris dolor dolore tempor excepteur cupidatat tempor reprehenderit irure deserunt laboris labore. Nulla irure in id officia eu. Exercitation aliquip duis mollit ex non mollit. Quis aute dolor sunt proident.
+ `
+ }
+ </p>
+ </div>
+ </Grid>
+ <Grid item className={(isSm ? scss['self-center'] : scss['self-start'])}>
+ <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
+ <Grid item>
+ <a className={classNames(scss['btn'], scss['btn--green'])} href={'#'}>View Demo</a>
+ </Grid>
+ <Grid item>
+ <a className={classNames(scss['btn'], scss['btn--green'])} href={'#'}>View Code</a>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </div>
+ </Grid>
+ </Grid>
+ </Grid>
+ </Grid>
+ </div>
+ </div>
+ );
+ }*/
 
 function SkillBox(props) {
   const { icons, category } = props;
 
   return (
-    <Grid className={scss['feature-box']}>
+    <div className={scss['feature-box']}>
       <Typography
         className={classNames(scss['heading-tertiary'], scss['heading-tertiary--feature'], scss.center)}
         variant={'h3'}
@@ -760,7 +874,7 @@ function SkillBox(props) {
       <ul className={scss['icon-list']}>
         {icons.map((icon, index) => (
           <li key={icon.name}>
-            <Grid className={scss['hover-icon']}>
+            <div className={scss['hover-icon']}>
               <SvgIcon
                 aria-labelledby={scss['hover-icon__label']}
                 title={icon.name}
@@ -778,16 +892,18 @@ function SkillBox(props) {
                 align={'center'}>
                 {icon.name}
               </Typography>
-            </Grid>
+            </div>
           </li>
         ))}
       </ul>
-    </Grid>
+    </div>
   );
 }
 
 function ProjectCard(props) {
   const { title, description, skills, color, backgroundClass, classes } = props;
+
+  const [ detailsVisible, toggleDetails ] = React.useState(false);
 
   const renderSkills = skills => {
     const slice = skills.length > 5 ? skills.slice(0, 5) : skills;
@@ -799,75 +915,75 @@ function ProjectCard(props) {
   };
 
   return (
-    <Grid item>
+    <div>
+      <Portal target={'root'}>
+        {
+          !detailsVisible
+          ? null
+          : <ProjectPopup
+            images={[
+              devStock1,
+              devStock2,
+              devStock3
+            ]}
+            heading={'PoshCalc'}
+            subheading={'A native Android utility for resellers'}
+            body={'PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a \"coded\" legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers. '}
+            codeUrl={'https://github.com/dnnp2011/PoshCalc'}
+            demoUrl={'#'}
+            toggleVisible={toggleDetails}
+            detailsVisible={detailsVisible}
+            {...props}
+          />
+        }
+      </Portal>
       <Grid className={scss['card']}>
-        <Grid className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
-          <Grid
-            container
-            direction={'column'}
-            spacing={16}
-            justify={'center'}
-            alignItems={'center'}
-            alignContent={'center'}>
-            <Grid item>
-              <p className={scss['card__cta']}>Take a look!</p>
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction={'column'}
-                spacing={32}
-                justify={'space-around'}
-                alignItems={'center'}
-                alignContent={'center'}
-                className={scss['card__cta-buttons']}>
-                <Grid item>
-                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>
-                    Demo
-                  </a>
-                </Grid>
-                <Grid item>
-                  <a href={'#'} color={'inherit'} className={classNames(scss.btn, scss['card__cta-btn'])}>
-                    Code
-                  </a>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid className={classNames(scss['card__side'], scss['card__side--front'])}>
-          <Grid className={classNames(scss['card__background'], backgroundClass)}>
+        <div className={classNames(scss['card__side'], scss['card__side--back'], scss[`card__side--back-${color}`])}>
+          <div className={scss['card__side--content']}>
+            <p className={scss['card__cta']}>Take a look!</p>
+            <div className={scss['card__cta-buttons']}>
+              <a onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleDetails(true);
+              }} color={'inherit'} href={'#'} className={classNames(scss.btn, scss['card__cta-btn'])}>
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className={classNames(scss['card__side'], scss['card__side--front'])}>
+          <div className={classNames(scss['card__background'], backgroundClass)}>
             <h4 className={scss['card__heading']}>
               <span className={classNames(scss['card__heading-span'], scss[`card__heading-span--${color}`])}>
                 {title}
               </span>
             </h4>
-          </Grid>
-          <Grid className={scss['card__details']}>
-            <Grid
-              container
-              direction={'column'}
-              spacing={16}
-              justify={'space-around'}
-              alignItems={'center'}
-              alignContent={'center'}>
-              <Grid item>
-                <p className={scss['card__details--description']}>{description || props.children}</p>
-              </Grid>
-              <Grid item style={{ width: '100%' }}>
-                <ul className={classNames(scss['card__details--skills'])}>{renderSkills(skills)}</ul>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+          </div>
+          <div className={scss['card__details']}>
+            <div>
+              <p className={scss['card__details--description']}>{description || props.children}</p>
+              <ul className={classNames(scss['card__details--skills'])}>{renderSkills(skills)}</ul>
+            </div>
+          </div>
+        </div>
       </Grid>
-    </Grid>
+    </div>
+  );
+}
+
+function Portal(props) {
+  const { children, target } = props;
+
+  return ReactDOM.createPortal(
+    children, document.getElementById(target)
   );
 }
 
 function Story(props) {
   const { name, testimonial, highlight, position, classes, panelDirection, width, portraitSrc } = props;
-  const firstName = name.split(' ')[0].toString().toLowerCase();
+  const firstName = name.split(' ')[0].toString()
+                                      .toLowerCase();
 
   const isXs = width === 'xs';
   const isSmDown = isWidthDown('sm', width, true);
@@ -898,7 +1014,7 @@ function Story(props) {
 
 function BgVideo(props) {
   const { videoSrc, videoSrcAlt, videoClass } = props;
-  const [extension, ...rest] = videoSrc.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
+  const [ extension, ...rest ] = videoSrc.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
 
   return (
     <div>
@@ -909,12 +1025,12 @@ function BgVideo(props) {
             const [ altExtension, ...altRest ] = alt.match(/((\b)(mp4|flv|webm|avi|wmv|mov|ogv){1}(\n|$){1})/);
 
             return (
-              <source key={`${index}${altExtension}`} src={ alt } type={ `video/${altExtension}` } />
+              <source key={`${index}${altExtension}`} src={alt} type={`video/${altExtension}`} />
             );
           })
         }
 
-        <div className={ scss[ 'bg-video__placeholder' ] } />
+        <div className={scss['bg-video__placeholder']} />
       </video>
     </div>
   );
@@ -923,10 +1039,10 @@ function BgVideo(props) {
 function ContactForm(props) {
   const { classes, width, ...rest } = props;
 
-  const [name, handleNameChange] = React.useState('');
-  const [email, handleEmailChange] = React.useState('');
-  const [subject, handleSubjectChange] = React.useState('');
-  const [message, handleMessageChange] = React.useState('');
+  const [ name, handleNameChange ] = React.useState('');
+  const [ email, handleEmailChange ] = React.useState('');
+  const [ subject, handleSubjectChange ] = React.useState('');
+  const [ message, handleMessageChange ] = React.useState('');
   const handleSubmit = e => {
     console.log('Contact form submitted');
   };
@@ -947,7 +1063,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'center'} alignItems={'center'}>
                     <Grid item xs={12}>
@@ -976,7 +1092,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'space-around'}>
                     <Grid item xs={12}>
@@ -1001,7 +1117,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'space-around'}>
                     <Grid item xs={12}>
@@ -1026,7 +1142,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'space-around'}>
                     <Grid item xs={12}>
@@ -1051,7 +1167,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'space-around'}>
                     <Grid item xs={12}>
@@ -1077,7 +1193,7 @@ function ContactForm(props) {
                 <Grid
                   item
                   style={{
-                    width: '20rem',
+                    width: '20rem'
                   }}>
                   <Grid container direction={'row'} alignContent={'center'} justify={'center'} alignItems={'center'}>
                     <Grid item xs={12}>
@@ -1086,7 +1202,7 @@ function ContactForm(props) {
                         style={{
                           display: 'flex',
                           alignContent: 'center',
-                          justifyContent: 'center',
+                          justifyContent: 'center'
                         }}>
                         <button
                           type={'submit'}
@@ -1109,26 +1225,26 @@ function ContactForm(props) {
 
 Projects.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired
 };
 SkillBox.propTypes = {
   scss: PropTypes.shape({}).isRequired,
   icons: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      background: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
-      text: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+      background: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ]).isRequired,
+      text: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ])
     })
   ).isRequired,
-  category: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired
 };
 ProjectCard.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
-  color: PropTypes.oneOf(['orange', 'blue', 'green']).isRequired,
-  backgroundClass: PropTypes.string.isRequired,
+  color: PropTypes.oneOf([ 'orange', 'blue', 'green' ]).isRequired,
+  backgroundClass: PropTypes.string.isRequired
 };
 Story.propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -1137,17 +1253,17 @@ Story.propTypes = {
   testimonial: PropTypes.string.isRequired,
   highlight: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  panelDirection: PropTypes.oneOf(['row', 'column']).isRequired,
-  portraitSrc: PropTypes.string.isRequired,
+  panelDirection: PropTypes.oneOf([ 'row', 'column' ]).isRequired,
+  portraitSrc: PropTypes.string.isRequired
 };
 BgVideo.propTypes = {
   videoSrc: PropTypes.string.isRequired,
   videoSrcAlt: PropTypes.arrayOf(PropTypes.string),
-  videoClass: PropTypes.string,
+  videoClass: PropTypes.string
 };
 ContactForm.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired
 };
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(Projects);

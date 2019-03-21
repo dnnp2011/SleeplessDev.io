@@ -31,6 +31,7 @@
   background-position: center;
   @include clip-path(polygon(0 0, 100% 0, 100% 75vh, 0 100%));
   position: relative;
+  margin: 0;
 
   &__logo {
     margin: 3rem;
@@ -56,7 +57,7 @@
   background-image: $themeOpacityGradient, $keyboards-608;
   background-attachment: local;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   padding: 1.2rem;
   @include box-sizing(initial);
   @include transform(skewY(-7deg));

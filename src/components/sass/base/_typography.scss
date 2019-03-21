@@ -68,8 +68,8 @@ body {
       font-family: inherit;
 
       &:hover {
-        @include skew-on-hover;
-        text-shadow: 0.3rem .6rem .6rem $shadow--light;
+        @include transform(translateY(-2px) scale(1.1));
+        text-shadow: 0.2rem .5rem .7rem $shadow--light;
       }
     }
 

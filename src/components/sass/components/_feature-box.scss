@@ -3,9 +3,7 @@
 
 .feature-box {
   border: $primaryColor solid 2px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  display: block;
   padding: 1.2rem;
   background-color: rgba($off-white, 0.8);
   @include border-radius($BORDER_RADIUS);

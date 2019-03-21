@@ -96,16 +96,39 @@
 }
 
 @mixin absolute-center {
-    position: absolute;
-		top: 50%;
-		left: 50%;
-		@include translate-center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include translate-center;
 }
 
 @mixin absolute-origin {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@mixin column-count($count) {
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  -ms-column-count: $count;
+  -o-column-count: $count;
+  column-count: $count;
+}
+
+@mixin column-gap($gap) {
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+  -ms-column-gap: $gap;
+  -o-column-count: $gap;
+  column-gap: $gap;
+}
+
+@mixin hyphens($hyphens) {
+  -webkit-hyphens: $hyphens;
+  -moz-hyphens: $hyphens;
+  -ms-hyphens: $hyphens;
+  hyphens: $hyphens;
 }
 
 @mixin translate-center {

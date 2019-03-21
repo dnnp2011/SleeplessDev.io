@@ -7,9 +7,7 @@
   height: 30rem;
   width: 18rem;
   margin: 0 1.2rem;
-  tab-index: 0;
   @include hide-backface;
-
 
 
   &__side {
@@ -22,6 +20,11 @@
     @include border-radius($BORDER_RADIUS);
     overflow: hidden;
 
+    &--content {
+      @include absolute-center;
+      text-align: center;
+    }
+
     &--front {
       background: white;
     }
@@ -29,6 +32,7 @@
     &--back {
       @include transform(rotateY(-180deg));
       color: $secondaryFont;
+      @include hide-backface;
     }
 
     &--back-orange {
@@ -71,10 +75,10 @@
   }
 
   &__cta {
-    margin-top: 40%;
     font-size: 2.1rem;
     font-weight: 300;
     letter-spacing: 3px;
+    width: 100%;
 
     &-btn {
       margin: 0;
@@ -84,7 +88,7 @@
       color: $primaryFont;
       align-self: center;
       font-size: 1.3rem;
-      width: 35%;
+      @include hide-backface;
 
       &::after {
         background-color: $secondaryFont;
@@ -138,7 +142,11 @@
       font-size: .8rem;
       font-weight: 400;
       text-align: center;
-      width: 95%;
+
+      &:not(:last-child) {
+        margin-top: 5%;
+        margin-bottom: 10%;
+      }
     }
 
     &--skills {
