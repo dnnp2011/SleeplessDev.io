@@ -38,6 +38,15 @@ import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
 import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 
 
+const hrefHome = '/',
+  hrefContact = '/contact',
+  hrefAbout = '/about-me',
+  hrefBlog = '/blog',
+  hrefResume = 'https://resume.creddle.io/resume/7wqefr81r5z',
+  hrefLinkedin = 'https://www.linkedin.com/in/dalton-glenn-pierce/',
+  hrefGithub = 'https://github.com/dnnp2011/';
+
+
 class Projects extends React.Component {
   state = {
     bgVideo: null,
@@ -121,9 +130,9 @@ class Projects extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-      <div id={'root'} className={scss.root}>
+      <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
-          <input checked={navVisible} onChange={(e) => this.setState({ navVisible: e.target.value })} type={'checkbox'} className={scss['navigation__checkbox']} id={'nav-toggle'} />
+          <input checked={navVisible} onChange={e => this.setState({ navVisible: e.target.value })} type={'checkbox'} className={scss['navigation__checkbox']} id={'nav-toggle'} />
           <label htmlFor={'#nav-toggle'} onClick={this.toggleNav} className={scss['navigation__button']}>
             <div className={scss['navigation__icon']}>
               <span></span>
@@ -135,22 +144,22 @@ class Projects extends React.Component {
           <nav className={scss['navigation__nav']}>
             <ul className={scss['navigation__list']}>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>Home</a>
+                <a href={hrefHome} className={scss['navigation__link']}>Home</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>Contact Me</a>
+                <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>Blog</a>
+                <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>Resume</a>
+                <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>LinkedIn</a>
+                <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={'#'} className={scss['navigation__link']}>Github</a>
+                <a href={hrefGithub} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
               </li>
             </ul>
           </nav>
@@ -436,6 +445,7 @@ class Projects extends React.Component {
                             color={'orange'}
                             backgroundClass={classes.breakoutBg}
                             classes={classes}
+                            {...this.props}
                           />
                         </Grid>
                         <Grid item>
@@ -444,7 +454,9 @@ class Projects extends React.Component {
                             skills={[ 'Java', 'Native Android', 'MVC Architecture' ]}
                             color={'green'}
                             backgroundClass={classes.poshcalcBg}
-                            classes={classes}>
+                            classes={classes}
+                            {...this.props}
+                          >
                             A native Android application to help online reseller price their goods with the optimal{' '}
                             <abbr title='Return On Investment'>ROI</abbr>
                           </ProjectCard>
@@ -464,6 +476,7 @@ class Projects extends React.Component {
                             color={'blue'}
                             backgroundClass={classes.zombiesBg}
                             classes={classes}
+                            {...this.props}
                           />
                         </Grid>
                       </Grid>
@@ -530,7 +543,7 @@ class Projects extends React.Component {
                       />
                     </Grid>
                     <Grid item>
-                      <a href={'#'} className={scss['btn-text']}>
+                      <a href={hrefAbout} className={scss['btn-text']}>
                         Go to resume &rarr;
                       </a>
                     </Grid>
@@ -574,7 +587,7 @@ class Projects extends React.Component {
                           }}>
                           <Grid item className={scss['footer__nav-item']}>
                             <a
-                              href={'https://linkedin.com/in/dalton-glenn-pierce/'}
+                              href={hrefLinkedin}
                               target={'_blank'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
@@ -583,7 +596,7 @@ class Projects extends React.Component {
                           </Grid>
                           <Grid item className={scss['footer__nav-item']}>
                             <a
-                              href={'https://github.com/dnnp2011'}
+                              href={hrefGithub}
                               target={'_blank'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
@@ -608,28 +621,28 @@ class Projects extends React.Component {
                             className={scss['footer__nav']}>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={'#'} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={hrefHome} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Home
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={'#'} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={hrefContact} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Contact
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={'#'} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={hrefAbout} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   About
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={'#'} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={hrefBlog} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Blog
                                 </a>
                               </li>
@@ -656,13 +669,13 @@ class Projects extends React.Component {
                           <Grid item xs={12} md={10}>
                             <p className={scss['footer__copyright']}>
                               Built by{' '}
-                              <a href={'/contact'} target={'_blank'} className={scss['footer__nav-link']}>
+                              <a href={hrefContact} target={'_blank'} className={scss['footer__nav-link']}>
                                 Dalton Pierce
                               </a>{' '}
                               for use on{' '}
-                              <a href={'/'} target={'_blank'} className={scss['footer__nav-link']}>
+                              <a href={hrefHome} target={'_blank'} className={scss['footer__nav-link']}>
                                 SleeplessDev.io
-                              </a>. Design and color scheme based upon the original work of Jonas Schmedtmann.
+                              </a>.
                             </p>
                           </Grid>
                         </Grid>
@@ -728,15 +741,7 @@ function ProjectPopup(props) {
               {subheading || 'Temporary subheading'}
             </h4>
             <p className={scss['popup__body']}>
-              {
-                body
-                ? body
-                : `
-                         Qui irure tempor incididunt fugiat magna anim. Amet incididunt sit occaecat mollit veniam consequat minim ipsum aute mollit aliqua consectetur amet. Eu laborum irure aliqua nisi dolore elit aliquip laborum ullamco sint nostrud anim. Ex proident labore proident ea excepteur proident magna qui commodo. Ea ex consectetur duis et ea. Duis do est aliqua est voluptate consectetur sunt amet irure magna.
-
-          Ea laboris dolor dolore tempor excepteur cupidatat tempor reprehenderit irure deserunt laboris labore. Nulla irure in id officia eu. Exercitation aliquip duis mollit ex non mollit. Quis aute dolor sunt proident.
-                         `
-              }
+              { body || '' }
             </p>
             <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
               <Grid item>
@@ -1264,6 +1269,17 @@ BgVideo.propTypes = {
 ContactForm.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
+};
+ProjectPopup.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  heading: PropTypes.string.isRequired,
+  subheading: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  codeUrl: PropTypes.string,
+  demoUrl: PropTypes.string,
+  width: PropTypes.string.isRequired,
+  toggleVisible: PropTypes.func.isRequired,
+  detailsVisible: PropTypes.bool.isRequired
 };
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(Projects);
