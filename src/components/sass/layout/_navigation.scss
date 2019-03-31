@@ -12,11 +12,11 @@
       perspective: 1000rem;
 
       &:first-child {
-        margin-bottom: 6px;
+        transform: translateY(-.1rem);
       }
 
       &:last-child {
-        margin-top: 6px;
+        transform: translateY(.1rem);
       }
     }
 
@@ -34,21 +34,20 @@
     }
 
     &:checked + .navigation__button > .navigation__icon {
-      @include transform(translate(-9px, -50%));
+      @include transform(translate(-.5rem, -50%));
     }
 
     &:checked + .navigation__button > .navigation__icon span:first-child {
-      opacity: 1;
-      transform: rotate(45deg) translate(-2px, 0px);
+      transform: rotate(45deg) translate(-.125rem, 0);
     }
 
     &:checked + .navigation__button > .navigation__icon > span:nth-last-child(2) {
       opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
+      transform: rotate(0deg) scale(0, 0);
     }
 
     &:checked + .navigation__button > .navigation__icon > span:last-child {
-      transform: rotate(-45deg) translate(-2px, 0px);
+      transform: rotate(-45deg) translate(-.125rem, 0);
     }
   }
 
@@ -95,26 +94,29 @@
       @include hide-backface;
       display: block;
       position: relative;
-      width: 33px;
-      height: 4px;
-      margin-bottom: 5px;
+      width: 2.06rem;
+      height: .25rem;
+      margin-bottom: .3rem;
       background: $primaryFont;
       @include border-radius($BORDER_RADIUS);
       z-index: 1550;
-      transform-origin: 4px 0px;
+      transform-origin: .25rem 0;
       @include transition((transform 500ms cubic-bezier(0.77, 0.2, 0.05, 1.0),
       background 500ms cubic-bezier(0.77, 0.2, 0.05, 1.0),
       opacity 550ms ease,
-      margin 200ms linear
       ));
     }
 
     & span:first-child {
-      transform-origin: 0% 0%;
+      @include transform-origin(0% 0%);
     }
 
     & span:last-child {
-      transform-origin: 0% 100%;
+      @include transform-origin(0% 100%);
+    }
+
+    & span:nth-child(2) {
+      @include transform-origin(50% 50%);
     }
   }
 

@@ -1,15 +1,4 @@
-import {
-  Grid,
-  Paper,
-  Typography,
-  withWidth,
-  FormControl,
-  FormLabel,
-  Input,
-  InputLabel,
-  InputAdornment,
-  FilledInput, Grow
-} from '@material-ui/core';
+import { Grid, Paper, Typography, withWidth } from '@material-ui/core';
 import Fade from '@material-ui/core/Fade';
 import { withStyles } from '@material-ui/core/styles';
 import { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
@@ -17,25 +6,24 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { withRouter } from 'react-router-dom';
-import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { compose } from 'recompose';
+import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 import whiteLogo from '../../assets/images/logo-terminal/white_logo_transparent_no_text_minified.png';
+import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
+import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
 import devStock2 from '../../assets/images/stock/web-dev-stock-3-800x533.jpg';
 import devStock3 from '../../assets/images/stock/web-dev-stock-4-800x533.jpg';
 import devStock1 from '../../assets/images/stock/web-dev-stock-800x533.jpg';
+import storyBgVideo from '../../assets/video/falling_sparks_water.mp4';
+import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
+import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
 import * as devicons from '../widgets/svg-icon/Devicons';
 import SvgIcon from '../widgets/svg-icon/SvgIcon';
 import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
 import scss from './projects.module.scss';
 import themeStyles from './projects.style';
-import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
-import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
-import storyBgStillframe from '../../assets/images/stock/snow-motion-1080x608.jpg';
-import storyBgVideo from '../../assets/video/falling_sparks_water.mp4';
-import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
-import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
-import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 
 
 const hrefHome = '/',
@@ -68,15 +56,23 @@ class Projects extends React.Component {
 
 
   toggleNav = () => {
+    console.log('toggle');
     this.setState((state, props) => ({
       navVisible: !state.navVisible
     }));
+    console.log(this.state.navVisible);
   };
+
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return this.props.width !== nextProps.width || this.state !== nextState;
+  }
 
 
   render() {
     const { classes, width } = this.props;
     const { bgVideo, navVisible } = this.state;
+    console.log(navVisible);
 
     const iconCategories = {
       languages: [
@@ -129,11 +125,12 @@ class Projects extends React.Component {
     // Flip container to column on mobile screens.
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
+    // FIXME: Nav toggle label stopped working
     return (
       <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
-          <input checked={navVisible} onChange={e => this.setState({ navVisible: e.target.value })} type={'checkbox'} className={scss['navigation__checkbox']} id={'nav-toggle'} />
-          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav} className={scss['navigation__button']}>
+          <input checked={this.state.navVisible} onChange={()=>{}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
+          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav}  className={scss['navigation__button']}>
             <div className={scss['navigation__icon']}>
               <span></span>
               <span></span>
@@ -141,28 +138,28 @@ class Projects extends React.Component {
             </div>
           </label>
           <div className={scss['navigation__bg']}>&nbsp;</div>
-          <nav className={scss['navigation__nav']}>
-            <ul className={scss['navigation__list']}>
-              <li className={scss['navigation__item']}>
-                <a href={hrefHome} className={scss['navigation__link']}>Home</a>
-              </li>
-              <li className={scss['navigation__item']}>
-                <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
-              </li>
-              <li className={scss['navigation__item']}>
-                <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
-              </li>
-              <li className={scss['navigation__item']}>
-                <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
-              </li>
-              <li className={scss['navigation__item']}>
-                <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
-              </li>
-              <li className={scss['navigation__item']}>
-                <a href={hrefGithub} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
-              </li>
-            </ul>
-          </nav>
+                <nav className={scss['navigation__nav']}>
+                  <ul className={scss['navigation__list']}>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefHome} className={scss['navigation__link']}>Home</a>
+                    </li>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
+                    </li>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
+                    </li>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
+                    </li>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
+                    </li>
+                    <li className={scss['navigation__item']}>
+                      <a href={hrefGithub} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
+                    </li>
+                  </ul>
+                </nav>
         </div>
 
         <Paper elevation={5} className={scss.panel}>
@@ -178,22 +175,111 @@ class Projects extends React.Component {
                 alignContent={'center'}
                 justify={'center'}>
                 {/* TODO: Particle system is not very responsive, resizing the viewport can greatly effect centering */}
-                <ParticleSystemCanvas
-                  diameterRange={{
-                    min: 700,
-                    max: 1000
-                  }}
-                  xAxisOffset={350}
-                  yAxisOffset={-200}
-                  xSpawnOffset={-450}
-                  ySpawnOffset={-200}
-                  particleCount={800}
-                  sizeRange={{
-                    min: 5,
-                    max: 15
-                  }}
-                  angularVelocity={0.001}
-                />
+                {/*<ParticleSystemCanvas
+                 diameterRange={{
+                 min: 700,
+                 max: 1000
+                 }}
+                 xAxisOffset={350}
+                 yAxisOffset={-200}
+                 xSpawnOffset={-450}
+                 ySpawnOffset={-200}
+                 particleCount={800}
+                 sizeRange={{
+                 min: 5,
+                 max: 15
+                 }}
+                 angularVelocity={0.001}
+                 />*/}
+                {console.log(width)}
+                {/* TODO: Work on responsive canvas animation */}
+                {
+                  width === 'xs'
+                  ? <ParticleSystemCanvas
+                    diameterRange={{
+                      min: 600,
+                      max: 850
+                    }}
+                    xAxisOffset={-50}
+                    yAxisOffset={-50}
+                    xSpawnOffset={-450}
+                    ySpawnOffset={-200}
+                    particleCount={400}
+                    sizeRange={{
+                      min: 5,
+                      max: 15
+                    }}
+                    angularVelocity={0.001}
+                  />
+                  : width === 'sm'
+                    ? <ParticleSystemCanvas
+                      diameterRange={{
+                        min: 700,
+                        max: 900
+                      }}
+                      xAxisOffset={150}
+                      yAxisOffset={-200}
+                      xSpawnOffset={-450}
+                      ySpawnOffset={-200}
+                      particleCount={500}
+                      sizeRange={{
+                        min: 5,
+                        max: 15
+                      }}
+                      angularVelocity={0.001}
+                    />
+                    : width === 'md'
+                      ? <ParticleSystemCanvas
+                        diameterRange={{
+                          min: 700,
+                          max: 1000
+                        }}
+                        xAxisOffset={350}
+                        yAxisOffset={-200}
+                        xSpawnOffset={-450}
+                        ySpawnOffset={-200}
+                        particleCount={800}
+                        sizeRange={{
+                          min: 5,
+                          max: 15
+                        }}
+                        angularVelocity={0.001}
+                      />
+                      : width === 'xl'
+                        ? <ParticleSystemCanvas
+                          diameterRange={{
+                            min: 700,
+                            max: 1000
+                          }}
+                          xAxisOffset={350}
+                          yAxisOffset={-200}
+                          xSpawnOffset={-450}
+                          ySpawnOffset={-200}
+                          particleCount={800}
+                          sizeRange={{
+                            min: 5,
+                            max: 15
+                          }}
+                          angularVelocity={0.001}
+                        />
+                        : <ParticleSystemCanvas
+                          diameterRange={{
+                            min: 700,
+                            max: 1000
+                          }}
+                          xAxisOffset={350}
+                          yAxisOffset={-200}
+                          xSpawnOffset={-450}
+                          ySpawnOffset={-200}
+                          particleCount={800}
+                          sizeRange={{
+                            min: 5,
+                            max: 15
+                          }}
+                          angularVelocity={0.001}
+                        />
+                }
+
                 <Grid container direction={'row'} alignContent={'flex-start'} justify={'flex-start'}>
                   <img
                     color={'inherit'}
@@ -741,7 +827,7 @@ function ProjectPopup(props) {
               {subheading || 'Temporary subheading'}
             </h4>
             <p className={scss['popup__body']}>
-              { body || '' }
+              {body || ''}
             </p>
             <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
               <Grid item>
@@ -757,7 +843,6 @@ function ProjectPopup(props) {
     </Fade>
   );
 }
-
 
 /*function ProjectPopup(props) {
  const { images, heading, subheading, body, codeUrl, demoUrl, width } = props;

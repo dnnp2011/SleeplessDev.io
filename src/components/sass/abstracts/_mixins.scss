@@ -1,5 +1,80 @@
 @import 'variables';
 
+// Media Queries
+/*
+  0-600px: Phone
+  600-900px: Tablet Portrait
+  900-1200px: Tablet Landscape
+  [1200-1800px] default styles
+  1800px+: Big Desktops
+*/
+
+
+/*
+xs
+sm
+md
+lg
+xl
+ */
+@mixin respond($breakpoint) {
+/*  @if $breakpoint == xs {
+    @media (max-width: 600px) {
+      @content
+    }
+  }
+  @if $breakpoint == sm {
+    @media (max-width: 960px) {
+      @content
+    }
+  }
+  @if $breakpoint == md {
+    @media (max-width: 1280px) {
+      @content
+    }
+  }
+  @if $breakpoint == lg {
+    @media (max-width: 1920px) {
+      @content
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: 1921px) {
+      @content
+    }
+  }*/
+  @if ($breakpoint == xxl) {
+    @media (min-width: 1921px) {
+        @content
+      }
+  }
+  @else if ($breakpoint == xl) {
+    @media (max-width: 1920px) {
+        @content
+      }
+  }
+  @else if ($breakpoint == lg) {
+    @media (max-width: 1280px) {
+        @content
+      }
+  }
+  @else if ($breakpoint == md) {
+    @media (max-width: 960px) {
+        @content
+      }
+  }
+  @else if ($breakpoint == sm) {
+    @media (max-width: 600px) {
+        @content
+      }
+  }
+  @else if ($breakpoint == xs) {
+    @media (max-width: 400px) {
+        @content
+      }
+  }
+}
+
 // Mixins
 @mixin style-header-text($color) {
   padding: 0;
@@ -43,6 +118,14 @@
   -ms-transform: $transformation;
   -o-transform: $transformation;
   transform: $transformation;
+}
+
+@mixin transform-origin($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  transform-origin: $origin;
 }
 
 @mixin perspective($perspective) {
@@ -135,7 +218,7 @@
   @include transform(translate(-50%, -50%));
 }
 
-@mixin focus-outline($secondaryShadow: 0 0 0 #eee) {
+@mixin focus-outline($secondaryShadow: 0 0 0 #eeeeee) {
   @include box-shadow((0 0 1rem $darkBlue, $secondaryShadow));
 }
 
@@ -167,13 +250,17 @@
 
 @mixin respond-to($media) {
   @if $media == handhelds {
-    @media only screen and (max-width: $break-small) { @content; }
-  }
-  @else if $media == medium-screens {
-    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
-  }
-  @else if $media == wide-screens {
-    @media only screen and (min-width: $break-large) { @content; }
+    @media only screen and (max-width: $break-small) {
+      @content;
+    }
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
   }
 }
 

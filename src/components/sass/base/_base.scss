@@ -1,14 +1,52 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 @import '../base/utilities';
 
 body {
   @include box-sizing(border-box);
-   overflow-x: hidden;
-   -ms-overflow-x: hidden;
+  overflow-x: hidden;
+  -ms-overflow-x: hidden;
 }
 
 html {
   @include box-sizing(inherit);
+  font-size: 1rem;
+
+/*  @media (min-width: 1920px) {
+    font-size: 100% !important;
+  }
+  @media (max-width: 1280px) {
+    font-size: 80% !important;
+  }
+  @media (max-width: 960px) {
+    font-size: 70% !important;
+  }
+  @media (max-width: 600px) {
+    font-size: 50% !important;
+  }
+  @media (max-width: 400px) {
+    font-size: 35% !important;
+  }*/
+
+  @include respond(xxl) {
+    font-size: 150% !important;
+  }
+  @include respond(xl) {
+    font-size: 100% !important;
+  }
+  @include respond(lg) {
+    font-size: 85% !important;
+  }
+  @include respond(md) {
+    font-size: 75% !important;
+  }
+  @include respond(sm) {
+    font-size: 55% !important;
+  }
+  @include respond(xs) {
+    font-size: 40% !important;
+  }
+
 }
 
 .projectRoot *, *::after, *::before {
