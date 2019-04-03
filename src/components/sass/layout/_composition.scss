@@ -3,11 +3,13 @@
 
 .composition {
   position: relative;
-  margin-bottom: 6rem;
+  height: 25rem;
+  width: 100%;
+  //top: 20%;
 
   &__photo {
     @include box-shadow(0.2rem .9rem 2.4rem $shadow--dark);
-    width: 40%;
+    width: 50%;
     min-width: 20%;
     z-index: 10;
     @include transition(all 200ms);
@@ -16,17 +18,17 @@
     &--p1 {
       position: absolute;
       top: -0.9rem;
-      left: 10%;
+      left: 5%;
     }
     &--p2 {
       position: absolute;
-      top: 2.1rem;
+      top: 5rem;
       left: 36%;
     }
     &--p3 {
       position: absolute;
-      top: 7.2rem;
-      left: 20%;
+      top: 12.2rem;
+      left: 15%;
     }
 
     &:hover {

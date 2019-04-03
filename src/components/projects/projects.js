@@ -56,11 +56,9 @@ class Projects extends React.Component {
 
 
   toggleNav = () => {
-    console.log('toggle');
     this.setState((state, props) => ({
       navVisible: !state.navVisible
     }));
-    console.log(this.state.navVisible);
   };
 
 
@@ -69,10 +67,12 @@ class Projects extends React.Component {
   }
 
 
+  //BUG: Fix the preloading page elements with no styling bug
+  //TODO: Add any remaining media queries as needed
+
   render() {
     const { classes, width } = this.props;
     const { bgVideo, navVisible } = this.state;
-    console.log(navVisible);
 
     const iconCategories = {
       languages: [
@@ -85,10 +85,17 @@ class Projects extends React.Component {
         devicons.Css3.plain,
         devicons.Php.plain,
         devicons.Typescript.plain,
-        devicons.MySql.plain
+        devicons.Sql.wordmarked
       ],
       frontend: [
-        devicons.Bootstrap.plain, devicons.Jquery.plain, devicons.Sass.plain, devicons.React.plain
+        devicons.Bootstrap.plain,
+        devicons.Jquery.plain,
+        devicons.Sass.plain,
+        devicons.React.plain,
+        devicons.Firebase.wordmarked,
+        devicons.PassportJS.plain,
+        devicons.Pug.plain,
+        devicons.MaterialUi.plain,
       ],
       backend: [
         devicons.Apache.plain,
@@ -101,9 +108,17 @@ class Projects extends React.Component {
         devicons.MongoDb.plain,
         devicons.Nginx.plain,
         devicons.Redhat.plain,
-        devicons.Ubuntu.plain
+        devicons.Ubuntu.plain,
+        devicons.Bash.wordmarked,
+        devicons.GraphQl.plain,
       ],
       mobile: [ devicons.Android.plain ],
+      game: [
+        devicons.Unity.plain,
+        devicons.Xna.plain,
+        devicons.Blender.plain,
+        devicons.Maya.plain,
+      ],
       tools: [
         devicons.AmazonWebServices.plain, devicons.ChromeDevTools.plain, devicons.Git.plain, devicons.Ssh.plain
       ],
@@ -124,12 +139,12 @@ class Projects extends React.Component {
     };
     // Flip container to column on mobile screens.
     const panelDirection = width === 'xs' ? 'column' : 'row';
+    const isSm = isWidthDown('sm', width, true);
 
-    // FIXME: Nav toggle label stopped working
     return (
       <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
-          <input checked={this.state.navVisible} onChange={()=>{}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
+          <input checked={navVisible} onChange={()=>{}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
           <label htmlFor={'#nav-toggle'} onClick={this.toggleNav}  className={scss['navigation__button']}>
             <div className={scss['navigation__icon']}>
               <span></span>
@@ -138,28 +153,28 @@ class Projects extends React.Component {
             </div>
           </label>
           <div className={scss['navigation__bg']}>&nbsp;</div>
-                <nav className={scss['navigation__nav']}>
-                  <ul className={scss['navigation__list']}>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefHome} className={scss['navigation__link']}>Home</a>
-                    </li>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
-                    </li>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
-                    </li>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
-                    </li>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
-                    </li>
-                    <li className={scss['navigation__item']}>
-                      <a href={hrefGithub} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
-                    </li>
-                  </ul>
-                </nav>
+          <nav className={scss['navigation__nav']}>
+            <ul className={scss['navigation__list']}>
+              <li className={scss['navigation__item']}>
+                <a href={hrefHome} className={scss['navigation__link']}>Home</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefGithub} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <Paper elevation={5} className={scss.panel}>
@@ -174,7 +189,6 @@ class Projects extends React.Component {
                 alignItems={'center'}
                 alignContent={'center'}
                 justify={'center'}>
-                {/* TODO: Particle system is not very responsive, resizing the viewport can greatly effect centering */}
                 {/*<ParticleSystemCanvas
                  diameterRange={{
                  min: 700,
@@ -191,7 +205,6 @@ class Projects extends React.Component {
                  }}
                  angularVelocity={0.001}
                  />*/}
-                {console.log(width)}
                 {/* TODO: Work on responsive canvas animation */}
                 {
                   width === 'xs'
@@ -329,7 +342,7 @@ class Projects extends React.Component {
             </Grid>
 
             {/* Content */}
-            <Grid item className={scss.content}>
+            <Grid item>
               <main>
                 <section id={'section-about'} className={scss['section-about']}>
                   <Grid
@@ -359,7 +372,7 @@ class Projects extends React.Component {
                     <Grid item>
                       <Grid
                         container
-                        direction={panelDirection}
+                        direction={isSm ? 'column' : 'row'}
                         spacing={width === 'xs' ? 32 : 0}
                         style={{ width: '100%' }}
                         justify={'space-between'}>
@@ -373,8 +386,9 @@ class Projects extends React.Component {
                                   variant={'subtitle1'}
                                   component={'h3'}
                                   className={scss['heading-tertiary']}>
-                                  Developer Journey
+                                  Who I Am
                                 </Typography>
+                                {/* TODO: Rewrite paragraph */}
                                 <Typography
                                   font={'inherit'}
                                   color={'inherit'}
@@ -382,10 +396,18 @@ class Projects extends React.Component {
                                   className={scss.paragraph}
                                   gutterBottom
                                   variant={'body1'}>
-                                  I'm a self-taught full stack developer with a Griderse range of skills revolving
-                                  around computer software and hardware. I'm passionate about learning at every
-                                  opportunity, as such, I've gained experience using many programming and scripting
-                                  languages, frameworks, tools, and platforms.
+                                  My name is Dalton Pierce, I'm the developer behind SleeplesDev. When I set my mind to something, I dive in head first and dedicate
+                                  myself to achieving my goals. It's that perseverance and willingness to learn new things that has helped me to become the self-taught
+                                  developer that I am. Programming and technology is just about a job for me, it's what I live and breath; It's what I'm passionate about.
+                                  That passion means that putting my skills to use, or adding new development tools to my toolbox isn't a chore, but is instead a fun -
+                                  albeit challenging - problem solving exercise.
+                                  <br /><br />
+                                  I enjoy attending meetups and conferences to learn about the latest technologies and network with fellow developers.
+                                  I strive to maintain the perspective of a newcomer, and to avoid becoming jaded by what I think I know. Whatever I do,
+                                  I endeavour to do it to the best of my ability. I'm confident that with my existing skills, as well as my willingness
+                                  and aptitude for learning, I will quickly become an asset to new teams and projects. I look forward to putting
+                                  my knowledge to use, and to learning new techniques, architectures, frameworks, languages, and conventions from
+                                  other experienced developers!
                                 </Typography>
                               </Grid>
                               <Grid item>
@@ -395,8 +417,9 @@ class Projects extends React.Component {
                                   variant={'subtitle1'}
                                   component={'h3'}
                                   className={scss['heading-tertiary']}>
-                                  Work I've Done
+                                  What I Can Offer
                                 </Typography>
+                                {/* TODO: Rewrite paragraph */}
                                 <Typography
                                   font={'inherit'}
                                   color={'inherit'}
@@ -404,30 +427,37 @@ class Projects extends React.Component {
                                   className={scss.paragraph}
                                   gutterBottom
                                   variant={'body1'}>
-                                  I enjoy attending Meetups and conferences to learn about the latest technologies,
-                                  network with fellow developers, and to extend my knowledge base both within and beyond
-                                  tech.My desire and aptitude for learning new things quickly, as well as my
-                                  fastidiousness and keen eye for details have been essential throughout the years of
-                                  learning Computer Programming.Whatever I do, I do well and to the best of my
-                                  ability.I'm confident that I will quickly become an asset to my new team, and look
-                                  forward to learning new techniques, architectures, algorithms, and conventions.
+                                  As a developer, I bring to the table my experience with numerous programming languages such as Javascript, C#, PHP, SQL, Java,
+                                  Ruby, and Python; Knowledge of a number of development tools and frameworks for both front-end and back-end including React,
+                                  Node, Express, MongoDB, MySQL; As well as experience working with a team such as my work done at Gainfy on the Gainfy STO and GainFit
+                                  projects, and working with a team of developers at Citdex on the Ares project. I gained a wealth of knowledge during these projects
+                                  about how to coordinate work across a team, how to deal with code conflicts, how to use external tools to facilitate
+                                  bug fixes and work assignments, and how to stick to the roadmap and maintain deadlines while not creating and stressful environment and
+                                  allowing for creative freedom.
+                                  <br /><br/>
+                                  Beyond this programming-specific knowledge, my interest in technology as a whole has introduced me to many other interesting
+                                  fields, such as networking and firewalls, using Linux servers and navigating the command line, creating and utilizing
+                                  virtual machines, building and maintaining PC and server hardware, component-level soldering, managing network attached
+                                  resources (web servers, Domain Name System servers, Virtual Private Network tunnels, network security devices, routers, and
+                                  switches), as well as an understanding of cyber security vulnerabilities and defenses.
                                 </Typography>
                               </Grid>
                               <Grid item>
-                                <a href={'#'} className={scss['btn-text']}>
+                                <a href={hrefAbout} className={scss['btn-text']}>
                                   Go to resume &rarr;
                                 </a>
                               </Grid>
                             </Grid>
                           </Grid>
                         </Grid>
-                        <Grid item sm>
+                        <Grid item sm={12} md>
+                          {/* TODO: Replace the placeholder composition images with assorted Project screenshots */}
                           <Grid
                             container
                             direction={panelDirection}
                             alignContent={'center'}
                             justify={'center'}
-                            style={{ marginBottom: width === 'xs' ? '6rem' : '1.2rem' }}
+                            style={isSm ? { margin: '5rem 3rem' } : { top: '20%' }}
                             className={scss['composition']}>
                             <img
                               className={classNames(scss['composition__photo'], scss['composition__photo--p1'])}
@@ -479,17 +509,18 @@ class Projects extends React.Component {
                         Skills
                       </Typography>
                     </Grid>
+                    {/* TODO: Remove some of the pointless skills and replace with more important ones (need to find SVGs for them) */}
                     <Grid item>
                       <Grid
                         container
-                        direction={isWidthDown('sm', width, true) ? 'column' : 'row'}
+                        direction={isSm ? 'column' : 'row'}
                         className={scss['skillbox-wrapper']}>
                         {Object.keys(iconCategories)
-                               .map((category, index) => (
-                                 <Grid item xs key={category}>
-                                   <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                                 </Grid>
-                               ))}
+                         .map((category, index) => (
+                           <Grid item xs key={category}>
+                             <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                           </Grid>
+                         ))}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -521,6 +552,7 @@ class Projects extends React.Component {
                         alignItems={'center'}
                         justify={'space-evenly'}
                       >
+                        {/* TODO: Fill in with remaining projects, provide valid links to demo/code, replace background images with screenshots */}
                         <Grid item>
                           <ProjectCard
                             title={'Breakout'}
@@ -570,6 +602,7 @@ class Projects extends React.Component {
                   </Grid>
                 </section>
 
+                {/* TODO: Implement responsive collapse to column for portrait and text when below SM/XS breakpoint */}
                 <section className={scss['section-stories']}>
                   <div className={scss['bg-video']} style={{ height: isWidthDown('md', width, true) ? '100%' : '' }}>
                     {!!bgVideo && isWidthUp('md', width, true) ? (
@@ -602,6 +635,7 @@ class Projects extends React.Component {
                         </Typography>
                       </div>
                     </Grid>
+                    {/* TODO: Get real quote from Mike, add additional quotes if possible */}
                     <Grid item>
                       <Story
                         name={'Victoria Saucier'}
@@ -784,6 +818,8 @@ function ProjectPopup(props) {
 
   const isSm = isWidthDown('sm', width, true);
 
+  //TODO: Replace popup images with Project relevant screenshots
+  //TODO: Provide an alternative display image when screen width is XS
   return (
     <Fade in={detailsVisible} timeout={300}>
       <div className={scss.popup}>
@@ -972,6 +1008,10 @@ function SkillBox(props) {
                 size={'3rem'}
                 gradientDirection={'horizontal'}
                 backgroundStroke={icon.background}
+                viewBoxSize={icon.viewBoxSize}
+                viewBoxOffset={icon.viewBoxOffset}
+                pathOptions={icon.pathOptions}
+                svgOptions={icon.svgOptions}
               />
               <Typography
                 variant={'body1'}
@@ -1365,6 +1405,10 @@ ProjectPopup.propTypes = {
   width: PropTypes.string.isRequired,
   toggleVisible: PropTypes.func.isRequired,
   detailsVisible: PropTypes.bool.isRequired
+};
+Portal.propTypes = {
+  children: PropTypes.shape({}),
+  target: PropTypes.string.isRequired
 };
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(Projects);

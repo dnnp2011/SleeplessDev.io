@@ -24,6 +24,7 @@
     .hover-icon {
       @include transition(all 200ms);
       background-color: transparent;
+      height: 100%;
 
       &__label {
         font-family: inherit;
