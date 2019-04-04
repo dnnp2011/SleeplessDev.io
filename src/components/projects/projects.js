@@ -77,61 +77,70 @@ class Projects extends React.Component {
     const iconCategories = {
       languages: [
         devicons.Javascript.plain,
-        devicons.Java.plain,
-        devicons.Ruby.plain,
         devicons.CSharp.plain,
         devicons.Html5.plain,
-        devicons.Python.plain,
         devicons.Css3.plain,
         devicons.Php.plain,
+        devicons.Sql.wordmarked,
+        devicons.Java.plain,
         devicons.Typescript.plain,
-        devicons.Sql.wordmarked
+        devicons.Python.plain,
+        devicons.Ruby.plain,
       ],
       frontend: [
-        devicons.Bootstrap.plain,
-        devicons.Jquery.plain,
-        devicons.Sass.plain,
         devicons.React.plain,
         devicons.Firebase.wordmarked,
-        devicons.PassportJS.plain,
+        devicons.Jquery.plain,
+        devicons.Bootstrap.plain,
+        devicons.Sass.plain,
         devicons.Pug.plain,
         devicons.MaterialUi.plain,
+        devicons.PassportJS.plain,
       ],
       backend: [
-        devicons.Apache.plain,
-        devicons.Debian.plain,
-        devicons.Linux.plain,
-        devicons.Django.plain,
-        devicons.Docker.plain,
         devicons.NodeJs.plain,
-        devicons.Express.plain,
         devicons.MongoDb.plain,
-        devicons.Nginx.plain,
-        devicons.Redhat.plain,
-        devicons.Ubuntu.plain,
-        devicons.Bash.wordmarked,
+        devicons.Express.plain,
         devicons.GraphQl.plain,
+        devicons.Linux.plain,
+        devicons.Bash.wordmarked,
+        devicons.Docker.plain,
+        devicons.Apache.plain,
+        devicons.Nginx.plain,
+        devicons.Django.plain,
+        devicons.Debian.plain,
+        devicons.Ubuntu.plain,
       ],
-      mobile: [ devicons.Android.plain ],
-      game: [
+      mobile: [
+        devicons.Android.plain,
+        devicons.ReactNative.plain,
+      ],
+      'game dev': [
         devicons.Unity.plain,
         devicons.Xna.plain,
         devicons.Blender.plain,
         devicons.Maya.plain,
+        devicons.Audacity.plain,
       ],
       tools: [
-        devicons.AmazonWebServices.plain, devicons.ChromeDevTools.plain, devicons.Git.plain, devicons.Ssh.plain
+        devicons.Git.plain,
+        devicons.PfSense.plain,
+        devicons.OpenVpn.plain,
+        devicons.FreeNas.plain,
+        devicons.XenServer.plain,
+        devicons.Ssh.plain,
+        devicons.ChromeDevTools.plain,
+        devicons.AmazonWebServices.plain,
       ],
       other: [
+        devicons.Gimp.plain,
         devicons.Atom.plain,
         devicons.Bitbucket.plain,
         devicons.Github.plain,
         devicons.Trello.plain,
-        devicons.Gimp.plain,
         devicons.IntelliJ.plain,
         devicons.Webstorm.plain,
         devicons.PhpStorm.plain,
-        devicons.PyCharm.plain,
         devicons.Vim.plain,
         devicons.VisualStudio.plain,
         devicons.Windows.plain
@@ -1010,7 +1019,6 @@ function SkillBox(props) {
                 backgroundStroke={icon.background}
                 viewBoxSize={icon.viewBoxSize}
                 viewBoxOffset={icon.viewBoxOffset}
-                pathOptions={icon.pathOptions}
                 svgOptions={icon.svgOptions}
               />
               <Typography

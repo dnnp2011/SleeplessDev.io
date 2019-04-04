@@ -8,7 +8,7 @@ const SvgIcon = props => {
       '#7ed56f',
       '#55c57a',
       '#28b485'
-    ], textStroke = null, backgroundStroke, svgClass, pathOptions, svgOptions, viewBoxSize, viewBoxOffset, ...rest
+    ], textStroke = null, backgroundStroke, svgClass, svgOptions, viewBoxSize, viewBoxOffset, ...rest
   } = props;
 
   const getGradientOffset = index => `${Math.ceil(index * (100 / (gradientStops.length - 1)))}%`;
@@ -84,9 +84,8 @@ const SvgIcon = props => {
     return new Error('SvgIcon expected a backgroundStroke, but got null');
   };
 
-  let viewBox = viewBoxOffset ? viewBoxOffset.trim() + ' ' : '0 0 ';
+  let viewBox = viewBoxOffset ? `${viewBoxOffset.trim()} ` : '0 0 ';
   viewBox += viewBoxSize ? viewBoxSize.includes(' ') ? viewBoxSize.trim() : `${viewBoxSize.trim()} ${viewBoxSize.trim()}` : '128 128';
-  console.log(viewBox);
 
   return (
     <div style={{
@@ -143,8 +142,13 @@ SvgIcon.propTypes = {
   gradientStops: PropTypes.arrayOf(PropTypes.string),
   textStroke: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ]),
   backgroundStroke: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string) ]).isRequired,
-  svgClass: PropTypes.string
-
+  svgClass: PropTypes.string,
+  svgOptions: PropTypes.shape({
+    height: PropTypes.string.isRequired,
+    width: PropTypes.string.isRequired,
+  }),
+  viewBoxSize: PropTypes.string,
+  viewBoxOffset: PropTypes.string,
 };
 
 export default (SvgIcon);
