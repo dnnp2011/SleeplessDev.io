@@ -77,6 +77,14 @@
 .section-projects {
   @include section;
   padding: 15rem 0;
+  width: 80%;
+  margin: 0 auto;
+
+  .projects {
+    & > * {
+      margin-bottom: 5rem;
+    }
+  }
 }
 
 .section-stories {
