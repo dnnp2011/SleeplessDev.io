@@ -17,6 +17,7 @@ import cargoContainer4 from '../../assets/images/screenshots/cargo-container-ren
 import cargoContainer5 from '../../assets/images/screenshots/cargo-container-rendered-3.png';
 import coolcalc1 from '../../assets/images/screenshots/coolcalc-1.png';
 import coolcalc2 from '../../assets/images/screenshots/coolcalc-2.png';
+import coolcalc3 from '../../assets/images/screenshots/coolcalc-3.jpg';
 import creek1 from '../../assets/images/screenshots/creek-1.jpg';
 import creek2 from '../../assets/images/screenshots/creek-2.jpg';
 import earthSpace1 from '../../assets/images/screenshots/earth-space-1.jpg';
@@ -35,6 +36,7 @@ import herome3 from '../../assets/images/screenshots/herome-3.png';
 import poshcalc1 from '../../assets/images/screenshots/poshcalc-1.png';
 import poshcalc2 from '../../assets/images/screenshots/poshcalc-2.png';
 import poshcalc3 from '../../assets/images/screenshots/poshcalc-3.png';
+import poshcalc4 from '../../assets/images/screenshots/poshcalc-4.png';
 import rockDodger1 from '../../assets/images/screenshots/rock-dodger-1.png';
 import rockDodger2 from '../../assets/images/screenshots/rock-dodger-2.png';
 import sleeplessRadio1 from '../../assets/images/screenshots/sleeplessradio-1.png';
@@ -53,6 +55,8 @@ import survivalShooter1 from '../../assets/images/screenshots/survival-shooter-1
 import survivalShooter2 from '../../assets/images/screenshots/survival-shooter-2.jpg';
 import survivalShooter3 from '../../assets/images/screenshots/survival-shooter-3.jpg';
 import survivalShooter4 from '../../assets/images/screenshots/survival-shooter-4.jpg';
+import survivalShooter5 from '../../assets/images/screenshots/survival-shooter-5.jpg';
+import survivalShooter6 from '../../assets/images/screenshots/survival-shooter-6.jpg';
 import tacticalGrip1 from '../../assets/images/screenshots/tactical-grip-1.jpg';
 import tacticalGrip2 from '../../assets/images/screenshots/tactical-grip-2.jpg';
 import tanks1 from '../../assets/images/screenshots/tanks-1.jpg';
@@ -121,13 +125,13 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${spaceInvaders3})`,
     },
     PoshCalcBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${poshcalc3})`, //TODO: Crop shot of the price result
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${poshcalc4})`,
     },
     SleeplessRadioBg: {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${sleeplessRadio1})`,
     },
     CoolCalcBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${coolcalc1})`, //TODO: Crop shot of the lower keypad
+      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${coolcalc3})`,
     },
     BreakoutBg: {
       backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${breakout2})`,
@@ -142,7 +146,7 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${tictactoe1})`,
     },
     SurvivalShooterBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${survivalShooter2})`, //TODO: Get a close up of the enemies
+      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${survivalShooter6})`,
     },
     SpaceShooterBg: {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${spaceShooter1})`,

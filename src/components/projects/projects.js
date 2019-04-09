@@ -36,11 +36,18 @@ const hrefHome = '/',
 
 
 class Projects extends React.Component {
-  state = {
-    bgVideo: null,
-    navVisible: false
-  };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bgVideo: null,
+      navVisible: false
+    };
+
+    this.softwareLabel = React.createRef();
+    this.designLabel = React.createRef();
+  }
 
   componentDidMount() {
     if (!this.state.bgVideo) {
@@ -149,6 +156,10 @@ class Projects extends React.Component {
     // Flip container to column on mobile screens.
     const panelDirection = width === 'xs' ? 'column' : 'row';
     const isSm = isWidthDown('sm', width, true);
+
+    // window.addEventListener('scroll', (e) => {
+    //   document.getElementById('software-label').scrollTop +=10;
+    // });
 
     return (
       <div id={'project-root'} className={scss.projectRoot}>
@@ -406,6 +417,7 @@ class Projects extends React.Component {
                                   variant={'body1'}>
                                   My name is Dalton Pierce, I'm the developer behind SleeplesDev. When I set my mind to something, I dive in head first and dedicate
                                   myself to achieving my goals. It's that perseverance and willingness to learn new things that has helped me to become the self-taught
+                                  myself to achieving my goals. It's that perseverance and willingness to learn new things that has helped me to become the self-taught
                                   developer that I am. Programming and technology is just about a job for me, it's what I live and breath; It's what I'm passionate about.
                                   That passion means that putting my skills to use, or adding new development tools to my toolbox isn't a chore, but is instead a fun -
                                   albeit challenging - problem solving exercise.
@@ -551,329 +563,358 @@ class Projects extends React.Component {
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
-                        Software
-                      </h4>
                       <Grid
                         container
-                        spacing={40}
+                        spacing={32}
+                        direction={'column'}
                         alignContent={'center'}
                         alignItems={'center'}
-                        justify={'space-evenly'}
-                        className={scss.projects}
                       >
                         {/* TODO: Fill in with remaining projects, provide valid links to demo/code, replace background images with screenshots */}
-                        <Grid item>
-                          <ProjectCard
-                            title={'Gainfy STO'}
-                            description={'The web presence of Gainfy\'s Security Token Offering'}
-                            skills={[
-                              'Javascript', 'PHP', 'SQL', '2FA Implementation', 'HTML', 'CSS', 'Linux Server', 'AWS'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.GainfyBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Ares Project'}
-                            description={'A blockchain ICO / STO administration tool for Citdex and the OrchardBlock Accelerator'}
-                            skills={[
-                              'React', 'Javascript', 'Nodejs', 'Firebase / Firestore', 'Leadership', 'Project Management'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.AresBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'SleeplessDev Website'}
-                            description={'The culmination of all my development knowledge to create my personal website with my portfolio, blog, and some helpful tools'}
-                            skills={[
-                              'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.SleeplessDevBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Zombie Shooter'}
-                            description={'A wave-based zombie shooter built in Unity'}
-                            skills={[
-                              'C#',
-                              'Unity3D',
-                              'Developer Tooling',
-                              'AI Programming',
-                              '3D Modeling',
-                              'Animation',
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.ZombieShooterBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Space Invaders'}
-                            description={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
-                            skills={[
-                              'C#', 'XNA Framework', 'Game Design', 'Spritesheet Animation', 'Sound Design'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.SpaceInvaderBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Poshcalc'}
-                            skills={[ 'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications' ]}
-                            color={'blue'}
-                            backgroundClass={classes.PoshCalcBg}
-                            classes={classes}
-                            {...this.props}
+                        <Grid item className={scss['section-container']}>
+                          <div className={scss['projects__software']}>
+                            <h4 className={scss['projects__software--label']} id={'software-label'} ref={this.softwareLabel}>
+                              Software
+                            </h4>
+                          </div>
+                          <Grid
+                            container
+                            spacing={40}
+                            alignContent={'center'}
+                            alignItems={'center'}
+                            justify={'space-evenly'}
+                            className={scss.projects}
                           >
-                            A native Android application to help online reseller price their goods with the ideal <abbr title='Return On Investment'>ROI</abbr>
-                          </ProjectCard>
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Sleepless Radio'}
-                            description={'A native Android music player with some catchy chiptunes'}
-                            skills={[
-                              'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Recycler Views', 'Media Management'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.SleeplessRadioBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'CoolCalc'}
-                            description={'An Android calculator app that... calculates!'}
-                            skills={[
-                              'Java', 'XML', 'Native Android Development', 'Constraint Layouts', 'Input History'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.CoolCalcBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Breakout'}
-                            description={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
-                            skills={[
-                              'C#', 'XNA Framework', 'Game Design', 'Animation', 'Sound Design'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.BreakoutBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Rock Dodger'}
-                            description={'A web-based fixed shooter made solely with Javascript, the goal is to stay alive as long as possible'}
-                            skills={[
-                              'Javascript', 'Game Design', 'Web Animations'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.RockDodgerBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Blackjack'}
-                            description={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
-                            skills={[
-                              'C#', 'Standard IO', 'Game Design', 'OOP'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.BlackjackBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Ruby-Tac-Toe'}
-                            description={'A command line game of Tic-Tac-Toe you can play with a friend, built in the Ruby programming language'}
-                            skills={[
-                              'Ruby', 'Game Design', 'State Management'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.TicTacToeBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Survival Shooter'}
-                            description={'A quirky survival shooter in which the player fights off waves of unique enemies for as long as possible'}
-                            skills={[
-                              'Unity', 'C#', 'AI Programming', 'Animation', 'Sound Design'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.SurvivalShooterBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Space Shooter'}
-                            description={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
-                            skills={[
-                              'C#', 'Unity', 'Game Design', 'Sound Design', 'AI Programming'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.SpaceShooterBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'TANKS!'}
-                            description={'A round-based tank vs tank battle you can play with a friend on the same PC'}
-                            skills={[
-                              'Unity', 'C#', 'Animation', 'Sound Design', 'State Management'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.TanksBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Hero Me'}
-                            description={'A linear Android application in which the user selects various superhuman qualities to design their own version of their favorite superheros'}
-                            skills={[
-                              'Java', 'XML', 'Native Android Development', 'UI Design'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.HeroMeBg}
-                            classes={classes}
-                            {...this.props}
-                          />
+                            <Grid item>
+                              <ProjectCard
+                                title={'Gainfy STO'}
+                                description={'The web presence of Gainfy\'s Security Token Offering'}
+                                skills={[
+                                  'Javascript', 'PHP', 'SQL', '2FA Implementation', 'HTML', 'CSS', 'Linux Server', 'AWS'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.GainfyBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Ares Project'}
+                                description={'A blockchain ICO / STO administration tool for Citdex and the OrchardBlock Accelerator'}
+                                skills={[
+                                  'React', 'Javascript', 'Nodejs', 'Firebase / Firestore', 'Leadership', 'Project Management'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.AresBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'SleeplessDev Website'}
+                                description={'The culmination of all my development knowledge to create my personal website with my portfolio, blog, and some helpful tools'}
+                                skills={[
+                                  'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.SleeplessDevBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Zombie Shooter'}
+                                description={`A wave-based zombie shooter built in Unity. Includes a solid foundation for player and AI animations, tools to speed up adding additional weapons, and performance optimization through object pooling`}
+                                skills={[
+                                  'C#',
+                                  'Unity3D',
+                                  'Developer Tooling',
+                                  'AI Programming',
+                                  '3D Modeling',
+                                  'Animation',
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.ZombieShooterBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Space Invaders'}
+                                description={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
+                                skills={[
+                                  'C#', 'XNA Framework', 'Game Design', 'Spritesheet Animation', 'Sound Design'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.SpaceInvaderBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Poshcalc'}
+                                skills={[ 'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications' ]}
+                                color={'blue'}
+                                backgroundClass={classes.PoshCalcBg}
+                                classes={classes}
+                                {...this.props}
+                              >
+                                A native Android application to help online reseller price their goods with the ideal <abbr title='Return On Investment'>ROI</abbr>
+                              </ProjectCard>
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Sleepless Radio'}
+                                description={'A native Android music player with some catchy chiptunes'}
+                                skills={[
+                                  'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Recycler Views', 'Media Management'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.SleeplessRadioBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'CoolCalc'}
+                                description={'An Android calculator app that... calculates!'}
+                                skills={[
+                                  'Java', 'XML', 'Native Android Development', 'Constraint Layouts', 'Input History'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.CoolCalcBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Breakout'}
+                                description={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
+                                skills={[
+                                  'C#', 'XNA Framework', 'Game Design', 'Animation', 'Sound Design'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.BreakoutBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Rock Dodger'}
+                                description={'A web-based fixed shooter made solely with Javascript, the goal is to stay alive as long as possible'}
+                                skills={[
+                                  'Javascript', 'Game Design', 'Web Animations'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.RockDodgerBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Blackjack'}
+                                description={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
+                                skills={[
+                                  'C#', 'Standard IO', 'Game Design', 'OOP'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.BlackjackBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Ruby-Tac-Toe'}
+                                description={'A command line game of Tic-Tac-Toe you can play with a friend, built in the Ruby programming language'}
+                                skills={[
+                                  'Ruby', 'Game Design', 'State Management'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.TicTacToeBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Survival Shooter'}
+                                description={'A quirky survival shooter in which the player fights off waves of unique enemies for as long as possible'}
+                                skills={[
+                                  'Unity3D', 'C#', 'AI Programming', 'Animation', 'Sound Design'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.SurvivalShooterBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Space Shooter'}
+                                description={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
+                                skills={[
+                                  'C#', 'Unity3D', 'Game Design', 'Sound Design', 'AI Programming'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.SpaceShooterBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'TANKS!'}
+                                description={'A round-based tank vs tank battle you can play with a friend on the same PC'}
+                                skills={[
+                                  'Unity3D', 'C#', 'Animation', 'Sound Design', 'State Management'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.TanksBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Hero Me'}
+                                description={'A linear Android application in which the user selects various superhuman qualities to design their own version of their favorite superheros'}
+                                skills={[
+                                  'Java', 'XML', 'Native Android Development', 'UI Design'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.HeroMeBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                          </Grid>
                         </Grid>
 
-                        <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
-                          Art and Design
-                        </h4>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Serene Creek'}
-                            description={'A 3D scene containing several custom made models and effects to create this relaxing creek-side view'}
-                            skills={[
-                              'Blender', 'UV Unwrapping', 'Texturing', '3D Modeling'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.CreekBg}
-                            classes={classes}
-                            {...this.props}
-                          />
+                        <hr className={scss['horizontal-rule']} />
+
+                        <Grid item className={scss['section-container']}>
+                          <div className={scss['projects__design']}>
+                            <h4 className={scss['projects__design--label']} id={'software-label'} ref={this.designLabel}>
+                              Art and Design
+                            </h4>
+                          </div>
+                          <Grid
+                            container
+                            spacing={40}
+                            alignContent={'center'}
+                            alignItems={'center'}
+                            justify={'space-evenly'}
+                            className={scss.projects}
+                          >
+                            <Grid item>
+                              <ProjectCard
+                                title={'Serene Creek'}
+                                description={'A 3D scene containing several custom made models and effects to create this relaxing creek-side view'}
+                                skills={[
+                                  'Blender', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.CreekBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Terra and Luna'}
+                                description={'A 3D render of Earth and the Moon with custom shaders'}
+                                skills={[
+                                  'Blender', 'Shader Programming', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.SpaceBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                             <Grid item>
+                              <ProjectCard
+                                title={'Space Ship'}
+                                description={'3D model of a 1-seater short range space craft built in Autodesk\'s Maya'}
+                                skills={[
+                                  'Maya',
+                                  'Scene Animation',
+                                  'UV Unwrapping',
+                                  'Texturing',
+                                  '3D Modeling'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.SpaceShipBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Cargo Container'}
+                                description={'3D model of a standard cargo shipping container, built in Blender and textured in Substance Painter'}
+                                skills={[
+                                  'Blender', 'Substance Painter', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.CargoContainerBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Steel Barrel'}
+                                description={'3D model of a simple - yet elegant, steel drum'}
+                                skills={[
+                                  'Blender', 'UV Unwrapping', 'Texturing'
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.SteelDrumBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Tactical Grip'}
+                                description={'A tactical grip for a 5.56mm rifle'}
+                                skills={[
+                                  'Blender', '3D Modeling'
+                                ]}
+                                color={'orange'}
+                                backgroundClass={classes.TacticalGripBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'Red Dot Optic'}
+                                description={'Red dot optic for short to mid-range rifles'}
+                                skills={[
+                                  'Blender', '3D Modeling'
+                                ]}
+                                color={'green'}
+                                backgroundClass={classes.RedDotOpticBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                          </Grid>
                         </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Terra and Luna'}
-                            description={'A 3D render of Earth and the Moon with custom shaders'}
-                            skills={[
-                              'Blender', 'Shader Programming', 'UV Unwrapping', 'Texturing', '3D Modeling'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.SpaceBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                         <Grid item>
-                          <ProjectCard
-                            title={'Space Ship'}
-                            description={'3D model of a 1-seater short range space craft built in Autodesk\'s Maya'}
-                            skills={[
-                              'Maya',
-                              'Scene Animation',
-                              'UV Unwrapping',
-                              'Texturing',
-                              '3D Modeling'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.SpaceShipBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Cargo Container'}
-                            description={'3D model of a standard cargo shipping container, built in Blender and textured in Substance Painter'}
-                            skills={[
-                              'Blender', 'Substance Painter', 'UV Unwrapping', 'Texturing', '3D Modeling'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.CargoContainerBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Steel Barrel'}
-                            description={'3D model of a simple - yet elegant, steel drum'}
-                            skills={[
-                              'Blender', 'UV Unwrapping', 'Texturing'
-                            ]}
-                            color={'blue'}
-                            backgroundClass={classes.SteelDrumBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Tactical Grip'}
-                            description={'A tactical grip for a 5.56mm rifle'}
-                            skills={[
-                              'Blender', '3D Modeling'
-                            ]}
-                            color={'orange'}
-                            backgroundClass={classes.TacticalGripBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <ProjectCard
-                            title={'Red Dot Optic'}
-                            description={'Red dot optic for short to mid-range rifles'}
-                            skills={[
-                              'Blender', '3D Modeling'
-                            ]}
-                            color={'green'}
-                            backgroundClass={classes.RedDotOpticBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>
+
+
 
                         {/*<Grid item>
                           <ProjectCard

@@ -77,12 +77,78 @@
 .section-projects {
   @include section;
   padding: 15rem 0;
-  width: 80%;
-  margin: 0 auto;
+
+  .horizontal-rule {
+    height: 2rem;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+
+  .section-container {
+    position: relative;
+    width: 100%;
+  }
 
   .projects {
+    width: 80%;
+    margin: 0 auto;
+
     & > * {
-      margin-bottom: 5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    &__software {
+      padding-top: -2.5rem;
+      padding-bottom: -2.5rem;
+      color: #fff;
+      width: 5rem;
+      height: 100%;
+      background-color: rgba(#ff7730, 0.65);
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: default;
+
+      &--label {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        letter-spacing: .4rem;
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin: 0 auto;
+        @include transform(rotate(180deg));
+        text-transform: uppercase;
+        @include sticky;
+        top: 2rem;
+      }
+    }
+
+    &__design {
+      padding-top: -2.5rem;
+      padding-bottom: -2.5rem;
+      color: #fff;
+      width: 5rem;
+      height: 100%;
+      background-color: rgba(#4caf50, 0.65);
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: default;
+
+      &--label {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        letter-spacing: .4rem;
+        font-size: 1.7rem;
+        margin: 0 auto;
+        font-weight: 600;
+        @include transform(rotate(180deg));
+        text-transform: uppercase;
+        @include sticky;
+        top: 2rem;
+      }
     }
   }
 }
