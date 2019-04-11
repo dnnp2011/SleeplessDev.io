@@ -109,6 +109,7 @@ const styles = theme => {
       borderBottom: `1px solid ${lightBlue}`,
     },
 
+    /* Software */
     GainfyBg: {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${gainfy2})`, //TODO: Crop a close up of 2fa or coin purchasing
     },
@@ -158,6 +159,7 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${herome1})`,
     },
 
+    /* Art and Design */
     CreekBg: {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${creek1})`,
     },

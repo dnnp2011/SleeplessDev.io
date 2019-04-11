@@ -25,6 +25,75 @@ import ParticleSystemCanvas from './components/particle-system-canvas/particle-s
 import scss from './projects.module.scss';
 import themeStyles from './projects.style';
 
+/* Project Screenshots */
+import ares1 from '../../assets/images/screenshots/ares-1.png';
+import ares2 from '../../assets/images/screenshots/ares-2.png';
+import blackjack1 from '../../assets/images/screenshots/blackjack-1.png';
+import blackjack2 from '../../assets/images/screenshots/blackjack-2.png';
+import breakout1 from '../../assets/images/screenshots/breakout-1.png';
+import breakout2 from '../../assets/images/screenshots/breakout-2.png';
+import breakout3 from '../../assets/images/screenshots/breakout-3.png';
+import cargoContainer1 from '../../assets/images/screenshots/cargo-container-1.png';
+import cargoContainer2 from '../../assets/images/screenshots/cargo-container-2.png';
+import cargoContainer3 from '../../assets/images/screenshots/cargo-container-rendered-1.png';
+import cargoContainer4 from '../../assets/images/screenshots/cargo-container-rendered-2.png';
+import cargoContainer5 from '../../assets/images/screenshots/cargo-container-rendered-3.png';
+import coolcalc1 from '../../assets/images/screenshots/coolcalc-1.png';
+import coolcalc2 from '../../assets/images/screenshots/coolcalc-2.png';
+import coolcalc3 from '../../assets/images/screenshots/coolcalc-3.jpg';
+import creek1 from '../../assets/images/screenshots/creek-1.jpg';
+import creek2 from '../../assets/images/screenshots/creek-2.jpg';
+import earthSpace1 from '../../assets/images/screenshots/earth-space-1.jpg';
+import gainfy1 from '../../assets/images/screenshots/gainfy-1.png';
+import gainfy2 from '../../assets/images/screenshots/gainfy-2.png';
+import gainfy3 from '../../assets/images/screenshots/gainfy-3.png';
+import gainfy4 from '../../assets/images/screenshots/gainfy-4.png';
+import gainfy5 from '../../assets/images/screenshots/gainfy-5.png';
+import gainfy6 from '../../assets/images/screenshots/gainfy-6.png';
+import gainfy7 from '../../assets/images/screenshots/gainfy-7.png';
+import gunOptic1 from '../../assets/images/screenshots/gun-optic-1.png';
+import gunOptic2 from '../../assets/images/screenshots/gun-optic-2.png';
+import herome1 from '../../assets/images/screenshots/herome-1.png';
+import herome2 from '../../assets/images/screenshots/herome-2.png';
+import herome3 from '../../assets/images/screenshots/herome-3.png';
+import poshcalc1 from '../../assets/images/screenshots/poshcalc-1.png';
+import poshcalc2 from '../../assets/images/screenshots/poshcalc-2.png';
+import poshcalc3 from '../../assets/images/screenshots/poshcalc-3.png';
+import poshcalc4 from '../../assets/images/screenshots/poshcalc-4.png';
+import rockDodger1 from '../../assets/images/screenshots/rock-dodger-1.png';
+import rockDodger2 from '../../assets/images/screenshots/rock-dodger-2.png';
+import sleeplessRadio1 from '../../assets/images/screenshots/sleeplessradio-1.png';
+import sleeplessRadio2 from '../../assets/images/screenshots/sleeplessradio-2.png';
+import spaceInvaders1 from '../../assets/images/screenshots/space-invaders-1.png';
+import spaceInvaders2 from '../../assets/images/screenshots/space-invaders-2.png';
+import spaceInvaders3 from '../../assets/images/screenshots/space-invaders-3.png';
+import spaceShooter1 from '../../assets/images/screenshots/space-shooter-1.jpg';
+import spaceShooter2 from '../../assets/images/screenshots/space-shooter-2.jpg';
+import spaceShooter3 from '../../assets/images/screenshots/space-shooter-3.jpg';
+import spaceship1 from '../../assets/images/screenshots/spaceship-1.jpg';
+import spaceship2 from '../../assets/images/screenshots/spaceship-2.jpg';
+import spaceship3 from '../../assets/images/screenshots/spaceship-3.jpg';
+import steelDrum1 from '../../assets/images/screenshots/steel-drum-1.jpg';
+import survivalShooter1 from '../../assets/images/screenshots/survival-shooter-1.jpg';
+import survivalShooter2 from '../../assets/images/screenshots/survival-shooter-2.jpg';
+import survivalShooter3 from '../../assets/images/screenshots/survival-shooter-3.jpg';
+import survivalShooter4 from '../../assets/images/screenshots/survival-shooter-4.jpg';
+import survivalShooter5 from '../../assets/images/screenshots/survival-shooter-5.jpg';
+import survivalShooter6 from '../../assets/images/screenshots/survival-shooter-6.jpg';
+import tacticalGrip1 from '../../assets/images/screenshots/tactical-grip-1.jpg';
+import tacticalGrip2 from '../../assets/images/screenshots/tactical-grip-2.jpg';
+import tanks1 from '../../assets/images/screenshots/tanks-1.jpg';
+import tanks2 from '../../assets/images/screenshots/tanks-2.jpg';
+import tanks3 from '../../assets/images/screenshots/tanks-3.jpg';
+import tictactoe1 from '../../assets/images/screenshots/tictactoe-1.png';
+import zombieShooter1 from '../../assets/images/screenshots/zombie-shooter-1.jpg';
+import zombieShooter2 from '../../assets/images/screenshots/zombie-shooter-2.jpg';
+import zombieShooter3 from '../../assets/images/screenshots/zombie-shooter-3.jpg';
+import zombieShooter4 from '../../assets/images/screenshots/zombie-shooter-4.png';
+import zombieShooter5 from '../../assets/images/screenshots/zombie-shooter-5.jpg';
+import zombieShooter6 from '../../assets/images/screenshots/zombie-shooter-6.jpg';
+import zombieShooter7 from '../../assets/images/screenshots/zombie-shooter-7.jpg';
+
 
 const hrefHome = '/',
   hrefContact = '/contact',
@@ -588,9 +657,26 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Gainfy STO'}
+                                subtitle={'The face of Gainfy Enterprises\' Security Token Offering'}
                                 description={'The web presence of Gainfy\'s Security Token Offering'}
+                                body={`<div>
+                                The former sto.gainfy.com was the frontend of Gainfy's Security Token Offering. Gainfy is a data-driven platform
+                                used to reward healthy behaviors, enable healthcare management and data monetization within a single, blockchain powered
+                                infrastructure. The website had such features as integrated <abbr title='Know Your Client'>KYC</abbr>, ability purchase
+                                Gain tokens via Bitcoin or Ethereum through the web interface, a transaction management panel for canceling or verifying
+                                contributions, client authentication with Firebase, account recovery mechanisms, <abbr title='Two Factor Authentication'>2FA</abbr>,
+                                a refer a friend feature that rewards users for bringing traffic to the site, and a dashboard for users to track their own contributions
+                                as well as overall coin supply.
+                                </div>`}
+                                codeUrl={null} /*TODO: Replace with hosted Gainfy STO code*/
+                                demoUrl={null}
                                 skills={[
                                   'Javascript', 'PHP', 'SQL', '2FA Implementation', 'HTML', 'CSS', 'Linux Server', 'AWS'
+                                ]}
+                                images={[
+                                  /* TODO: Get better close ups of the Gainfy features -- too small to see right now */
+                                  gainfy1,
+                                  gainfy2,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.GainfyBg}
@@ -601,9 +687,22 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Ares Project'}
+                                subtitle={'An administration tool for cryptocurrency token offerings'}
                                 description={'A blockchain ICO / STO administration tool for Citdex and the OrchardBlock Accelerator'}
+                                body={`The Ares Project was an ambitious concept to streamline the token offering experience for Citdex clients. As lead developer 
+                                I organized a team of 6 developers to create an all-in-one management infrastructure for up and coming cryptocurrencies. The goal was 
+                                to make it easier for clients to launch their token offerings, as well as manage their projects after the initial fund raising round. 
+                                The value add for end users and investors were the investment opportunities in a marketplace full of companies that 
+                                were vetted and chosen by Citdex, and therefore more likely to be seen through to fruition.`}
+                                codeUrl={null} /* TODO: Provide demo and code URLs */
+                                demoUrl={null}
                                 skills={[
                                   'React', 'Javascript', 'Nodejs', 'Firebase / Firestore', 'Leadership', 'Project Management'
+                                ]}
+                                images={[
+                                  /* TODO: Crop out unnecessary parts of the interface and get close ups */
+                                  ares1,
+                                  ares2
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.AresBg}
@@ -614,9 +713,54 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'SleeplessDev Website'}
-                                description={'The culmination of all my development knowledge to create my personal website with my portfolio, blog, and some helpful tools'}
+                                subtitle={'An excellent example of my programming knowledge, as well as a helpful collection of developer tools'}
+                                description={'The culmination of all my development knowledge, and my personal portfolio'}
+                                body={`SleeplessDev.io serves primarily as a sample of my programming aptitude. The combination of pleasant and appealing design, 
+                                clean and efficient code, and security conscious implementation, thoroughly exemplifies my programming style. As an individual with 
+                                interests in a wide variety of technological fields, it's important to me to incorporate the lessons I've learned throughout 
+                                disparate subjects into my work. In so doing, I avoid getting tunnel vision - being so engrossed in one aspect of development 
+                                that I cut corners in others (focusing on design at the exclusion of security is one such example). 
+                                Additionally, utilizing the tools and conventions of different specialties helps me to create a more attractive and 
+                                well rounded product.`}
+                                codeUrl={'https://github.com/dnnp2011/SleeplessDev.io'}
+                                demoUrl={null}
                                 skills={[
                                   'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
+                                ]}
+                                images={[
+                                  gainfy5,
+                                  gainfy6,
+                                ]}
+                                color={'blue'}
+                                backgroundClass={classes.SleeplessDevBg}
+                                classes={classes}
+                                {...this.props}
+                              />
+                            </Grid>
+                            <Grid item>
+                              <ProjectCard
+                                title={'SleeplessDev Backend'}
+                                subtitle={'The infrastructure that supports the SleeplessDev website'}
+                                description={'The infrastructure that supports the SleeplessDev website'}
+                                body={`The SleeplessDev backend is the backbone of SleeplessDev.io, providing functionality to frontend services such as 
+                                my blog, tutorial collection, reference repository, authentication, as well as serving content as needed. 
+                                The backend is built primarily with Node.js, Express, 
+                                and <abbr title='A document based (NoSQL) database technology'>MongoDB</abbr>. However, supplemental technologies 
+                                are also present, and serve to provide more narrow functionality. GraphQL 
+                                is used to facilitate communication and passing of content between the backend and frontend; Pug is the 
+                                <abbr title='Hyper Text Markup Language'>HTML</abbr> template 
+                                language used to quickly and efficiently construct the interfaces of the backend management dashboard, which is then stylized 
+                                by Bootstrap. The backend dashboard acts as a restricted area for me to alter admin settings, create new blog, tutorial, or 
+                                reference entries, and review the endpoints of my GraphQL <abbr title='Application Programming Interface'>API</abbr>`}
+                                codeUrl={'https://backend.sleeplessdev.io'}
+                                demoUrl={null}
+                                skills={[
+                                  'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
+                                ]}
+                                /* TODO: Get images for the SleeplessDev backend */
+                                images={[
+                                  gainfy5,
+                                  gainfy6,
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SleeplessDevBg}
@@ -627,7 +771,16 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Zombie Shooter'}
-                                description={`A wave-based zombie shooter built in Unity. Includes a solid foundation for player and AI animations, tools to speed up adding additional weapons, and performance optimization through object pooling`}
+                                subtitle={'A wave-based zombie shooter built in Unity, inspired by Call of Duty\'s "Zombies" game mode'}
+                                description={`A wave-based zombie shooter built in Unity, inspired by Call of Duty's "Zombies" game mode`}
+                                body={`The origin story of my zombie game addiction begins with Call of Duty: World at War. Not with the traditional multiplayer 
+                                mode, but with the - at the time - brand new game mode: Nazi Zombies! Inspired by those memories of fighting of wave after wave of 
+                                tireless zombies, i set out to create my own version. The result of that endeavour is this Zombie Shooter (not the final name). 
+                                Although still a work in progress, is has a solid foundation for future additions, such as developer tooling to streamline 
+                                addition of new content, extensible AI manager with a dynamic wave difficulty algorithm, a wide array of player and zombie 
+                                animations, and immersive bullet effects (blood spatter, and bullet holes, etc).`}
+                                codeUrl={null}
+                                demoUrl={'https://youtu.be/qFufWuPpbLw'}
                                 skills={[
                                   'C#',
                                   'Unity3D',
@@ -635,6 +788,11 @@ class Projects extends React.Component {
                                   'AI Programming',
                                   '3D Modeling',
                                   'Animation',
+                                ]}
+                                images={[
+                                  zombieShooter1,
+                                  zombieShooter2,
+                                  zombieShooter3,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.ZombieShooterBg}
@@ -645,9 +803,21 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Space Invaders'}
+                                subtitle={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
                                 description={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
+                                body={`One of my very first games, built using Microsoft's now obsolete XNA Game Studio, I created a Windows arcade game 
+                                based upon the 70's classic of the same name. Complete with ambient chiptune music, dynamic scrolling enemies, spritesheet 
+                                animations, and a number of player sound effects, Space Invaders creates an entertaining recreation of a fondly remembered 
+                                classic.`}
+                                codeUrl={'https://github.com/dnnp2011/SpaceInvaders-XNA'}
+                                demoUrl={null}
                                 skills={[
                                   'C#', 'XNA Framework', 'Game Design', 'Spritesheet Animation', 'Sound Design'
+                                ]}
+                                images={[
+                                  spaceInvaders1,
+                                  spaceInvaders2,
+                                  spaceInvaders3,
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.SpaceInvaderBg}
@@ -658,7 +828,16 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Poshcalc'}
+                                subtitle={'A native Android application to help online reseller price their goods with the ideal <abbr title=\'Return On Investment\'>ROI</abbr>'}
+                                body={`PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a coded legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers.`}
+                                codeUrl={'https://github.com/dnnp2011/PoshCalc'}
+                                demoUrl={null}
                                 skills={[ 'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications' ]}
+                                images={[
+                                  poshcalc1,
+                                  poshcalc2,
+                                  poshcalc3,
+                                ]}
                                 color={'blue'}
                                 backgroundClass={classes.PoshCalcBg}
                                 classes={classes}
@@ -670,9 +849,21 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Sleepless Radio'}
-                                description={'A native Android music player with some catchy chiptunes'}
+                                subtitle={'A native Android music player with some catchy tunes'}
+                                description={'A native Android music player with some catchy tunes'}
+                                body={`Sleepless Radio is a native Android application based on the traditional radio concept of stations and songs. The app makes 
+                                abundant use of Android's recycler view data structure in order to provide a smooth and efficient means of scrolling through very 
+                                long content without loading or stuttering. Sleepless Radio includes a variety of built in instrumental songs distributed between 
+                                several stations. The application also includes a media bar that appears upon playing a song to allow users to easily control 
+                                playback from anywhere in the app.`}
+                                codeUrl={'https://github.com/dnnp2011/SleeplessRadio'}
+                                demoUrl={null}
                                 skills={[
                                   'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Recycler Views', 'Media Management'
+                                ]}
+                                images={[
+                                  sleeplessRadio1,
+                                  sleeplessRadio2,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SleeplessRadioBg}
@@ -683,9 +874,20 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'CoolCalc'}
+                                subtitle={'An Android calculator app that... calculates!'}
                                 description={'An Android calculator app that... calculates!'}
+                                body={`A native Android calculator application that does exactly what you might expect. CoolCalc has a unique button layout, 
+                                as well as vibrantly pleasant icons. Can perform all the basic calculator functions that users expect, and implements 
+                                a basic history functionality for performing a chain of operations of many numbers.`}
+                                codeUrl={'https://github.com/dnnp2011/CoolCalc'}
+                                demoUrl={null}
                                 skills={[
                                   'Java', 'XML', 'Native Android Development', 'Constraint Layouts', 'Input History'
+                                ]}
+                                images={[
+                                  coolcalc1,
+                                  coolcalc2,
+                                  coolcalc3
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.CoolCalcBg}
@@ -696,9 +898,20 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Breakout'}
+                                subtitle={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
                                 description={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
+                                body={`A recreation of the 70's arcade game: Breakout! Developed using Microsoft's now obsolete XNA Game Studio and programmed in C# 
+                                with the goal of emulating the same arcade experience of the original. Breakout includes the familiar chiptune music and sound effects 
+                                that were standard in classic arcade games.`}
+                                codeUrl={'https://github.com/dnnp2011/Breakout-XNA'}
+                                demoUrl={null}
                                 skills={[
                                   'C#', 'XNA Framework', 'Game Design', 'Animation', 'Sound Design'
+                                ]}
+                                images={[
+                                  breakout1,
+                                  breakout2,
+                                  breakout3,
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.BreakoutBg}
@@ -709,9 +922,18 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Rock Dodger'}
-                                description={'A web-based fixed shooter made solely with Javascript, the goal is to stay alive as long as possible'}
+                                subtitle={'A web-based obstacle avoidance game made entirely with Javascript. Dodge the falling rocks, and keep your avatar alive as long as possible!'}
+                                description={'A web-based obstacle avoidance game made entirely with Javascript. Dodge the falling rocks, and keep your avatar alive as long as possible!'}
+                                body={`An excellent lesson on browser animation and gamification, Rock Dodger is just complex enough to provide vital insights 
+                                on creating and managing game loops for an in-browser experience.`}
+                                codeUrl={'https://github.com/dnnp2011/Rock-Dodger'}
+                                demoUrl={null}
                                 skills={[
                                   'Javascript', 'Game Design', 'Web Animations'
+                                ]}
+                                images={[
+                                  rockDodger1,
+                                  rockDodger2,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.RockDodgerBg}
@@ -722,9 +944,21 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Blackjack'}
+                                subtitle={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
                                 description={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
+                                body={`My very first game, Blackjack is a command line emulation of the well-known Blackjack card game. The goal 
+                                is to achieve a higher collective score (determined by the product of all your card values) than the dealer, 
+                                without going over the maximum of 21. There's not much elaboration to be done on a command line card game, however 
+                                one fun addition was the inclusion of <abbr title='A standard for converting English characters and symbols into code'>
+                                ASCII</abbr> card faces.`}
+                                codeUrl={'https://github.com/dnnp2011/blackjack-console-application'}
+                                demoUrl={null}
                                 skills={[
                                   'C#', 'Standard IO', 'Game Design', 'OOP'
+                                ]}
+                                images={[
+                                  blackjack1,
+                                  blackjack2,
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.BlackjackBg}
@@ -735,9 +969,16 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Ruby-Tac-Toe'}
+                                subtitle={'A command line game of Tic-Tac-Toe you can play with a friend, built in the Ruby programming language'}
                                 description={'A command line game of Tic-Tac-Toe you can play with a friend, built in the Ruby programming language'}
+                                body={`Ruby Tic Tac Toe is a command line executable in which a Tic Tac Toe board is represented by an array of strings. The board object is then passed to each sequential method as an argument so the helper method can interact with or introspect on the board. User interaction and collected via Ruby gets in which each player will choose a position on the board by entering a number 1-9, representing the selected square starting from the top left as 1 to the bottom right as 9. The game manager keeps track of the number of moves played so that a stale match is detected, as well checks each move if a player has won.`}
+                                codeUrl={'https://github.com/dnnp2011/Ruby-Tic-Tac-Toe-2'}
+                                demoUrl={null}
                                 skills={[
-                                  'Ruby', 'Game Design', 'State Management'
+                                  'Ruby', 'Game Design', 'State Management', 'Testing'
+                                ]}
+                                images={[
+                                  tictactoe1,
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.TicTacToeBg}
@@ -1146,7 +1387,7 @@ class Projects extends React.Component {
 
 
 function ProjectPopup(props) {
-  const { images, heading, subheading, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible } = props;
+  const { images, title, subtitle, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible } = props;
 
   const isSm = isWidthDown('sm', width, true);
 
@@ -1160,9 +1401,9 @@ function ProjectPopup(props) {
             {
               (images && width !== 'xs')
               ? images.map((image, index) => (
-                <div key={`${heading}-${index}`}>
+                <div key={`${title}-${index}`}>
                   <img
-                    alt={`${heading} image ${index + 1}`}
+                    alt={`${title} image ${index + 1}`}
                     src={image}
                     className={scss['popup__img']}
                   />
@@ -1188,22 +1429,31 @@ function ProjectPopup(props) {
                   scss['heading-secondary__label--gradient']
                 )}
               >
-                {heading || 'Heading'}
+                {title || 'Temporary Title'}
               </Typography>
             </div>
-            <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
-              {subheading || 'Temporary subheading'}
-            </h4>
-            <p className={scss['popup__body']}>
-              {body || ''}
-            </p>
+            {
+              subtitle.includes('<') ? <h4 dangerouslySetInnerHTML={{ __html: subtitle }} />
+                : <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
+                  {subtitle}
+                </h4>
+            }
+            <p className={scss['popup__body']} dangerouslySetInnerHTML={{ __html: body }} />
             <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
-              <Grid item>
-                <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={demoUrl}>View Demo</a>
-              </Grid>
-              <Grid item>
-                <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={codeUrl}>View Code</a>
-              </Grid>
+              {
+                demoUrl
+                  ? <Grid item>
+                    <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={demoUrl}>View Demo</a>
+                  </Grid>
+                  : null
+              }
+              {
+                codeUrl
+                  ? <Grid item>
+                    <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={codeUrl}>View Code</a>
+                  </Grid>
+                  : null
+              }
             </Grid>
           </div>
         </div>
@@ -1362,7 +1612,7 @@ function SkillBox(props) {
 }
 
 function ProjectCard(props) {
-  const { title, description, skills, color, backgroundClass, classes } = props;
+  const { title, description, skills, color, backgroundClass, classes, images, subtitle, body, codeUrl, demoUrl } = props;
 
   const [ detailsVisible, toggleDetails ] = React.useState(false);
 
@@ -1380,22 +1630,18 @@ function ProjectCard(props) {
       <Portal target={'root'}>
         {
           !detailsVisible
-          ? null
-          : <ProjectPopup
-            images={[
-              devStock1,
-              devStock2,
-              devStock3
-            ]}
-            heading={'PoshCalc'}
-            subheading={'A native Android utility for resellers'}
-            body={'PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a \"coded\" legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers. '}
-            codeUrl={'https://github.com/dnnp2011/PoshCalc'}
-            demoUrl={'#'}
-            toggleVisible={toggleDetails}
-            detailsVisible={detailsVisible}
-            {...props}
-          />
+            ? null
+            : <ProjectPopup
+              images={[...images]}
+              title={title}
+              subtitle={subtitle}
+              body={body}
+              codeUrl={codeUrl}
+              demoUrl={demoUrl}
+              toggleVisible={toggleDetails}
+              detailsVisible={detailsVisible}
+              {...props}
+            />
         }
       </Portal>
       <Grid className={scss['card']}>
@@ -1705,7 +1951,8 @@ ProjectCard.propTypes = {
   description: PropTypes.string,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
   color: PropTypes.oneOf([ 'orange', 'blue', 'green' ]).isRequired,
-  backgroundClass: PropTypes.string.isRequired
+  backgroundClass: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})])),
 };
 Story.propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -1728,8 +1975,8 @@ ContactForm.propTypes = {
 };
 ProjectPopup.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  heading: PropTypes.string.isRequired,
-  subheading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   codeUrl: PropTypes.string,
   demoUrl: PropTypes.string,
