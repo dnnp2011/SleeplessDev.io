@@ -32,6 +32,20 @@
     display: table-cell;
   }
 
+  .popup-image-container {
+    display: table;
+  }
+
+  .popup-image {
+    display: table-cell;
+    vertical-align: center;
+    height: auto;
+    max-height: 15rem;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   &__right {
     width: 66.666666666%;
     display: table-cell;

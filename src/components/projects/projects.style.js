@@ -109,6 +109,16 @@ const styles = theme => {
       borderBottom: `1px solid ${lightBlue}`,
     },
 
+    CargoContainer1: {
+      backgroundImage: `url(${cargoContainer1})`,
+    },
+    CargoContainer2: {
+      backgroundImage: `url(${cargoContainer2})`,
+    },
+    CargoContainer3: {
+      backgroundImage: `url(${cargoContainer3})`,
+    },
+
     /* Software */
     GainfyBg: {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${gainfy2})`, //TODO: Crop a close up of 2fa or coin purchasing

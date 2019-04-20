@@ -29,7 +29,7 @@ html {
   }*/
 
   @include respond(xxl) {
-    font-size: 150% !important;
+    font-size: 100% !important;
   }
   @include respond(xl) {
     font-size: 100% !important;

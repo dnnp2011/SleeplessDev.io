@@ -989,9 +989,18 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Survival Shooter'}
+                                subtitle={'A quirky survival shooter in which the player fights off waves of unique enemies for as long as possible'}
                                 description={'A quirky survival shooter in which the player fights off waves of unique enemies for as long as possible'}
+                                body={`Survival Shooter is a waved based shooter in which a child dreams of fighting off waves of corrupted stuffed animals within a nightmarish version of his own room. Built in Unity, and programmed in C#, Survival Shooter makes use of many of the advanced features of the Unity engine to craft a compelling gameplay experience. For example, using the AI Navmesh to generate valid path finding for enemy units, Raycasting for weapon hit detection, using the Unity physics engine and its associated elements (colliders, rigidbodies) to detect physical collisions. Due to the massive size of the source game files, with the required dll's and other compiled dependencies, 3D Models, animations, sounds, and other game assets - the Git repository had to be prioritized with the most important aspects of gameplay that could be easily demonstrated. Therefore, the attached code link contains only the manually coded scripts that implement the logic of gameplay. Although these scripts are vital to the functioning of Survival Shooter, they only tell part of the story. There is still much more work done within Unity's built-in systems and tools that could not be converted to a Git friendly format.`}
+                                codeUrl={'https://github.com/dnnp2011/SurvivalShooter-Unity'}
+                                demoUrl={null}
                                 skills={[
                                   'Unity3D', 'C#', 'AI Programming', 'Animation', 'Sound Design'
+                                ]}
+                                images={[
+                                  survivalShooter1,
+                                  survivalShooter2,
+                                  survivalShooter3,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SurvivalShooterBg}
@@ -1001,10 +1010,21 @@ class Projects extends React.Component {
                             </Grid>
                             <Grid item>
                               <ProjectCard
+                                //TODO: This Unity project needs to be altered to remove the 'tutorial 2' part of the game name
                                 title={'Space Shooter'}
+                                subtitle={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
                                 description={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
+                                body={`In Space Shooter, you play as a space ship flying across the galaxy, trying to get home across the vastness of space. Blocking your way are dangerous asteroids that can be destroyed or dodged, as well as enemy ships. Little is known about these alien vessels - besides the fact that they shoot on sight. If you want to live long enough to see home, you may want to do the same! 
+                                Space Shooter is built in the Unity game engine. Although the game appears to be 2-dimensional, all of the models, animations, and effects are in fact 3D. A top-down camera angle is used to provide a two-demensional impression, while maintaining the interesting depth and perspective effects of moving in 3D space. Space hazards are spawned in random positions just beyond the player's view to provide a varied and random challenge for the player. The background movement effect is achieved by stretching the background beyond the clipping plane of the primary camera, then sliding it down and wrapping it back on itself once it reaches the end. The result of these features is the appearance of movement through an infinite environment.`}
+                                codeUrl={'https://github.com/dnnp2011/SpaceShooter-Unity'}
+                                demoUrl={null}
                                 skills={[
                                   'C#', 'Unity3D', 'Game Design', 'Sound Design', 'AI Programming'
+                                ]}
+                                images={[
+                                  spaceShooter1,
+                                  spaceShooter2,
+                                  spaceShooter3,
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.SpaceShooterBg}
@@ -1015,9 +1035,20 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'TANKS!'}
-                                description={'A round-based tank vs tank battle you can play with a friend on the same PC'}
+                                subtitle={'A round-based tank vs tank battle you can play against friends on a single PC'}
+                                description={'A round-based tank vs tank battle you can play against friends on a single PC'}
+                                body={`TANKS is an isometric, round-based, player vs player arena battle. Each player must pilot their tanks, and attempt to destroy their opponent while simultaneously dealing with incoming fire, and attempting to correctly range their own shots. In TANKS, both players control their tanks from the same keyboard. The blue tank in the top-left is controlled by the AWSD keys, and can fire using the spacebar. On the other hand, the red tank in the bottom-right is controlled via the arrow keys, and may fire their main gun using the enter key. 
+                                
+                                One of the interesting features of TANKS is the dynamic camera zoom. It is constantly adjusting its zoom and position in order to keep both players in view at all times - an important feature when both players are controlling their avatars from a single computer. Like several of my other games, TANKS was also built using the Unity game engine.`}
+                                codeUrl={'https://github.com/dnnp2011/Unity-TANKS'}
+                                demoUrl={null}
                                 skills={[
                                   'Unity3D', 'C#', 'Animation', 'Sound Design', 'State Management'
+                                ]}
+                                images={[
+                                  tanks1,
+                                  tanks2,
+                                  tanks3,
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.TanksBg}
@@ -1028,9 +1059,18 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Hero Me'}
+                                subtitle={'A linear Android application in which the user selects various superhuman qualities to design their own version of their favorite superheros'}
                                 description={'A linear Android application in which the user selects various superhuman qualities to design their own version of their favorite superheros'}
+                                body={`Hero Me is a native Android application which can basically be described as a user interface demo. The feature set consists solely or clicking through a few screens. However, the real benefit of working on this app was learning to create and organize various interfaces, interacting with user touch input to navigate between activities and fragments, using custom color gradients to match a theme palette, and other foundational skills.w`}
+                                codeUrl={'https://github.com/dnnp2011/HeroMe'}
+                                demoUrl={null}
                                 skills={[
                                   'Java', 'XML', 'Native Android Development', 'UI Design'
+                                ]}
+                                images={[
+                                  herome1,
+                                  herome2,
+                                  herome3,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.HeroMeBg}
@@ -1060,9 +1100,17 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Serene Creek'}
+                                subtitle={'A 3D scene containing several custom made models and effects to create this relaxing creek-side view'}
                                 description={'A 3D scene containing several custom made models and effects to create this relaxing creek-side view'}
+                                body={`Serene Creek is a complex scene made up of many individual models that were either hand placed, as in the case of the large rocks, or dynamically placed using a weight paint map like the grass and flowers. These environmental elements were placed atop a base layer that represents the curved ground making up the creek bed. In the center of the creek I placed a fluid and configured it to flow down the natural incline of the creek bed. I then added various blur and lighting effects to improve the appearance of motion once I rendered a static image.`}
+                                codeUrl={null}
+                                demoUrl={null}
                                 skills={[
-                                  'Blender', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                  'Blender', 'UV Unwrapping', 'Texturing', '3D Modeling', 'Weight Paint'
+                                ]}
+                                images={[
+                                  creek1,
+                                  creek2
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.CreekBg}
@@ -1072,10 +1120,17 @@ class Projects extends React.Component {
                             </Grid>
                             <Grid item>
                               <ProjectCard
-                                title={'Terra and Luna'}
-                                description={'A 3D render of Earth and the Moon with custom shaders'}
+                                title={'Earth'}
+                                subtitle={'A 3D render of Earth and the Sun with custom shaders'}
+                                description={'A 3D render of Earth and the Sun with custom shaders'}
+                                body={`This Blender made scene contains the Earth illuminated by the Sun, with a beautiful nebula in the background. The sun is a Blender sun lamp and a simple emissive sphere; various camera effects were applied to these objects (such as the lens flare). The Earth itself is made up of many layers of textures to provide detail to the oceans, continents, clouds, nighttime lights, and atmosphere. Additionally, a custom shader was created to create the refraction effect at the edge of Earth's atmosphere.`}
+                                codeUrl={null}
+                                demoUrl={null}
                                 skills={[
                                   'Blender', 'Shader Programming', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                ]}
+                                images={[
+                                  earthSpace1
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SpaceBg}
@@ -1086,13 +1141,22 @@ class Projects extends React.Component {
                              <Grid item>
                               <ProjectCard
                                 title={'Space Ship'}
-                                description={'3D model of a 1-seater short range space craft built in Autodesk\'s Maya'}
+                                subtitle={'3D model of a single-seat, short range space craft built in Autodesk\'s Maya'}
+                                description={'3D model of a single-seat, short range space craft built in Autodesk\'s Maya'}
+                                body={`This space ship model is one of the most geometrically complex objects I've created, consisting of numerous separate pieces attached into on cohesive whole. The cockpit glass has a custom reflective material, the engines use an emissive material to give the appearance of heat. I also created an alien planet and refuel station to provide a backdrop for the space craft.`}
+                                codeUrl={null}
+                                demoUrl={null}
                                 skills={[
                                   'Maya',
                                   'Scene Animation',
                                   'UV Unwrapping',
                                   'Texturing',
                                   '3D Modeling'
+                                ]}
+                                images={[
+                                  spaceship1,
+                                  spaceship2,
+                                  spaceship3,
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SpaceShipBg}
@@ -1103,9 +1167,18 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Cargo Container'}
-                                description={'3D model of a standard cargo shipping container, built in Blender and textured in Substance Painter'}
+                                subtitle={'3D model of a standard cargo shipping container, built in Blender and textured in Substance Painter'}
+                                description={'3D model of a futuristic cargo shipping container, built in Blender and textured in Substance Painter'}
+                                body={`Created as a game asset, Cargo Container contains many visually appealing details such as the hexagonal shape on the doors, the locking bars, and an interesting cross-beam structure on the sides of the container. Together, these items create a sense of familiarity with modern cargo containers, but use enough unique differences to give a futuristic, sci-fi impression. Substance Painter was utilized for the texturing of this model, which includes many great tools to create the appearance of wear, scratches, and stress on the container's exterior.`}
+                                codeUrl={null}
+                                demoUrl={'https://skfb.ly/6JyRG'}
                                 skills={[
                                   'Blender', 'Substance Painter', 'UV Unwrapping', 'Texturing', '3D Modeling'
+                                ]}
+                                images={[
+                                  cargoContainer1,
+                                  cargoContainer2,
+                                  cargoContainer3,
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.CargoContainerBg}
@@ -1116,9 +1189,16 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Steel Barrel'}
-                                description={'3D model of a simple - yet elegant, steel drum'}
+                                subtitle={'3D model of a simple - yet elegant, steel drum created with Blender'}
+                                description={'3D model of a simple - yet elegant, steel drum created with Blender'}
+                                body={`Another model intended as a game asset, this Steel Barrel was crafted in reference to real-world oil  barrels and the like. The cylindrical creases around the perimeter of the body provide additional structural integrity, the large valve on top is used for pouring the liquid contained within, and the smaller valve is meant to allow air into the container to take the place of the fluid being emptied. Each of these components is a separate model to ease the process of applying different material textures to the pieces.`}
+                                demoUrl={'https://skfb.ly/6JyRB'}
+                                codeUrl={null}
                                 skills={[
                                   'Blender', 'UV Unwrapping', 'Texturing'
+                                ]}
+                                images={[
+                                  steelDrum1
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SteelDrumBg}
@@ -1129,9 +1209,17 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Tactical Grip'}
-                                description={'A tactical grip for a 5.56mm rifle'}
+                                subtitle={'A Tactical rifle grip created using Blender'}
+                                description={'A Tactical rifle grip created using Blender'}
+                                body={`Like many of my other models, this tactical rifle grip was also created using Blender. The notch at the top is meant to allow the grip to be attached to the rail system of the weapon to which it will be attached, and the ribbed body of the rubber grip increase the friction of the component, thereby increasing the 'grippiness' of it. Modeled after real world vertical weapon grips.`}
+                                demoUrl={'https://skfb.ly/6JyQL'}
+                                codeUrl={null}
                                 skills={[
                                   'Blender', '3D Modeling'
+                                ]}
+                                images={[
+                                  tacticalGrip1,
+                                  tacticalGrip2
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.TacticalGripBg}
@@ -1142,9 +1230,17 @@ class Projects extends React.Component {
                             <Grid item>
                               <ProjectCard
                                 title={'Red Dot Optic'}
+                                subtitle={'Red dot optic for short to mid-range rifles'}
                                 description={'Red dot optic for short to mid-range rifles'}
+                                body={`A basic rifle red dot optic, modeled in Blender after real world counterparts. Contains mounting holes on the side, and a transparent window upon which a 'red dot' is projected to act as the rifle user's crosshair.`}
+                                codeUrl={null}
+                                demoUrl={'https://skfb.ly/6JyRu'}
                                 skills={[
                                   'Blender', '3D Modeling'
+                                ]}
+                                images={[
+                                  gunOptic1,
+                                  gunOptic2
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.RedDotOpticBg}
@@ -1178,7 +1274,7 @@ class Projects extends React.Component {
                 {/* TODO: Implement responsive collapse to column for portrait and text when below SM/XS breakpoint */}
                 <section className={scss['section-stories']}>
                   <div className={scss['bg-video']} style={{ height: isWidthDown('md', width, true) ? '100%' : '' }}>
-                    {!!bgVideo && isWidthUp('md', width, true) ? (
+                    {!!bgVideo && isWidthUp('md', width, true) && isWidthDown('xl', width) ? (
                       bgVideo
                     ) : (
                        <div className={scss['bg-video__placeholder']} />
@@ -1282,6 +1378,7 @@ class Projects extends React.Component {
                             <a
                               href={hrefLinkedin}
                               target={'_blank'}
+                              title={'LinkedIn'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
                               <FaLinkedinIn color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
@@ -1291,6 +1388,7 @@ class Projects extends React.Component {
                             <a
                               href={hrefGithub}
                               target={'_blank'}
+                              title={'Github'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
                               <FaGithub color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
@@ -1387,30 +1485,46 @@ class Projects extends React.Component {
 
 
 function ProjectPopup(props) {
-  const { images, title, subtitle, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible } = props;
+  const { images, title, subtitle, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible, classes } = props;
 
   const isSm = isWidthDown('sm', width, true);
 
-  //TODO: Replace popup images with Project relevant screenshots
   //TODO: Provide an alternative display image when screen width is XS
   return (
     <Fade in={detailsVisible} timeout={300}>
       <div className={scss.popup}>
         <div className={scss['popup__content']}>
           <div className={scss['popup__left']}>
-            {
+            {/*{
               (images && width !== 'xs')
               ? images.map((image, index) => (
-                <div key={`${title}-${index}`}>
+                <div key={index}
+                                       style = {{ backgroundImage: `linear-gradient(to bottom right, #ffb900, #ff7730), url(${gainfy2})`,
+                                                  backgroundSize: 'cover',
+                                                  backgroundPosition: 'center center',
+                                                  backgroundRepeat: 'no-repeat',
+                                                }}>
+                                  </div>
+              ))
+              : null
+            }*/}
+            {/* TODO: Fix uneven popup screenshots */}
+            <Grid container direction={'column'} alignContent={'flex-start'} alignItems={'center'} justify={'flex-start'} style={{height: '100%'}}>
+              {
+              (images && width !== 'xs')
+              ? images.map((image, index) => (
+                <Grid item key={`${title}-${index}`}>
                   <img
                     alt={`${title} image ${index + 1}`}
+                    height={'100%'}
                     src={image}
                     className={scss['popup__img']}
                   />
-                </div>
+                </Grid>
               ))
               : null
             }
+            </Grid>
           </div>
           <div className={scss['popup__right']}>
             <a id={'close-popup'} onClick={e => {
