@@ -16,7 +16,7 @@ import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x3
 import devStock2 from '../../assets/images/stock/web-dev-stock-3-800x533.jpg';
 import devStock3 from '../../assets/images/stock/web-dev-stock-4-800x533.jpg';
 import devStock1 from '../../assets/images/stock/web-dev-stock-800x533.jpg';
-import storyBgVideo from '../../assets/video/falling_sparks_water.mp4';
+import storyBgVideo from '../../assets/video/falling_sparks_water_2k_minified.mp4';
 import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
 import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
 import * as devicons from '../widgets/svg-icon/Devicons';
@@ -438,8 +438,19 @@ class Projects extends React.Component {
                         onClick={e => {
                           e.preventDefault();
                           e.stopPropagation();
-                          document.querySelector('#section-projects')
-                                  .scrollIntoView({ behavior: 'smooth' });
+                          const projectsSection = document.querySelector('#section-projects');
+                          const intersectionObserver = new IntersectionObserver((entries) => {
+                            let [entry] = entries;
+                            if (entry.isIntersecting) {
+                              setTimeout(() => {
+                                const position = document.body.scrollTop;
+                                projectsSection.focus();
+                                document.body.scrollTop = position;
+                              }, 50);
+                            }
+                          });
+                          intersectionObserver.observe(projectsSection);
+                          projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
                         }}
                         aria-label={'scroll to projects'}>
                         Projects
@@ -633,11 +644,12 @@ class Projects extends React.Component {
                   </Grid>
                 </section>
 
-                <section id={'section-projects'} className={scss['section-projects']}>
+                <section tabIndex={0} id={'section-projects'} className={scss['section-projects']}>
                   <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'center'}>
                     <Grid item>
                       <Grid className={scss['heading-secondary']} style={{ marginTop: '1.2rem' }}>
                         <Typography
+                          id={'projects-header'}
                           font={'inherit'}
                           color={'inherit'}
                           variant={'h2'}
@@ -712,10 +724,10 @@ class Projects extends React.Component {
                                 title={'Ares Project'}
                                 subtitle={'An administration tool for cryptocurrency token offerings'}
                                 description={'A blockchain ICO / STO administration tool for Citdex and the OrchardBlock Accelerator'}
-                                body={`The Ares Project was an ambitious concept to streamline the token offering experience for Citdex clients. As lead developer 
-                                I organized a team of 6 developers to create an all-in-one management infrastructure for up and coming cryptocurrencies. The goal was 
-                                to make it easier for clients to launch their token offerings, as well as manage their projects after the initial fund raising round. 
-                                The value add for end users and investors were the investment opportunities in a marketplace full of companies that 
+                                body={`The Ares Project was an ambitious concept to streamline the token offering experience for Citdex clients. As lead developer
+                                I organized a team of 6 developers to create an all-in-one management infrastructure for up and coming cryptocurrencies. The goal was
+                                to make it easier for clients to launch their token offerings, as well as manage their projects after the initial fund raising round.
+                                The value add for end users and investors were the investment opportunities in a marketplace full of companies that
                                 were vetted and chosen by Citdex, and therefore more likely to be seen through to fruition.`}
                                 codeUrl={null} /* TODO: Provide demo and code URLs */
                                 demoUrl={null}
@@ -741,12 +753,12 @@ class Projects extends React.Component {
                                 title={'SleeplessDev Website'}
                                 subtitle={'An excellent example of my programming knowledge, as well as a helpful collection of developer tools'}
                                 description={'The culmination of all my development knowledge, and my personal portfolio'}
-                                body={`SleeplessDev.io serves primarily as a sample of my programming aptitude. The combination of pleasant and appealing design, 
-                                clean and efficient code, and security conscious implementation, thoroughly exemplifies my programming style. As an individual with 
-                                interests in a wide variety of technological fields, it's important to me to incorporate the lessons I've learned throughout 
-                                disparate subjects into my work. In so doing, I avoid getting tunnel vision - being so engrossed in one aspect of development 
-                                that I cut corners in others (focusing on design at the exclusion of security is one such example). 
-                                Additionally, utilizing the tools and conventions of different specialties helps me to create a more attractive and 
+                                body={`SleeplessDev.io serves primarily as a sample of my programming aptitude. The combination of pleasant and appealing design,
+                                clean and efficient code, and security conscious implementation, thoroughly exemplifies my programming style. As an individual with
+                                interests in a wide variety of technological fields, it's important to me to incorporate the lessons I've learned throughout
+                                disparate subjects into my work. In so doing, I avoid getting tunnel vision - being so engrossed in one aspect of development
+                                that I cut corners in others (focusing on design at the exclusion of security is one such example).
+                                Additionally, utilizing the tools and conventions of different specialties helps me to create a more attractive and
                                 well rounded product.`}
                                 codeUrl={'https://github.com/dnnp2011/SleeplessDev.io'}
                                 demoUrl={null}
@@ -771,15 +783,15 @@ class Projects extends React.Component {
                                 title={'SleeplessDev Backend'}
                                 subtitle={'The infrastructure that supports the SleeplessDev website'}
                                 description={'The infrastructure that supports the SleeplessDev website'}
-                                body={`The SleeplessDev backend is the backbone of SleeplessDev.io, providing functionality to frontend services such as 
-                                my blog, tutorial collection, reference repository, authentication, as well as serving content as needed. 
-                                The backend is built primarily with Node.js, Express, 
-                                and <abbr title='A document based (NoSQL) database technology'>MongoDB</abbr>. However, supplemental technologies 
-                                are also present, and serve to provide more narrow functionality. GraphQL 
-                                is used to facilitate communication and passing of content between the backend and frontend; Pug is the 
-                                <abbr title='Hyper Text Markup Language'>HTML</abbr> template 
-                                language used to quickly and efficiently construct the interfaces of the backend management dashboard, which is then stylized 
-                                by Bootstrap. The backend dashboard acts as a restricted area for me to alter admin settings, create new blog, tutorial, or 
+                                body={`The SleeplessDev backend is the backbone of SleeplessDev.io, providing functionality to frontend services such as
+                                my blog, tutorial collection, reference repository, authentication, as well as serving content as needed.
+                                The backend is built primarily with Node.js, Express,
+                                and <abbr title='A document based (NoSQL) database technology'>MongoDB</abbr>. However, supplemental technologies
+                                are also present, and serve to provide more narrow functionality. GraphQL
+                                is used to facilitate communication and passing of content between the backend and frontend; Pug is the
+                                <abbr title='Hyper Text Markup Language'>HTML</abbr> template
+                                language used to quickly and efficiently construct the interfaces of the backend management dashboard, which is then stylized
+                                by Bootstrap. The backend dashboard acts as a restricted area for me to alter admin settings, create new blog, tutorial, or
                                 reference entries, and review the endpoints of my GraphQL <abbr title='Application Programming Interface'>API</abbr>`}
                                 codeUrl={'https://backend.sleeplessdev.io'}
                                 demoUrl={null}
@@ -805,11 +817,11 @@ class Projects extends React.Component {
                                 title={'Zombie Shooter'}
                                 subtitle={'A wave-based zombie shooter built in Unity, inspired by Call of Duty\'s "Zombies" game mode'}
                                 description={`A wave-based zombie shooter built in Unity, inspired by Call of Duty's "Zombies" game mode`}
-                                body={`The origin story of my zombie game addiction begins with Call of Duty: World at War. Not with the traditional multiplayer 
-                                mode, but with the - at the time - brand new game mode: Nazi Zombies! Inspired by those memories of fighting of wave after wave of 
-                                tireless zombies, i set out to create my own version. The result of that endeavour is this Zombie Shooter (not the final name). 
-                                Although still a work in progress, is has a solid foundation for future additions, such as developer tooling to streamline 
-                                addition of new content, extensible AI manager with a dynamic wave difficulty algorithm, a wide array of player and zombie 
+                                body={`The origin story of my zombie game addiction begins with Call of Duty: World at War. Not with the traditional multiplayer
+                                mode, but with the - at the time - brand new game mode: Nazi Zombies! Inspired by those memories of fighting of wave after wave of
+                                tireless zombies, i set out to create my own version. The result of that endeavour is this Zombie Shooter (not the final name).
+                                Although still a work in progress, is has a solid foundation for future additions, such as developer tooling to streamline
+                                addition of new content, extensible AI manager with a dynamic wave difficulty algorithm, a wide array of player and zombie
                                 animations, and immersive bullet effects (blood spatter, and bullet holes, etc).`}
                                 codeUrl={null}
                                 demoUrl={'https://youtu.be/qFufWuPpbLw'}
@@ -840,9 +852,9 @@ class Projects extends React.Component {
                                 title={'Space Invaders'}
                                 subtitle={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
                                 description={'A remake of the classic arcade game of the same name, creating in C# and Microsoft\'s XNA Framework'}
-                                body={`One of my very first games, built using Microsoft's now obsolete XNA Game Studio, I created a Windows arcade game 
-                                based upon the 70's classic of the same name. Complete with ambient chiptune music, dynamic scrolling enemies, spritesheet 
-                                animations, and a number of player sound effects, Space Invaders creates an entertaining recreation of a fondly remembered 
+                                body={`One of my very first games, built using Microsoft's now obsolete XNA Game Studio, I created a Windows arcade game
+                                based upon the 70's classic of the same name. Complete with ambient chiptune music, dynamic scrolling enemies, spritesheet
+                                animations, and a number of player sound effects, Space Invaders creates an entertaining recreation of a fondly remembered
                                 classic.`}
                                 codeUrl={'https://github.com/dnnp2011/SpaceInvaders-XNA'}
                                 demoUrl={null}
@@ -889,10 +901,10 @@ class Projects extends React.Component {
                                 title={'Sleepless Radio'}
                                 subtitle={'A native Android music player with some catchy tunes'}
                                 description={'A native Android music player with some catchy tunes'}
-                                body={`Sleepless Radio is a native Android application based on the traditional radio concept of stations and songs. The app makes 
-                                abundant use of Android's recycler view data structure in order to provide a smooth and efficient means of scrolling through very 
-                                long content without loading or stuttering. Sleepless Radio includes a variety of built in instrumental songs distributed between 
-                                several stations. The application also includes a media bar that appears upon playing a song to allow users to easily control 
+                                body={`Sleepless Radio is a native Android application based on the traditional radio concept of stations and songs. The app makes
+                                abundant use of Android's recycler view data structure in order to provide a smooth and efficient means of scrolling through very
+                                long content without loading or stuttering. Sleepless Radio includes a variety of built in instrumental songs distributed between
+                                several stations. The application also includes a media bar that appears upon playing a song to allow users to easily control
                                 playback from anywhere in the app.`}
                                 codeUrl={'https://github.com/dnnp2011/SleeplessRadio'}
                                 demoUrl={null}
@@ -916,8 +928,8 @@ class Projects extends React.Component {
                                 title={'CoolCalc'}
                                 subtitle={'An Android calculator app that... calculates!'}
                                 description={'An Android calculator app that... calculates!'}
-                                body={`A native Android calculator application that does exactly what you might expect. CoolCalc has a unique button layout, 
-                                as well as vibrantly pleasant icons. Can perform all the basic calculator functions that users expect, and implements 
+                                body={`A native Android calculator application that does exactly what you might expect. CoolCalc has a unique button layout,
+                                as well as vibrantly pleasant icons. Can perform all the basic calculator functions that users expect, and implements
                                 a basic history functionality for performing a chain of operations of many numbers.`}
                                 codeUrl={'https://github.com/dnnp2011/CoolCalc'}
                                 demoUrl={null}
@@ -941,8 +953,8 @@ class Projects extends React.Component {
                                 title={'Breakout'}
                                 subtitle={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
                                 description={'A C# remake of the 70\'s arcade game: Breakout, using Microsoft\'s XNA Framework'}
-                                body={`A recreation of the 70's arcade game: Breakout! Developed using Microsoft's now obsolete XNA Game Studio and programmed in C# 
-                                with the goal of emulating the same arcade experience of the original. Breakout includes the familiar chiptune music and sound effects 
+                                body={`A recreation of the 70's arcade game: Breakout! Developed using Microsoft's now obsolete XNA Game Studio and programmed in C#
+                                with the goal of emulating the same arcade experience of the original. Breakout includes the familiar chiptune music and sound effects
                                 that were standard in classic arcade games.`}
                                 codeUrl={'https://github.com/dnnp2011/Breakout-XNA'}
                                 demoUrl={null}
@@ -968,7 +980,7 @@ class Projects extends React.Component {
                                 title={'Rock Dodger'}
                                 subtitle={'A web-based obstacle avoidance game made entirely with Javascript. Dodge the falling rocks, and keep your avatar alive as long as possible!'}
                                 description={'A web-based obstacle avoidance game made entirely with Javascript. Dodge the falling rocks, and keep your avatar alive as long as possible!'}
-                                body={`An excellent lesson on browser animation and gamification, Rock Dodger is just complex enough to provide vital insights 
+                                body={`An excellent lesson on browser animation and gamification, Rock Dodger is just complex enough to provide vital insights
                                 on creating and managing game loops for an in-browser experience.`}
                                 codeUrl={'https://github.com/dnnp2011/Rock-Dodger'}
                                 demoUrl={null}
@@ -993,9 +1005,9 @@ class Projects extends React.Component {
                                 title={'Blackjack'}
                                 subtitle={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
                                 description={'A full C# Blackjack card game, played in the command line and complete with ASCII card faces'}
-                                body={`My very first game, Blackjack is a command line emulation of the well-known Blackjack card game. The goal 
-                                is to achieve a higher collective score (determined by the product of all your card values) than the dealer, 
-                                without going over the maximum of 21. There's not much elaboration to be done on a command line card game, however 
+                                body={`My very first game, Blackjack is a command line emulation of the well-known Blackjack card game. The goal
+                                is to achieve a higher collective score (determined by the product of all your card values) than the dealer,
+                                without going over the maximum of 21. There's not much elaboration to be done on a command line card game, however
                                 one fun addition was the inclusion of <abbr title='A standard for converting English characters and symbols into code'>
                                 ASCII</abbr> card faces.`}
                                 codeUrl={'https://github.com/dnnp2011/blackjack-console-application'}
@@ -1070,7 +1082,7 @@ class Projects extends React.Component {
                                 title={'Space Shooter'}
                                 subtitle={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
                                 description={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
-                                body={`In Space Shooter, you play as a space ship flying across the galaxy, trying to get home across the vastness of space. Blocking your way are dangerous asteroids that can be destroyed or dodged, as well as enemy ships. Little is known about these alien vessels - besides the fact that they shoot on sight. If you want to live long enough to see home, you may want to do the same! 
+                                body={`In Space Shooter, you play as a space ship flying across the galaxy, trying to get home across the vastness of space. Blocking your way are dangerous asteroids that can be destroyed or dodged, as well as enemy ships. Little is known about these alien vessels - besides the fact that they shoot on sight. If you want to live long enough to see home, you may want to do the same!
                                 Space Shooter is built in the Unity game engine. Although the game appears to be 2-dimensional, all of the models, animations, and effects are in fact 3D. A top-down camera angle is used to provide a two-demensional impression, while maintaining the interesting depth and perspective effects of moving in 3D space. Space hazards are spawned in random positions just beyond the player's view to provide a varied and random challenge for the player. The background movement effect is achieved by stretching the background beyond the clipping plane of the primary camera, then sliding it down and wrapping it back on itself once it reaches the end. The result of these features is the appearance of movement through an infinite environment.`}
                                 codeUrl={'https://github.com/dnnp2011/SpaceShooter-Unity'}
                                 demoUrl={null}
@@ -1095,8 +1107,8 @@ class Projects extends React.Component {
                                 title={'TANKS!'}
                                 subtitle={'A round-based tank vs tank battle you can play against friends on a single PC'}
                                 description={'A round-based tank vs tank battle you can play against friends on a single PC'}
-                                body={`TANKS is an isometric, round-based, player vs player arena battle. Each player must pilot their tanks, and attempt to destroy their opponent while simultaneously dealing with incoming fire, and attempting to correctly range their own shots. In TANKS, both players control their tanks from the same keyboard. The blue tank in the top-left is controlled by the AWSD keys, and can fire using the spacebar. On the other hand, the red tank in the bottom-right is controlled via the arrow keys, and may fire their main gun using the enter key. 
-                                
+                                body={`TANKS is an isometric, round-based, player vs player arena battle. Each player must pilot their tanks, and attempt to destroy their opponent while simultaneously dealing with incoming fire, and attempting to correctly range their own shots. In TANKS, both players control their tanks from the same keyboard. The blue tank in the top-left is controlled by the AWSD keys, and can fire using the spacebar. On the other hand, the red tank in the bottom-right is controlled via the arrow keys, and may fire their main gun using the enter key.
+
                                 One of the interesting features of TANKS is the dynamic camera zoom. It is constantly adjusting its zoom and position in order to keep both players in view at all times - an important feature when both players are controlling their avatars from a single computer. Like several of my other games, TANKS was also built using the Unity game engine.`}
                                 codeUrl={'https://github.com/dnnp2011/Unity-TANKS'}
                                 demoUrl={null}
@@ -1601,12 +1613,11 @@ function ProjectPopup(props) {
               }
             </Grid>
           </div>
-          <div className={scss['popup__right']}>
+          <div className={scss['popup__right']} style={{ paddingTop: '5rem' }}>
             <a id={'close-popup'} ref={onPopupMounted} onClick={e => {
               e.preventDefault();
               e.stopPropagation();
-              document.getElementById(openPopupBtn)
-                      .focus();
+              document.getElementById(openPopupBtn).focus();
               toggleVisible(false);
             }} href={'#'} className={scss['popup__close-button']}>&times;</a>
             <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
@@ -2199,7 +2210,9 @@ ProjectPopup.propTypes = {
   demoUrl: PropTypes.string,
   width: PropTypes.string.isRequired,
   toggleVisible: PropTypes.func.isRequired,
-  detailsVisible: PropTypes.bool.isRequired
+  detailsVisible: PropTypes.bool.isRequired,
+  onPopupMounted: PropTypes.func.isRequired,
+  openPopupBtn: PropTypes.string.isRequired,
 };
 Portal.propTypes = {
   children: PropTypes.shape({}),
