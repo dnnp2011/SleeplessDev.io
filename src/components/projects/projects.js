@@ -134,9 +134,10 @@ class Projects extends React.Component {
     }
   }
 
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     // Set focus to the popup close button upon opening for accessibility
-    if (prevState.closePopup !== this.state.closePopup && this.state.closePopup !== null)      {
+    if (prevState.closePopup !== this.state.closePopup && this.state.closePopup !== null) {
       this.state.closePopup.focus();
     }
   }
@@ -1576,10 +1577,11 @@ function ProjectPopup(props) {
   //TODO: Provide an alternative display image when screen width is XS
   return (
     <Fade in={detailsVisible} timeout={300}>
-      <div className={scss.popup} onClick={ e => {
-        document.getElementById(openPopupBtn).focus();
+      <div className={scss.popup} onClick={e => {
+        document.getElementById(openPopupBtn)
+                .focus();
         toggleVisible(false);
-      } }>
+      }}>
         <div className={scss['popup__content']} onClick={e => e.stopPropagation()}>
           <div className={scss['popup__left']}>
             <Grid container direction={'column'} alignContent={'flex-start'} alignItems={'center'} justify={'flex-start'} style={{ height: '100%' }}>
@@ -1603,7 +1605,8 @@ function ProjectPopup(props) {
             <a id={'close-popup'} ref={onPopupMounted} onClick={e => {
               e.preventDefault();
               e.stopPropagation();
-              document.getElementById(openPopupBtn).focus();
+              document.getElementById(openPopupBtn)
+                      .focus();
               toggleVisible(false);
             }} href={'#'} className={scss['popup__close-button']}>&times;</a>
             <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
@@ -1889,20 +1892,39 @@ function Story(props) {
     <Grid item xs={12}>
       <Grid container direction={'row'} alignItems={'center'} font={'inherit'} color={'inherit'}>
         <div className={scss['story']}>
-          <div className={scss['story__content']}>
-            <figure className={scss['story__shape']}>
-              <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
-              <figcaption className={scss['story__caption']}>
-                <span>{name}</span>
-                <br />
-                <span>{position}</span>
-              </figcaption>
-            </figure>
-            <div className={scss['story__text']}>
-              <h3 className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
-              <p className={scss['story__text--testimonial']}>{testimonial}</p>
-            </div>
-          </div>
+          {
+            isSmDown
+              ? <Grid container direction={'column'} alignItems={'center'} alignContent={'center'} justify={'center'} className={scss['story__content']}>
+                <Grid item style={{ height: '100%' }}>
+                  <figure className={scss['story__shape']}>
+                    <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
+                    <figcaption className={scss['story__caption']}>
+                      <span>{name}</span>
+                      <br />
+                      <span>{position}</span>
+                    </figcaption>
+                  </figure>
+                </Grid>
+                <Grid item className={scss['story__text']}>
+                  <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
+                  <p className={scss['story__text--testimonial']}>{testimonial}</p>
+                </Grid>
+              </Grid>
+              : <div className={scss['story__content']}>
+                <figure className={scss['story__shape']}>
+                  <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
+                  <figcaption className={scss['story__caption']}>
+                    <span>{name}</span>
+                    <br />
+                    <span>{position}</span>
+                  </figcaption>
+                </figure>
+                <div className={scss['story__text']}>
+                  <h3 className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
+                  <p className={scss['story__text--testimonial']}>{testimonial}</p>
+                </div>
+              </div>
+          }
         </div>
       </Grid>
     </Grid>
@@ -2147,7 +2169,7 @@ ProjectCard.propTypes = {
   subtitle: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   codeUrl: PropTypes.string,
-  demoUrl: PropTypes.string,
+  demoUrl: PropTypes.string
 };
 Story.propTypes = {
   classes: PropTypes.shape({}).isRequired,

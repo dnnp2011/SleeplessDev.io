@@ -16,9 +16,35 @@
   }
 
   &__shape {
-    width: 10rem;
-    height: 10rem;
-    float: left;
+    @include respond(xxl) {
+      width: 10rem;
+      height: 10rem;
+      float: left;
+    }
+    @include respond(xl) {
+      width: 11rem;
+      height: 11rem;
+      float: left;
+    }
+    @include respond(lg) {
+      width: 12rem;
+      height: 12rem;
+      float: left;
+    }
+    @include respond(md) {
+      width: 13rem;
+      height: 13rem;
+      float: left;
+    }
+    @include respond(sm) {
+      width: 15rem;
+      height: 15rem;
+    }
+    @include respond(xs) {
+      width: 16rem;
+      height: 16rem;
+    }
+
     background-color: transparent;
     @include shape-outside(circle(35% at 50% 50%));
     @include clip-path(circle(50% at 50% 50%));
