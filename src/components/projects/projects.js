@@ -33,26 +33,27 @@ import blackjack2 from '../../assets/images/screenshots/blackjack-2.png';
 import breakout1 from '../../assets/images/screenshots/breakout-1.png';
 import breakout2 from '../../assets/images/screenshots/breakout-2.png';
 import breakout3 from '../../assets/images/screenshots/breakout-3.png';
-import cargoContainer1 from '../../assets/images/screenshots/cargo-container-1.png';
-import cargoContainer2 from '../../assets/images/screenshots/cargo-container-2.png';
-import cargoContainer3 from '../../assets/images/screenshots/cargo-container-rendered-1.png';
-import cargoContainer4 from '../../assets/images/screenshots/cargo-container-rendered-2.png';
-import cargoContainer5 from '../../assets/images/screenshots/cargo-container-rendered-3.png';
+import cargoContainer1 from '../../assets/images/screenshots/cargo-container-1.jpg';
+import cargoContainer2 from '../../assets/images/screenshots/cargo-container-2.jpg';
+import cargoContainer3 from '../../assets/images/screenshots/cargo-container-rendered-1.jpg';
+import cargoContainer4 from '../../assets/images/screenshots/cargo-container-rendered-2.jpg';
+import cargoContainer5 from '../../assets/images/screenshots/cargo-container-rendered-3.jpg';
 import coolcalc1 from '../../assets/images/screenshots/coolcalc-1.png';
 import coolcalc2 from '../../assets/images/screenshots/coolcalc-2.png';
 import coolcalc3 from '../../assets/images/screenshots/coolcalc-3.jpg';
 import creek1 from '../../assets/images/screenshots/creek-1.jpg';
 import creek2 from '../../assets/images/screenshots/creek-2.jpg';
 import earthSpace1 from '../../assets/images/screenshots/earth-space-1.jpg';
+import earthSpace2 from '../../assets/images/screenshots/earth-space-2.jpg';
 import gainfy1 from '../../assets/images/screenshots/gainfy-1.png';
 import gainfy2 from '../../assets/images/screenshots/gainfy-2.png';
 import gainfy3 from '../../assets/images/screenshots/gainfy-3.png';
 import gainfy4 from '../../assets/images/screenshots/gainfy-4.png';
-import gainfy5 from '../../assets/images/screenshots/gainfy-5.png';
-import gainfy6 from '../../assets/images/screenshots/gainfy-6.png';
-import gainfy7 from '../../assets/images/screenshots/gainfy-7.png';
-import gunOptic1 from '../../assets/images/screenshots/gun-optic-1.png';
-import gunOptic2 from '../../assets/images/screenshots/gun-optic-2.png';
+import gainfy5 from '../../assets/images/screenshots/gainfy-5.jpg';
+import gainfy6 from '../../assets/images/screenshots/gainfy-6.jpg';
+import gainfy7 from '../../assets/images/screenshots/gainfy-7.jpg';
+import gunOptic1 from '../../assets/images/screenshots/gun-optic-1.jpg';
+import gunOptic2 from '../../assets/images/screenshots/gun-optic-2.jpg';
 import herome1 from '../../assets/images/screenshots/herome-1.png';
 import herome2 from '../../assets/images/screenshots/herome-2.png';
 import herome3 from '../../assets/images/screenshots/herome-3.png';
@@ -74,6 +75,7 @@ import spaceship1 from '../../assets/images/screenshots/spaceship-1.jpg';
 import spaceship2 from '../../assets/images/screenshots/spaceship-2.jpg';
 import spaceship3 from '../../assets/images/screenshots/spaceship-3.jpg';
 import steelDrum1 from '../../assets/images/screenshots/steel-drum-1.jpg';
+import steelDrum2 from '../../assets/images/screenshots/steel-drum-2.jpg';
 import survivalShooter1 from '../../assets/images/screenshots/survival-shooter-1.jpg';
 import survivalShooter2 from '../../assets/images/screenshots/survival-shooter-2.jpg';
 import survivalShooter3 from '../../assets/images/screenshots/survival-shooter-3.jpg';
@@ -111,12 +113,14 @@ class Projects extends React.Component {
 
     this.state = {
       bgVideo: null,
-      navVisible: false
+      navVisible: false,
+      closePopup: null,
+      openPopupBtn: null
     };
 
-    this.softwareLabel = React.createRef();
-    this.designLabel = React.createRef();
+    this.closePopup = React.createRef();
   }
+
 
   componentDidMount() {
     if (!this.state.bgVideo) {
@@ -130,11 +134,26 @@ class Projects extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // Set focus to the popup close button upon opening for accessibility
+    if (prevState.closePopup !== this.state.closePopup && this.state.closePopup !== null)      {
+      this.state.closePopup.focus();
+    }
+  }
+
 
   toggleNav = () => {
     this.setState((state, props) => ({
       navVisible: !state.navVisible
     }));
+  };
+
+  onPopupMounted = ref => {
+    this.setState({ closePopup: ref });
+  };
+
+  onPopupOpened = ref => {
+    this.setState({ openPopupBtn: ref });
   };
 
 
@@ -161,7 +180,7 @@ class Projects extends React.Component {
         devicons.Java.plain,
         devicons.Typescript.plain,
         devicons.Python.plain,
-        devicons.Ruby.plain,
+        devicons.Ruby.plain
       ],
       frontend: [
         devicons.React.plain,
@@ -171,7 +190,7 @@ class Projects extends React.Component {
         devicons.Sass.plain,
         devicons.Pug.plain,
         devicons.MaterialUi.plain,
-        devicons.PassportJS.plain,
+        devicons.PassportJS.plain
       ],
       backend: [
         devicons.NodeJs.plain,
@@ -185,18 +204,18 @@ class Projects extends React.Component {
         devicons.Nginx.plain,
         devicons.Django.plain,
         devicons.Debian.plain,
-        devicons.Ubuntu.plain,
+        devicons.Ubuntu.plain
       ],
       mobile: [
         devicons.Android.plain,
-        devicons.ReactNative.plain,
+        devicons.ReactNative.plain
       ],
       'game dev': [
         devicons.Unity.plain,
         devicons.Xna.plain,
         devicons.Blender.plain,
         devicons.Maya.plain,
-        devicons.Audacity.plain,
+        devicons.Audacity.plain
       ],
       tools: [
         devicons.Git.plain,
@@ -206,7 +225,7 @@ class Projects extends React.Component {
         devicons.XenServer.plain,
         devicons.Ssh.plain,
         devicons.ChromeDevTools.plain,
-        devicons.AmazonWebServices.plain,
+        devicons.AmazonWebServices.plain
       ],
       other: [
         devicons.Gimp.plain,
@@ -233,8 +252,8 @@ class Projects extends React.Component {
     return (
       <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
-          <input checked={navVisible} onChange={()=>{}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
-          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav}  className={scss['navigation__button']}>
+          <input checked={navVisible} onChange={() => {}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
+          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav} className={scss['navigation__button']}>
             <div className={scss['navigation__icon']}>
               <span></span>
               <span></span>
@@ -522,7 +541,7 @@ class Projects extends React.Component {
                                   about how to coordinate work across a team, how to deal with code conflicts, how to use external tools to facilitate
                                   bug fixes and work assignments, and how to stick to the roadmap and maintain deadlines while not creating and stressful environment and
                                   allowing for creative freedom.
-                                  <br /><br/>
+                                  <br /><br />
                                   Beyond this programming-specific knowledge, my interest in technology as a whole has introduced me to many other interesting
                                   fields, such as networking and firewalls, using Linux servers and navigating the command line, creating and utilizing
                                   virtual machines, building and maintaining PC and server hardware, component-level soldering, managing network attached
@@ -603,11 +622,11 @@ class Projects extends React.Component {
                         direction={isSm ? 'column' : 'row'}
                         className={scss['skillbox-wrapper']}>
                         {Object.keys(iconCategories)
-                         .map((category, index) => (
-                           <Grid item xs key={category}>
-                             <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
-                           </Grid>
-                         ))}
+                               .map((category, index) => (
+                                 <Grid item xs key={category}>
+                                   <SkillBox scss={scss} icons={iconCategories[category]} category={category} />
+                                 </Grid>
+                               ))}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -642,7 +661,7 @@ class Projects extends React.Component {
                         {/* TODO: Fill in with remaining projects, provide valid links to demo/code, replace background images with screenshots */}
                         <Grid item className={scss['section-container']}>
                           <div className={scss['projects__software']}>
-                            <h4 className={scss['projects__software--label']} id={'software-label'} ref={this.softwareLabel}>
+                            <h4 className={scss['projects__software--label']} id={'software-label'}>
                               Software
                             </h4>
                           </div>
@@ -676,11 +695,14 @@ class Projects extends React.Component {
                                 images={[
                                   /* TODO: Get better close ups of the Gainfy features -- too small to see right now */
                                   gainfy1,
-                                  gainfy2,
+                                  gainfy2
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.GainfyBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -707,6 +729,9 @@ class Projects extends React.Component {
                                 color={'green'}
                                 backgroundClass={classes.AresBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -729,11 +754,14 @@ class Projects extends React.Component {
                                 ]}
                                 images={[
                                   gainfy5,
-                                  gainfy6,
+                                  gainfy6
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SleeplessDevBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -760,11 +788,14 @@ class Projects extends React.Component {
                                 /* TODO: Get images for the SleeplessDev backend */
                                 images={[
                                   gainfy5,
-                                  gainfy6,
+                                  gainfy6
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SleeplessDevBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -787,16 +818,19 @@ class Projects extends React.Component {
                                   'Developer Tooling',
                                   'AI Programming',
                                   '3D Modeling',
-                                  'Animation',
+                                  'Animation'
                                 ]}
                                 images={[
-                                  zombieShooter1,
                                   zombieShooter2,
                                   zombieShooter3,
+                                  zombieShooter5
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.ZombieShooterBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -816,12 +850,14 @@ class Projects extends React.Component {
                                 ]}
                                 images={[
                                   spaceInvaders1,
-                                  spaceInvaders2,
-                                  spaceInvaders3,
+                                  spaceInvaders3
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.SpaceInvaderBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -834,13 +870,14 @@ class Projects extends React.Component {
                                 demoUrl={null}
                                 skills={[ 'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications' ]}
                                 images={[
-                                  poshcalc1,
-                                  poshcalc2,
-                                  poshcalc3,
+                                  poshcalc1
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.PoshCalcBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               >
                                 A native Android application to help online reseller price their goods with the ideal <abbr title='Return On Investment'>ROI</abbr>
@@ -862,12 +899,14 @@ class Projects extends React.Component {
                                   'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Recycler Views', 'Media Management'
                                 ]}
                                 images={[
-                                  sleeplessRadio1,
-                                  sleeplessRadio2,
+                                  sleeplessRadio2
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SleeplessRadioBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -885,13 +924,14 @@ class Projects extends React.Component {
                                   'Java', 'XML', 'Native Android Development', 'Constraint Layouts', 'Input History'
                                 ]}
                                 images={[
-                                  coolcalc1,
-                                  coolcalc2,
-                                  coolcalc3
+                                  coolcalc2
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.CoolCalcBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -911,11 +951,14 @@ class Projects extends React.Component {
                                 images={[
                                   breakout1,
                                   breakout2,
-                                  breakout3,
+                                  breakout3
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.BreakoutBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -933,11 +976,14 @@ class Projects extends React.Component {
                                 ]}
                                 images={[
                                   rockDodger1,
-                                  rockDodger2,
+                                  rockDodger2
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.RockDodgerBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -958,11 +1004,14 @@ class Projects extends React.Component {
                                 ]}
                                 images={[
                                   blackjack1,
-                                  blackjack2,
+                                  blackjack2
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.BlackjackBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -978,11 +1027,14 @@ class Projects extends React.Component {
                                   'Ruby', 'Game Design', 'State Management', 'Testing'
                                 ]}
                                 images={[
-                                  tictactoe1,
+                                  tictactoe1
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.TicTacToeBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -998,13 +1050,16 @@ class Projects extends React.Component {
                                   'Unity3D', 'C#', 'AI Programming', 'Animation', 'Sound Design'
                                 ]}
                                 images={[
-                                  survivalShooter1,
-                                  survivalShooter2,
-                                  survivalShooter3,
+                                  survivalShooter5,
+                                  survivalShooter6,
+                                  survivalShooter2
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SurvivalShooterBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1023,12 +1078,14 @@ class Projects extends React.Component {
                                 ]}
                                 images={[
                                   spaceShooter1,
-                                  spaceShooter2,
-                                  spaceShooter3,
+                                  spaceShooter3
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.SpaceShooterBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1048,11 +1105,14 @@ class Projects extends React.Component {
                                 images={[
                                   tanks1,
                                   tanks2,
-                                  tanks3,
+                                  tanks3
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.TanksBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1068,13 +1128,14 @@ class Projects extends React.Component {
                                   'Java', 'XML', 'Native Android Development', 'UI Design'
                                 ]}
                                 images={[
-                                  herome1,
-                                  herome2,
-                                  herome3,
+                                  herome1
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.HeroMeBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1085,7 +1146,7 @@ class Projects extends React.Component {
 
                         <Grid item className={scss['section-container']}>
                           <div className={scss['projects__design']}>
-                            <h4 className={scss['projects__design--label']} id={'software-label'} ref={this.designLabel}>
+                            <h4 className={scss['projects__design--label']} id={'software-label'}>
                               Art and Design
                             </h4>
                           </div>
@@ -1115,6 +1176,9 @@ class Projects extends React.Component {
                                 color={'green'}
                                 backgroundClass={classes.CreekBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1130,15 +1194,19 @@ class Projects extends React.Component {
                                   'Blender', 'Shader Programming', 'UV Unwrapping', 'Texturing', '3D Modeling'
                                 ]}
                                 images={[
-                                  earthSpace1
+                                  earthSpace1,
+                                  earthSpace2
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SpaceBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
-                             <Grid item>
+                            <Grid item>
                               <ProjectCard
                                 title={'Space Ship'}
                                 subtitle={'3D model of a single-seat, short range space craft built in Autodesk\'s Maya'}
@@ -1156,11 +1224,14 @@ class Projects extends React.Component {
                                 images={[
                                   spaceship1,
                                   spaceship2,
-                                  spaceship3,
+                                  spaceship3
                                 ]}
                                 color={'orange'}
                                 backgroundClass={classes.SpaceShipBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1178,11 +1249,14 @@ class Projects extends React.Component {
                                 images={[
                                   cargoContainer1,
                                   cargoContainer2,
-                                  cargoContainer3,
+                                  cargoContainer3
                                 ]}
                                 color={'green'}
                                 backgroundClass={classes.CargoContainerBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1198,11 +1272,15 @@ class Projects extends React.Component {
                                   'Blender', 'UV Unwrapping', 'Texturing'
                                 ]}
                                 images={[
-                                  steelDrum1
+                                  steelDrum1,
+                                  steelDrum2
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SteelDrumBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1224,6 +1302,9 @@ class Projects extends React.Component {
                                 color={'orange'}
                                 backgroundClass={classes.TacticalGripBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1245,6 +1326,9 @@ class Projects extends React.Component {
                                 color={'green'}
                                 backgroundClass={classes.RedDotOpticBg}
                                 classes={classes}
+                                onPopupMounted={this.onPopupMounted}
+                                onPopupOpened={this.onPopupOpened}
+                                openPopupBtn={this.state.openPopupBtn}
                                 {...this.props}
                               />
                             </Grid>
@@ -1254,18 +1338,18 @@ class Projects extends React.Component {
 
 
                         {/*<Grid item>
-                          <ProjectCard
-                            title={''}
-                            description={''}
-                            skills={[
-                              '',wd
-                            ]}
-                            color={''}
-                            backgroundClass={classes.breakoutBg}
-                            classes={classes}
-                            {...this.props}
-                          />
-                        </Grid>*/}
+                         <ProjectCard
+                         title={''}
+                         description={''}
+                         skills={[
+                         '',wd
+                         ]}
+                         color={''}
+                         backgroundClass={classes.breakoutBg}
+                         classes={classes}
+                         {...this.props}
+                         />
+                         </Grid>*/}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -1485,51 +1569,41 @@ class Projects extends React.Component {
 
 
 function ProjectPopup(props) {
-  const { images, title, subtitle, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible, classes } = props;
+  const { images, title, subtitle, body, codeUrl, demoUrl, width, toggleVisible, detailsVisible, classes, onPopupMounted, openPopupBtn } = props;
 
   const isSm = isWidthDown('sm', width, true);
 
   //TODO: Provide an alternative display image when screen width is XS
   return (
     <Fade in={detailsVisible} timeout={300}>
-      <div className={scss.popup}>
-        <div className={scss['popup__content']}>
+      <div className={scss.popup} onClick={ e => {
+        document.getElementById(openPopupBtn).focus();
+        toggleVisible(false);
+      } }>
+        <div className={scss['popup__content']} onClick={e => e.stopPropagation()}>
           <div className={scss['popup__left']}>
-            {/*{
-              (images && width !== 'xs')
-              ? images.map((image, index) => (
-                <div key={index}
-                                       style = {{ backgroundImage: `linear-gradient(to bottom right, #ffb900, #ff7730), url(${gainfy2})`,
-                                                  backgroundSize: 'cover',
-                                                  backgroundPosition: 'center center',
-                                                  backgroundRepeat: 'no-repeat',
-                                                }}>
-                                  </div>
-              ))
-              : null
-            }*/}
-            {/* TODO: Fix uneven popup screenshots */}
-            <Grid container direction={'column'} alignContent={'flex-start'} alignItems={'center'} justify={'flex-start'} style={{height: '100%'}}>
+            <Grid container direction={'column'} alignContent={'flex-start'} alignItems={'center'} justify={'flex-start'} style={{ height: '100%' }}>
               {
-              (images && width !== 'xs')
-              ? images.map((image, index) => (
-                <Grid item key={`${title}-${index}`}>
-                  <img
-                    alt={`${title} image ${index + 1}`}
-                    height={'100%'}
-                    src={image}
-                    className={scss['popup__img']}
-                  />
-                </Grid>
-              ))
-              : null
-            }
+                (images)
+                ? images.map((image, index) => (
+                  <Grid item key={`${title}-${index}`}>
+                    <img
+                      alt={`${title} image ${index + 1}`}
+                      height={'100%'}
+                      src={image}
+                      className={scss['popup__img']}
+                    />
+                  </Grid>
+                ))
+                : null
+              }
             </Grid>
           </div>
           <div className={scss['popup__right']}>
-            <a id={'close-popup'} onClick={e => {
+            <a id={'close-popup'} ref={onPopupMounted} onClick={e => {
               e.preventDefault();
               e.stopPropagation();
+              document.getElementById(openPopupBtn).focus();
               toggleVisible(false);
             }} href={'#'} className={scss['popup__close-button']}>&times;</a>
             <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
@@ -1548,25 +1622,25 @@ function ProjectPopup(props) {
             </div>
             {
               subtitle.includes('<') ? <h4 dangerouslySetInnerHTML={{ __html: subtitle }} />
-                : <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
-                  {subtitle}
-                </h4>
+                                     : <h4 className={classNames(scss['heading-tertiary'], scss['popup__subheading'])}>
+                {subtitle}
+              </h4>
             }
             <p className={scss['popup__body']} dangerouslySetInnerHTML={{ __html: body }} />
             <Grid container direction={'row'} alignContent={'flex-start'} spacing={32}>
               {
                 demoUrl
-                  ? <Grid item>
-                    <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={demoUrl}>View Demo</a>
-                  </Grid>
-                  : null
+                ? <Grid item>
+                  <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={demoUrl}>View Demo</a>
+                </Grid>
+                : null
               }
               {
                 codeUrl
-                  ? <Grid item>
-                    <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={codeUrl}>View Code</a>
-                  </Grid>
-                  : null
+                ? <Grid item>
+                  <a className={classNames(scss['btn'], scss['btn--green'])} rel={'noopener noreferrer nofollow'} target={'_blank'} href={codeUrl}>View Code</a>
+                </Grid>
+                : null
               }
             </Grid>
           </div>
@@ -1726,9 +1800,10 @@ function SkillBox(props) {
 }
 
 function ProjectCard(props) {
-  const { title, description, skills, color, backgroundClass, classes, images, subtitle, body, codeUrl, demoUrl } = props;
+  const { title, description, skills, color, backgroundClass, classes, images, subtitle, body, codeUrl, demoUrl, onPopupOpened } = props;
 
   const [ detailsVisible, toggleDetails ] = React.useState(false);
+  const cardRef = null;
 
   const renderSkills = skills => {
     const slice = skills.length > 5 ? skills.slice(0, 5) : skills;
@@ -1744,18 +1819,18 @@ function ProjectCard(props) {
       <Portal target={'root'}>
         {
           !detailsVisible
-            ? null
-            : <ProjectPopup
-              images={[...images]}
-              title={title}
-              subtitle={subtitle}
-              body={body}
-              codeUrl={codeUrl}
-              demoUrl={demoUrl}
-              toggleVisible={toggleDetails}
-              detailsVisible={detailsVisible}
-              {...props}
-            />
+          ? null
+          : <ProjectPopup
+            images={[ ...images ]}
+            title={title}
+            subtitle={subtitle}
+            body={body}
+            codeUrl={codeUrl}
+            demoUrl={demoUrl}
+            toggleVisible={toggleDetails}
+            detailsVisible={detailsVisible}
+            {...props}
+          />
         }
       </Portal>
       <Grid className={scss['card']}>
@@ -1766,8 +1841,9 @@ function ProjectCard(props) {
               <a onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
+                onPopupOpened(`${title}-details-btn`);
                 toggleDetails(true);
-              }} color={'inherit'} href={'#'} className={classNames(scss.btn, scss['card__cta-btn'])}>
+              }} id={`${title}-details-btn`} color={'inherit'} href={'#'} className={classNames(scss.btn, scss['card__cta-btn'])}>
                 Details
               </a>
             </div>
@@ -2066,7 +2142,12 @@ ProjectCard.propTypes = {
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
   color: PropTypes.oneOf([ 'orange', 'blue', 'green' ]).isRequired,
   backgroundClass: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})])),
+  children: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({}) ])),
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  subtitle: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  codeUrl: PropTypes.string,
+  demoUrl: PropTypes.string,
 };
 Story.propTypes = {
   classes: PropTypes.shape({}).isRequired,

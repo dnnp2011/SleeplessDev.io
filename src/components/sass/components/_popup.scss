@@ -19,30 +19,18 @@
     display: table;
     @include absolute-center;
     width: 75%;
-    max-height: 70%;
+    max-height: calc(100vh);
     @include smooth-corners;
     background-color: $secondaryFont;
     @include box-shadow(.5rem 1.6rem 3.4rem $shadow--dark);
-
     overflow: hidden;
   }
 
   &__left {
     width: 33.33333333%;
     display: table-cell;
-  }
-
-  .popup-image-container {
-    display: table;
-  }
-
-  .popup-image {
-    display: table-cell;
-    vertical-align: center;
-    height: auto;
-    max-height: 15rem;
-    max-width: 100%;
-    margin: 0;
+    vertical-align: middle;
+    height: 100%;
     padding: 0;
   }
 
@@ -83,16 +71,35 @@
 
     &:focus {
       color: $primaryColor;
-      outline: solid 2px $primaryColor;
+      outline: none;
       outline-offset: .5rem;
     }
 
   }
 
   &__img {
-    height: 100%;
-    max-height: 15rem;
+    @include respond(xxl) {
+      width: 70% !important;
+    }
+    @include respond(xl) {
+      width: 70% !important;
+    }
+    @include respond(lg) {
+      width: 80% !important;
+    }
+    @include respond(md) {
+      width: 90% !important;
+    }
+    @include respond(sm) {
+      width: 100% !important;
+    }
+    @include respond(xs) {
+      width: 100% !important;
+    }
+
+    min-width: 60%;
     max-width: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
     display: block;

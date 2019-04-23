@@ -38,7 +38,8 @@
     }
 
     &:checked + .navigation__button > .navigation__icon span:first-child {
-      transform: rotate(45deg) translate(-.125rem, 0);
+      //transform: rotate(45deg) translate(-.125rem, 0);
+      transform: rotate(45deg) translate(-.2rem, 0);
     }
 
     &:checked + .navigation__button > .navigation__icon > span:nth-last-child(2) {

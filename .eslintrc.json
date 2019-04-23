@@ -234,7 +234,9 @@
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
-    "jsx-a11y/img-redundant-alt": "off"
+    "jsx-a11y/img-redundant-alt": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   },
   "settings": {}
 }
