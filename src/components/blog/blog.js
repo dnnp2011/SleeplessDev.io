@@ -31,19 +31,20 @@ class Blog extends React.Component {
     super(props);
 
     dayjs()
-      .format();
+    .format();
     const params = new URLSearchParams(this.props.location.search);
 
     this.state = {
       blogViewId: this.props.match.params.id ? this.props.match.params.id : null,
-      month: ((params.has('month') && params.get('month')) || (dayjs()
-        .month() + 1).toString()),
-      year: ((params.has('year') && params.get('year')) || dayjs()
-        .year()
-        .toString()),
+      month: ((params.has('month') && params.get('month')) || null),
+      year: ((params.has('year') && params.get('year')) || null),
+      // month: ((params.has('month') && params.get('month')) || (dayjs().month() + 1).toString()),
+      // year: ((params.has('year') && params.get('year')) || dayjs().year().toString()),
       tag: ((params.has('tag') && params.get('tag')) || null),
       limit: ((params.has('limit') && params.get('limit')) || null),
-      archiveDrawerOpen: false
+      archiveDrawerOpen: false,
+      drawer: null,
+      tagList: null
     };
 
     this.toggleArchiveDrawer = this.toggleArchiveDrawer.bind(this);
@@ -128,16 +129,14 @@ class Blog extends React.Component {
 
       this.setState({
         blogViewId: null,
-        month: (dayjs()
-          .month() + 1).toString(),
-        year: dayjs()
-          .year()
-          .toString(),
+        month: null,
+        year: null,
         tag: null,
         limit: ((params.has('limit') && params.get('limit')) || null)
       });
 
     }
+
 
   }
 
@@ -154,6 +153,39 @@ class Blog extends React.Component {
 
     return { hasError: true };
 
+  }
+
+
+  UNSAFE_componentWillMount() {
+    const GET_TAGS = gql`
+         query GetTags { allTags }
+     `;
+
+    this.setState({
+      tagList: <Query query={GET_TAGS} pollInterval={600000}>
+        {
+          ({ loading, error, data }) => {
+
+            if (error) new Error(error);
+            if (loading || !data) return null;
+            else {
+
+              const tagLinks = data.allTags.map(tag => ({
+                label: tag,
+                onClick: () => {
+
+                  this.props.history.push(`/blog?tag=${tag}`);
+                  this.setState({ tag });
+
+                }
+              }));
+              return <LinkListWidget fullWidth links={tagLinks} />;
+
+            }
+          }
+        }
+      </Query>
+    });
   }
 
 
@@ -185,32 +217,36 @@ class Blog extends React.Component {
 
   render() {
 
-    const { classes,
+    const {
+      classes,
       width,
-      theme } = this.props;
+      theme
+    } = this.props;
 
+    const {
+      hasError,
+      drawer,
+      tagList
+    } = this.state;
 
     const { blogViewId, archiveDrawerOpen, ...rest } = this.state;
 
-    const GET_TAGS = gql`
-        query GetTags { allTags }
-    `;
-
     const GET_ARCHIVE = gql`
-        query GetArchive {
-            blogStats {
-                year, yearCount, months
-            }
-        }
-    `;
+                query GetArchive {
+                    blogStats {
+                        year, yearCount, months
+                    }
+                }
+            `;
 
     // FIXME: The open drawer FAB is too far to the right
     //FIXME: The archive drawer is showing an X scrollbar
+    // TODO: The FAB doesn't look very visually appealing
     return (
       <div>
         <Button autoFocus title={'Show Archive'} color={'primary'} aria-label='Show Archive' onClick={this.toggleArchiveDrawer} variant={'text'} className={classNames(theme.direction === 'rtl'
-          ? classes.drawerFabLeft
-          : classes.drawerFabRight)}>
+                                                                                                                                                                       ? classes.drawerFabLeft
+                                                                                                                                                                       : classes.drawerFabRight)}>
           <FaAngleLeft size={30} />
         </Button>
         <Grid
@@ -223,67 +259,50 @@ class Blog extends React.Component {
           <Grid item className={classNames(scss.panel, classes.background)}>
             <div>
               {
-                this.state.hasError
-                  ? <WarningSign label={'Oops! We ran into an unexpected problem >.<'} />
-                  : null
+                hasError
+                ? <WarningSign label={'Oops! We ran into an unexpected problem >.<'} />
+                : null
               }
             </div>
             <Grid container spacing={0} direction={isWidthDown('sm', width, true) ? 'column' : 'row'}>
               <Grid item md={10} sm={12}>
                 {
                   !!blogViewId
-                    ? <BlogView id={blogViewId} />
-                    : <BlogOverview {...rest} setBlogId={this.setBlogId} />
+                  ? <BlogView id={blogViewId} />
+                  : <BlogOverview {...rest} setBlogId={this.setBlogId} />
                 }
               </Grid>
               <Grid item md={2} sm={12}>
-                <Query query={GET_TAGS}>
-                  {
-                    ({ loading, error, data }) => {
-
-                      if (error) new Error(error);
-                      if (loading || !data) return null;
-                      else {
-
-                        const tagLinks = data.allTags.map(tag => ({
-                          label: tag,
-                          onClick: () => {
-
-                            this.props.history.push(`/blog?tag=${tag}`);
-                            this.setState({ tag });
-
-                          }
-                        }));
-                        return <LinkListWidget fullWidth links={tagLinks} />;
-
-                      }
-
-                    }
-                  }
-                </Query>
+                {tagList}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Grid container direction={'row'} alignItems={'flex-end'} justify={'flex-end'}>
           <Grid item>
-            <Query query={GET_ARCHIVE}>
+            <Query query={GET_ARCHIVE} pollInterval={600000}>
               {
                 (({ error, loading, data }) => {
 
                   if (error) {
 
                     console.error(error);
-                    return <TempDrawerWidget drawerOpen={archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
-                      <Typography variant={'subtitle1'} gutterBottom className={classes.noDataText}>Unable to load
+                    return <TempDrawerWidget drawerOpen={this.state.archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
+                      <Typography variant={'subtitle1'} gutterBottom className={this.props.classes.noDataText}>Unable to load
                         archive</Typography>} />;
 
                   }
                   else if (loading || !data) return null;
                   else {
 
-                    return <TempDrawerWidget drawerOpen={archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
-                      <ArchiveDrawer classes={classes} theme={theme} archiveNodes={data.blogStats} toggleDrawer={this.toggleArchiveDrawer} setMonthAndYear={this.setMonthAndYear} />} />;
+                    // Set the default month and year to the last created blog post in the archive on first load
+                    if (this.state.month === null && this.state.year === null && this.state.tag === null && this.state.blogViewId === null) {
+                      let lastPost = data.blogStats[0];
+                      this.setMonthAndYear(lastPost.year, lastPost.year[0]);
+                    }
+
+                    return <TempDrawerWidget drawerOpen={this.state.archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
+                      <ArchiveDrawer classes={this.props.classes} theme={this.props.theme} archiveNodes={data.blogStats} toggleDrawer={this.toggleArchiveDrawer} setMonthAndYear={this.setMonthAndYear} />} />;
 
                   }
 
@@ -318,7 +337,9 @@ function ArchiveDrawer(props) {
         component={'nav'}
         subheader={
           <Grid container direction={'row'} alignItems={'center'} justify={'space-between'} spacing={16}>
-            <Grid item> <Typography gutterBottom component={'div'} variant={'subtitle1'} className={theme.direction === 'rtl' ? classes.archiveTextRtl : classes.archiveText}>Archive</Typography></Grid>
+            <Grid item> <Typography gutterBottom component={'div'} variant={'subtitle1'} className={theme.direction === 'rtl'
+                                                                                                    ? classes.archiveTextRtl
+                                                                                                    : classes.archiveText}>Archive</Typography></Grid>
             <Grid item><Typography variant={'subtitle2'} gutterBottom component={'div'} className={theme.direction === 'rtl' ? classes.countTextRtl : classes.countText}>
               <small>Count</small>
             </Typography></Grid>
@@ -330,7 +351,7 @@ function ArchiveDrawer(props) {
         {
           archiveNodes.map((node, index) => {
 
-            const [open, toggleOpen] = useState(false);
+            const [ open, toggleOpen ] = useState(false);
             allStates.push(toggleOpen);
 
             return (
@@ -384,7 +405,9 @@ function ArchiveDrawer(props) {
           })
         }
       </List>
-      <Button autoFocus variant={'text'} title={'Hide Archive'} color={'primary'} aria-label='Hide Archive' onClick={toggleDrawer} className={theme.direction === 'rtl' ? classes.closeDrawerButtonRtl : classes.closeDrawerButton}>
+      <Button autoFocus variant={'text'} title={'Hide Archive'} color={'primary'} aria-label='Hide Archive' onClick={toggleDrawer} className={theme.direction === 'rtl'
+                                                                                                                                              ? classes.closeDrawerButtonRtl
+                                                                                                                                              : classes.closeDrawerButton}>
         <FaAngleRight size={30} />
       </Button>
     </div>

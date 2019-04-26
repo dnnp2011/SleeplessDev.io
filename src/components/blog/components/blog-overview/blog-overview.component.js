@@ -116,9 +116,9 @@ function BlogOverview(props) {
 BlogOverview.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   setBlogId: PropTypes.func.isRequired,
-  month: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  tag: PropTypes.arrayOf(PropTypes.string)
+  month: PropTypes.string,
+  year: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string])
 };
 
 export default compose(withRouter, withWidth(), withStyles(themeStyles, { withTheme: true }))(BlogOverview);

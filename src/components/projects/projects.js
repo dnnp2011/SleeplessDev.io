@@ -583,21 +583,21 @@ class Projects extends React.Component {
                               color={'inherit'}
                               aria-label={'composition 1'}
                               alt={'composition 1'}
-                              src={devStock1}
+                              src={ares2}
                             />
                             <img
                               className={classNames(scss['composition__photo'], scss['composition__photo--p2'])}
                               color={'inherit'}
                               aria-label={'composition 3'}
                               alt={'composition 3'}
-                              src={devStock3}
+                              src={zombieShooter5}
                             />
                             <img
                               className={classNames(scss['composition__photo'], scss['composition__photo--p3'])}
                               color={'inherit'}
                               aria-label={'composition 2'}
                               alt={'composition 2'}
-                              src={devStock2}
+                              src={survivalShooter5}
                             />
                           </Grid>
                         </Grid>
@@ -671,7 +671,6 @@ class Projects extends React.Component {
                         alignContent={'center'}
                         alignItems={'center'}
                       >
-                        {/* TODO: Fill in with remaining projects, provide valid links to demo/code, replace background images with screenshots */}
                         <Grid item className={scss['section-container']}>
                           <div className={scss['projects__software']}>
                             <h4 className={scss['projects__software--label']} id={'software-label'}>
@@ -1368,7 +1367,6 @@ class Projects extends React.Component {
                   </Grid>
                 </section>
 
-                {/* TODO: Implement responsive collapse to column for portrait and text when below SM/XS breakpoint */}
                 <section className={scss['section-stories']}>
                   <div className={scss['bg-video']} style={{ height: isWidthDown('md', width, true) ? '100%' : '' }}>
                     {!!bgVideo && isWidthUp('md', width, true) && isWidthDown('xl', width) ? (
@@ -1586,7 +1584,6 @@ function ProjectPopup(props) {
 
   const isSm = isWidthDown('sm', width, true);
 
-  //TODO: Provide an alternative display image when screen width is XS
   return (
     <Fade in={detailsVisible} timeout={300}>
       <div className={scss.popup} onClick={e => {
