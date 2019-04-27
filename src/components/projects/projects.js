@@ -13,9 +13,6 @@ import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 import whiteLogo from '../../assets/images/logo-terminal/white_logo_transparent_no_text_minified.png';
 import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
 import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
-import devStock2 from '../../assets/images/stock/web-dev-stock-3-800x533.jpg';
-import devStock3 from '../../assets/images/stock/web-dev-stock-4-800x533.jpg';
-import devStock1 from '../../assets/images/stock/web-dev-stock-800x533.jpg';
 import storyBgVideo from '../../assets/video/falling_sparks_water_2k_minified.mp4';
 import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
 import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
@@ -63,6 +60,10 @@ import poshcalc3 from '../../assets/images/screenshots/poshcalc-3.png';
 import poshcalc4 from '../../assets/images/screenshots/poshcalc-4.png';
 import rockDodger1 from '../../assets/images/screenshots/rock-dodger-1.png';
 import rockDodger2 from '../../assets/images/screenshots/rock-dodger-2.png';
+import sleeplessdev1 from '../../assets/images/screenshots/sleeplessdev-1.jpg';
+import sleeplessdev2 from '../../assets/images/screenshots/sleeplessdev-2.jpg';
+import sleeplessdevBackend1 from '../../assets/images/screenshots/sleeplessdev-back-1.png';
+import sleeplessdevBackend2 from '../../assets/images/screenshots/sleeplessdev-back-2.png';
 import sleeplessRadio1 from '../../assets/images/screenshots/sleeplessradio-1.png';
 import sleeplessRadio2 from '../../assets/images/screenshots/sleeplessradio-2.png';
 import spaceInvaders1 from '../../assets/images/screenshots/space-invaders-1.png';
@@ -266,6 +267,9 @@ class Projects extends React.Component {
             <ul className={scss['navigation__list']}>
               <li className={scss['navigation__item']}>
                 <a href={hrefHome} className={scss['navigation__link']}>Home</a>
+              </li>
+              <li className={scss['navigation__item']}>
+                <a href={hrefAbout} className={scss['navigation__link']}>About Me</a>
               </li>
               <li className={scss['navigation__item']}>
                 <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
@@ -765,8 +769,8 @@ class Projects extends React.Component {
                                   'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
                                 ]}
                                 images={[
-                                  gainfy5,
-                                  gainfy6
+                                  sleeplessdev1,
+                                  sleeplessdev2
                                 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SleeplessDevBg}
@@ -799,11 +803,11 @@ class Projects extends React.Component {
                                 ]}
                                 /* TODO: Get images for the SleeplessDev backend */
                                 images={[
-                                  gainfy5,
-                                  gainfy6
+                                  sleeplessdevBackend1,
+                                  sleeplessdevBackend2
                                 ]}
-                                color={'blue'}
-                                backgroundClass={classes.SleeplessDevBg}
+                                color={'orange'}
+                                backgroundClass={classes.SleeplessDevBackendBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
                                 onPopupOpened={this.onPopupOpened}
@@ -837,7 +841,7 @@ class Projects extends React.Component {
                                   zombieShooter3,
                                   zombieShooter5
                                 ]}
-                                color={'orange'}
+                                color={'blue'}
                                 backgroundClass={classes.ZombieShooterBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
@@ -864,7 +868,7 @@ class Projects extends React.Component {
                                   spaceInvaders1,
                                   spaceInvaders3
                                 ]}
-                                color={'green'}
+                                color={'orange'}
                                 backgroundClass={classes.SpaceInvaderBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
@@ -884,7 +888,7 @@ class Projects extends React.Component {
                                 images={[
                                   poshcalc1
                                 ]}
-                                color={'blue'}
+                                color={'green'}
                                 backgroundClass={classes.PoshCalcBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
@@ -913,7 +917,7 @@ class Projects extends React.Component {
                                 images={[
                                   sleeplessRadio2
                                 ]}
-                                color={'orange'}
+                                color={'blue'}
                                 backgroundClass={classes.SleeplessRadioBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
@@ -1092,7 +1096,7 @@ class Projects extends React.Component {
                                   spaceShooter1,
                                   spaceShooter3
                                 ]}
-                                color={'green'}
+                                color={'blue'}
                                 backgroundClass={classes.SpaceShooterBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}
@@ -1119,7 +1123,7 @@ class Projects extends React.Component {
                                   tanks2,
                                   tanks3
                                 ]}
-                                color={'blue'}
+                                color={'green'}
                                 backgroundClass={classes.TanksBg}
                                 classes={classes}
                                 onPopupMounted={this.onPopupMounted}

@@ -7,7 +7,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import { FaGlobeAmericas } from "react-icons/fa";
-import { TiSocialFacebook, TiSocialTwitter, TiSocialLinkedin } from "react-icons/ti";
+import { TiSocialFacebook, TiSocialGithub, TiSocialLinkedin } from "react-icons/ti";
 import compose from "recompose/compose";
 import SelfOutdoors from "../../assets/images/portrait/selfie-outdoors-cropped-portrait.png";
 import scss from "./contact.module.scss";
@@ -58,7 +58,7 @@ const Contact = (props) => {
                   ) }
                   src={ SelfOutdoors }
                   alt={ "Dalton Pierce" }
-                  title={ "Om Nom Nom" }
+                  title={ "Dalton Pierce" }
                 />
               </div>
               <div
@@ -73,17 +73,15 @@ const Contact = (props) => {
                 <Typography component={ "p" } variant={ "subtitle1" } title={ "Email Me!" }><a href={ `mailto:${ email }` } target={ "_blank" } rel={ "noopener noreferrer" } className={ classNames(classes.ContactDetailsContentEmail) }>{ email }</a></Typography>
                 {/*<Typography component={ "p" } variant={ "subtitle1" }>{ birthday }</Typography>*/ }
                 <br />
-                <IconButton href={ "https://twitter.com" } color='inherit' aria-label='twitter link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
-                  <TiSocialTwitter size={ 15 } name={ "twitter" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://github.com/dnnp2011" } title={'Github'} color='inherit' aria-label='github link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
+                  <TiSocialGithub size={ 24 } name={ "github" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://facebook.com" } color='inherit' aria-label='facebook link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
-                  <TiSocialFacebook size={ 15 } name={ "facebook" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://www.linkedin.com/in/dalton-glenn-pierce/" } title={'LinkedIn'} color='inherit' aria-label='linkedin link' target={ "_blank" } rel={ "noopener noreferrer"
+                                                                                                                                                                        + " nofollow" }>
+                  <TiSocialLinkedin size={ 24 } name={ "linkedin" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://linkedin.com" } color='inherit' aria-label='linkedin link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
-                  <TiSocialLinkedin size={ 15 } name={ "linkedin" } className={ classNames(classes.ContactDetailsSocialIcons) } />
-                </IconButton>
-                <IconButton href={ "http://localhost:3000" } color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
-                  <FaGlobeAmericas size={ 15 } name={ "website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
+                <IconButton href={ "https://sleeplessdev.io" } title={'SleeplessDev Website'} color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
+                  <FaGlobeAmericas size={ 19 } name={ "website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
               </div>
             </div>

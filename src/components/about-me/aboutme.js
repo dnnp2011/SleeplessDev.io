@@ -120,12 +120,13 @@ class AboutMe extends React.Component {
                       </Grid>
                       <Grid item>
                         <Hidden xsDown>
-                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>I don't byte</Typography>
+                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>Personal History</Typography>
                         </Hidden>
                       </Grid>
                     </Grid>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
+                    {/* TODO: Rewrite these two about me paragraphs */}
                     <Typography variant={ "body1" }>
                       My interest in technology began as a child; whenever something broke in the house, it came to me to take it apart. I was fascinated by how machines worked, be it fans, microwaves, microscopes;
                       I wanted to know how the pieces came together to create a system greater than the sum of its parts. When I was introduced to the work of computer hardware, it was a natural fit for me, given my interest.
@@ -146,7 +147,7 @@ class AboutMe extends React.Component {
                       </Grid>
                       <Grid item>
                         <Hidden xsDown>
-                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>A bitwise operator</Typography>
+                          <Typography className={ scss["about-me__expansion-panel-subheader"] } variant={ "h6" }>Practical Experience</Typography>
                         </Hidden>
                       </Grid>
                     </Grid>

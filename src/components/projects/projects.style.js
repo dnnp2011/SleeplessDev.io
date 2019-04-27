@@ -39,6 +39,10 @@ import poshcalc3 from '../../assets/images/screenshots/poshcalc-3.png';
 import poshcalc4 from '../../assets/images/screenshots/poshcalc-4.png';
 import rockDodger1 from '../../assets/images/screenshots/rock-dodger-1.png';
 import rockDodger2 from '../../assets/images/screenshots/rock-dodger-2.png';
+import sleeplessdev1 from '../../assets/images/screenshots/sleeplessdev-1.jpg';
+import sleeplessdev2 from '../../assets/images/screenshots/sleeplessdev-2.jpg';
+import sleeplessdevBackend1 from '../../assets/images/screenshots/sleeplessdev-back-1.png';
+import sleeplessdevBackend2 from '../../assets/images/screenshots/sleeplessdev-back-2.png';
 import sleeplessRadio1 from '../../assets/images/screenshots/sleeplessradio-1.png';
 import sleeplessRadio2 from '../../assets/images/screenshots/sleeplessradio-2.png';
 import spaceInvaders1 from '../../assets/images/screenshots/space-invaders-1.png';
@@ -128,19 +132,22 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${ares2})`, //TODO: Crop a close up of graphs or blockchain ticker
     },
     SleeplessDevBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${gainfy2})`, //TODO: Replace or remove temp image
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${sleeplessdev1})`,
     },
-    ZombieShooterBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${zombieShooter2})`, //TODO: Crop out stat menus
-    },
-    SpaceInvaderBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${spaceInvaders3})`,
-    },
-    PoshCalcBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${poshcalc4})`,
+    SleeplessDevBackendBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${sleeplessdevBackend1})`,
     },
     SleeplessRadioBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${sleeplessRadio1})`,
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${sleeplessRadio1})`,
+    },
+    ZombieShooterBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${zombieShooter2})`, //TODO: Crop out stat menus
+    },
+    SpaceInvaderBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${spaceInvaders3})`,
+    },
+    PoshCalcBg: {
+      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${poshcalc4})`,
     },
     CoolCalcBg: {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${coolcalc3})`,
@@ -161,10 +168,10 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${survivalShooter6})`,
     },
     SpaceShooterBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${spaceShooter1})`,
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${spaceShooter1})`,
     },
     TanksBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${tanks3})`,
+      backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${tanks3})`,
     },
     HeroMeBg: {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${herome1})`,
