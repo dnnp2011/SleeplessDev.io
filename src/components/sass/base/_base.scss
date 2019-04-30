@@ -30,7 +30,6 @@ html {
   @include respond(xs) {
     font-size: 40% !important;
   }
-
 }
 
 .projectRoot *, *::after, *::before {

@@ -26,7 +26,7 @@ class TodayTab extends Component {
   }
 
   async componentDidMount() {
-    // TODO: This Yahoo APIs weather query is no longer valid
+    // FIXME: This Yahoo APIs weather query is no longer valid
     /*const query = 'select location,item.condition from weather.forecast where woeid in ' +
       '(select woeid from geo.places(1) where text="London" OR text="New York" OR text="Sydney")';
     const url = `https://query.yahooapis.com/v1/public/yql?q=${

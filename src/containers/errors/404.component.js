@@ -1,42 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-
+import {Router} from 'react-router-dom';
+import {Card, Grid, Button, CardActions, CardContent, Typography, Input} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 
 import themeStyles from './404.theme.style';
 import scss from './404.module.scss';
 
-const Error404 = (props) => {
-  const {
-    classes
-  } = props;
+const Error404 = props => {
+  const { classes, history } = props;
 
   return (
     <div className={classes.background}>
       <Card className={scss.card} raised>
         <CardContent className={scss['card-content']}>
-          <Typography variant="h5" component="h2" gutterBottom>
+          <Typography variant={'h5'} component={'h2'} gutterBottom>
             Page Not Found
           </Typography>
           <Typography className={scss['card-text']}>
             Sorry the page you were looking for could not be found.
           </Typography>
-          <Input
+          {/*<Input
             className={scss['card-search-input']}
             placeholder="Search Portal"
             endAdornment={<SearchIcon />}
-          />
+          />*/}
         </CardContent>
         <CardActions className={scss['card-actions']}>
-          <Button href="/">Go Home</Button>
+          <Grid container direction={'row'} alignContent={'center'} alignItems={'center'} justify={'space-between'}>
+            <Grid item xs>
+              <Button onClick={() => history.push('/')}>Go Home</Button>
+            </Grid>
+            <Grid item xs style={{ textAlign: 'end' }}>
+              <Button onClick={() => history.push('/portfolio')}>Go to Portfolio</Button>
+            </Grid>
+          </Grid>
         </CardActions>
       </Card>
     </div>

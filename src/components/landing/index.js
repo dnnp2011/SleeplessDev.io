@@ -51,5 +51,4 @@ LandingPage.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-//TODO: Add the withWidth() HOC where needed for responsive styling on multi-card components
 export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LandingPage);

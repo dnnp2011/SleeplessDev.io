@@ -1,8 +1,82 @@
 @import '../sass/abstracts/variables';
 @import '../sass/abstracts/mixins';
 
+.blog {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  &__fab--ltr {
+    position: fixed;
+    left: 90%;
+    bottom: 8%;
+    z-index: 1000;
+
+    @include respond(sm) {
+      left: 85%;
+      bottom: 10%;
+    }
+    @include respond(xs) {
+      left: 80%;
+      bottom: 12%;
+    }
+  }
+
+  &__fab--rtl {
+    position: fixed;
+    right: 90%;
+    bottom: 8%;
+    z-index: 1000;
+    @include transform(rotate(180deg));
+
+    @include respond(sm) {
+      right: 85%;
+      bottom: 10%;
+    }
+    @include respond(xs) {
+      right: 80%;
+      bottom: 12%;
+    }
+  }
+}
+
+.archive-drawer {
+  position: relative;
+  overflow: hidden;
+  -ms-overflow-x: hidden;
+
+  &__fab--ltr {
+    position: fixed;
+    bottom: 8%;
+    left: 10%;
+    z-index: 1000;
+
+    @include respond(sm) {
+      bottom: 10%;
+    }
+    @include respond(xs) {
+      bottom: 12%;
+    }
+  }
+
+  &__fab--rtl {
+    position: fixed;
+    bottom: 8%;
+    right: 10%;
+    z-index: 1000;
+    @include transform(rotate(180deg));
+
+    @include respond(sm) {
+      bottom: 10%;
+    }
+    @include respond(xs) {
+      bottom: 12%;
+    }
+  }
+}
+
 .panel {
-  @include animate( landing-page 1s forwards 1);
+  @include animate(landing-page 1s forwards 1);
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
@@ -113,7 +187,7 @@
   padding: 24px;
 
   h2 {
-    color: #fff;
+    color: #ffffff;
     margin-top: 160px;
     margin-bottom: 0;
     position: relative;

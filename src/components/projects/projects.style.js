@@ -191,7 +191,7 @@ const styles = theme => {
       backgroundImage: `linear-gradient(to bottom right, ${greenGradient}), url(${cargoContainer4})`,
     },
     SteelDrumBg: {
-      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${steelDrum1})`, //TODO: Get more shots of this one
+      backgroundImage: `linear-gradient(to bottom right, ${blueGradient}), url(${steelDrum1})`,
     },
     TacticalGripBg: {
       backgroundImage: `linear-gradient(to bottom right, ${orangeGradient}), url(${tacticalGrip1})`,

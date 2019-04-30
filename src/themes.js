@@ -1,10 +1,10 @@
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import pink from '@material-ui/core/colors/pink';
-import green from '@material-ui/core/colors/green';
 import deepOrange from '@material-ui/core/colors/deepOrange';
-import indigo from '@material-ui/core/colors/indigo';
-import orange from '@material-ui/core/colors/orange';
+import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
+import indigo from '@material-ui/core/colors/indigo';
+import lightBlue from '@material-ui/core/colors/lightBlue';
+import orange from '@material-ui/core/colors/orange';
+import pink from '@material-ui/core/colors/pink';
 
 //TODO: Change the default theme to a better color palette
 
@@ -120,111 +120,120 @@ const nightContentTheme = {
   }
 };
 
-const themes = [{
-  id: 'classic-light_blue-pink',
-  name: 'Classic - Light Blue / Pink',
-  theme: {
-    contentTheme: defaultContentTheme,
-    sidenavTheme: defaultSidenavTheme
+const themes = [
+  {
+    id: 'night-green-deep_orange',
+    name: 'Night - Green / Deep Orange',
+    theme: {
+      contentTheme: {
+        ...nightContentTheme,
+        palette: {
+          type: 'dark',
+          primary: green,
+          secondary: deepOrange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'night-light_blue-pink',
+    name: 'Night - Light Blue / Pink',
+    theme: {
+      contentTheme: nightContentTheme,
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'night-indigo-orange',
+    name: 'Night - Indigo / Orange',
+    theme: {
+      contentTheme: {
+        ...darkContentTheme,
+        palette: {
+          type: 'dark',
+          primary: indigo,
+          secondary: orange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'dark-light_blue-pink',
+    name: 'Dark - Light Blue / Pink',
+    theme: {
+      contentTheme: darkContentTheme,
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'dark-green-deep_orange',
+    name: 'Dark - Green / Deep Orange',
+    theme: {
+      contentTheme: {
+        ...darkContentTheme,
+        palette: {
+          type: 'light',
+          primary: green,
+          secondary: deepOrange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'dark-indigo-orange',
+    name: 'Dark - Indigo / Orange',
+    theme: {
+      contentTheme: {
+        ...darkContentTheme,
+        palette: {
+          type: 'light',
+          primary: indigo,
+          secondary: orange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'classic-light_blue-pink',
+    name: 'Classic - Light Blue / Pink',
+    theme: {
+      contentTheme: {
+        ...defaultContentTheme,
+        palette: {
+          type: 'light',
+          primary: lightBlue,
+          secondary: pink
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'classic-green-deep_orange',
+    name: 'Classic - Green / Deep Orange',
+    theme: {
+      contentTheme: {
+        ...defaultContentTheme,
+        palette: {
+          type: 'light',
+          primary: green,
+          secondary: deepOrange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
+  }, {
+    id: 'classic-indigo-orange',
+    name: 'Classic - Indigo / Orange',
+    theme: {
+      contentTheme: {
+        ...defaultContentTheme,
+        palette: {
+          type: 'light',
+          primary: indigo,
+          secondary: orange
+        }
+      },
+      sidenavTheme: defaultSidenavTheme
+    }
   }
-}, {
-  id: 'classic-green-deep_orange',
-  name: 'Classic - Green / Deep Orange',
-  theme: {
-    contentTheme: {
-      ...defaultContentTheme,
-      palette: {
-        type: 'light',
-        primary: green,
-        secondary: deepOrange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'classic-indigo-orange',
-  name: 'Classic - Indigo / Orange',
-  theme: {
-    contentTheme: {
-      ...defaultContentTheme,
-      palette: {
-        type: 'light',
-        primary: indigo,
-        secondary: orange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'dark-light_blue-pink',
-  name: 'Dark - Light Blue / Pink',
-  theme: {
-    contentTheme: darkContentTheme,
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'dark-green-deep_orange',
-  name: 'Dark - Green / Deep Orange',
-  theme: {
-    contentTheme: {
-      ...darkContentTheme,
-      palette: {
-        type: 'light',
-        primary: green,
-        secondary: deepOrange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'dark-indigo-orange',
-  name: 'Dark - Indigo / Orange',
-  theme: {
-    contentTheme: {
-      ...darkContentTheme,
-      palette: {
-        type: 'light',
-        primary: indigo,
-        secondary: orange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'night-light_blue-pink',
-  name: 'Night - Light Blue / Pink',
-  theme: {
-    contentTheme: nightContentTheme,
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'night-green-deep_orange',
-  name: 'Night - Green / Deep Orange',
-  theme: {
-    contentTheme: {
-      ...nightContentTheme,
-      palette: {
-        type: 'dark',
-        primary: green,
-        secondary: deepOrange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}, {
-  id: 'night-indigo-orange',
-  name: 'Night - Indigo / Orange',
-  theme: {
-    contentTheme: {
-      ...darkContentTheme,
-      palette: {
-        type: 'dark',
-        primary: indigo,
-        secondary: orange
-      }
-    },
-    sidenavTheme: defaultSidenavTheme
-  }
-}];
+];
 
 export default themes;

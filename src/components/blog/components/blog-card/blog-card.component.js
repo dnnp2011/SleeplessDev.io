@@ -82,7 +82,7 @@ function BlogCard(props) {
               </CardContent>
               <Grid container direction={'row'} spacing={0} alignContent={'space-between'} justify={'space-between'}>
                 <Grid item className={classes.tagGrid}>
-                  <TagArray tags={tags.slice(0, getMaxTags())} />
+                  <TagArray setTagParam={props.setTagParam} tags={tags.slice(0, getMaxTags())} />
                 </Grid>
                 <Grid item>
                   <Button onClick={() => handleClickBlog(_id)} aria-label={'continue reading'} color={'primary'} type={'button'} variant={'outlined'} className={classes.continueBtn}>

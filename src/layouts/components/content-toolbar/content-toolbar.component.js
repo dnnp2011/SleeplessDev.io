@@ -135,6 +135,7 @@ class ContentToolbar extends React.Component {
   };
 
 
+  //TODO: Implement the notifications feature
   render() {
     const {
       width,
@@ -232,13 +233,13 @@ class ContentToolbar extends React.Component {
              </IconButton>
              : null}
 
-            <IconButton
+            {/*<IconButton
               color='inherit'
               aria-label='open notifications'
               onClick={this.props.toggleNotifications}
             >
               <NotificationsIcon />
-            </IconButton>
+            </IconButton>*/}
           </Toolbar>
         }
       </AuthUserContext.Consumer>
@@ -265,6 +266,7 @@ ContentToolbar.propTypes = {
   toggleNotifications: PropTypes.func.isRequired,
   updateLayout: PropTypes.func.isRequired,
   changeTheme: PropTypes.func.isRequired,
+  match: PropTypes.shape({}).isRequired,
   changeThemeDirection: PropTypes.func.isRequired,
   location: PropTypes.shape({}).isRequired
 };

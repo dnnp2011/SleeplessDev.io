@@ -116,7 +116,7 @@ class Projects extends React.Component {
       bgVideo: null,
       navVisible: false,
       closePopup: null,
-      openPopupBtn: null
+      openPopupBtn: null,
     };
 
     this.closePopup = React.createRef();
@@ -163,12 +163,8 @@ class Projects extends React.Component {
     return this.props.width !== nextProps.width || this.state !== nextState;
   }
 
-
-  //BUG: Fix the preloading page elements with no styling bug
-  //TODO: Add any remaining media queries as needed
-
   render() {
-    const { classes, width } = this.props;
+    const { classes, width, history } = this.props;
     const { bgVideo, navVisible } = this.state;
 
     const iconCategories = {
@@ -247,10 +243,6 @@ class Projects extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
     const isSm = isWidthDown('sm', width, true);
 
-    // window.addEventListener('scroll', (e) => {
-    //   document.getElementById('software-label').scrollTop +=10;
-    // });
-
     return (
       <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
@@ -266,19 +258,19 @@ class Projects extends React.Component {
           <nav className={scss['navigation__nav']}>
             <ul className={scss['navigation__list']}>
               <li className={scss['navigation__item']}>
-                <a href={hrefHome} className={scss['navigation__link']}>Home</a>
+                <a href={hrefHome} onClick={() => history.push(hrefHome)} className={scss['navigation__link']}>Home</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefAbout} className={scss['navigation__link']}>About Me</a>
+                <a href={hrefAbout} onClick={() => history.push(hrefAbout)} className={scss['navigation__link']}>About Me</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefContact} className={scss['navigation__link']}>Contact Me</a>
+                <a href={hrefContact} onClick={() => history.push(hrefContact)} className={scss['navigation__link']}>Contact Me</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefBlog} className={scss['navigation__link']}>Blog</a>
+                <a href={hrefBlog} onClick={() => history.push(hrefBlog)} className={scss['navigation__link']}>Blog</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
+                <a href={hrefResume}  rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
               </li>
               <li className={scss['navigation__item']}>
                 <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
@@ -302,23 +294,7 @@ class Projects extends React.Component {
                 alignItems={'center'}
                 alignContent={'center'}
                 justify={'center'}>
-                {/*<ParticleSystemCanvas
-                 diameterRange={{
-                 min: 700,
-                 max: 1000
-                 }}
-                 xAxisOffset={350}
-                 yAxisOffset={-200}
-                 xSpawnOffset={-450}
-                 ySpawnOffset={-200}
-                 particleCount={800}
-                 sizeRange={{
-                 min: 5,
-                 max: 15
-                 }}
-                 angularVelocity={0.001}
-                 />*/}
-                {/* TODO: Work on responsive canvas animation */}
+                {/* TODO: Improve responsiveness of HTML Canvas Animation */}
                 {
                   width === 'xs'
                   ? <ParticleSystemCanvas
@@ -444,7 +420,7 @@ class Projects extends React.Component {
                           e.stopPropagation();
                           const projectsSection = document.querySelector('#section-projects');
                           const intersectionObserver = new IntersectionObserver((entries) => {
-                            let [entry] = entries;
+                            let [ entry ] = entries;
                             if (entry.isIntersecting) {
                               setTimeout(() => {
                                 const position = document.body.scrollTop;
@@ -454,7 +430,11 @@ class Projects extends React.Component {
                             }
                           });
                           intersectionObserver.observe(projectsSection);
-                          projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+                          projectsSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                            inline: 'start'
+                          });
                         }}
                         aria-label={'scroll to projects'}>
                         Projects
@@ -574,7 +554,6 @@ class Projects extends React.Component {
                           </Grid>
                         </Grid>
                         <Grid item sm={12} md>
-                          {/* TODO: Replace the placeholder composition images with assorted Project screenshots */}
                           <Grid
                             container
                             direction={panelDirection}
@@ -703,7 +682,7 @@ class Projects extends React.Component {
                                 a refer a friend feature that rewards users for bringing traffic to the site, and a dashboard for users to track their own contributions
                                 as well as overall coin supply.
                                 </div>`}
-                                codeUrl={null} /*TODO: Replace with hosted Gainfy STO code*/
+                                codeUrl={null}
                                 demoUrl={null}
                                 skills={[
                                   'Javascript', 'PHP', 'SQL', '2FA Implementation', 'HTML', 'CSS', 'Linux Server', 'AWS'
@@ -732,13 +711,12 @@ class Projects extends React.Component {
                                 to make it easier for clients to launch their token offerings, as well as manage their projects after the initial fund raising round.
                                 The value add for end users and investors were the investment opportunities in a marketplace full of companies that
                                 were vetted and chosen by Citdex, and therefore more likely to be seen through to fruition.`}
-                                codeUrl={null} /* TODO: Provide demo and code URLs */
+                                codeUrl={null}
                                 demoUrl={null}
                                 skills={[
                                   'React', 'Javascript', 'Nodejs', 'Firebase / Firestore', 'Leadership', 'Project Management'
                                 ]}
                                 images={[
-                                  /* TODO: Crop out unnecessary parts of the interface and get close ups */
                                   ares1,
                                   ares2
                                 ]}
@@ -801,7 +779,6 @@ class Projects extends React.Component {
                                 skills={[
                                   'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
                                 ]}
-                                /* TODO: Get images for the SleeplessDev backend */
                                 images={[
                                   sleeplessdevBackend1,
                                   sleeplessdevBackend2
@@ -1403,7 +1380,6 @@ class Projects extends React.Component {
                         </Typography>
                       </div>
                     </Grid>
-                    {/* TODO: Get real quote from Mike, add additional quotes if possible */}
                     <Grid item>
                       <Story
                         name={'Victoria Saucier'}
@@ -1421,9 +1397,9 @@ class Projects extends React.Component {
                       <Story
                         name={'Michael Szczech'}
                         position={'Software Engineer - Gainfy'}
-                        highlight={'A hell of a programmer'}
+                        highlight={'A very knowledgeable and proficient full stack developer'}
                         testimonial={
-                          '(Dalton) has a unique talent for analyzing a problem, and formulating a solution that suits the project\'s constraints. He\'s a hell of a programmer!'
+                          `Working with Dalton has been great! Upon on-boarding (Dalton) to our project, he demonstrated his agility and efficiency in learning our technology stack. Dalton is a very knowledgeable and proficient full stack developer. His easy-going personality makes working with him very smooth and enjoyable. I highly recommend Dalton for all your tech team needs!`
                         }
                         panelDirection={panelDirection}
                         portraitSrc={michaelSzczech}
@@ -1480,7 +1456,7 @@ class Projects extends React.Component {
                               title={'LinkedIn'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
-                              <FaLinkedinIn color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
+                              <FaLinkedinIn className={scss.icon} color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
                             </a>
                           </Grid>
                           <Grid item className={scss['footer__nav-item']}>
@@ -1490,7 +1466,7 @@ class Projects extends React.Component {
                               title={'Github'}
                               rel={'noreferrer noopener nofollow'}
                               className={scss['footer__nav-link']}>
-                              <FaGithub color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
+                              <FaGithub className={scss.icon} color={'#f7f7f7'} size={'1.3rem'} fill={'#f7f7f7'} />
                             </a>
                           </Grid>
                         </Grid>
@@ -1534,6 +1510,13 @@ class Projects extends React.Component {
                               <li>
                                 <a href={hrefBlog} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Blog
+                                </a>
+                              </li>
+                            </Grid>
+                            <Grid item className={scss['footer__nav-item']}>
+                              <li>
+                                <a href={hrefResume} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                  Resume
                                 </a>
                               </li>
                             </Grid>
@@ -1618,7 +1601,8 @@ function ProjectPopup(props) {
             <a id={'close-popup'} ref={onPopupMounted} onClick={e => {
               e.preventDefault();
               e.stopPropagation();
-              document.getElementById(openPopupBtn).focus();
+              document.getElementById(openPopupBtn)
+                      .focus();
               toggleVisible(false);
             }} href={'#'} className={scss['popup__close-button']}>&times;</a>
             <div className={classNames(scss['heading-secondary'], scss['popup__heading'])}>
@@ -1906,23 +1890,8 @@ function Story(props) {
         <div className={scss['story']}>
           {
             isSmDown
-              ? <Grid container direction={'column'} alignItems={'center'} alignContent={'center'} justify={'center'} className={scss['story__content']}>
-                <Grid item style={{ height: '100%' }}>
-                  <figure className={scss['story__shape']}>
-                    <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
-                    <figcaption className={scss['story__caption']}>
-                      <span>{name}</span>
-                      <br />
-                      <span>{position}</span>
-                    </figcaption>
-                  </figure>
-                </Grid>
-                <Grid item className={scss['story__text']}>
-                  <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
-                  <p className={scss['story__text--testimonial']}>{testimonial}</p>
-                </Grid>
-              </Grid>
-              : <div className={scss['story__content']}>
+            ? <Grid container direction={'column'} alignItems={'center'} alignContent={'center'} justify={'center'} className={scss['story__content']}>
+              <Grid item style={{ height: '100%' }}>
                 <figure className={scss['story__shape']}>
                   <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
                   <figcaption className={scss['story__caption']}>
@@ -1931,11 +1900,26 @@ function Story(props) {
                     <span>{position}</span>
                   </figcaption>
                 </figure>
-                <div className={scss['story__text']}>
-                  <h3 className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
-                  <p className={scss['story__text--testimonial']}>{testimonial}</p>
-                </div>
+              </Grid>
+              <Grid item className={scss['story__text']}>
+                <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
+                <p className={scss['story__text--testimonial']}>{testimonial}</p>
+              </Grid>
+            </Grid>
+            : <div className={scss['story__content']}>
+              <figure className={scss['story__shape']}>
+                <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
+                <figcaption className={scss['story__caption']}>
+                  <span>{name}</span>
+                  <br />
+                  <span>{position}</span>
+                </figcaption>
+              </figure>
+              <div className={scss['story__text']}>
+                <h3 className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
+                <p className={scss['story__text--testimonial']}>{testimonial}</p>
               </div>
+            </div>
           }
         </div>
       </Grid>
@@ -2213,7 +2197,7 @@ ProjectPopup.propTypes = {
   toggleVisible: PropTypes.func.isRequired,
   detailsVisible: PropTypes.bool.isRequired,
   onPopupMounted: PropTypes.func.isRequired,
-  openPopupBtn: PropTypes.string.isRequired,
+  openPopupBtn: PropTypes.string.isRequired
 };
 Portal.propTypes = {
   children: PropTypes.shape({}),

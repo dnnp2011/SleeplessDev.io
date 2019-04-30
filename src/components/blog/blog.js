@@ -1,4 +1,4 @@
-import { Button, Collapse, Divider, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { Button, Collapse, Divider, Fab, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
@@ -43,7 +43,6 @@ class Blog extends React.Component {
       tag: ((params.has('tag') && params.get('tag')) || null),
       limit: ((params.has('limit') && params.get('limit')) || null),
       archiveDrawerOpen: false,
-      drawer: null,
       tagList: null
     };
 
@@ -126,7 +125,6 @@ class Blog extends React.Component {
 
     /* Reset to defaults if URL is cleared */
     if (!nextProps.match.params.id && !params.has('month') && !params.has('year') && !params.has('tag')) {
-
       this.setState({
         blogViewId: null,
         month: null,
@@ -134,10 +132,7 @@ class Blog extends React.Component {
         tag: null,
         limit: ((params.has('limit') && params.get('limit')) || null)
       });
-
     }
-
-
   }
 
 
@@ -173,10 +168,7 @@ class Blog extends React.Component {
               const tagLinks = data.allTags.map(tag => ({
                 label: tag,
                 onClick: () => {
-
-                  this.props.history.push(`/blog?tag=${tag}`);
-                  this.setState({ tag });
-
+                  this.setTagParam(tag);
                 }
               }));
               return <LinkListWidget fullWidth links={tagLinks} />;
@@ -188,11 +180,13 @@ class Blog extends React.Component {
     });
   }
 
+  setTagParam = tag => {
+    this.props.history.push(`/blog?tag=${tag}`);
+    this.setState({ tag });
+  };
 
   setBlogId = id => {
-
     this.setState({ blogViewId: id });
-
   };
 
   setMonthAndYear = (year, month) => {
@@ -225,7 +219,6 @@ class Blog extends React.Component {
 
     const {
       hasError,
-      drawer,
       tagList
     } = this.state;
 
@@ -239,16 +232,19 @@ class Blog extends React.Component {
                 }
             `;
 
-    // FIXME: The open drawer FAB is too far to the right
-    //FIXME: The archive drawer is showing an X scrollbar
-    // TODO: The FAB doesn't look very visually appealing
     return (
-      <div>
-        <Button autoFocus title={'Show Archive'} color={'primary'} aria-label='Show Archive' onClick={this.toggleArchiveDrawer} variant={'text'} className={classNames(theme.direction === 'rtl'
-                                                                                                                                                                       ? classes.drawerFabLeft
-                                                                                                                                                                       : classes.drawerFabRight)}>
+      <div className={scss.blog}>
+        <Fab
+          tabIndex={0}
+          color='secondary'
+          autoFocus
+          title={'Show Archive'}
+          aria-label='Show Archive'
+          onClick={this.toggleArchiveDrawer}
+          className={classNames(theme.direction === 'rtl' ? scss['blog__fab--rtl'] : scss['blog__fab--ltr'])}
+        >
           <FaAngleLeft size={30} />
-        </Button>
+        </Fab>
         <Grid
           container
           direction='row'
@@ -268,8 +264,8 @@ class Blog extends React.Component {
               <Grid item md={10} sm={12}>
                 {
                   !!blogViewId
-                  ? <BlogView id={blogViewId} />
-                  : <BlogOverview {...rest} setBlogId={this.setBlogId} />
+                  ? <BlogView setTagParam={this.setTagParam} id={blogViewId} />
+                  : <BlogOverview {...rest} setTagParam={this.setTagParam} setBlogId={this.setBlogId} />
                 }
               </Grid>
               <Grid item md={2} sm={12}>
@@ -326,23 +322,35 @@ function ArchiveDrawer(props) {
   const allStates = [];
 
   function changeAllStates(newValue) {
-
     allStates.map(state => state(newValue));
-
   }
 
   return (
-    <div>
+    <div className={scss['archive-drawer']}>
       <List
         component={'nav'}
         subheader={
           <Grid container direction={'row'} alignItems={'center'} justify={'space-between'} spacing={16}>
-            <Grid item> <Typography gutterBottom component={'div'} variant={'subtitle1'} className={theme.direction === 'rtl'
-                                                                                                    ? classes.archiveTextRtl
-                                                                                                    : classes.archiveText}>Archive</Typography></Grid>
-            <Grid item><Typography variant={'subtitle2'} gutterBottom component={'div'} className={theme.direction === 'rtl' ? classes.countTextRtl : classes.countText}>
-              <small>Count</small>
-            </Typography></Grid>
+            <Grid item>
+              <Typography
+                gutterBottom
+                component={'div'}
+                variant={'subtitle1'}
+                className={theme.direction === 'rtl' ? classes.archiveTextRtl : classes.archiveText}
+              >
+                Archive
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                variant={'subtitle2'}
+                gutterBottom
+                component={'div'}
+                className={theme.direction === 'rtl' ? classes.countTextRtl : classes.countText}
+              >
+                <small>Posts</small>
+              </Typography>
+            </Grid>
           </Grid>
         }
         className={classes.list}
@@ -405,11 +413,17 @@ function ArchiveDrawer(props) {
           })
         }
       </List>
-      <Button autoFocus variant={'text'} title={'Hide Archive'} color={'primary'} aria-label='Hide Archive' onClick={toggleDrawer} className={theme.direction === 'rtl'
-                                                                                                                                              ? classes.closeDrawerButtonRtl
-                                                                                                                                              : classes.closeDrawerButton}>
+      <Fab
+        autoFocus
+        title={'Hide Archive'}
+        color={'secondary'}
+        aria-label='Hide Archive'
+        onClick={toggleDrawer}
+        tabIndex={0}
+        className={theme.direction === 'rtl' ? scss['archive-drawer__fab--rtl'] : scss['archive-drawer__fab--ltr']}
+      >
         <FaAngleRight size={30} />
-      </Button>
+      </Fab>
     </div>
   );
 

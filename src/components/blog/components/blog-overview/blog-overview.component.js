@@ -103,7 +103,7 @@ function BlogOverview(props) {
         }, 590000);
         return (
           <ListItem className={classes.listItem} disableGutters key={blog._id}>
-            <BlogCard {...rest} setBlogId={setBlogId} />
+            <BlogCard {...rest} setTagParam={props.setTagParam} setBlogId={setBlogId} />
           </ListItem>
         );
       });

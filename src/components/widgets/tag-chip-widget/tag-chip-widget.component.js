@@ -6,14 +6,14 @@ import { getAcronym } from '../../../helpers/Util';
 
 
 const TagChip = (props) => {
-  const { classes, tag, title, onTagClick } = props;
+  const { classes, tag, title, setTagParam } = props;
 
   return (
     <div>
       <Chip
         avatar={ <Avatar color={"secondary"} alt={ title } className={classes.tagLogo}>{getAcronym(tag)}</Avatar> }
         label={ tag }
-        onClick={ onTagClick }
+        onClick={ () => setTagParam(tag)}
         className={ classes.tagChip }
         variant={ "outlined" }
         color={ "default" }

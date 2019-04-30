@@ -10,19 +10,22 @@ const styles = theme => ({
   drawerFabRight: {
     margin: `${theme.spacing.unit}px`,
     position: 'absolute',
-    zIndex: '5',
-    right: '-0.2rem',
+    zIndex: '1000',
+    right: '100px',
     top: '0',
-    marginRight: '-1rem'
+    // marginRight: '-1rem'
   },
   drawerFabLeft: {
     margin: `${theme.spacing.unit}px`,
     position: 'absolute',
-    zIndex: '5',
+    zIndex: '1000',
     right: '-4rem',
     marginRight: '4rem',
     top: '0',
     transform: 'rotate(180deg)'
+  },
+  blogFab: {
+    backgroundColor: theme.palette.text.primary,
   },
   archiveText: {
     paddingLeft: '0.7rem'
@@ -62,6 +65,8 @@ const styles = theme => ({
     marginBottom: '2.5rem',
     overflowY: 'auto',
     msOverflowY: 'auto',
+    overflowX: 'hidden',
+    msOverflowX: 'hidden',
     backgroundColor: theme.palette.background.paper
   },
   nestedList: {

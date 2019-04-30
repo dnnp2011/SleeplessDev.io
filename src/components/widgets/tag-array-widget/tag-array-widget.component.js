@@ -16,7 +16,7 @@ const TagArray = (props) => {
         tags.map((tag, index) => {
           return (
             <Grid item key={ index }>
-              <TagChip tag={tag} />
+              <TagChip setTagParam={props.setTagParam} tag={tag} />
             </Grid>
           );
         })
@@ -26,7 +26,8 @@ const TagArray = (props) => {
 };
 
 TagArray.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default withStyles(themeStyles, { withTheme: true })(TagArray);

@@ -80,7 +80,7 @@ const Contact = (props) => {
                                                                                                                                                                         + " nofollow" }>
                   <TiSocialLinkedin size={ 24 } name={ "linkedin" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
-                <IconButton href={ "https://sleeplessdev.io" } title={'SleeplessDev Website'} color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
+                <IconButton href={ "/portfolio" } title={'Portfolio'} color='inherit' aria-label='sleeplessdev link' target={ "_blank" } rel={ "noopener noreferrer nofollow" }>
                   <FaGlobeAmericas size={ 19 } name={ "website" } className={ classNames(classes.ContactDetailsSocialIcons) } />
                 </IconButton>
               </div>

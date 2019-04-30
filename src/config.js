@@ -32,8 +32,8 @@ export const menuItems = [
     icon: <PersonIcon style={iconStyle} />,
   },
   {
-    title: 'My Projects',
-    href: '/projects',
+    title: 'My Portfolio',
+    href: '/portfolio',
     icon: <WorkIcon style={iconStyle} />,
   },
   {
@@ -46,29 +46,29 @@ export const menuItems = [
     href: '/blog',
     icon: <ForumIcon style={iconStyle} />,
   },
-  {
-    title: 'Developer Resources',
-    type: 'header',
-  },
-  {
-    title: 'Reference',
-    href: '/resources/reference',
-    icon: <WorkIcon style={iconStyle} />,
-  },
-  {
-    title: 'Tutorials',
-    href: '/resources/tutorials',
-    icon: <SchoolIcon style={iconStyle} />,
-  },
+  // {
+  //   title: 'Developer Resources',
+  //   type: 'header',
+  // },
+  // {
+  //   title: 'Reference',
+  //   href: '/resources/reference',
+  //   icon: <WorkIcon style={iconStyle} />,
+  // },
+  // {
+  //   title: 'Tutorials',
+  //   href: '/resources/tutorials',
+  //   icon: <SchoolIcon style={iconStyle} />,
+  // },
   {
     title: 'Financial Markets',
     type: 'header',
   },
-  {
-    title: 'Stock Market',
-    href: '/markets/stock',
-    icon: <FaChartLine style={iconStyle} />,
-  },
+  // {
+  //   title: 'Stock Market',
+  //   href: '/markets/stock',
+  //   icon: <FaChartLine style={iconStyle} />,
+  // },
   {
     title: 'Crypto Market',
     href: '/markets/crypto',

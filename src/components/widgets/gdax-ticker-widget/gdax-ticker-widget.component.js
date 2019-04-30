@@ -1,9 +1,9 @@
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
-import React from "react";
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import themeStyles from "./gdax-ticker-widget.theme.style";
+import themeStyles from './gdax-ticker-widget.theme.style';
 
 
 class GdaxTickerWidget extends React.Component {
@@ -18,21 +18,21 @@ class GdaxTickerWidget extends React.Component {
 
     this.state = {};
 
-    this.setMarqueeRef = (element) => {
+    this.setMarqueeRef = element => {
       this.marquee = element;
     };
 
-    this.setStripRef = (element) => {
+    this.setStripRef = element => {
       this.strip = element;
     };
   }
 
 
-  async componentWillMount() {
-    const res = await fetch("https://api.gdax.com/products");
+  async UNSAFE_componentWillMount() {
+    const res = await fetch('https://api.gdax.com/products');
     const data = await res.json();
     if (data) {
-      this.setState({ products : data });
+      this.setState({ products: data });
     }
 
     //TODO: Find a new method of animating the Crypto ticker
@@ -45,24 +45,24 @@ class GdaxTickerWidget extends React.Component {
     }, 1000);
 
     const subscribe = {
-      type : "subscribe",
-      channels : [
+      type: 'subscribe',
+      channels: [
         {
-          name : "ticker",
-          product_ids : data.map(product => product.id)
+          name: 'ticker',
+          product_ids: data.map(product => product.id)
         }
       ]
     };
 
-    this.ws = new WebSocket("wss://ws-feed.gdax.com");
+    this.ws = new WebSocket('wss://ws-feed.gdax.com');
 
     this.ws.onopen = () => {
       this.ws.send(JSON.stringify(subscribe));
     };
 
-    this.ws.onmessage = (e) => {
+    this.ws.onmessage = e => {
       const value = JSON.parse(e.data);
-      if (value.type !== "ticker") {
+      if (value.type !== 'ticker') {
         return;
       }
 
@@ -84,7 +84,7 @@ class GdaxTickerWidget extends React.Component {
 
   animate = () => {
     this.offsetX -= 1 * this.speed;
-    this.marquee.style.transform = `translate(${ this.offsetX }px, 0) translateZ(0)`;
+    this.marquee.style.transform = `translate(${this.offsetX}px, 0) translateZ(0)`;
     const stripPos = this.strip.getBoundingClientRect();
     if (stripPos.x < (-stripPos.width + this.startOffsetX)) {
       this.offsetX = 0;
@@ -97,38 +97,40 @@ class GdaxTickerWidget extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={ classes["portal-gdx-ticket-widget"] }>
-        <div className={ classes["ticker-container"] }>
-          <div ref={ this.setMarqueeRef } className={ classes["ticker-content"] }>
-            <div ref={ this.setStripRef } className={ classes["ticker-strip"] } key='original'>
-              { this.state.products && this.state.products.map(product => (
-                <div className={ classes["ticker-item"] } key={ product.id }>
-                  <div className={ classes["ticker-item__name"] }>
+      <div className={classes['portal-gdx-ticket-widget']}>
+        <div className={classes['ticker-container']}>
+          <div ref={this.setMarqueeRef} className={classes['ticker-content']}>
+            <div ref={this.setStripRef} className={classes['ticker-strip']} key='original'>
+              {this.state.products && this.state.products.map(product => (
+                <div className={classes['ticker-item']} key={product.id}>
+                  <div className={classes['ticker-item__name']}>
                     <img
-                      alt={ product.display_name }
-                      src={ `${ process.env.PUBLIC_URL }/assets/images/dashboards/crypto/${ product.base_currency }.svg` }
+                      alt={product.display_name}
+                      src={`${process.env.PUBLIC_URL}/assets/images/dashboards/crypto/${product.base_currency}.svg`}
                     />
-                    <Typography component='h2'>{ product.display_name }</Typography>
+                    <Typography component='h2'>{product.display_name}</Typography>
                   </div>
-                  { product.socket ?
-                    <Typography component='h4'>${ parseFloat(product.socket.price).toFixed(2) }</Typography> : "" }
+                  {product.socket
+                   ? <Typography component='h4'>${parseFloat(product.socket.price)
+                    .toFixed(2)}</Typography> : ''}
                 </div>
-              )) }
+              ))}
             </div>
-            <div className={ classes["ticker-strip"] } key='copy'>
-              { this.state.products && this.state.products.map(product => (
-                <div className={ classes["ticker-item"] } key={ product.id }>
-                  <div className={ classes["ticker-item__name"] }>
+            <div className={classes['ticker-strip']} key='copy'>
+              {this.state.products && this.state.products.map(product => (
+                <div className={classes['ticker-item']} key={product.id}>
+                  <div className={classes['ticker-item__name']}>
                     <img
-                      alt={ product.display_name }
-                      src={ `${ process.env.PUBLIC_URL }/assets/images/dashboards/crypto/${ product.base_currency }.svg` }
+                      alt={product.display_name}
+                      src={`${process.env.PUBLIC_URL}/assets/images/dashboards/crypto/${product.base_currency}.svg`}
                     />
-                    <Typography component='h2'>{ product.display_name }</Typography>
+                    <Typography component='h2'>{product.display_name}</Typography>
                   </div>
-                  { product.socket ?
-                    <Typography component='h4'>${ parseFloat(product.socket.price).toFixed(2) }</Typography> : "" }
+                  {product.socket
+                   ? <Typography component='h4'>${parseFloat(product.socket.price)
+                    .toFixed(2)}</Typography> : ''}
                 </div>
-              )) }
+              ))}
             </div>
           </div>
         </div>
@@ -139,7 +141,7 @@ class GdaxTickerWidget extends React.Component {
 
 
 GdaxTickerWidget.propTypes = {
-  classes : PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired
 };
 
-export default withStyles(themeStyles, { withTheme : true })(GdaxTickerWidget);
+export default withStyles(themeStyles, { withTheme: true })(GdaxTickerWidget);
