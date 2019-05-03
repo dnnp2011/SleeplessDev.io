@@ -30,6 +30,7 @@ const styles = theme => ({
     height: '7rem',
     padding: '3rem',
     boxSizing: 'border-box',
+    marginBottom: '3rem',
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100

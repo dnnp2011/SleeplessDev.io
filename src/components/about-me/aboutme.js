@@ -1,5 +1,5 @@
 import {
-  Grid, ButtonBase, Hidden, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Card, Avatar
+  Avatar, ButtonBase, Card, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Grid, Hidden
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -65,6 +65,8 @@ class AboutMe extends React.Component {
         )}
         justify={'center'}
         alignItems={'center'}
+        style={{ width: '100%' }}
+        wrap={'wrap'}
       >
         <Grid
           item
@@ -78,11 +80,13 @@ class AboutMe extends React.Component {
             spacing={32}
             direction={'column'}
             justify={'space-around'}
+            wrap={'wrap'}
           >
             <Grid
               item
+              xs
               style={{
-                paddingTop: '200px',
+                paddingTop: '12.5rem',
                 zIndex: -1
               }}
             >
@@ -90,15 +94,13 @@ class AboutMe extends React.Component {
                 container
                 spacing={0}
                 direction={'row'}
-                justify={'flex-start'}
-                alignItems={'flex-start'}
               >
-                <Grid item>
+                <Grid item xs>
                   <div className={scss['about-me__header']}>
                     <Avatar alt='Dalton Pierce' src={SelfPortrait} className={scss['about-me__header-avatar']} />
                   </div>
                 </Grid>
-                <Grid item style={{ zIndex: 2 }}>
+                <Grid item xs style={{ zIndex: 2 }}>
                   <Typography variant='h5' gutterBottom>
                     Dalton Pierce
                   </Typography>
@@ -118,10 +120,10 @@ class AboutMe extends React.Component {
                       direction={'row'}
                       justify={'space-between'}
                     >
-                      <Grid item>
+                      <Grid item xs>
                         <Typography className={scss['about-me__expansion-panel-header']} variant={'h6'}>About Me</Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs>
                         <Hidden xsDown>
                           <Typography className={scss['about-me__expansion-panel-subheader']} variant={'h6'}>Personal History</Typography>
                         </Hidden>
@@ -156,10 +158,10 @@ class AboutMe extends React.Component {
                       direction={'row'}
                       justify={'space-between'}
                     >
-                      <Grid item>
+                      <Grid item xs>
                         <Typography className={scss['about-me__expansion-panel-header']} variant={'h6'}>Skills</Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs>
                         <Hidden xsDown>
                           <Typography className={scss['about-me__expansion-panel-subheader']} variant={'h6'}>Technical Knowledge</Typography>
                         </Hidden>
@@ -188,6 +190,7 @@ class AboutMe extends React.Component {
               viewWidth >= 827
                 ? <Grid
                   item
+                  xs
                 >
                   <div className={scss['portal-profile__content-second']}>
                     <Card className={scss.card}>
@@ -195,36 +198,37 @@ class AboutMe extends React.Component {
                     </Card>
                   </div>
                 </Grid>
-                :                <Grid item xs={12} style={{ padding: '1rem' }}>
-                  <ButtonBase
-                    focusRipple
-                    className={classes.image}
-                    focusVisibleClassName={classes.focusVisible}
-                    href={resumeUrl}
-                    rel={'noreferrer noopener nofollow'}
-                    target={'_blank'}
-                  >
-                    <span
-                      className={classes.imageSrc}
-                      style={{
-                        backgroundImage: `url(${WebDevAndCoffee})`
-                      }}
-                    />
-                    <span className={classes.imageBackdrop} />
-                    <span className={classes.imageButton}>
-                      <Typography
-                        component='span'
-                        variant='subtitle1'
-                        color='inherit'
-                        className={classes.imageTitle}
-                      >
-                                        Go to Resume
-                        <span className={classes.imageMarked} />
-                      </Typography>
-                    </span>
-                  </ButtonBase>
-                </Grid>
+                : null
             }
+            <Grid item xs={12} style={{ padding: '1rem' }}>
+              <ButtonBase
+                focusRipple
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
+                href={resumeUrl}
+                rel={'noreferrer noopener nofollow'}
+                target={'_blank'}
+              >
+                <span
+                  className={classes.imageSrc}
+                  style={{
+                    backgroundImage: `url(${WebDevAndCoffee})`
+                  }}
+                />
+                <span className={classes.imageBackdrop} />
+                <span className={classes.imageButton}>
+                  <Typography
+                    component='span'
+                    variant='subtitle1'
+                    color='inherit'
+                    className={classes.imageTitle}
+                  >
+                                                    Go to Resume Source
+                    <span className={classes.imageMarked} />
+                  </Typography>
+                </span>
+              </ButtonBase>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

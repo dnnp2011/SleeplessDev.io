@@ -674,13 +674,13 @@ class Projects extends React.Component {
                                 subtitle={'The face of Gainfy Enterprises\' Security Token Offering'}
                                 description={'The web presence of Gainfy\'s Security Token Offering'}
                                 body={`<div>
-                                The former sto.gainfy.com was the frontend of Gainfy's Security Token Offering. Gainfy is a data-driven platform
+                                Frontend of Gainfy's Security Token Offering. Gainfy is a data-driven platform
                                 used to reward healthy behaviors, enable healthcare management and data monetization within a single, blockchain powered
-                                infrastructure. The website had such features as integrated <abbr title='Know Your Client'>KYC</abbr>, ability purchase
-                                Gain tokens via Bitcoin or Ethereum through the web interface, a transaction management panel for canceling or verifying
+                                infrastructure. The website had such features as integrated <abbr title='Know Your Client'>KYC</abbr>, ability to purchase
+                                Gain tokens via Bitcoin or Ethereum through the web interface, a regularly updated transactions panel for canceling or verifying
                                 contributions, client authentication with Firebase, account recovery mechanisms, <abbr title='Two Factor Authentication'>2FA</abbr>,
                                 a refer a friend feature that rewards users for bringing traffic to the site, and a dashboard for users to track their own contributions
-                                as well as overall coin supply.
+                                and overall coin supply.
                                 </div>`}
                                 codeUrl={null}
                                 demoUrl={null}
@@ -706,11 +706,9 @@ class Projects extends React.Component {
                                 title={'Ares Project'}
                                 subtitle={'An administration tool for cryptocurrency token offerings'}
                                 description={'A blockchain ICO / STO administration tool for Citdex and the OrchardBlock Accelerator'}
-                                body={`The Ares Project was an ambitious concept to streamline the token offering experience for Citdex clients. As lead developer
-                                I organized a team of 6 developers to create an all-in-one management infrastructure for up and coming cryptocurrencies. The goal was
-                                to make it easier for clients to launch their token offerings, as well as manage their projects after the initial fund raising round.
-                                The value add for end users and investors were the investment opportunities in a marketplace full of companies that
-                                were vetted and chosen by Citdex, and therefore more likely to be seen through to fruition.`}
+                                body={`An ambitious concept to streamline the token offering experience for Citdex clients. As lead developer
+                                I organized a team of 6 developers to create a management infrastructure for up and coming cryptocurrencies. We aimed
+                                to make it easier for clients to launch their token offerings, as well as provide a marketplace to connect savvy investors to those offerings.`}
                                 codeUrl={null}
                                 demoUrl={null}
                                 skills={[
@@ -735,8 +733,7 @@ class Projects extends React.Component {
                                 subtitle={'An excellent example of my programming knowledge, as well as a helpful collection of developer tools'}
                                 description={'The culmination of all my development knowledge, and my personal portfolio'}
                                 body={`SleeplessDev.io serves primarily as a sample of my programming aptitude. The combination of pleasant and appealing design,
-                                clean and efficient code, and security conscious implementation, thoroughly exemplifies my programming style. As an individual with
-                                interests in a wide variety of technological fields, it's important to me to incorporate the lessons I've learned throughout
+                                clean and efficient code, and security conscious implementation, thoroughly exemplifies my programming style. It's important to me that I incorporate the lessons I've learned throughout
                                 disparate subjects into my work. In so doing, I avoid getting tunnel vision - being so engrossed in one aspect of development
                                 that I cut corners in others (focusing on design at the exclusion of security is one such example).
                                 Additionally, utilizing the tools and conventions of different specialties helps me to create a more attractive and
@@ -1383,7 +1380,7 @@ class Projects extends React.Component {
                     <Grid item>
                       <Story
                         name={'Victoria Saucier'}
-                        position={'CEO - Gainfy'}
+                        position={'Founder & CEO - Gainfy'}
                         highlight={'Passionate and Value Driven'}
                         testimonial={
                           '(Dalton) brings passionate, value-driven technical skills and analytical abilities to successfully evolve company product strategy.'
@@ -1887,11 +1884,11 @@ function Story(props) {
   return (
     <Grid item xs={12}>
       <Grid container direction={'row'} alignItems={'center'} font={'inherit'} color={'inherit'}>
-        <div className={scss['story']}>
+        <Grid item xs className={scss['story']}>
           {
             isSmDown
             ? <Grid container direction={'column'} alignItems={'center'} alignContent={'center'} justify={'center'} className={scss['story__content']}>
-              <Grid item style={{ height: '100%' }}>
+              <Grid item xs style={{ height: '100%' }}>
                 <figure className={scss['story__shape']}>
                   <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
                   <figcaption className={scss['story__caption']}>
@@ -1901,7 +1898,7 @@ function Story(props) {
                   </figcaption>
                 </figure>
               </Grid>
-              <Grid item className={scss['story__text']}>
+              <Grid item xs className={scss['story__text']}>
                 <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
                 <p className={scss['story__text--testimonial']}>{testimonial}</p>
               </Grid>
@@ -1921,7 +1918,7 @@ function Story(props) {
               </div>
             </div>
           }
-        </div>
+        </Grid>
       </Grid>
     </Grid>
   );

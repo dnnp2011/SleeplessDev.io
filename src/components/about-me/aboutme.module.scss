@@ -22,6 +22,7 @@ $resume-min-height: 1080px;
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
+  height: 100%;
 }
 
 .about-me__header {
@@ -70,15 +71,18 @@ $resume-min-height: 1080px;
   color: #7d7d7d;
   opacity: 0.7;
   width: 100%;
+  text-align: end;
 }
 
 .about-me__resume-iframe {
   border: none;
   overflow-scrolling: unset;
   -webkit-overflow-scrolling: unset;
-  overflow: unset;
-  width: 827px;
-  height: 1080px;
+  overflow: hidden;
+  width: 850px;
+  height: 1100px;
+  margin: 0 auto;
+  align-self: center;
 }
 
 .about-me__resume-card {

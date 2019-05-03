@@ -2,7 +2,8 @@
 @import '../abstracts/mixins';
 
 .story {
-  width: 60%;
+  max-width: 60%;
+  min-width: 50rem;
   margin: 0 auto;
   @include box-shadow(.3rem 1.5rem 2rem $shadow--light);
   background-color: rgba($secondaryFont, .6);
