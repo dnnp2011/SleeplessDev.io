@@ -12,9 +12,9 @@ const styles = theme => ({
     wrap: 'auto'
   },
   image: {
-    width: '11rem',
-    display: 'inline-block',
-    'float': 'start'
+    maxWidth: '11rem',
+    width: '100%',
+    content: '',
   },
   continueBtn: {
     margin: '3px',

@@ -294,7 +294,7 @@ class Blog extends React.Component {
                     // Set the default month and year to the last created blog post in the archive on first load
                     if (this.state.month === null && this.state.year === null && this.state.tag === null && this.state.blogViewId === null) {
                       let lastPost = data.blogStats[0];
-                      this.setMonthAndYear(lastPost.year, lastPost.year[0]);
+                      this.setMonthAndYear(lastPost.year, lastPost.months[0]);
                     }
 
                     return <TempDrawerWidget drawerOpen={this.state.archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={

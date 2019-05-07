@@ -27,24 +27,24 @@ function BlogCard(props) {
     let maxTags;
     switch (width) {
 
-    case 'xs':
-      maxTags = 1;
-      break;
-    case 'sm':
-      maxTags = 1;
-      break;
-    case 'md':
-      maxTags = 1;
-      break;
-    case 'lg':
-      maxTags = 3;
-      break;
-    case 'xl':
-      maxTags = 5;
-      break;
-    default:
-      maxTags = 1;
-      break;
+      case 'xs':
+        maxTags = 1;
+        break;
+      case 'sm':
+        maxTags = 1;
+        break;
+      case 'md':
+        maxTags = 1;
+        break;
+      case 'lg':
+        maxTags = 3;
+        break;
+      case 'xl':
+        maxTags = 5;
+        break;
+      default:
+        maxTags = 1;
+        break;
 
     }
     return maxTags;
@@ -53,7 +53,7 @@ function BlogCard(props) {
 
   const handleClickBlog = id => {
 
-    props.history.push(`/blog/${  id}`);
+    props.history.push(`/blog/${id}`);
     setBlogId(id);
 
   };
@@ -62,14 +62,18 @@ function BlogCard(props) {
     <Grid container direction={'row'} alignContent={'center'} justify={'center'}>
       <Grid item xs={12} sm={10} md={8}>
         <Card className={classes.card} elevation={3} raised={true}>
-          <Grid container direction={'row'} spacing={0} alignContent={'flex-start'} justify={'flex-start'}>
-            <CardMedia
-              className={classes.image}
-              image={logoImage}
-              title='Placeholder Image'
-            />
+          <Grid container direction={'row'} spacing={0} alignContent={'flex-start'} alignItems={'center'} justify={'flex-start'}>
+            <Grid item xs={2}>
+              <CardMedia>
+                <img
+                  src={logoImage}
+                  alt={'Blog Image'}
+                  className={classes.image}
+                />
+              </CardMedia>
+            </Grid>
             <Grid item xs={10} className={classes.details}>
-              <CardContent xs={12} className={classes.content}>
+              <CardContent className={classes.content}>
                 <Typography component='h4' variant='h4'>
                   {title}
                 </Typography>
@@ -119,7 +123,7 @@ BlogCard.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
   dateCreated: PropTypes.string.isRequired,
   dateEdited: PropTypes.string,
-  setBlogId: PropTypes.func.isRequired,
+  setBlogId: PropTypes.func.isRequired
 };
 
 export default compose(withWidth({ noSSR: true }), withStyles(themeStyles, { withTheme: true }))(withRouter(BlogCard));
