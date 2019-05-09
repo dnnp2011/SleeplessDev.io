@@ -258,16 +258,16 @@ class Projects extends React.Component {
           <nav className={scss['navigation__nav']}>
             <ul className={scss['navigation__list']}>
               <li className={scss['navigation__item']}>
-                <a href={hrefHome} onClick={() => history.push(hrefHome)} className={scss['navigation__link']}>Home</a>
+                <a href={''} onClick={() => history.push(hrefHome)} className={scss['navigation__link']}>Home</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefAbout} onClick={() => history.push(hrefAbout)} className={scss['navigation__link']}>About Me</a>
+                <a href={''} onClick={() => history.push(hrefAbout)} className={scss['navigation__link']}>About Me</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefContact} onClick={() => history.push(hrefContact)} className={scss['navigation__link']}>Contact Me</a>
+                <a href={''} onClick={() => history.push(hrefContact)} className={scss['navigation__link']}>Contact Me</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefBlog} onClick={() => history.push(hrefBlog)} className={scss['navigation__link']}>Blog</a>
+                <a href={''} onClick={() => history.push(hrefBlog)} className={scss['navigation__link']}>Blog</a>
               </li>
               <li className={scss['navigation__item']}>
                 <a href={hrefResume}  rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
@@ -414,7 +414,7 @@ class Projects extends React.Component {
                       <a
                         className={classNames(scss.btn, scss['heading-primary__btn'], scss['btn--grow-in'])}
                         color={'inherit'}
-                        href={'#'}
+                        href={''}
                         onClick={e => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -546,7 +546,7 @@ class Projects extends React.Component {
                                 </Typography>
                               </Grid>
                               <Grid item>
-                                <a href={hrefAbout} className={scss['btn-text']}>
+                                <a href={''} onClick={() => history.push(hrefAbout)} className={scss['btn-text']}>
                                   Go to resume &rarr;
                                 </a>
                               </Grid>
@@ -1404,7 +1404,7 @@ class Projects extends React.Component {
                       />
                     </Grid>
                     <Grid item>
-                      <a href={hrefAbout} className={scss['btn-text']}>
+                      <a href={''} onClick={() => history.push(hrefAbout)} className={scss['btn-text']}>
                         Go to resume &rarr;
                       </a>
                     </Grid>
@@ -1484,28 +1484,28 @@ class Projects extends React.Component {
                             className={scss['footer__nav']}>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={hrefHome} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={''} onClick={() => history.push(hrefHome)} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Home
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={hrefContact} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={''} onClick={() => history.push(hrefContact)} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Contact
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={hrefAbout} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={''} onClick={() => history.push(hrefAbout)} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   About
                                 </a>
                               </li>
                             </Grid>
                             <Grid item className={scss['footer__nav-item']}>
                               <li>
-                                <a href={hrefBlog} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
+                                <a href={''} onClick={() => history.push(hrefBlog)} color={'inherit'} font={'inherit'} className={scss['footer__nav-link']}>
                                   Blog
                                 </a>
                               </li>
@@ -1539,11 +1539,11 @@ class Projects extends React.Component {
                           <Grid item xs={12} md={10}>
                             <p className={scss['footer__copyright']}>
                               Built by{' '}
-                              <a href={hrefContact} target={'_blank'} className={scss['footer__nav-link']}>
+                              <a href={''} onClick={() => history.push(hrefContact)} className={scss['footer__nav-link']}>
                                 Dalton Pierce
                               </a>{' '}
                               for use on{' '}
-                              <a href={hrefHome} target={'_blank'} className={scss['footer__nav-link']}>
+                              <a href={''} onClick={() => history.push(hrefHome)} className={scss['footer__nav-link']}>
                                 SleeplessDev.io
                               </a>.
                             </p>
