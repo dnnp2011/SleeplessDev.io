@@ -1,1 +1,1 @@
-web: node ./build/index.html
+web: serve -s build
