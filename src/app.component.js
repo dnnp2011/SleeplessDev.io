@@ -47,7 +47,7 @@ class App extends React.Component {
     const materialTheme = createMuiTheme(themeConfig.contentTheme);
 
     const client = new ApolloClient({
-      uri: '/graphql',
+      uri: 'https://backend.sleeplessdev.io/graphql',
     });
 
     return (
