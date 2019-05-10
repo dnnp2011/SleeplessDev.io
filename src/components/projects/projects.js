@@ -420,7 +420,7 @@ class Projects extends React.Component {
                           e.stopPropagation();
                           const projectsSection = document.querySelector('#section-projects');
                           const intersectionObserver = new IntersectionObserver((entries) => {
-                            let [ entry ] = entries;
+                            const [ entry ] = entries;
                             if (entry.isIntersecting) {
                               setTimeout(() => {
                                 const position = document.body.scrollTop;
@@ -1055,14 +1055,13 @@ class Projects extends React.Component {
                             </Grid>
                             <Grid item>
                               <ProjectCard
-                                //TODO: This Unity project needs to be altered to remove the 'tutorial 2' part of the game name
                                 title={'Space Shooter'}
                                 subtitle={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
                                 description={'A scrolling shooter set in space in which the player must avoid or destroy a constant barrage of enemies and asteroids'}
                                 body={`In Space Shooter, you play as a space ship flying across the galaxy, trying to get home across the vastness of space. Blocking your way are dangerous asteroids that can be destroyed or dodged, as well as enemy ships. Little is known about these alien vessels - besides the fact that they shoot on sight. If you want to live long enough to see home, you may want to do the same!
                                 Space Shooter is built in the Unity game engine. Although the game appears to be 2-dimensional, all of the models, animations, and effects are in fact 3D. A top-down camera angle is used to provide a two-demensional impression, while maintaining the interesting depth and perspective effects of moving in 3D space. Space hazards are spawned in random positions just beyond the player's view to provide a varied and random challenge for the player. The background movement effect is achieved by stretching the background beyond the clipping plane of the primary camera, then sliding it down and wrapping it back on itself once it reaches the end. The result of these features is the appearance of movement through an infinite environment.`}
                                 codeUrl={'https://github.com/dnnp2011/SpaceShooter-Unity'}
-                                demoUrl={null}
+                                demoUrl={'https://drowsy.gamejolt.io/SpaceShooterGame'}
                                 skills={[
                                   'C#', 'Unity3D', 'Game Design', 'Sound Design', 'AI Programming'
                                 ]}

@@ -6,8 +6,6 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 import orange from '@material-ui/core/colors/orange';
 import pink from '@material-ui/core/colors/pink';
 
-//TODO: Change the default theme to a better color palette
-
 const defaultContentTheme = {
   direction: 'ltr',
   typography: {
