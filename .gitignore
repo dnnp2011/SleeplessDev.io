@@ -49,7 +49,7 @@ graphql*.json
 .tag
 
 # Project Specific Firebase Config
-/src/firebase/config.js
+# /src/firebase/config.js
 
 # exclude config data and env variables
 ./keys
