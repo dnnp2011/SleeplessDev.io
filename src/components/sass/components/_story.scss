@@ -5,6 +5,7 @@
   max-width: 60%;
   min-width: 50rem;
   margin: 0 auto;
+  align-self: center;
   @include box-shadow(.3rem 1.5rem 2rem $shadow--light);
   background-color: rgba($secondaryFont, .6);
   @include border-radius($BORDER_RADIUS);
@@ -12,45 +13,91 @@
   font-size: $defaultFont;
   @include transform(skewX(-12deg));
 
+  @include respond(xxl) {
+    width: 60%;
+    max-width: 60%;
+    min-width: 40%;
+  }
+  @include respond(xl) {
+    width: 60%;
+    max-width: 60%;
+    min-width: 40%;
+  }
+  @include respond(lg) {
+    width: 60%;
+    max-width: 60%;
+    min-width: 50%;
+  }
+  @include respond(md) {
+    width: 70%;
+    max-width: 70%;
+    min-width: 50%;
+  }
+  @include respond(sm) {
+    width: 80%;
+    max-width: 80%;
+    min-width: 50%;
+  }
+  @include respond(xs) {
+    width: 80%;
+    max-width: 80%;
+    min-width: 50%;
+
+    //Remove any skew transforms for very small devices
+    @include transform(skewX(0));
+
+    .story__content {
+      @include transform(skewX(0) !important);
+    }
+  }
+
   &__content {
+    position: relative;
     @include transform(skewX(12deg));
   }
 
   &__shape {
+
     @include respond(xxl) {
       width: 10rem;
       height: 10rem;
       float: left;
+      @include transform(translateX(-2rem));
     }
     @include respond(xl) {
       width: 11rem;
       height: 11rem;
       float: left;
+      @include transform(translateX(-2rem));
     }
     @include respond(lg) {
       width: 12rem;
       height: 12rem;
       float: left;
+      @include transform(translateX(-2rem));
     }
     @include respond(md) {
       width: 13rem;
       height: 13rem;
       float: left;
+      @include transform(translateX(-2rem));
     }
     @include respond(sm) {
       width: 15rem;
       height: 15rem;
+      float: unset;
+      @include transform(translateX(0));
     }
     @include respond(xs) {
       width: 16rem;
       height: 16rem;
+      float: unset;
+      @include transform(translateX(0));
     }
 
     background-color: transparent;
     @include shape-outside(circle(35% at 50% 50%));
     @include clip-path(circle(50% at 50% 50%));
-    @include transform(translateX(-2rem));
-    position: relative;
   }
 
   &__caption {

@@ -142,7 +142,7 @@ class AboutMe extends React.Component {
                       has a certain number of classes,
                       methods and primitive data structures - And of course, the secret sauce that holds it all together: the strict syntax rules that tell the programmer how to fit them all together.
                       It's these properties that enable
-                      the creation of constructs that are greater than the sum of their parts.w
+                      the creation of constructs that are greater than the sum of their parts.
                       <br /><br />
                       For me, programming is more than simply a profession. It's an expression of creativity and ingenuity, a method of solving problems, and transforming what at one time existed only
                       in my mind into something tangible and useful. It's that interminable potential that excites and inspires me most about programming and software development, and acts as the
@@ -174,7 +174,7 @@ class AboutMe extends React.Component {
                       other tools
                       (MongoDB, SQL, GraphQL, JQuery, etc). Learning to use new programming tools and conventions isn't a chore, but rather something I enjoy and look forward to - a characteristic
                       that is invaluable
-                      as a developer. But my passion for technology has introduced me to a plethora of software and activities beyond the confines of pure code, such as Networking and Firewalls, Web
+                      as a developer. Additionally, my passion for technology has introduced me to a plethora of software and activities beyond coding specifically, such as Networking and Firewalls, Web
                       Hosting, Linux Operating
                       Systems, building PC's and servers, component-level soldering, phone repair, virtualization, game modding, and countless others. I regularly find myself down the rabbit hole of
                       new and interesting projects

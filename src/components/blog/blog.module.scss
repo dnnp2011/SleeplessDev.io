@@ -1,5 +1,6 @@
 @import '../sass/abstracts/variables';
 @import '../sass/abstracts/mixins';
+@import '../sass/base/animations';
 
 .blog {
   position: relative;
@@ -9,33 +10,63 @@
   &__fab--ltr {
     position: fixed;
     left: 90%;
-    bottom: 8%;
+    bottom: 12%;
     z-index: 1000;
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+
+    &::before {
+      @include border-radius(6rem);
+      @include transition(all 400ms);
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      @include absolute-origin;
+      z-index: -1;
+      margin: 0;
+      background-color: inherit;
+      animation: animation__fab-attention 600ms ease-out 1.2s 1 forwards;
+    }
 
     @include respond(sm) {
       left: 85%;
-      bottom: 10%;
+      bottom: 14%;
     }
     @include respond(xs) {
       left: 80%;
-      bottom: 12%;
+      bottom: 16%;
     }
   }
 
   &__fab--rtl {
     position: fixed;
     right: 90%;
-    bottom: 8%;
+    bottom: 12%;
     z-index: 1000;
     @include transform(rotate(180deg));
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+
+    &::before {
+      @include border-radius(6rem);
+      @include transition(all 400ms);
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      @include absolute-origin;
+      z-index: -1;
+      margin: 0;
+      background-color: inherit;
+      animation: animation__fab-attention 600ms ease-out 1.2s 1 forwards;
+    }
 
     @include respond(sm) {
       right: 85%;
-      bottom: 10%;
+      bottom: 14%;
     }
     @include respond(xs) {
       right: 80%;
-      bottom: 12%;
+      bottom: 16%;
     }
   }
 }
@@ -47,30 +78,30 @@
 
   &__fab--ltr {
     position: fixed;
-    bottom: 8%;
+    bottom: 12%;
     left: 10%;
     z-index: 1000;
 
     @include respond(sm) {
-      bottom: 10%;
+      bottom: 14%;
     }
     @include respond(xs) {
-      bottom: 12%;
+      bottom: 16%;
     }
   }
 
   &__fab--rtl {
     position: fixed;
-    bottom: 8%;
+    bottom: 12%;
     right: 10%;
     z-index: 1000;
     @include transform(rotate(180deg));
 
     @include respond(sm) {
-      bottom: 10%;
+      bottom: 14%;
     }
     @include respond(xs) {
-      bottom: 12%;
+      bottom: 16%;
     }
   }
 }

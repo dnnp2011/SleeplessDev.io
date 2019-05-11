@@ -45,6 +45,7 @@
     opacity: 1;
   }
 }
+
 //#endregion
 
 //#region animation__slide-up
@@ -123,6 +124,7 @@
     opacity: 1;
   }
 }
+
 //#endregion
 
 //#region animation__slide-in-left--bounce
@@ -190,6 +192,7 @@
     opacity: 1;
   }
 }
+
 //#endregion
 
 //#region animation__slide-in-right--bounce
@@ -296,6 +299,7 @@
     opacity: 1;
   }
 }
+
 //#endregion
 
 //#region animation__fade-in
@@ -334,4 +338,110 @@
     opacity: 0;
   }
 }
+
 //#endregion
+
+//region animation__fab-attention
+@-webkit-keyframes animation__fab-attention {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 0 0 15vw rgba(0, 0, 0, .15), 0 0 0 30vw rgba(0, 0, 0, .1), 0 0 0 45vw rgba(0, 0, 0, .05);
+  }
+  100% {
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+  }
+}
+
+@-o-keyframes animation__fab-attention {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 0 0 15vw rgba(0, 0, 0, .15), 0 0 0 30vw rgba(0, 0, 0, .1), 0 0 0 45vw rgba(0, 0, 0, .05);
+  }
+  100% {
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+  }
+}
+
+@-moz-keyframes animation__fab-attention {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 0 0 15vw rgba(0, 0, 0, .15), 0 0 0 30vw rgba(0, 0, 0, .1), 0 0 0 45vw rgba(0, 0, 0, .05);
+  }
+  100% {
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+  }
+}
+
+@keyframes animation__fab-attention {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 0 0 15vw rgba(0, 0, 0, .15), 0 0 0 30vw rgba(0, 0, 0, .1), 0 0 0 45vw rgba(0, 0, 0, .05);
+  }
+  100% {
+    @include box-shadow(.2rem .5rem .5rem $shadow--dark);
+  }
+}
+
+//endregion
+
+//region animation__fab-attention
+@-webkit-keyframes animation__fab-attention {
+  from {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+  to {
+    @include transform(scale(2.5));
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@-o-keyframes animation__fab-attention {
+  from {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+  to {
+    @include transform(scale(2.5));
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@-moz-keyframes animation__fab-attention {
+  from {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+  to {
+    @include transform(scale(2.5));
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@keyframes animation__fab-attention {
+  from {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+  to {
+    @include transform(scale(2.5));
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+//endregion

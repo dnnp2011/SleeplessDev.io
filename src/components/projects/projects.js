@@ -13,15 +13,6 @@ import logoWithText from '../../assets/images/logo-terminal/logo_with_text.svg';
 import whiteLogo from '../../assets/images/logo-terminal/white_logo_transparent_no_text_minified.png';
 import michaelSzczech from '../../assets/images/portrait/Michael_Szczech_300x300_med.jpg';
 import victoriaSaucier from '../../assets/images/portrait/Victoria_Saucier_300x300_med.jpg';
-import storyBgVideo from '../../assets/video/falling_sparks_water_2k_minified.mp4';
-import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
-import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
-import * as devicons from '../widgets/svg-icon/Devicons';
-import SvgIcon from '../widgets/svg-icon/SvgIcon';
-import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
-import scss from './projects.module.scss';
-import themeStyles from './projects.style';
-
 /* Project Screenshots */
 import ares1 from '../../assets/images/screenshots/ares-1.png';
 import ares2 from '../../assets/images/screenshots/ares-2.png';
@@ -33,54 +24,34 @@ import breakout3 from '../../assets/images/screenshots/breakout-3.png';
 import cargoContainer1 from '../../assets/images/screenshots/cargo-container-1.jpg';
 import cargoContainer2 from '../../assets/images/screenshots/cargo-container-2.jpg';
 import cargoContainer3 from '../../assets/images/screenshots/cargo-container-rendered-1.jpg';
-import cargoContainer4 from '../../assets/images/screenshots/cargo-container-rendered-2.jpg';
-import cargoContainer5 from '../../assets/images/screenshots/cargo-container-rendered-3.jpg';
-import coolcalc1 from '../../assets/images/screenshots/coolcalc-1.png';
 import coolcalc2 from '../../assets/images/screenshots/coolcalc-2.png';
-import coolcalc3 from '../../assets/images/screenshots/coolcalc-3.jpg';
 import creek1 from '../../assets/images/screenshots/creek-1.jpg';
 import creek2 from '../../assets/images/screenshots/creek-2.jpg';
 import earthSpace1 from '../../assets/images/screenshots/earth-space-1.jpg';
 import earthSpace2 from '../../assets/images/screenshots/earth-space-2.jpg';
 import gainfy1 from '../../assets/images/screenshots/gainfy-1.png';
 import gainfy2 from '../../assets/images/screenshots/gainfy-2.png';
-import gainfy3 from '../../assets/images/screenshots/gainfy-3.png';
-import gainfy4 from '../../assets/images/screenshots/gainfy-4.png';
-import gainfy5 from '../../assets/images/screenshots/gainfy-5.jpg';
-import gainfy6 from '../../assets/images/screenshots/gainfy-6.jpg';
-import gainfy7 from '../../assets/images/screenshots/gainfy-7.jpg';
 import gunOptic1 from '../../assets/images/screenshots/gun-optic-1.jpg';
 import gunOptic2 from '../../assets/images/screenshots/gun-optic-2.jpg';
 import herome1 from '../../assets/images/screenshots/herome-1.png';
-import herome2 from '../../assets/images/screenshots/herome-2.png';
-import herome3 from '../../assets/images/screenshots/herome-3.png';
 import poshcalc1 from '../../assets/images/screenshots/poshcalc-1.png';
-import poshcalc2 from '../../assets/images/screenshots/poshcalc-2.png';
-import poshcalc3 from '../../assets/images/screenshots/poshcalc-3.png';
-import poshcalc4 from '../../assets/images/screenshots/poshcalc-4.png';
 import rockDodger1 from '../../assets/images/screenshots/rock-dodger-1.png';
 import rockDodger2 from '../../assets/images/screenshots/rock-dodger-2.png';
 import sleeplessdev1 from '../../assets/images/screenshots/sleeplessdev-1.jpg';
 import sleeplessdev2 from '../../assets/images/screenshots/sleeplessdev-2.jpg';
 import sleeplessdevBackend1 from '../../assets/images/screenshots/sleeplessdev-back-1.png';
 import sleeplessdevBackend2 from '../../assets/images/screenshots/sleeplessdev-back-2.png';
-import sleeplessRadio1 from '../../assets/images/screenshots/sleeplessradio-1.png';
 import sleeplessRadio2 from '../../assets/images/screenshots/sleeplessradio-2.png';
 import spaceInvaders1 from '../../assets/images/screenshots/space-invaders-1.png';
-import spaceInvaders2 from '../../assets/images/screenshots/space-invaders-2.png';
 import spaceInvaders3 from '../../assets/images/screenshots/space-invaders-3.png';
 import spaceShooter1 from '../../assets/images/screenshots/space-shooter-1.jpg';
-import spaceShooter2 from '../../assets/images/screenshots/space-shooter-2.jpg';
 import spaceShooter3 from '../../assets/images/screenshots/space-shooter-3.jpg';
 import spaceship1 from '../../assets/images/screenshots/spaceship-1.jpg';
 import spaceship2 from '../../assets/images/screenshots/spaceship-2.jpg';
 import spaceship3 from '../../assets/images/screenshots/spaceship-3.jpg';
 import steelDrum1 from '../../assets/images/screenshots/steel-drum-1.jpg';
 import steelDrum2 from '../../assets/images/screenshots/steel-drum-2.jpg';
-import survivalShooter1 from '../../assets/images/screenshots/survival-shooter-1.jpg';
 import survivalShooter2 from '../../assets/images/screenshots/survival-shooter-2.jpg';
-import survivalShooter3 from '../../assets/images/screenshots/survival-shooter-3.jpg';
-import survivalShooter4 from '../../assets/images/screenshots/survival-shooter-4.jpg';
 import survivalShooter5 from '../../assets/images/screenshots/survival-shooter-5.jpg';
 import survivalShooter6 from '../../assets/images/screenshots/survival-shooter-6.jpg';
 import tacticalGrip1 from '../../assets/images/screenshots/tactical-grip-1.jpg';
@@ -89,15 +60,26 @@ import tanks1 from '../../assets/images/screenshots/tanks-1.jpg';
 import tanks2 from '../../assets/images/screenshots/tanks-2.jpg';
 import tanks3 from '../../assets/images/screenshots/tanks-3.jpg';
 import tictactoe1 from '../../assets/images/screenshots/tictactoe-1.png';
-import zombieShooter1 from '../../assets/images/screenshots/zombie-shooter-1.jpg';
 import zombieShooter2 from '../../assets/images/screenshots/zombie-shooter-2.jpg';
 import zombieShooter3 from '../../assets/images/screenshots/zombie-shooter-3.jpg';
-import zombieShooter4 from '../../assets/images/screenshots/zombie-shooter-4.png';
 import zombieShooter5 from '../../assets/images/screenshots/zombie-shooter-5.jpg';
-import zombieShooter6 from '../../assets/images/screenshots/zombie-shooter-6.jpg';
-import zombieShooter7 from '../../assets/images/screenshots/zombie-shooter-7.jpg';
+import storyBgVideo from '../../assets/video/falling_sparks_water_2k_minified.mp4';
+import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
+import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
+import * as devicons from '../widgets/svg-icon/Devicons';
+import SvgIcon from '../widgets/svg-icon/SvgIcon';
+import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
+import scss from './projects.module.scss';
+import themeStyles from './projects.style';
 
-
+//TODO: Make Projects Navigation spans transform color to primary green on hover or focus
+//TODO: Fix the focus changing order upon opening the navigation menu
+//TODO: Make the two columns of body text on the Project Popups condense to a single column on small screens
+//TODO: Root panel x-scrolls on mobile
+//TODO: Story Cards are too wide on mobile devices
+//TODO: Look into faster scrolling methods on mobile devices (like a table of contents that appears on scroll or hover)
+//BUG: Favicon not loading consistently (invalid resource size in manifest)
+//BUG: Unable to reach backend blog store
 const hrefHome = '/',
   hrefContact = '/contact',
   hrefAbout = '/about-me',
@@ -116,7 +98,7 @@ class Projects extends React.Component {
       bgVideo: null,
       navVisible: false,
       closePopup: null,
-      openPopupBtn: null,
+      openPopupBtn: null
     };
 
     this.closePopup = React.createRef();
@@ -162,6 +144,7 @@ class Projects extends React.Component {
   shouldComponentUpdate(nextProps, nextState, nextContext) {
     return this.props.width !== nextProps.width || this.state !== nextState;
   }
+
 
   render() {
     const { classes, width, history } = this.props;
@@ -247,7 +230,7 @@ class Projects extends React.Component {
       <div id={'project-root'} className={scss.projectRoot}>
         <div className={scss.navigation}>
           <input checked={navVisible} onChange={() => {}} className={scss['navigation__checkbox']} type={'checkbox'} id={'nav-toggle'} />
-          <label htmlFor={'#nav-toggle'} onClick={this.toggleNav} className={scss['navigation__button']}>
+          <label tabIndex={1} htmlFor={'#nav-toggle'} onClick={this.toggleNav} onKeyDown={e => e.key === 'Enter' && this.toggleNav()} className={scss['navigation__button']}>
             <div className={scss['navigation__icon']}>
               <span></span>
               <span></span>
@@ -270,7 +253,7 @@ class Projects extends React.Component {
                 <a href={''} onClick={() => history.push(hrefBlog)} className={scss['navigation__link']}>Blog</a>
               </li>
               <li className={scss['navigation__item']}>
-                <a href={hrefResume}  rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
+                <a href={hrefResume} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Resume</a>
               </li>
               <li className={scss['navigation__item']}>
                 <a href={hrefLinkedin} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
@@ -419,7 +402,7 @@ class Projects extends React.Component {
                           e.preventDefault();
                           e.stopPropagation();
                           const projectsSection = document.querySelector('#section-projects');
-                          const intersectionObserver = new IntersectionObserver((entries) => {
+                          const intersectionObserver = new IntersectionObserver(entries => {
                             const [ entry ] = entries;
                             if (entry.isIntersecting) {
                               setTimeout(() => {
@@ -499,12 +482,11 @@ class Projects extends React.Component {
                                   className={scss.paragraph}
                                   gutterBottom
                                   variant={'body1'}>
-                                  My name is Dalton Pierce, I'm the developer behind SleeplesDev. When I set my mind to something, I dive in head first and dedicate
-                                  myself to achieving my goals. It's that perseverance and willingness to learn new things that has helped me to become the self-taught
-                                  myself to achieving my goals. It's that perseverance and willingness to learn new things that has helped me to become the self-taught
-                                  developer that I am. Programming and technology is just about a job for me, it's what I live and breath; It's what I'm passionate about.
+                                  My name is Dalton Pierce, the developer behind SleeplesDev. When I set my mind to something, I dive in head first and dedicate
+                                  myself to achieving those goals. It's this perseverance and willingness to learn new things that has helped me to become the self-taught
+                                  developer that I am. Programming and technology is not simply my job, it's what I live and breath; It's what I'm passionate about.
                                   That passion means that putting my skills to use, or adding new development tools to my toolbox isn't a chore, but is instead a fun -
-                                  albeit challenging - problem solving exercise.
+                                  though often challenging - problem solving exercise.
                                   <br /><br />
                                   I enjoy attending meetups and conferences to learn about the latest technologies and network with fellow developers.
                                   I strive to maintain the perspective of a newcomer, and to avoid becoming jaded by what I think I know. Whatever I do,
@@ -532,13 +514,13 @@ class Projects extends React.Component {
                                   variant={'body1'}>
                                   As a developer, I bring to the table my experience with numerous programming languages such as Javascript, C#, PHP, SQL, Java,
                                   Ruby, and Python; Knowledge of a number of development tools and frameworks for both front-end and back-end including React,
-                                  Node, Express, MongoDB, MySQL; As well as experience working with a team such as my work done at Gainfy on the Gainfy STO and GainFit
-                                  projects, and working with a team of developers at Citdex on the Ares project. I gained a wealth of knowledge during these projects
+                                  Node, Express, MongoDB, MySQL; Experience working on, and even leading teams of developers during the Gainfy STO and Ares projects respectively.
+                                  During these projects, I gained a wealth of knowledge during these projects
                                   about how to coordinate work across a team, how to deal with code conflicts, how to use external tools to facilitate
-                                  bug fixes and work assignments, and how to stick to the roadmap and maintain deadlines while not creating and stressful environment and
+                                  bug fixes and work assignments, as well as sticking to the roadmap and maintain deadlines while not creating and stressful environment and
                                   allowing for creative freedom.
                                   <br /><br />
-                                  Beyond this programming-specific knowledge, my interest in technology as a whole has introduced me to many other interesting
+                                  Beyond this programming-specific knowledge, my passion for technology as a whole has introduced me to many other interesting
                                   fields, such as networking and firewalls, using Linux servers and navigating the command line, creating and utilizing
                                   virtual machines, building and maintaining PC and server hardware, component-level soldering, managing network attached
                                   resources (web servers, Domain Name System servers, Virtual Private Network tunnels, network security devices, routers, and
@@ -771,8 +753,8 @@ class Projects extends React.Component {
                                 language used to quickly and efficiently construct the interfaces of the backend management dashboard, which is then stylized
                                 by Bootstrap. The backend dashboard acts as a restricted area for me to alter admin settings, create new blog, tutorial, or
                                 reference entries, and review the endpoints of my GraphQL <abbr title='Application Programming Interface'>API</abbr>`}
-                                codeUrl={'https://backend.sleeplessdev.io'}
-                                demoUrl={null}
+                                codeUrl={null}
+                                demoUrl={'https://backend.sleeplessdev.io'}
                                 skills={[
                                   'React', 'Nodejs', 'MongoDB', 'GraphQL', 'Pug', 'Bootstrap', 'Material-UI', 'Microservices', 'Web Hosting'
                                 ]}
@@ -858,10 +840,10 @@ class Projects extends React.Component {
                                 body={`PoshCalc is an Android only app built using native Java. PoshCalc intends to help online sellers achieve the highest possible return on investment when selling their products by performing calculations on the purchase price, desired profit, capital, fees, and applicable taxes. In addition, PoshCalc includes a coded legend that enables sellers to place innocuous reminders in their postings that provide a reminder as the the minimum and optimal selling price, without tipping off buyers.`}
                                 codeUrl={'https://github.com/dnnp2011/PoshCalc'}
                                 demoUrl={null}
-                                skills={[ 'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications' ]}
-                                images={[
-                                  poshcalc1
+                                skills={[
+                                  'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Launching Applications'
                                 ]}
+                                images={[ poshcalc1 ]}
                                 color={'green'}
                                 backgroundClass={classes.PoshCalcBg}
                                 classes={classes}
@@ -888,9 +870,7 @@ class Projects extends React.Component {
                                 skills={[
                                   'Java', 'Native Android Development', 'XML', 'MVC Architecture', 'Recycler Views', 'Media Management'
                                 ]}
-                                images={[
-                                  sleeplessRadio2
-                                ]}
+                                images={[ sleeplessRadio2 ]}
                                 color={'blue'}
                                 backgroundClass={classes.SleeplessRadioBg}
                                 classes={classes}
@@ -913,9 +893,7 @@ class Projects extends React.Component {
                                 skills={[
                                   'Java', 'XML', 'Native Android Development', 'Constraint Layouts', 'Input History'
                                 ]}
-                                images={[
-                                  coolcalc2
-                                ]}
+                                images={[ coolcalc2 ]}
                                 color={'green'}
                                 backgroundClass={classes.CoolCalcBg}
                                 classes={classes}
@@ -961,9 +939,7 @@ class Projects extends React.Component {
                                 on creating and managing game loops for an in-browser experience.`}
                                 codeUrl={'https://github.com/dnnp2011/Rock-Dodger'}
                                 demoUrl={null}
-                                skills={[
-                                  'Javascript', 'Game Design', 'Web Animations'
-                                ]}
+                                skills={[ 'Javascript', 'Game Design', 'Web Animations' ]}
                                 images={[
                                   rockDodger1,
                                   rockDodger2
@@ -1016,9 +992,7 @@ class Projects extends React.Component {
                                 skills={[
                                   'Ruby', 'Game Design', 'State Management', 'Testing'
                                 ]}
-                                images={[
-                                  tictactoe1
-                                ]}
+                                images={[ tictactoe1 ]}
                                 color={'blue'}
                                 backgroundClass={classes.TicTacToeBg}
                                 classes={classes}
@@ -1116,9 +1090,7 @@ class Projects extends React.Component {
                                 skills={[
                                   'Java', 'XML', 'Native Android Development', 'UI Design'
                                 ]}
-                                images={[
-                                  herome1
-                                ]}
+                                images={[ herome1 ]}
                                 color={'orange'}
                                 backgroundClass={classes.HeroMeBg}
                                 classes={classes}
@@ -1257,9 +1229,7 @@ class Projects extends React.Component {
                                 body={`Another model intended as a game asset, this Steel Barrel was crafted in reference to real-world oil  barrels and the like. The cylindrical creases around the perimeter of the body provide additional structural integrity, the large valve on top is used for pouring the liquid contained within, and the smaller valve is meant to allow air into the container to take the place of the fluid being emptied. Each of these components is a separate model to ease the process of applying different material textures to the pieces.`}
                                 demoUrl={'https://skfb.ly/6JyRB'}
                                 codeUrl={null}
-                                skills={[
-                                  'Blender', 'UV Unwrapping', 'Texturing'
-                                ]}
+                                skills={[ 'Blender', 'UV Unwrapping', 'Texturing' ]}
                                 images={[
                                   steelDrum1,
                                   steelDrum2
@@ -1281,9 +1251,7 @@ class Projects extends React.Component {
                                 body={`Like many of my other models, this tactical rifle grip was also created using Blender. The notch at the top is meant to allow the grip to be attached to the rail system of the weapon to which it will be attached, and the ribbed body of the rubber grip increase the friction of the component, thereby increasing the 'grippiness' of it. Modeled after real world vertical weapon grips.`}
                                 demoUrl={'https://skfb.ly/6JyQL'}
                                 codeUrl={null}
-                                skills={[
-                                  'Blender', '3D Modeling'
-                                ]}
+                                skills={[ 'Blender', '3D Modeling' ]}
                                 images={[
                                   tacticalGrip1,
                                   tacticalGrip2
@@ -1305,9 +1273,7 @@ class Projects extends React.Component {
                                 body={`A basic rifle red dot optic, modeled in Blender after real world counterparts. Contains mounting holes on the side, and a transparent window upon which a 'red dot' is projected to act as the rifle user's crosshair.`}
                                 codeUrl={null}
                                 demoUrl={'https://skfb.ly/6JyRu'}
-                                skills={[
-                                  'Blender', '3D Modeling'
-                                ]}
+                                skills={[ 'Blender', '3D Modeling' ]}
                                 images={[
                                   gunOptic1,
                                   gunOptic2
@@ -1376,7 +1342,7 @@ class Projects extends React.Component {
                         </Typography>
                       </div>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} style={{ width: '100%' }}>
                       <Story
                         name={'Victoria Saucier'}
                         position={'Founder & CEO - Gainfy'}
@@ -1389,7 +1355,7 @@ class Projects extends React.Component {
                         {...this.props}
                       />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} style={{ width: '100%' }}>
                       <Story
                         name={'Michael Szczech'}
                         position={'Software Engineer - Gainfy'}
@@ -1881,25 +1847,29 @@ function Story(props) {
   const isSmDown = isWidthDown('sm', width, true);
 
   return (
-    <Grid item xs={12}>
+    <Grid item xs>
       <Grid container direction={'row'} alignItems={'center'} font={'inherit'} color={'inherit'}>
-        <Grid item xs className={scss['story']}>
+        <Grid item xs={12} sm={10} md={8} lg={7} xl={6} className={scss['story']}>
           {
             isSmDown
             ? <Grid container direction={'column'} alignItems={'center'} alignContent={'center'} justify={'center'} className={scss['story__content']}>
-              <Grid item xs style={{ height: '100%' }}>
-                <figure className={scss['story__shape']}>
-                  <img src={portraitSrc} alt={name} className={scss['story__portrait']} />
-                  <figcaption className={scss['story__caption']}>
-                    <span>{name}</span>
-                    <br />
-                    <span>{position}</span>
-                  </figcaption>
-                </figure>
+              <Grid item>
+                <Grid container direction={'row'} alignItems={'center'} alignContent={'center'} justify={'center'}>
+                  <Grid item>
+                    <figure className={scss['story__shape']}>
+                      <img src={portraitSrc} alt={name} className={scss['story__portrait']}/>
+                      <figcaption className={scss['story__caption']}>
+                        <span>{name}</span>
+                        <br />
+                        <span>{position}</span>
+                      </figcaption>
+                    </figure>
+                  </Grid>
+                </Grid>
               </Grid>
               <Grid item xs className={scss['story__text']}>
-                <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{highlight}</h3>
-                <p className={scss['story__text--testimonial']}>{testimonial}</p>
+                <h3 style={{ textAlign: 'center' }} className={classNames(scss['heading-tertiary'], scss['story__text--highlight'])}>{ highlight }</h3>
+                <p className={scss['story__text--testimonial']}>{ testimonial }</p>
               </Grid>
             </Grid>
             : <div className={scss['story__content']}>

@@ -80,12 +80,13 @@ class Calendar extends React.Component {
   componentDidMount() {
     const settings = { events: this.props.events, ...this.calendarOptions };
     setTimeout(() => {
-      this.instance = this.jQuery(`#${ this.root }`).fullCalendar(settings);
+      // this.instance = this.jQuery(`#${ this.root }`).fullCalendar(settings);
+      this.instance = document.getElementById(this.root).fullCalendar(settings);
     }, 400);
   }
 
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.instance.fullCalendar("removeEventSources");
     this.instance.fullCalendar("addEventSource", nextProps.events);
   }

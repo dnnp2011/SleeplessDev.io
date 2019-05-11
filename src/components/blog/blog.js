@@ -1,4 +1,4 @@
-import { Button, Collapse, Divider, Fab, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { Collapse, Divider, Fab, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
@@ -180,6 +180,7 @@ class Blog extends React.Component {
     });
   }
 
+
   setTagParam = tag => {
     this.props.history.push(`/blog?tag=${tag}`);
     this.setState({ tag });
@@ -236,10 +237,10 @@ class Blog extends React.Component {
       <div className={scss.blog}>
         <Fab
           tabIndex={0}
-          color='secondary'
+          color={'secondary'}
           autoFocus
           title={'Show Archive'}
-          aria-label='Show Archive'
+          aria-label={'Show Archive'}
           onClick={this.toggleArchiveDrawer}
           className={classNames(theme.direction === 'rtl' ? scss['blog__fab--rtl'] : scss['blog__fab--ltr'])}
         >
@@ -284,8 +285,23 @@ class Blog extends React.Component {
 
                     console.error(error);
                     return <TempDrawerWidget drawerOpen={this.state.archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
-                      <Typography variant={'subtitle1'} gutterBottom className={this.props.classes.noDataText}>Unable to load
-                        archive</Typography>} />;
+                      <div>
+                        <Typography variant={'subtitle1'} gutterBottom className={this.props.classes.noDataText}>
+                          Unable to load archive
+                        </Typography>
+                        <Fab
+                          autoFocus
+                          title={'Hide Archive'}
+                          color={'secondary'}
+                          aria-label='Hide Archive'
+                          onClick={this.toggleArchiveDrawer}
+                          tabIndex={0}
+                          className={theme.direction === 'rtl' ? scss['archive-drawer__fab--rtl'] : scss['archive-drawer__fab--ltr']}
+                        >
+                          <FaAngleRight size={30} />
+                        </Fab>
+                      </div>
+                    } />;
 
                   }
                   else if (loading || !data) return null;

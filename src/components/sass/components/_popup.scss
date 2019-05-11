@@ -43,11 +43,44 @@
   }
 
   &__body {
-    margin-bottom: 3rem;
-    @include column-count(2);
-    @include column-gap(3rem);
-    column-rule: 1px solid $off-white--2;
-    @include hyphens(auto);
+    @include respond(xxl) {
+      @include column-count(2);
+      @include column-gap(3rem);
+      column-rule: 1px solid $off-white--2;
+      @include hyphens(auto);
+    }
+    @include respond(xl) {
+      @include column-count(2);
+      @include column-gap(3rem);
+      column-rule: 1px solid $off-white--2;
+      @include hyphens(auto);
+    }
+    @include respond(lg) {
+      @include column-count(2);
+      @include column-gap(3rem);
+      column-rule: 1px solid $off-white--2;
+      @include hyphens(auto);
+    }
+    @include respond(md) {
+      @include column-count(2);
+      @include column-gap(3rem);
+      column-rule: 1px solid $off-white--2;
+      @include hyphens(auto);
+    }
+    @include respond(sm) {
+      @include column-count(1);
+      line-height: 1.7rem;
+      font-size: 1.2rem;
+      word-spacing: .15rem;
+    }
+    @include respond(xs) {
+      @include column-count(1);
+      line-height: 1.7rem;
+      font-size: 1.2rem;
+      word-spacing: .15rem;
+    }
+
+    margin-bottom: 5rem;
   }
 
   &__close-button {
