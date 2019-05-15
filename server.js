@@ -10,7 +10,17 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(helmet());
 app.use(cors());
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
+app.use(redirectToHTTPS([ /localhost:(\d{4})/ ], [], 301));
+
+// Disable the X-Powered-By Header
+app.disable('x-powered-by');
+// Enable some built-in security headers
+app.use(function (req, res, next) {
+  res.header('X-XSS-Protection', '1; mode=block');
+  res.header('X-Frame-Options', 'deny');
+  res.header('X-Content-Type-Options', 'nosniff');
+  next();
+});
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
