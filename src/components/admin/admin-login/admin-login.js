@@ -38,6 +38,14 @@ class Login extends React.Component {
     ...INIT_STATE
   };
 
+  componentDidMount() {
+    document.title = 'Admin Login | SleeplessDev';
+  }
+
+  componentWillUnmount() {
+    document.title = 'SleeplessDev';
+  }
+
   onSubmit = (event) => {
     const { email, password } = this.state;
     const { history } = this.props;

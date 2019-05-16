@@ -3,6 +3,7 @@ const path = require('path');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 const helmet = require('helmet');
 const cors = require('cors');
+const Utils = require('./src/helpers/Util');
 
 const app = express();
 
@@ -27,7 +28,21 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/build/index.html`));
 });
 
-const port = process.env.PORT || 5000;
+/* TODO:
+  1. current page does not respond with a 200 when offline (PWA)
+  2. start_url does not respond with a 200 when offline (PWA)
+  3. Does not register a service worker that controls page and start_url (PWA)
+  4. Web app manifest does not meet installability req. Does not have PNG icon of at least 192px (PWA)
+  5. Not configured for splash screen. Does not have PNG icon of at least 512px. (PWA)
+  6. Does not have a valid apple-touch-icon (PWA)
+  7. Robots.txt file may be malformed (SEO)
+  8. Document does not have a meta description (SEO)
+  9. Does not use HTTP/2 for all resources (BP)
+  10. Buttons do not have accessible names (Acc)
+
+*/
+
+const port = process.env.PORT || Utils.randomIntFromRange(5000, 63000);
 app.listen(port);
 
 console.log(`App is listening on port ${port}`);

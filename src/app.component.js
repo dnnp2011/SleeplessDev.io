@@ -17,6 +17,7 @@ import { ApolloProvider } from 'react-apollo';
 import GraphQL from 'graphql-tag';
 // Routes
 import Routes from './routes';
+import { BackendUrl } from './helpers/Const';
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const generateClassName = createGenerateClassName();
@@ -47,7 +48,7 @@ class App extends React.Component {
     const materialTheme = createMuiTheme(themeConfig.contentTheme);
 
     const client = new ApolloClient({
-      uri: 'https://backend.sleeplessdev.io/graphql',
+      uri: BackendUrl,
     });
 
     return (

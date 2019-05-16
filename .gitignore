@@ -58,3 +58,5 @@ graphql*.json
 keys.js
 nodemon.json
 *nodemon.json
+*.swp
+.swp

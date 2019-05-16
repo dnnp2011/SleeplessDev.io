@@ -13,6 +13,7 @@ import compose from 'recompose/compose';
 import SelfPortrait from '../../assets/images/portrait/Dalton-Suit-Portrait-02.jpeg';
 import WebDevAndCoffee from '../../assets/images/stock/web-dev-and-coffee-1920x1080.jpg';
 import scss from './aboutme.module.scss';
+import * as Const from '../../helpers/Const';
 
 import themeStyles from './aboutme.style';
 
@@ -34,11 +35,13 @@ class AboutMe extends React.Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    document.title = 'About Me | SleeplessDev';
   }
 
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
+    document.title = 'SleeplessDev';
   }
 
 
@@ -51,7 +54,6 @@ class AboutMe extends React.Component {
 
 
   render() {
-    const resumeUrl = 'https://resume.creddle.io/embed/7wqefr81r5z';
     const { classes, history, width } = this.props;
     const { expanded, viewWidth, viewHeight } = this.state;
 
@@ -94,13 +96,16 @@ class AboutMe extends React.Component {
                 container
                 spacing={0}
                 direction={'row'}
+                alignContent={'flex-start'}
+                alignItems={'flex-start'}
+                justify={'flex-start'}
               >
                 <Grid item xs>
                   <div className={scss['about-me__header']}>
                     <Avatar alt='Dalton Pierce' src={SelfPortrait} className={scss['about-me__header-avatar']} />
                   </div>
                 </Grid>
-                <Grid item xs style={{ zIndex: 2 }}>
+                <Grid item xs={8} sm={8} md={8} lg={10} style={{ zIndex: 2 }}>
                   <Typography variant='h5' gutterBottom>
                     Dalton Pierce
                   </Typography>
@@ -194,7 +199,7 @@ class AboutMe extends React.Component {
                 >
                   <div className={scss['portal-profile__content-second']}>
                     <Card className={scss.card}>
-                      <iframe title={'Resume Iframe'} src={resumeUrl} ref={frame => this.iframe = frame} className={classNames(scss['about-me__resume-iframe'], scss['card-content'])} seamless scrolling={'no'} />
+                      <iframe title={'Resume Iframe'} src={Const.CreddleResumeLink} ref={frame => this.iframe = frame} className={classNames(scss['about-me__resume-iframe'], scss['card-content'])} seamless scrolling={'no'} />
                     </Card>
                   </div>
                 </Grid>
@@ -205,7 +210,7 @@ class AboutMe extends React.Component {
                 focusRipple
                 className={classes.image}
                 focusVisibleClassName={classes.focusVisible}
-                href={resumeUrl}
+                href={Const.CreddleResumeLink}
                 rel={'noreferrer noopener nofollow'}
                 target={'_blank'}
               >
@@ -239,7 +244,8 @@ class AboutMe extends React.Component {
 
 AboutMe.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  history: PropTypes.shape({}),
 };
 
 export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(AboutMe);

@@ -50,6 +50,14 @@ class Blog extends React.Component {
 
   }
 
+  componentDidMount() {
+    document.title = 'Blog | SleeplessDev';
+  }
+
+
+  componentWillUnmount() {
+    document.title = 'SleeplessDev';
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
 

@@ -34,7 +34,7 @@ const LandingPage = (props) => {
         <Paper className={ classNames(scss.paper, classes["primary-paper"]) }>
           <CardContent className={ scss["landing-page-content"] }>
             <img src={ logoImage } className={ scss["landing-page-logo"] } alt='logo' />
-            <Typography variant='h5' gutterBottom>Hey There!</Typography>
+            <Typography variant='h5' gutterBottom>Welcome!</Typography>
             <Typography variant='body1'>
               My name is Dalton, I'm the developer behind SleeplessDev.io! I worked hard to create an aesthetically pleasing and functionally smooth experience. You'll find other examples of my work, my resume, how to get in touch, and my blog. Some aspects of this site are still under development.
             </Typography>

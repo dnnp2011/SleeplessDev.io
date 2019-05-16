@@ -37,11 +37,7 @@ const LandingPage = (props) => {
             <CardContent className={scss["landing-page-content"]}>
               <img src={logoImage} className={scss["landing-page-logo"]} alt="logo"/>
               <Typography variant='h5' gutterBottom>Hey There!</Typography>
-              <Typography variant='body1'>My name is Dalton Pierce, the insomniac developer behind SleeplessDev! I worked hard to create an aesthetically pleasing, yet functional website
-                that would be indicative of my skill as a developer. Whether you're an employer, prospective client, or a fellow developer, feel free to take a look around.
-                You'll find other examples of my work, contact information, as well as a collection of developer reference material; A compilation of knowledge gathered through my experiences
-                with Software Development, Networking and Firewalls, PC and Server Hardware, and more! Regardless of what brought you here, I hope you leave having learned something
-                new!</Typography>
+              <Typography variant='body1'>My name is Dalton, I'm the developer behind SleeplessDev.io! I worked hard to create an aesthetically pleasing and functionally smooth experience. You'll find other examples of my work, my resume, how to get in touch, and my blog. Some aspects of this site are still under development.</Typography>
             </CardContent>
           </Paper>
         </Grid>
