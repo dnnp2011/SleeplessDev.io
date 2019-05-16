@@ -42,7 +42,7 @@ app.get('*', (req, res) => {
 
 */
 
-const port = process.env.PORT || Utils.randomIntFromRange(5000, 63000);
+const port = process.env.PORT || Math.floor((Math.random() * (63000 - 5000 + 1)) + 5000);
 app.listen(port);
 
 console.log(`App is listening on port ${port}`);
