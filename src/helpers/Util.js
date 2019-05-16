@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+dayjs().format();
 
 
 export function getMonthFromString(month, zeroIndex = false) {

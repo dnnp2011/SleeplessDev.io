@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+dayjs().format();
 
 export const Email = 'daltonpierce@sleeplessdev.io';
 export const Gender = 'Male';
