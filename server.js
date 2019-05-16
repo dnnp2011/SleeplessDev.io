@@ -3,7 +3,6 @@ const path = require('path');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 const helmet = require('helmet');
 const cors = require('cors');
-const Utils = require('./src/helpers/Util');
 
 const app = express();
 
