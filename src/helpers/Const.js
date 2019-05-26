@@ -8,7 +8,8 @@ export const Region = 'New York City, NY';
 export const LinkedIn = 'https://www.linkedin.com/in/dalton-glenn-pierce/';
 export const Github = 'https://github.com/dnnp2011';
 export const CreddleResumeLink = 'https://resume.creddle.io/embed/7wqefr81r5z';
-export const BackendUrl = 'https://backend.sleeplessdev.io/api/graphql';
+// export const BackendUrl = 'https://backend.sleeplessdev.io/api/graphql';
+export const BackendUrl = 'http://localhost:5000/api/graphql';
 
 export const HrefHome = '/',
   HrefContact = '/contact',

@@ -241,6 +241,12 @@ class Blog extends React.Component {
                 }
             `;
 
+    /*
+    TODO:
+      1. Panel scrolls on the X-Axis
+      2. Long category tags overflow outside of the containing list
+      3. FAB arrows need to be shifted left (-X) a few pixels to center it more neatly
+    */
     return (
       <div className={scss.blog}>
         <Fab

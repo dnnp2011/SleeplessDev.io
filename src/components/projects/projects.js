@@ -1100,7 +1100,7 @@ class Projects extends React.Component {
                         </Grid>
 
                         <hr className={scss['horizontal-rule']} />
-
+                        {/* TODO: Change project text to a variation of the format: Brief Description (1-2 sentences), Objectives, Challenges, My Solutions */}
                         <Grid item className={scss['section-container']}>
                           <div className={scss['projects__design']}>
                             <h4 className={scss['projects__design--label']} id={'software-label'}>
