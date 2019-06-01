@@ -21,7 +21,7 @@ function BlogPaper(props) {
 
   return (
     <Grid container direction={'row'} spacing={0} alignContent={'center'} justify={'center'} className={scss.blog}>
-      <Grid item md={8} sm={10} xs={10}>
+      <Grid item md={8} sm={10} xs={12}>
         <Paper elevation={5} raised={'true'} className={scss['blog__paper']}>
           <Grid container spacing={8} direction={'column'} alignItems={'flex-start'} justify={'flex-start'}>
             <Grid item xs={12} className={scss['blog__header']}>
@@ -50,7 +50,6 @@ function BlogPaper(props) {
                   )
               }
             </Grid>
-            {/*<Divider className={scss['blog__divider']}/>*/}
             <Divider variant={'middle'} className={scss['blog__divider']} />
             <Grid item xs={12} className={scss['blog__content']} style={{ minWidth: '0' }}>
               <Typography variant={'body1'} component={'p'} dangerouslySetInnerHTML={{ __html: body }} className={scss['blog__body']} />

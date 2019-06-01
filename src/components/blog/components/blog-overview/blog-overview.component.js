@@ -98,6 +98,7 @@ function BlogOverview(props) {
       return blogData.map(blog => {
         const { author, body, ...rest } = blog;
 
+        readyToRefresh = false;
         setTimeout(() => {
           readyToRefresh = true;
         }, 590000);

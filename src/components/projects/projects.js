@@ -73,7 +73,6 @@ import scss from './projects.module.scss';
 import themeStyles from './projects.style';
 import * as Const from '../../helpers/Const';
 
-//TODO: Make Projects Navigation spans transform color to primary green on hover or focus
 //TODO: Fix the focus changing order upon opening the navigation menu
 //TODO: Make the two columns of body text on the Project Popups condense to a single column on small screens
 //TODO: Root panel x-scrolls on mobile
