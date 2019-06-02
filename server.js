@@ -58,7 +58,7 @@ app.get('*', (req, res) => {
  10. Buttons do not have accessible names (Acc)
 
  */
-app.enable('trust proxy');
+// app.enable('trust proxy');
 // app.listen(port)
 
 /**
@@ -72,15 +72,15 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+// server.listen(port);
+// server.on('error', onError);
+// server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -143,5 +143,5 @@ function onListening() {
   console.log(`Listening on ${bind}`);
 }
 
-
+app.listen(port);
 console.log(`App is listening on port ${port}`);
