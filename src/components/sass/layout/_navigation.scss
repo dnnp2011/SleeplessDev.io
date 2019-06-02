@@ -162,7 +162,7 @@
   }
 
   &__item {
-    margin: 1rem;
+    margin: .5rem;
   }
 
   &__link {
@@ -170,8 +170,8 @@
     &:visited {
       @include hide-backface;
       display: inline-block;
-      padding: .8rem 1.5rem;
-      font-size: 2.5rem;
+      padding: .7rem 1.3rem;
+      font-size: 2rem;
       font-weight: 300;
       color: $secondaryFont;
       text-transform: uppercase;

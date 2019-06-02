@@ -253,7 +253,7 @@ class Projects extends React.Component {
               <li className={scss['navigation__item']}>
                 <a href={Const.LinkedIn} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>LinkedIn</a>
               </li>
-              <li className={scss['navigation__item']}>
+              <li className={scss['navigation__item']} style={{marginBottom: '2rem'}}>
                 <a href={Const.Github} rel={'noreferrer noopener nofollow'} target={'_blank'} className={scss['navigation__link']}>Github</a>
               </li>
             </ul>
