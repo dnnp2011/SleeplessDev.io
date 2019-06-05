@@ -477,7 +477,7 @@ class Projects extends React.Component {
                                   className={scss.paragraph}
                                   gutterBottom
                                   variant={'body1'}>
-                                  My name is Dalton Pierce, the developer behind SleeplesDev. When I set my mind to something, I dive in head first and dedicate
+                                  My name is Dalton Pierce, the developer behind SleeplessDev. When I set my mind to something, I dive in head first and dedicate
                                   myself to achieving those goals. It's this perseverance and willingness to learn new things that has helped me to become the self-taught
                                   developer that I am. Programming and technology is not simply my job, it's what I live and breath; It's what I'm passionate about.
                                   That passion means that putting my skills to use, or adding new development tools to my toolbox isn't a chore, but is instead a fun -
