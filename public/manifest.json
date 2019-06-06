@@ -1,6 +1,7 @@
 {
   "short_name": "SleeplessDev",
   "name": "SleeplessDev.io",
+  "author": "Dalton Pierce",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,5 +22,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#ff3d00",
-  "background_color": "#424242"
+  "background_color": "#424242",
+  "description": "A collection of projects, developer tools, and more by a SleeplessDev.",
+  "keywords": ["web development", "developer", "full stack developer", "programmer", "programming", "software engineer"],
 }
