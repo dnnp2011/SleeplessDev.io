@@ -512,7 +512,7 @@ class Projects extends React.Component {
                                   Node, Express, MongoDB, MySQL; Experience working on, and even leading teams of developers during the Gainfy STO and Ares projects respectively.
                                   During these projects, I gained a wealth of knowledge during these projects
                                   about how to coordinate work across a team, how to deal with code conflicts, how to use external tools to facilitate
-                                  bug fixes and work assignments, as well as sticking to the roadmap and maintain deadlines while not creating and stressful environment and
+                                  bug fixes and work assignments, as well as sticking to the road-map and maintain deadlines while not creating and stressful environment and
                                   allowing for creative freedom.
                                   <br /><br />
                                   Beyond this programming-specific knowledge, my passion for technology as a whole has introduced me to many other interesting
@@ -603,6 +603,20 @@ class Projects extends React.Component {
                     </Grid>
                   </Grid>
                 </section>
+
+                {/*
+                  TODO:
+                    - Change the Project Card to a variation on the default modal for better functionality
+                    - Implement a better method of showing images (1. Use the existing image composition component 2. Render a full screen modal showing a full-size image 3. Have one large image
+                     frame that cycles through a selection of images)
+                    - Change the Project description format to:
+                      1. Short Description
+                      2. Skill / Tools Used
+                      3. Challenges Faced
+                      4. Solutions Created
+                      5. Overall Lesson / Insights
+                    - Make sure neighboring images have the same proportions in the alignment direction
+                */}
 
                 <section tabIndex={0} id={'section-projects'} className={scss['section-projects']}>
                   <Grid container direction={'column'} spacing={16} alignItems={'center'} alignContent={'center'}>

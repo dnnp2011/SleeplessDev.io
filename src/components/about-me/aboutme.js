@@ -51,7 +51,7 @@ class AboutMe extends React.Component {
       viewHeight: window.innerHeight
     });
   };
-
+  //TODO: Add an explanation for the "Go to Resume Source" button. Like: "Your screen is too small to display my resume to its maximum goodness. Here's a dedicated link for you: https://blah.com"
 
   render() {
     const { classes, history, width } = this.props;
@@ -190,7 +190,6 @@ class AboutMe extends React.Component {
                 </ExpansionPanel>
               </div>
             </Grid>
-
             {
               viewWidth >= 827
                 ? <Grid

@@ -71,11 +71,12 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "firebase": "^5.11.1",
-    "git-semver-tags": "^2.0.2"
+    "git-semver-tags": "^2.0.2",
+    "sw-precache": "^5.2.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build && sw-precache --config=sw-precache-config.js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
