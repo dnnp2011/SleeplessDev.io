@@ -1,20 +1,19 @@
 module.exports = {
-/*  staticFileGlobs: [ 'build/static/css/!**.css', 'build/static/js/!**.js' ],
-  swFilePath: './build/service-worker.js',
-  templateFilePath: './service-worker.tmpl',
+  staticFileGlobs: [ 'build/static/css/**.css', 'build/static/js/!**.js' ],
+  swFilePath: './build/sw-cached-pages.js',
   stripPrefix: 'build/',
-  handleFetch: false,
+  handleFetch: true,
   runtimeCaching: [
     {
-      urlPattern: /\*!/,
+      urlPattern: /\*/,
       handler: 'networkFirst',
       options: {
         cache: {
-          name: 'sleeplessdev-cache',
-          maxEntries: 20,
-          maxAgeSeconds: 360
+          name: 'v1',
+          maxEntries: 50,
+          maxAgeSeconds: 720
         }
       }
     }
-  ]*/
+  ]
 };

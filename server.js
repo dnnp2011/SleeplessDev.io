@@ -30,6 +30,7 @@ app.use(function(req, res, next) {
   res.header('X-XSS-Protection', '1; mode=block');
   res.header('X-Frame-Options', 'deny');
   res.header('X-Content-Type-Options', 'nosniff');
+  res.header('Cache-Control', 'no-cache');
   next();
 });
 
