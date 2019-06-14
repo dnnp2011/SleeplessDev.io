@@ -78,7 +78,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build --env=PRODUCTION && workbox generateSW workbox-config.js && workbox injectManifest workbox-manifest.js",
+    "build": "NODE_ENV=production react-app-rewired build && workbox generateSW workbox-config.js && workbox injectManifest workbox-manifest.js",
     "workbox-build": "workbox generateSW workbox-config.js && workbox injectManifest workbox-manifest.js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
