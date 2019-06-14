@@ -66,12 +66,12 @@ import zombieShooter5 from '../../assets/images/screenshots/zombie-shooter-5.jpg
 import storyBgVideo from '../../assets/video/falling_sparks_water_2k_minified.mp4';
 import storyBgVideoAlt from '../../assets/video/mt_baker.webm';
 import storyBgVideoAlt2 from '../../assets/video/snow_motion.ogv';
+import * as Const from '../../helpers/Const';
 import * as devicons from '../widgets/svg-icon/Devicons';
 import SvgIcon from '../widgets/svg-icon/SvgIcon';
 import ParticleSystemCanvas from './components/particle-system-canvas/particle-system-widget.component';
 import scss from './projects.module.scss';
 import themeStyles from './projects.style';
-import * as Const from '../../helpers/Const';
 
 //TODO: Fix the focus changing order upon opening the navigation menu
 //TODO: Make the two columns of body text on the Project Popups condense to a single column on small screens

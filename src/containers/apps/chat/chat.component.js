@@ -1,20 +1,20 @@
-import Snackbar from "@material-ui/core/Snackbar";
-import React from "react";
+import Snackbar from '@material-ui/core/Snackbar';
+import React from 'react';
 
-import recentChats from "../../../assets/data/apps/chat/recent.json";
+import recentChats from '../../../assets/data/apps/chat/recent.json';
 
-import ChatList from "./chat-list/chat-list.component";
-import ChatMessages from "./chat-messages/chat-messages.component";
+import ChatList from './chat-list/chat-list.component';
+import ChatMessages from './chat-messages/chat-messages.component';
 
-import scss from "./chat.module.scss";
-import NoMessages from "./no-messages/no-messages.component";
+import scss from './chat.module.scss';
+import NoMessages from './no-messages/no-messages.component';
 
 
 class Email extends React.Component {
   state = {
     selectedChat: null,
     snackbarOpen: false,
-    snackbarMessage: ""
+    snackbarMessage: ''
   };
 
   onSnackbarClose = () => {
@@ -23,17 +23,17 @@ class Email extends React.Component {
 
   selectChat = chat => () => {
     this.setState({
-                    selectedChat: chat
-                  });
+      selectedChat: chat
+    });
   };
 
-  sendMessage = (message) => {
+  sendMessage = message => {
     const newMessage = {
       date: Date.now(),
       from: {
-        email: "morris@gmail.com",
-        name: "Morris Onions",
-        image: "assets/images/avatars/avatar-2.png"
+        email: 'morris@gmail.com',
+        name: 'Morris Onions',
+        image: 'assets/images/avatars/avatar-2.png'
       },
       content: message
     };
@@ -41,36 +41,36 @@ class Email extends React.Component {
     this.state.selectedChat.messages.unshift(newMessage);
 
     this.setState({
-                    snackbarOpen: true,
-                    snackbarMessage: "Message Sent"
-                  });
+      snackbarOpen: true,
+      snackbarMessage: 'Message Sent'
+    });
   };
 
 
   render() {
     return (
-      <div className={ scss["chat-wrapper"] }>
+      <div className={scss['chat-wrapper']}>
         <ChatList
-          selected={ this.state.selectedChat }
-          list={ recentChats }
-          onSelect={ this.selectChat }
+          selected={this.state.selectedChat}
+          list={recentChats}
+          onSelect={this.selectChat}
         />
-        { this.state.selectedChat ?
-          (<ChatMessages chat={ this.state.selectedChat } onSend={ this.sendMessage } />) :
-          (<NoMessages />)
+        {this.state.selectedChat
+          ? (<ChatMessages chat={this.state.selectedChat} onSend={this.sendMessage} />)
+          : (<NoMessages />)
         }
         <Snackbar
-          anchorOrigin={ {
-            vertical: "bottom",
-            horizontal: "right"
-          } }
-          open={ this.state.snackbarOpen }
-          autoHideDuration={ 3000 }
-          onClose={ this.onSnackbarClose }
-          ContentProps={ {
-            "aria-describedby": "message-id"
-          } }
-          message={ <span id='message-id'>{ this.state.snackbarMessage }</span> }
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right'
+          }}
+          open={this.state.snackbarOpen}
+          autoHideDuration={3000}
+          onClose={this.onSnackbarClose}
+          ContentProps={{
+            'aria-describedby': 'message-id'
+          }}
+          message={<span id='message-id'>{this.state.snackbarMessage}</span>}
         />
       </div>
     );

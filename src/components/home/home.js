@@ -15,11 +15,9 @@ import scss from './home.module.scss';
 import themeStyles from './home.style';
 
 
-const LandingPage = (props) => {
-  const {
-    classes,
-    width
-  } = props;
+const LandingPage = props => {
+  const { classes,
+    width } = props;
 
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';

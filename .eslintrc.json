@@ -98,7 +98,7 @@
     "no-new-func": "warn",
     "no-throw-literal": "error",
     "no-unmodified-loop-condition": "error",
-    "no-useless-escape": "warn",
+    "no-useless-escape": "off",
     "vars-on-top": "warn",
     "wrap-iife": "warn",
     "no-delete-var": "error",
@@ -117,10 +117,10 @@
     ],
     "array-bracket-spacing": [
       "warn",
-      "never",
+      "always",
       {
         "objectsInArrays": true,
-        "arraysInArrays": true
+        "arraysInArrays": false
       }
     ],
     "array-element-newline": [ "warn", "consistent" ],

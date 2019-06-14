@@ -72,12 +72,13 @@
     "eslint-plugin-react": "^7.13.0",
     "firebase": "^5.11.1",
     "git-semver-tags": "^2.0.2",
+    "workbox-build": "^4.3.1",
     "workbox-sw": "^4.3.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build --env=PRODUCTION",
-    "build-all": "react-app-rewired build --env=PRODUCTION && workbox generateSW workbox-config.js && workbox injectManifest",
+    "build": "react-app-rewired build --env=PRODUCTION && workbox generateSW workbox-config.js && workbox injectManifest workbox-manifest.js",
+    "workbox-build": "workbox generateSW workbox-config.js && workbox injectManifest workbox-manifest.js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },

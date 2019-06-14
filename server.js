@@ -1,9 +1,12 @@
 const express = require('express');
+const react = require('react');
+const { renderToString } = require('react-dom');
 const path = require('path');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 const helmet = require('helmet');
 const cors = require('cors');
 const http = require('http');
+const App = require('./src/app.component');
 
 const serverOptions = {
   dotfiles: 'ignore',
@@ -18,7 +21,10 @@ const serverOptions = {
 const app = express(serverOptions);
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+app.use('build', express.static(path.join(__dirname, 'build')));
+//TODO: Try adding a prefix of build: app.use('build', express.static('public'))
+// app.use('/assets', express.static(path.join(__dirname, 'assets')));
+// app.use(express.static(path.join(__dirname, 'static')));
 app.use(helmet());
 app.use(cors());
 app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
@@ -30,7 +36,6 @@ app.use(function(req, res, next) {
   res.header('X-XSS-Protection', '1; mode=block');
   res.header('X-Frame-Options', 'deny');
   res.header('X-Content-Type-Options', 'nosniff');
-  res.header('Cache-Control', 'no-cache');
   next();
 });
 
@@ -42,6 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Handles any requests that don't match the ones above
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/build/index.html`));
 });

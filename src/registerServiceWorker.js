@@ -6,6 +6,7 @@
     || window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );*/
 
+//TODO: Re-enable localhost check
 const isLocalhost = false;
 
 export default function register() {
@@ -19,8 +20,8 @@ export default function register() {
       console.log('Given URL Origin does not match this site\'s Origin');
       return;
     }
-
     window.addEventListener('load', () => {
+      // !! Set the Service Worker file name here: (sw.js | service-worker.js)
       const swUrl = `${process.env.PUBLIC_URL}/sw.js`;
 
       if (isLocalhost) {

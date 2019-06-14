@@ -1,6 +1,4 @@
-import {
-  Avatar, ButtonBase, Card, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Grid, Hidden
-} from '@material-ui/core';
+import { Avatar, ButtonBase, Card, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Grid, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withWidth from '@material-ui/core/withWidth/withWidth';
@@ -12,8 +10,8 @@ import compose from 'recompose/compose';
 
 import SelfPortrait from '../../assets/images/portrait/Dalton-Suit-Portrait-02.jpeg';
 import WebDevAndCoffee from '../../assets/images/stock/web-dev-and-coffee-1920x1080.jpg';
-import scss from './aboutme.module.scss';
 import * as Const from '../../helpers/Const';
+import scss from './aboutme.module.scss';
 
 import themeStyles from './aboutme.style';
 
