@@ -1,12 +1,8 @@
 const express = require('express');
-const react = require('react');
-const { renderToString } = require('react-dom');
 const path = require('path');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 const helmet = require('helmet');
 const cors = require('cors');
-const http = require('http');
-const App = require('./src/app.component');
 
 const serverOptions = {
   dotfiles: 'ignore',
@@ -22,9 +18,6 @@ const app = express(serverOptions);
 
 // Serve the static files from the React app
 app.use('build', express.static(path.join(__dirname, 'build')));
-//TODO: Try adding a prefix of build: app.use('build', express.static('public'))
-// app.use('/assets', express.static(path.join(__dirname, 'assets')));
-// app.use(express.static(path.join(__dirname, 'static')));
 app.use(helmet());
 app.use(cors());
 app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));

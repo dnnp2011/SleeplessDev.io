@@ -5,35 +5,6 @@ const swSrc = 'src-sw.js';
 
 console.log('Running Workbox-Build...');
 
-/*workbox.injectManifest({
-  swSrc,
-  swDest,
-  globIgnores: [ 'node_modules/!**!/!*' ],
-  globPatterns: [
-    '**!/!*.js',
-    '**!/!*.html',
-    '**!/!*.css',
-    '**!/!*.json',
-    '**!/!*.ico',
-    '**!/!*.svg',
-    '**!/!*.png',
-    '**!/!*.jpg',
-    '**!/!*.jpeg',
-    '**!/!*.ogv',
-    '**!/!*.webm',
-    '**!/!*.ttf',
-    '**!/!*.woff',
-    '**!/!*.woff2',
-    '**!/!*.eot',
-    '**!/!*.mp4'
-  ],
-  globDirectory: '.'
-})
-  .then(({ count, size }) => {
-    console.log(`injectManifest --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
-  })
-  .catch(err => console.log('injectManifest --> ', err));*/
-
 workbox.generateSW({
   globDirectory: '.',
   globPatterns: [
