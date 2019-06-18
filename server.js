@@ -11,7 +11,6 @@ const serverOptions = {
   redirect: true,
   setHeaders(res, path, stat) {
     res.set('x-timestamp', dayjs());
-    res.set('content-type', 'text/javascript');
     res.set('x-content-type-options', 'nosniff');
   }
 };
@@ -31,7 +30,6 @@ app.use(function(req, res, next) {
   res.header('X-XSS-Protection', '1; mode=block');
   res.header('X-Frame-Options', 'deny');
   res.header('X-Content-Type-Options', 'nosniff');
-  res.header('Content-Type', 'text/javascript');
   next();
 });
 
