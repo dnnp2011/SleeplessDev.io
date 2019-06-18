@@ -1,2 +1,1 @@
-web: node server.js
-release: workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js
+web: node server.js && workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js
