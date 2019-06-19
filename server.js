@@ -4,6 +4,8 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 const helmet = require('helmet');
 const cors = require('cors');
 
+require('./workbox-build.js');
+
 const serverOptions = {
   dotfiles: 'ignore',
   index: false,
