@@ -6,7 +6,7 @@ const swSrc = 'src-sw.js';
 console.log('Running Workbox-Build...');
 
 workbox.generateSW({
-  globDirectory: '.',
+  globDirectory: 'build/',
   globPatterns: [
     '**/*.js',
     '**/*.html',
@@ -23,9 +23,11 @@ workbox.generateSW({
     '**/*.woff',
     '**/*.woff2',
     '**/*.eot',
-    '**/*.mp4',
+    '**/*.mp4'
   ],
   globIgnores: [ 'node_modules/**/*' ],
+  globStrict: true,
+  maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
   swDest: 'build/sw.js',
   importWorkboxFrom: 'cdn',
   skipWaiting: true,
@@ -45,105 +47,7 @@ workbox.generateSW({
       }
     }, {
       urlPattern: ({ event }) => event.request.mode === 'navigate',
-      handler: 'NetworkOnly',
-    }
-  ],
-  navigateFallback: './index.html',
-  navigateFallbackBlacklist: [ /^\/(?:build|static|assets|images|css|js|media)/ ],
-  importScripts: [ 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js' ],
-  directoryIndex: 'build',
-  offlineGoogleAnalytics: true,
-  cleanupOutdatedCaches: true,
-  globStrict: true,
-  maximumFileSizeToCacheInBytes: 4 * 1024 * 1024
-})
-  .then(({ count, size }) => {
-    console.log(`generateSW --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
-
-    workbox.injectManifest({
-      swSrc,
-      swDest,
-      globIgnores: [ 'node_modules/**/*' ],
-      globPatterns: [
-        '**!/!*.js',
-        '**!/!*.html',
-        '**!/!*.css',
-        '**!/!*.json',
-        '**!/!*.ico',
-        '**!/!*.svg',
-        '**!/!*.png',
-        '**!/!*.jpg',
-        '**!/!*.jpeg',
-        '**!/!*.ogv',
-        '**!/!*.webm',
-        '**!/!*.ttf',
-        '**!/!*.woff',
-        '**!/!*.woff2',
-        '**!/!*.eot',
-        '**/!*.mp4'
-      ],
-      globDirectory: '.'
-    })
-      .then(({ count, size }) => {
-        console.log(`injectManifest --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
-      })
-      .catch(err => console.log('injectManifest --> ', err));
-  })
-  .catch(err => console.log('generateSW --> ', err));
-
-//-----------------------------------------------------------------------------
-/*const workbox = require('workbox-build');
-
-const swDest = 'build/sw.js';
-const swSrc = 'src-sw.js';
-
-console.log('Running Workbox-Build...');
-
-// TODO: Try to resolve the "bad-precaching-response: The precaching request failed with an HTTP status of 404" error
-// TODO: If all else fails, revert to the manual build process and migrate new options to workbox-config.js
-
-console.log('Starting doBuildSW()');
-
-workbox.generateSW({
-  swDest,
-  importWorkboxFrom: 'local',
-  globIgnores: [ 'node_modules/!**!/!*' ],
-  globDirectory: '.',
-  globPatterns: [
-    '**!/!*.js',
-    '**!/!*.html',
-    '**!/!*.css',
-    '**!/!*.json',
-    '**!/!*.ico',
-    '**!/!*.svg',
-    '**!/!*.png',
-    '**!/!*.jpg',
-    '**!/!*.jpeg',
-    '**!/!*.ogv',
-    '**!/!*.webm',
-    '**!/!*.ttf',
-    '**!/!*.woff',
-    '**!/!*.woff2',
-    '**!/!*.eot',
-    '**!/!*.mp4'
-  ],
-  cacheId: 'sleeplessdev',
-  offlineGoogleAnalytics: true,
-  cleanupOutdatedCaches: true,
-  maximumFileSizeToCacheInBytes: (4 * 1024 * 1024),
-  runtimeCaching: [
-    {
-      urlPattern: /^.*\.(?:png|jpg|svg|jpeg|webm|ogv|mp4)$/,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'images-v1',
-        expiration: {
-          maxAgeSeconds: 60 * 60 * 24 * 7
-        },
-        cacheableResponse: {
-          statuses: [ 0, 200 ]
-        }
-      }
+      handler: 'NetworkOnly'
     }, {
       urlPattern: new RegExp('^(?:https:\/\/backend\.sleeplessdev\.io)\/?.*', 'i'),
       handler: 'networkFirst',
@@ -193,43 +97,189 @@ workbox.generateSW({
         }
       }
     }
-  ]
-});*/
-/*.then(({ count, size }) => {
+  ],
+  navigateFallback: './index.html',
+  navigateFallbackBlacklist: [ /^\/(?:build|static|assets|images|css|js|media)/ ],
+  importScripts: [ 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js' ],
+  directoryIndex: 'build',
+  offlineGoogleAnalytics: true,
+  cleanupOutdatedCaches: true
+})
+  .then(({ count, size }) => {
     console.log(`generateSW --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
-    console.log('Starting doInjectManifest');
+
     workbox.injectManifest({
-      swSrc,
-      swDest,
-      globDirectory: '.',
-      globIgnores: [ '**!/ignored.html', 'node_modules/!**!/!*' ],
+      globDirectory: 'build/',
       globPatterns: [
-        '**!/!*.js',
-        '**!/!*.html',
-        '**!/!*.css',
-        '**!/!*.json',
-        '**!/!*.ico',
-        '**!/!*.svg',
-        '**!/!*.png',
-        '**!/!*.jpg',
-        '**!/!*.jpeg',
-        '**!/!*.ogv',
-        '**!/!*.webm',
-        '**!/!*.ttf',
-        '**!/!*.woff',
-        '**!/!*.woff2',
-        '**!/!*.eot',
-        '**!/!*.mp4'
-      ]
+        '**/*.js',
+        '**/*.html',
+        '**/*.css',
+        '**/*.json',
+        '**/*.ico',
+        '**/*.svg',
+        '**/*.png',
+        '**/*.jpg',
+        '**/*.jpeg',
+        '**/*.ogv',
+        '**/*.webm',
+        '**/*.ttf',
+        '**/*.woff',
+        '**/*.woff2',
+        '**/*.eot',
+        '**/*.mp4'
+      ],
+      globIgnores: [ 'node_modules/**/*' ],
+      globStrict: true,
+      maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+      swDest: 'build/sw.js',
+      swSrc: 'src-sw.js'
     })
       .then(({ count, size }) => {
         console.log(`injectManifest --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
-        console.log('Completed doInjectManifest');
-      }
-      )
-      .catch(err => console.log('Workbox-Build ---> Error injecting precache manifest: ', err));
+      })
+      .catch(err => console.log('injectManifest --> ', err));
   })
-  .catch(err => console.log('Workbox-Build --> Error generating Service Worker: ', err));*/
+  .catch(err => console.log('generateSW --> ', err));
+
+//-----------------------------------------------------------------------------
+/*const workbox = require('workbox-build');
+
+ const swDest = 'build/sw.js';
+ const swSrc = 'src-sw.js';
+
+ console.log('Running Workbox-Build...');
+
+ // TODO: Try to resolve the "bad-precaching-response: The precaching request failed with an HTTP status of 404" error
+ // TODO: If all else fails, revert to the manual build process and migrate new options to workbox-config.js
+
+ console.log('Starting doBuildSW()');
+
+ workbox.generateSW({
+ swDest,
+ importWorkboxFrom: 'local',
+ globIgnores: [ 'node_modules/!**!/!*' ],
+ globDirectory: '.',
+ globPatterns: [
+ '**!/!*.js',
+ '**!/!*.html',
+ '**!/!*.css',
+ '**!/!*.json',
+ '**!/!*.ico',
+ '**!/!*.svg',
+ '**!/!*.png',
+ '**!/!*.jpg',
+ '**!/!*.jpeg',
+ '**!/!*.ogv',
+ '**!/!*.webm',
+ '**!/!*.ttf',
+ '**!/!*.woff',
+ '**!/!*.woff2',
+ '**!/!*.eot',
+ '**!/!*.mp4'
+ ],
+ cacheId: 'sleeplessdev',
+ offlineGoogleAnalytics: true,
+ cleanupOutdatedCaches: true,
+ maximumFileSizeToCacheInBytes: (4 * 1024 * 1024),
+ runtimeCaching: [
+ {
+ urlPattern: /^.*\.(?:png|jpg|svg|jpeg|webm|ogv|mp4)$/,
+ handler: 'CacheFirst',
+ options: {
+ cacheName: 'images-v1',
+ expiration: {
+ maxAgeSeconds: 60 * 60 * 24 * 7
+ },
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(?:https:\/\/backend\.sleeplessdev\.io)\/?.*', 'i'),
+ handler: 'networkFirst',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(?:https:\/\/sleeplessdev-io\.firebaseio\.com)\/?.*', 'i'),
+ handler: 'networkFirst',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(?:https:\/\/resume\.creddle\.io)\/?.*', 'i'),
+ handler: 'StaleWhileRevalidate',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(https:\/\/fonts.(?:googleapis|gstatic).com)\/?.*', 'i'),
+ handler: 'CacheFirst',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(?:https:\/\/netdna\.bootstrapcdn\.com)\/?.*', 'i'),
+ handler: 'CacheFirst',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }, {
+ urlPattern: new RegExp('^(?:https:\/\/code\.jquery\.com)\/?.*', 'i'),
+ handler: 'CacheFirst',
+ options: {
+ cacheableResponse: {
+ statuses: [ 0, 200 ]
+ }
+ }
+ }
+ ]
+ });*/
+/*.then(({ count, size }) => {
+ console.log(`generateSW --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
+ console.log('Starting doInjectManifest');
+ workbox.injectManifest({
+ swSrc,
+ swDest,
+ globDirectory: '.',
+ globIgnores: [ '**!/ignored.html', 'node_modules/!**!/!*' ],
+ globPatterns: [
+ '**!/!*.js',
+ '**!/!*.html',
+ '**!/!*.css',
+ '**!/!*.json',
+ '**!/!*.ico',
+ '**!/!*.svg',
+ '**!/!*.png',
+ '**!/!*.jpg',
+ '**!/!*.jpeg',
+ '**!/!*.ogv',
+ '**!/!*.webm',
+ '**!/!*.ttf',
+ '**!/!*.woff',
+ '**!/!*.woff2',
+ '**!/!*.eot',
+ '**!/!*.mp4'
+ ]
+ })
+ .then(({ count, size }) => {
+ console.log(`injectManifest --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
+ console.log('Completed doInjectManifest');
+ }
+ )
+ .catch(err => console.log('Workbox-Build ---> Error injecting precache manifest: ', err));
+ })
+ .catch(err => console.log('Workbox-Build --> Error generating Service Worker: ', err));*/
 
 
 

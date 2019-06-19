@@ -1,1 +1,1 @@
-web: npm run workbox-build && npm run launch
+web: npm run launch

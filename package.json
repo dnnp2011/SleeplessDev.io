@@ -80,7 +80,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --env=production",
     "launch": "node ./server.js",
-    "workbox-build": "workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js",
+    "workbox-build": "node workbox-build.js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
