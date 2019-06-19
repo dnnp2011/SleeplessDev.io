@@ -79,6 +79,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --env=production",
+    "launch": "node ./server.js",
     "workbox-build": "workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
@@ -86,13 +87,14 @@
   "engines": {
     "node": "^10.16.0"
   },
-  "resolutions": {
-    "browserslist": "4.6.2"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "resolutions": {
+    "browserslist": "4.6.2",
+    "caniuse-lite": "1.0.30000974"
+  }
 }
