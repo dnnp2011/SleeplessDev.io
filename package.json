@@ -86,6 +86,9 @@
   "engines": {
     "node": "^10.16.0"
   },
+  "resolutions": {
+    "browserslist": "4.6.2"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",

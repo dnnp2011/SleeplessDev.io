@@ -1,1 +1,1 @@
-web: node server.js && workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js
+web: workbox generateSW ./workbox-config.js && workbox injectManifest ./workbox-manifest.js && node ./server.js
