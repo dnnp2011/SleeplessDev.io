@@ -1,1 +1,2 @@
-web: npm run launch
+web: node ./server.js
+release: npm run workbox-build
