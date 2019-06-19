@@ -28,7 +28,7 @@ workbox.generateSW({
           globIgnores: [ 'node_modules/**/*' ],
           globStrict: true,
           maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-          swDest: 'build/sw.js',
+          swDest,
           importWorkboxFrom: 'cdn',
           skipWaiting: true,
           clientsClaim: true,
@@ -139,8 +139,8 @@ workbox.generateSW({
               globIgnores: [ 'node_modules/**/*' ],
               globStrict: true,
               maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-              swDest: 'build/sw.js',
-              swSrc: 'src-sw.js'
+              swDest,
+              swSrc
             })
               .then(({ count, size }) => {
                 console.log(`injectManifest --> Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
