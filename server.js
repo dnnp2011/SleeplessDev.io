@@ -71,7 +71,7 @@ workbox.generateSW({
       }
     }, {
       urlPattern: new RegExp('^(?:https:\/\/resume\.creddle\.io)\/?.*', 'i'),
-      handler: 'StaleWhileRevalidate',
+      handler: 'networkFirst',
       options: {
         cacheableResponse: {
           statuses: [ 0, 200 ]
