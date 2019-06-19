@@ -18,7 +18,7 @@ const serverOptions = {
 const app = express(serverOptions);
 
 // Serve the static files from the React app
-app.use('build', express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(helmet());
 app.use(cors());
 app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
