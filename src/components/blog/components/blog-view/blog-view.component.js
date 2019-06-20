@@ -23,7 +23,7 @@ function BlogView(props) {
 
   return (
     <>
-      <Query query={GET_BLOG} variables={{ id }}>
+      <Query query={GET_BLOG} fetchPolicy={'cache-and-network'} variables={{ id }}>
         {
           ({ loading, error, data }) => {
             if (error) new Error(error);

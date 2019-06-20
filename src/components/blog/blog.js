@@ -165,7 +165,7 @@ class Blog extends React.Component {
      `;
 
     this.setState({
-      tagList: <Query query={GET_TAGS} pollInterval={600000}>
+      tagList: <Query query={GET_TAGS} fetchPolicy={'cache-and-network'} pollInterval={600000}>
         {
           ({ loading, error, data }) => {
 
@@ -291,12 +291,11 @@ class Blog extends React.Component {
         </Grid>
         <Grid container direction={'row'} alignItems={'flex-end'} justify={'flex-end'}>
           <Grid item>
-            <Query query={GET_ARCHIVE} pollInterval={600000}>
+            <Query query={GET_ARCHIVE} pollInterval={600000} fetchPolicy={'cache-and-network'}>
               {
                 (({ error, loading, data }) => {
 
                   if (error) {
-
                     console.error(error);
                     return <TempDrawerWidget drawerOpen={this.state.archiveDrawerOpen} toggleDrawer={this.toggleArchiveDrawer} render={
                       <div>

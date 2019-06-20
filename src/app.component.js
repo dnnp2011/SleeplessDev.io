@@ -1,26 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import rtl from 'jss-rtl';
-import { create } from 'jss';
-import { JssProvider } from 'react-jss';
-import { BrowserRouter as Router, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-import { IconContext } from 'react-icons';
 // Theme
-import { MuiThemeProvider, createMuiTheme, createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+import { createGenerateClassName, createMuiTheme, jssPreset, MuiThemeProvider } from '@material-ui/core/styles';
+import { create } from 'jss';
+import rtl from 'jss-rtl';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { IconContext } from 'react-icons';
+import { JssProvider } from 'react-jss';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
 // Auth
 import withAuthentication from './auth/withAuthentication';
-// Apollo and GraphQL
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import GraphQL from 'graphql-tag';
+
 // Routes
 import Routes from './routes';
-import { BackendUrl } from './helpers/Const';
 
-const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+
+const jss = create({ plugins: [ ...jssPreset().plugins, rtl() ] });
 const generateClassName = createGenerateClassName();
+
 
 class App extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -28,6 +27,7 @@ class App extends React.Component {
       document.body.dir = nextProps.themeConfig.contentTheme.direction;
     }
   }
+
 
   render() {
     const childProps = {};
@@ -37,22 +37,18 @@ class App extends React.Component {
       'portalData',
       JSON.stringify({
         theme: {
-          ...themeConfig,
+          ...themeConfig
         },
         layout: {
-          ...layoutConfig,
-        },
+          ...layoutConfig
+        }
       })
     );
 
     const materialTheme = createMuiTheme(themeConfig.contentTheme);
 
-    const client = new ApolloClient({
-      uri: BackendUrl,
-    });
-
     return (
-      <ApolloProvider client={client}>
+
         <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
           <JssProvider jss={jss} generateClassName={generateClassName}>
             <MuiThemeProvider theme={materialTheme}>
@@ -60,25 +56,25 @@ class App extends React.Component {
             </MuiThemeProvider>
           </JssProvider>
         </IconContext.Provider>
-      </ApolloProvider>
     );
   }
 }
 
+
 function mapStateToProps(state) {
   return {
     themeConfig: state.theme,
-    layoutConfig: state.layout,
+    layoutConfig: state.layout
   };
 }
 
 App.propTypes = {
   themeConfig: PropTypes.shape({
     contentTheme: PropTypes.shape({
-      direction: PropTypes.string.isRequired,
-    }).isRequired,
+      direction: PropTypes.string.isRequired
+    }).isRequired
   }).isRequired,
-  layoutConfig: PropTypes.shape({}).isRequired,
+  layoutConfig: PropTypes.shape({}).isRequired
 };
 
 export default compose(withAuthentication, withRouter, connect(mapStateToProps))(App);

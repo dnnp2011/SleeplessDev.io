@@ -61,7 +61,7 @@ function BlogOverview(props) {
         </ListItem>
         {
           !tag
-            ? <Query query={GET_BLOGS} variables={{
+            ? <Query query={GET_BLOGS} fetchPolicy={'cache-and-network'} variables={{
               month,
               year
             }} pollInterval={600000}>
@@ -76,7 +76,7 @@ function BlogOverview(props) {
                 }
               }
             </Query>
-            : <Query query={GET_BLOGS_BY_TAG} variables={{ tag }} pollInterval={600000}>
+            : <Query query={GET_BLOGS_BY_TAG} fetchPolicy={'cache-and-network'} variables={{ tag }} pollInterval={600000}>
               {
                 ({ loading, error, data }) => {
                   if (error) new Error(error);
