@@ -3,14 +3,15 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 
 console.log('Injecting Custom Manifest...');
 
-workbox.setConfig({ debug: true });
+//For debugging
+// workbox.setConfig({ debug: true });
 workbox.core.setCacheNameDetails({ prefix: 'sleeplessdev' });
 workbox.precaching.precacheAndRoute([]);
 
 
 // !! googleapis and gstatic fonts
 workbox.routing.registerRoute(
-  new RegExp('^(https:\/\/fonts.(?:googleapis|gstatic).com)\/?.*', 'ig'),
+  new RegExp('^(https:\/\/fonts.(?:googleapis|gstatic).com)\/?.*', 'i'),
   new workbox.strategies.CacheFirst({
     cacheName: 'google-webfonts',
     plugins: [
@@ -26,24 +27,24 @@ workbox.routing.registerRoute(
 );
 
 // !! images
-// workbox.routing.registerRoute(
-//   new RegExp('^.*(?:png|jpg|jpeg|svg|webm|mp4|ogv)+$(?!.*\.[^\/.]?$).*', 'ig'),
-//   new workbox.strategies.CacheFirst({
-//     cacheName: 'images',
-//     plugins: [
-//       new workbox.cacheableResponse.Plugin({
-//         statuses: [ 0, 200 ]
-//       }),
-//       new workbox.expiration.Plugin({
-//         maxAgeSeconds: 60 * 60 * 24 * 7 // Keep for one week
-//       })
-//     ]
-//   })
-// );
+workbox.routing.registerRoute(
+  new RegExp('^.*(?:png|jpg|jpeg|svg|webm|mp4|ogv)+$(?!.*\.[^\/.]?$).*', 'i'),
+  new workbox.strategies.CacheFirst({
+    cacheName: 'images',
+    plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [ 0, 200 ]
+      }),
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7 // Keep for one week
+      })
+    ]
+  })
+);
 
 // !! backend.sleeplessdev.io
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:\/\/backend\.sleeplessdev\.io)\/?.*', 'ig'),
+  new RegExp('^(?:https:\/\/backend\.sleeplessdev\.io)\/?.*', 'i'),
   new workbox.strategies.NetworkFirst({
     cacheName: 'backend-cache-v1',
     networkTimeoutSeconds: 3,
@@ -61,7 +62,7 @@ workbox.routing.registerRoute(
 
 // !! backend.sleeplessdev.io
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:\/\/sleeplessdev-backend\.herokuapp\.com)\/?.*', 'ig'),
+  new RegExp('^(?:https:\/\/sleeplessdev-backend\.herokuapp\.com)\/?.*', 'i'),
   new workbox.strategies.NetworkFirst({
     cacheName: 'backend-cache-v2',
     networkTimeoutSeconds: 3,
@@ -79,7 +80,7 @@ workbox.routing.registerRoute(
 
 // !! firebase sleeplessdev-io
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:\/\/sleeplessdev-io.firebaseio.com)\/*.*', 'ig'),
+  new RegExp('^(?:https:\/\/sleeplessdev-io.firebaseio.com)\/*.*', 'i'),
   // https://sleeplessdev-io.firebaseio.com/.lp?start=t&ser=60652980&cb=8&v=5&ls=GSMrBPfHCQmhcNyhuFhksp8bp7h3oz8b
   new workbox.strategies.NetworkFirst({
     cacheName: 'firebase-cache-v1',
@@ -94,7 +95,7 @@ workbox.routing.registerRoute(
 
 // !! firebase
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:(.*.)?firebaseio\.com)?.*', 'ig'),
+  new RegExp('^(?:https:(.*.)?firebaseio\.com)?.*', 'i'),
   new workbox.strategies.NetworkFirst({
     cacheName: 'firebase-cache-v2',
     networkTimeoutSeconds: 3,
@@ -109,7 +110,7 @@ workbox.routing.registerRoute(
 
 // !! creddle resume
 workbox.routing.registerRoute(
-  new RegExp('^(https:\/\/resume\.creddle\.io)?.*', 'ig'),
+  new RegExp('^(https:\/\/resume\.creddle\.io)?.*', 'i'),
   // https://resume.creddle.io/stylesheets/bootstrap.css
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'creddle-v1',
@@ -126,7 +127,7 @@ workbox.routing.registerRoute(
 
 // !! bootstrap cdn
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:\/\/netdna\.bootstrapcdn\.com)?.*', 'ig'),
+  new RegExp('^(?:https:\/\/netdna\.bootstrapcdn\.com)?.*', 'i'),
   new workbox.strategies.CacheFirst({
     cacheName: 'bootstrap-cdn-v1',
     plugins: [
@@ -142,7 +143,7 @@ workbox.routing.registerRoute(
 
 // !! jquery cdn
 workbox.routing.registerRoute(
-  new RegExp('^(?:https:\/\/code\.jquery\.com)\/?.*', 'ig'),
+  new RegExp('^(?:https:\/\/code\.jquery\.com)\/?.*', 'i'),
   new workbox.strategies.CacheFirst({
     cacheName: 'jquery-cdn-v1',
     plugins: [
